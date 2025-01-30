@@ -1,4 +1,5 @@
-import React, { useId, useState, useTransition } from "react";
+import React,{ useId, useState, useTransition } from 'react'
+
 import Style from "../../css/login.module.css";
 import GoogleIcon from "../../assets/google.svg";
 import FacebookIcon from "../../assets/facebook.svg";
@@ -8,35 +9,32 @@ import { FiEyeOff } from "react-icons/fi";
 
 import { Button } from "../../Components";
 
-const Login = () => {
+const Register = () => {
   const id = useId();
-
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [eye, setEye] = useState(false);
-
-  const [isPending, startTransition] = useTransition();
-
-  const handleSubmit=(e)=>{
-    e.preventDefault();
-    console.log("Form Submitted");
-    console.log("email: ",email);
-    console.log("password: ",password);
-
-    // startTransition(async ()=>{
-    //   setTimeout(() => {
-    //     console.log("Simulating async operation");
-
-    //   }, 3000);
-    // })
-    
-    
-  }
-
-
+  
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [eye, setEye] = useState(false);
+  
+    const [isPending, startTransition] = useTransition();
+  
+    const handleSubmit=(e)=>{
+      e.preventDefault();
+      console.log("Form Submitted");
+      console.log("email: ",email);
+      console.log("password: ",password);
+  
+      // startTransition(async ()=>{
+      //   setTimeout(() => {
+      //     console.log("Simulating async operation");
+  
+      //   }, 3000);
+      // })
+      
+      
+    }
   return (
-    <>
-      <section className={Style.loginSection}>
+    <section className={Style.loginSection}>
         <div className={Style.loginContainer}>
           <div className={Style.loginOAuthSection}>
             <div className={Style.loginHeading}>Login With</div>
@@ -103,8 +101,7 @@ const Login = () => {
           </div>
         </div>
       </section>
-    </>
-  );
-};
+  )
+}
 
-export default Login;
+export default Register

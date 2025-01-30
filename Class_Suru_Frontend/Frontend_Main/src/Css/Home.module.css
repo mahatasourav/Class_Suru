@@ -20,30 +20,34 @@ height: 45vh;
 display: flex;
 flex-flow: column;
 justify-content: space-around;
+
+}
+
+.HomeMainLeft h1 span ,.HomeMainLeftDown p span{
+  color:rgb(88, 88, 214);
+}
+.HomeMainLeft p span{
+
+  font-weight:bold;
 }
 .HomeMainLeftDown{
   display: flex;
-  width: 27vw;
+  width: 24vw;
 
   justify-content: space-around;align-items: end;
 
 }
 .HomeMainLeftDownImg{
-  width: 40px;
+  width: 80px;
   height: 40px;
+  
 }
 .HomeMainLeftButton{
- width: 16vw;
+ width: 18vw;
  
  display: flex;
  justify-content: space-between;
 }
-.HomeMainLeftButton button{
-  color:rgb(255, 255, 255);
-  background-color: rgb(86, 86, 214);
-  width: 110px;
-  height: 35px;
-  border-radius: 5px;
-  font-family: sans-serif;
-  font-weight: 600;
+.HomeMainLeftDown p{
+  font-weight: bold;
  }

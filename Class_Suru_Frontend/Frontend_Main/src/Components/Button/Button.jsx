@@ -16,7 +16,7 @@ const Button = ({
   if (isLink) {
     return (
       <Link
-      to={link}
+        to={link}
         className={`${Style.button} ${
           isLoading ? Style.loading : ""
         } ${className} `}
@@ -28,21 +28,20 @@ const Button = ({
       </Link>
     );
   }
-  if(isHashLink)
-  {
+  if (isHashLink) {
     return (
-        <HashLink
+      <HashLink
         to={link}
-          className={`${Style.button} ${
-            isLoading ? Style.loading : ""
-          } ${className} `}
-          id="actionButton"
-          {...props}
-        >
-          <span className={Style.text}>{text}</span>
-          <div className={Style.spinner}></div>
-        </HashLink>
-      );
+        className={`${Style.button} ${
+          isLoading ? Style.loading : ""
+        } ${className} `}
+        id="actionButton"
+        {...props}
+      >
+        <span className={Style.text}>{text}</span>
+        <div className={Style.spinner}></div>
+      </HashLink>
+    );
   }
   return (
     <button

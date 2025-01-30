@@ -1,6 +1,6 @@
 // This page is for Sourav
 import React from "react";
-import Style from "../../Css/Home.module.css";
+import Style from "../../css/Home.module.css";
 import Image from "../../assets/BooksImages.png";
 import HomeMainLeftDownImg from "../../assets/HomeMainLeftImg.png";
 import Button from "../../Components/Button/Button";

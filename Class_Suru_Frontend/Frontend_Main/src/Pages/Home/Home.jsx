@@ -8,7 +8,7 @@ import Button from "../../Components/Button/Button";
 const Home = () => {
   return (
     <div className={Style.HomeMain}>
-      {/* Left Side Content */}
+      {/* Left Side Contents */}
       <div className={Style.HomeMainLeft}>
         <h1>
           তোমার <span>স্বপ্ন পূরণের</span> শুরু এখানেই!সঠিক{" "}

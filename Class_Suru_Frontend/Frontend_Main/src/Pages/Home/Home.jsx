@@ -2,7 +2,7 @@
 import React from "react";
 import Style from "../../css/Home.module.css";
 import Image from "../../assets/BooksImages.png";
-import HomeMainLeftDownImg from "../../assets/HomeMainLeftImg.png";
+import HomeMainLeftDownImg from "../../assets/HomemainLeftImg.png";
 import Button from "../../Components/Button/Button";
 
 const Home = () => {

@@ -12,6 +12,7 @@
 :root{
     --primary_color: #504eec;
     --secondary_color: #7b79ff;
+    --light_primary_color: #f6f6ff;
     --dark_color: #000000;
     --background_color: #fff;
 }

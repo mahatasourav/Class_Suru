@@ -21,6 +21,7 @@ const Button = ({
           isLoading ? Style.loading : ""
         } ${className} `}
         id="actionButton"
+        
         {...props}
       >
         <span className={Style.text}>{text}</span>

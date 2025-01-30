@@ -1,0 +1,53 @@
+/* Home Upper */
+.HomeMain{
+
+  display:flex;
+  justify-content: space-around;
+  height: 65vh;
+  align-items: center;
+}
+/* Home Upper Right*/
+.RightImg{
+  width: 20vw;
+  height: 45vh;
+}
+
+/* Home Upper Left */
+.HomeMainLeft{
+  
+  width: 45vw;
+height: 45vh;
+display: flex;
+flex-flow: column;
+justify-content: space-around;
+
+}
+
+.HomeMainLeft h1 span ,.HomeMainLeftDown p span{
+  color:rgb(88, 88, 214);
+}
+.HomeMainLeft p span{
+
+  font-weight:bold;
+}
+.HomeMainLeftDown{
+  display: flex;
+  width: 24vw;
+
+  justify-content: space-around;align-items: end;
+
+}
+.HomeMainLeftDownImg{
+  width: 80px;
+  height: 40px;
+  
+}
+.HomeMainLeftButton{
+ width: 18vw;
+ 
+ display: flex;
+ justify-content: space-between;
+}
+.HomeMainLeftDown p{
+  font-weight: bold;
+ }

@@ -1,0 +1,207 @@
+.loginSection{
+    /* border: 1px solid red; */
+    max-width: 1500px;
+    margin: 0 auto;
+    height: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    
+}
+/* ========= section gap ========= */
+.loginContainer{
+    margin-top: 50px;
+}
+.loginContainer{
+    width: 400px;
+    /* border: 1px solid blue; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px #0000003f;
+    gap: 20px;
+}
+
+.loginOAuthSection{
+    /* border: 1px solid red; */
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.loginHeading{
+    color: var(--dark_color);
+    font-size: 22px;
+    font-weight: 600;
+    
+}
+
+.loginOAuthContainer{
+    /* border: 1px solid green; */
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-direction: column;
+}
+
+.loginOAuth{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    /* border: 1px solid pink; */
+    width: 100%;
+    gap: 15px;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 2px #000000bd;
+    cursor: pointer;
+    transition: all 0.1s linear;
+}
+/* .loginOAuth:hover{
+    transform: scale(1.02);
+} */
+
+.loginOAuthIcon{
+    height: 30px;
+    width: 30px;
+}
+.loginOAuthIcon img{
+    height: 100%;
+    width: 100%;
+}
+
+.loginOAuthText{
+    font-size: 15px;
+    font-weight: 500;
+}
+
+
+.orSection{
+    /* border: 1px solid red; */
+    /* width: 100%; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+.orSectionLine{
+    height: 0.5px;
+    width: 100px;
+    background-color: #00000059;
+}
+
+.orSectionText{
+    color: #000000a8;
+    font-size: 18px;
+}
+
+.loginFormSection{
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+}
+
+.loginInputSection{
+    /* border: 1px solid blue; */
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.loginInputLabel{
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.loginInput{
+    width: 100%;
+    padding: 10px;
+    font-size: 15px;
+    border-radius: 5px;
+    border: 1.5px solid #ecedec;
+    transition: all 0.2s ease-in-out;
+}
+
+.loginInput:focus {
+    outline: none;
+  }
+  
+  .loginInput:focus-within {
+    border: 1.5px solid var(--primary_color);
+  }
+
+  .passwordContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+  }
+
+  .eye{
+    padding: 10px;
+    border: 1.5px solid #ecedec;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 21px;
+    border-radius: 5px;
+    transition: all 0.2s ease-in-out;
+  }
+  .eye:hover{
+    /* color: var(--primary_color); */
+    border: 1.5px solid var(--primary_color);
+    cursor: pointer;
+  }
+  .eye.active{
+    border: 1.5px solid var(--primary_color);
+    /* background-color: var(--light_primary_color); */
+    color: var(--primary_color);
+  }
+
+  .formBtn{
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .otherOption{
+    /* border: 1px solid red; */
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .otherOptionText{
+    font-size: 15px;
+    font-weight: 500;
+    color: #5f5f5f;
+  }
+
+  .registerBtn{
+    width: 100%;
+    border: 1px solid var(--primary_color);
+    background-color: var(--background_color);
+    color: var(--primary_color);
+  }
+  .registerBtn:hover{
+    background-color: var(--primary_color);
+    color: var(--background_color);
+  }

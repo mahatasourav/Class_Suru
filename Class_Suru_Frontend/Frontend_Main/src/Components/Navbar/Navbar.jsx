@@ -57,23 +57,23 @@ const Navbar = () => {
           </div>
         </div>
          <div className={Style.navLinks}>
-          <Link className={Style.navLink}>
+          <Link className={Style.navLink} to="/">
             Home
           </Link>
-          <Link className={Style.navLink}>
+          <Link className={Style.navLink} to="/about">
             About Us
           </Link>
-          <Link className={Style.navLink}>
+          <Link className={Style.navLink} to="/services">
             Services
           </Link>
-          <Link className={Style.navLink}>
+          <Link className={Style.navLink} to="/courses">
             Courses
           </Link>
-          <Link className={Style.navLink}>
+          <Link className={Style.navLink} to="/exam">
             Online Exam
           </Link>
          </div>
-         <Button text="Login/Signup" className={Style.navButton}/>
+         <Button text="Login/Signup" className={Style.navButton} isLink={true} link="/login" />
          </div>
       </div>
     </nav>

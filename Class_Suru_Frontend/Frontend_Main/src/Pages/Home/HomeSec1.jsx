@@ -10,7 +10,7 @@ const HomeSec1 = () => {
         {/* Left Side Contents */}
         <div className={Style.HomeMainLeft}>
           <h1>
-            তোমার <span>স্বপ্ন পূরণের</span> শুরু এখানেই!সঠিক{" "}
+            তোমার <span>স্বপ্ন পূরণের</span> শুরু এখানেই! সঠিক{" "}
             <span>প্রস্তুতি</span>, সেরা <span>সাফল্য</span>!
           </h1>
           <p>

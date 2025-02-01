@@ -1,3 +1,5 @@
+/* Home Section-1 Started Here ---> */
+
 /* Home Upper */
 .HomeMain{
 
@@ -51,3 +53,54 @@ justify-content: space-around;
 .HomeMainLeftDown p{
   font-weight: bold;
  }
+
+
+
+
+ /* Home Section-3 Started Here ---> */
+ .spancolor{
+  color: rgb(88, 88, 214);
+ }
+ .spanbold{
+  font-weight: bold;
+ }
+
+ .HomeSec3{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  
+  height: 90vh;
+  width: 85vw;
+  margin: auto;
+ }
+ .HomeSec3div1 h2{
+  font-weight: bold;
+  font-size: 1.6rem;
+
+
+ }
+ .HomeSec3div2{
+  display: flex;
+  flex-direction: column;
+ 
+  width: 85vw;
+  align-items:center;
+ }
+ .HomeSec3div21 , .HomeSec3div22{
+  display: flex;
+  flex-direction: row;
+ 
+  width: 75vw;
+  justify-content: space-between;
+  align-items: center;
+ }
+ .HomeSec3div21 p, .HomeSec3div22 p{
+width: 30vw;
+font-size: 1.2rem;
+ }
+ .HomeSec3div21 img, .HomeSec3div22 img{
+  width: 20vw;
+  height: auto;
+   }

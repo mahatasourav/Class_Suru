@@ -1,6 +1,6 @@
 import React,{ useId, useState, useTransition } from 'react'
 
-import Style from "../../css/login.module.css";
+import Style from "../../css/signup.module.css";
 import GoogleIcon from "../../assets/google.svg";
 import FacebookIcon from "../../assets/facebook.svg";
 
@@ -34,23 +34,23 @@ const Register = () => {
       
     }
   return (
-    <section className={Style.loginSection}>
-        <div className={Style.loginContainer}>
-          <div className={Style.loginOAuthSection}>
-            <div className={Style.loginHeading}>Login With</div>
-            <div className={Style.loginOAuthContainer}>
-              <div className={Style.loginOAuth}>
-                <div className={Style.loginOAuthIcon}>
+    <section className={Style.signupSection}>
+        <div className={Style.signupContainer}>
+          <div className={Style.signupOAuthSection}>
+            <div className={Style.signupHeading}>Signup With</div>
+            <div className={Style.signupOAuthContainer}>
+              <div className={Style.signupOAuth}>
+                <div className={Style.signupOAuthIcon}>
                   <img src={GoogleIcon} alt="google icon" />
                 </div>
-                <div className={Style.loginOAuthText}>Google</div>
+                <div className={Style.signupOAuthText}>Google</div>
               </div>
-              <div className={Style.loginOAuth}>
-                <div className={Style.loginOAuthIcon}>
+              <div className={Style.signupOAuth}>
+                <div className={Style.signupOAuthIcon}>
                   <img src={FacebookIcon} alt="facebookIcon" />
                   {/* <FacebookIcon/> */}
                 </div>
-                <div className={Style.loginOAuthText}>Facebook</div>
+                <div className={Style.signupOAuthText}>Facebook</div>
               </div>
             </div>
           </div>
@@ -59,11 +59,23 @@ const Register = () => {
             <div className={Style.orSectionText}>or</div>
             <div className={Style.orSectionLine}></div>
           </div>
-          <form className={Style.loginFormSection} onSubmit={handleSubmit}>
-            <div className={Style.loginInputSection}>
-              <label className={Style.loginInputLabel} htmlFor={id+"email"} >Email</label>
+          <form className={Style.signupFormSection} onSubmit={handleSubmit}>
+          <div className={Style.signupInputSection}>
+              <label className={Style.signupInputLabel} htmlFor={id+"name"} >Name</label>
               <input
-                className={Style.loginInput}
+                className={Style.signupInput}
+                type="text"
+                name="name"
+                id={id+"name"}
+                placeholder="Jhone Doe"
+                onChange={(e)=>setEmail(e.target.value)}
+                required
+              />
+            </div>
+            <div className={Style.signupInputSection}>
+              <label className={Style.signupInputLabel} htmlFor={id+"email"} >Email</label>
+              <input
+                className={Style.signupInput}
                 type="email"
                 name="email"
                 id={id+"email"}
@@ -72,11 +84,30 @@ const Register = () => {
                 required
               />
             </div>
-            <div className={Style.loginInputSection}>
-              <label className={Style.loginInputLabel} htmlFor={id+"password"}>Password</label>
+            <div className={Style.signupInputSection}>
+              <label className={Style.signupInputLabel} htmlFor={id+"phone"} >Phone</label>
+              <div className={Style.phoneNumberContainer}>
+                <div className={Style.countryCode}>
+                  +91
+                </div>
+              <input
+                className={Style.signupInput}
+                type="phone"
+                name="phone"
+                id={id+"phone"}
+                placeholder="00000 00000"
+                
+                onChange={(e)=>setEmail(e.target.value)}
+                required
+              />
+              </div>
+              
+            </div>
+            <div className={Style.signupInputSection}>
+              <label className={Style.signupInputLabel} htmlFor={id+"password"}>Password</label>
               <div className={Style.passwordContainer}>
                 <input
-                  className={Style.loginInput}
+                  className={Style.signupInput}
                   type={eye?"text":"password"}
                   name="password"
                   placeholder="password"
@@ -93,11 +124,11 @@ const Register = () => {
                 
               </div>
             </div>
-            <Button text="Login Now" className={Style.formBtn} type="submit" isLoading={isPending} />
+            <Button text="signup Now" className={Style.formBtn} type="submit" isLoading={isPending} />
           </form>
           <div className={Style.otherOption}>
-            <div className={Style.otherOptionText}>Dont' have any account?</div>
-            <Button text="Register Now" className={Style.registerBtn} isLink={true} link="/register" />
+            <div className={Style.otherOptionText}>have an account?</div>
+            <Button text="Login Now" className={Style.registerBtn} isLink={true} link="/login" />
           </div>
         </div>
       </section>

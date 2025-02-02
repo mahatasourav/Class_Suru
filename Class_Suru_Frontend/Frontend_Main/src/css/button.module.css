@@ -19,6 +19,35 @@
     transform: scale(0.95);
   }
 
+
+  .button.inactive{
+    border: 1px solid var(--primary_color);
+    background-color: var(--background_color);
+    color: var(--primary_color);
+  }
+  .button.inactive:hover{
+    background-color: var(--primary_color);
+    color: var(--background_color);
+  }
+
+  .button.active{
+    border: 1px solid var(--primary_color);
+    background-color: var(--primary_color);
+    color: var(--background_color);
+  }
+  .button.active:hover{
+    background-color: var(--primary_color);
+    color: var(--background_color);
+    transform: scale(1);
+  }
+
+  .button.disabled{
+    border: 1px solid #bebebe;
+    background-color: #bebebe;
+    color: var(--background_color);
+    cursor: not-allowed;
+  }
+
   .spinner {
     position: absolute;
     top: 50%;

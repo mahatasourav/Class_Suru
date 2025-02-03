@@ -1,12 +1,21 @@
+.Homestyle{
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+
 /* Home Section-1 Started Here ---> */
 
 /* Home Upper */
 .HomeMain{
-
   display:flex;
   justify-content: space-around;
-  height: 65vh;
+  width:80vw;
+  margin: auto;
+  height: auto;
   align-items: center;
+ border:  2px solid red;
+ padding: 50px 0px;
 }
 /* Home Upper Right*/
 .RightImg{
@@ -54,29 +63,53 @@ justify-content: space-around;
   font-weight: bold;
  }
 
+ /* Media queries for responsiveness */
+@media (max-width: 1024px) {
+  
+}
+
+@media (max-width: 768px) {
+  .HomeMain{
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 480px) {
+  .HomeMain{
+    flex-direction: column;
+  }
+}
 
 /* Home Section-2 Started Here ---> */
 
 
 .HomeSec2div{
-max-width: 70vw !important;
+max-width: 80vw !important;
 border: 2px solid red;
 margin: auto;
+display: flex;
+flex-direction: column;
+gap: 20px;
+
 }
 
  /* swiperStyles.css */
-.custom-swiper {
+.customSwiper {
   width: 100%;
+  
 }
 .customSlide  {
 
-  border:2px solid rgb(197, 219, 8);
+
+  height: 250px !important;
+  padding-top: 20px;
+  
 }
 .customSlide img {
   max-width: 100%;
   height: auto;
   border-radius: 10px;
-  border:2px solid green;
+
 }
 
 .Swiperdiv{
@@ -84,6 +117,8 @@ margin: auto;
   flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
+  
+  
 }
 
 

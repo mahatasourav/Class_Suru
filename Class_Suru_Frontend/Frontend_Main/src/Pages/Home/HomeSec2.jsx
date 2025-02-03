@@ -1,5 +1,10 @@
 import { Swiper, SwiperSlide } from "swiper/react";
-import { EffectCoverflow, Pagination, Navigation } from "swiper/modules";
+import {
+  EffectCoverflow,
+  Pagination,
+  Navigation,
+  Autoplay,
+} from "swiper/modules";
 import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
@@ -10,6 +15,9 @@ import Style from "../../css/Home.module.css";
 const HomeSec2 = () => {
   return (
     <div className={Style.HomeSec2div}>
+      <center>
+        <h2>আমাদের সাফল্যতা</h2>
+      </center>
       <div className="max-w-full mx-auto py-10 ">
         <Swiper
           effect="coverflow"
@@ -26,8 +34,13 @@ const HomeSec2 = () => {
           }}
           pagination={{ clickable: true }}
           navigation={true} // Enable next/prev buttons
-          modules={[EffectCoverflow, Pagination, Navigation]}
-          className="custom-swiper"
+          autoplay={{
+            delay: 2500, // Delay between slides (in ms)
+            disableOnInteraction: false, // Keeps autoplay running even after user interaction
+          }}
+          loop={true}
+          modules={[EffectCoverflow, Pagination, Navigation, Autoplay]}
+          className={Style.customSwiper}
         >
           {imageData.map((image) => (
             <SwiperSlide key={image.id} className={Style.customSlide}>

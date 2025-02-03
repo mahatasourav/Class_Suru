@@ -35,16 +35,13 @@ const Register = () => {
     const loadingToastId = toast.loading("Loading...");
     startTransition(async () => {
       setTimeout(() => {
-      toast.dismiss(loadingToastId);
-      toast.success("Signup Successful");
-      setTimeout(() => {
-        navigate("/questions");
-      }, 2000);
-      
+        toast.dismiss(loadingToastId);
+        toast.success("Signup Successful");
+        setTimeout(() => {
+          navigate("/questions");
+        }, 2000);
       }, 3000);
     });
-    
-    
   };
   return (
     <section className={Style.signupSection}>
@@ -145,7 +142,6 @@ const Register = () => {
             className={Style.formBtn}
             type="submit"
             isLoading={isPending}
-            
           />
         </form>
         <div className={Style.otherOption}>

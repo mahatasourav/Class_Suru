@@ -8,9 +8,9 @@ import HomeSec3 from "./HomeSec3";
 const Home = () => {
   return (
     <>
-      <HomeSec1></HomeSec1>
-      <HomeSec2></HomeSec2>
-      <HomeSec3></HomeSec3>
+      <HomeSec1 />
+      <HomeSec2 />
+      <HomeSec3 />
     </>
   );
 };

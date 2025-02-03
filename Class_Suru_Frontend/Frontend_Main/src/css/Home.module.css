@@ -55,6 +55,64 @@ justify-content: space-around;
  }
 
 
+/* Home Section-2 Started Here ---> */
+
+
+.HomeSec2div{
+max-width: 70vw !important;
+border: 2px solid red;
+margin: auto;
+}
+
+ /* swiperStyles.css */
+.custom-swiper {
+  width: 100%;
+}
+.customSlide  {
+
+  border:2px solid rgb(197, 219, 8);
+}
+.customSlide img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  border:2px solid green;
+}
+
+.Swiperdiv{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+
+/* Media queries for responsiveness */
+@media (max-width: 1024px) {
+  .swiper-slide img {
+    width: 80%;
+  }
+}
+
+@media (max-width: 768px) {
+  .swiper-slide img {
+    width: 100%;
+  }
+
+  .swiper {
+    padding: 0 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .swiper-slide img {
+    width: 100%;
+  }
+
+  .swiper {
+    padding: 0 5px;
+  }
+}
 
 
  /* Home Section-3 Started Here ---> */

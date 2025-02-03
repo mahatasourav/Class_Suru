@@ -1,7 +1,7 @@
 .Homestyle{
   display: flex;
   flex-direction: column;
-  gap: 50px;
+  gap: 60px;
 }
 
 /* Home Section-1 Started Here ---> */
@@ -14,7 +14,7 @@
   margin: auto;
   height: auto;
   align-items: center;
- border:  2px solid red;
+ 
  padding: 50px 0px;
 }
 /* Home Upper Right*/
@@ -85,14 +85,14 @@ justify-content: space-around;
 
 .HomeSec2div{
 max-width: 80vw !important;
-
 margin: auto;
 display: flex;
 flex-direction: column;
-gap: 20px;
-
+gap: 30px;
 }
-
+.HomeSec2div span{
+  color:rgb(88, 88, 214);
+}
  /* swiperStyles.css */
 .customSwiper {
   width: 100%;
@@ -162,10 +162,11 @@ gap: 20px;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  
   height: 90vh;
-  width: 85vw;
+  width: 80vw;
   margin: auto;
+  gap: 40px;
+  
  }
  .HomeSec3div1 h2{
   font-weight: bold;
@@ -200,3 +201,31 @@ font-size: 1.2rem;
     width: 25vw;
     height: auto;
      }
+
+     /* Media queries for responsiveness */
+@media (max-width: 1024px) {
+  
+}
+
+@media (max-width: 768px) {
+  .HomeSec3div21 
+  {
+    flex-direction: column-reverse;
+  }
+  .HomeSec3div22 
+  {
+    flex-direction: column;
+  }
+}
+@media (max-width: 480px) {
+  .HomeSec3div21 
+  {
+    flex-direction: column-reverse;
+  }
+  .HomeSec3div22 
+  {
+    flex-direction: column;
+  }
+}
+
+

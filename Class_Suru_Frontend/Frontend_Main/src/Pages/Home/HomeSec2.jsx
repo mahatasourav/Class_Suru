@@ -16,7 +16,9 @@ const HomeSec2 = () => {
   return (
     <div className={Style.HomeSec2div}>
       <center>
-        <h2>আমাদের সাফল্যতা</h2>
+        <h2>
+          আমাদের <span>সাফল্যতা</span>
+        </h2>
       </center>
       <div className="max-w-full mx-auto py-10 ">
         <Swiper

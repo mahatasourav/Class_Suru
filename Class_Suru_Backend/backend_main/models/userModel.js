@@ -32,7 +32,7 @@ const findUserByEmail = async (email) => {
     );
     return result.rows[0];
   } catch (error) {
-    console.error("Database error (findUserByUsername):", error);
+    console.error("Database error (findUserByEmail):", error);
     throw new Error("Database error");
   }
 };

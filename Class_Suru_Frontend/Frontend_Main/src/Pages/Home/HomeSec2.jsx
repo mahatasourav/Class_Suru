@@ -25,7 +25,6 @@ const HomeSec2 = () => {
           effect="coverflow"
           grabCursor={true}
           centeredSlides={true}
-          slidesPerView={2} // Always show 2 slides
           spaceBetween={10}
           coverflowEffect={{
             rotate: 30,
@@ -43,6 +42,20 @@ const HomeSec2 = () => {
           loop={true}
           modules={[EffectCoverflow, Pagination, Navigation, Autoplay]}
           className={Style.customSwiper}
+          breakpoints={{
+            480: {
+              slidesPerView: 1, // Show 2 slides on screens with max-width 720px
+            },
+            720: {
+              slidesPerView: 2, // Show 2 slides on screens with max-width 720px
+            },
+            1024: {
+              slidesPerView: 2, // Show 3 slides on screens with width 1024px or larger
+            },
+            1550: {
+              slidesPerView: 3, // Show 4 slides on screens with width 1280px or larger
+            },
+          }}
         >
           {imageData.map((image) => (
             <SwiperSlide key={image.id} className={Style.customSlide}>

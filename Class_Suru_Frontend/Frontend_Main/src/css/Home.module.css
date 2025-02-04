@@ -1,7 +1,7 @@
 .Homestyle{
   display: flex;
   flex-direction: column;
-  gap: 60px;
+  gap: 80px;
 }
 
 /* Home Section-1 Started Here ---> */
@@ -14,8 +14,7 @@
   margin: auto;
   height: auto;
   align-items: center;
- 
- padding: 50px 0px;
+ padding-top: 40px;
 }
 /* Home Upper Right*/
 .RightImg{
@@ -43,9 +42,8 @@ justify-content: space-around;
 }
 .HomeMainLeftDown{
   display: flex;
-  width: 24vw;
-
-  justify-content: space-around;align-items: end;
+ align-items: center;
+ gap: 10px;
 
 }
 .HomeMainLeftDownImg{
@@ -54,7 +52,7 @@ justify-content: space-around;
   
 }
 .HomeMainLeftButton{
- width: 18vw;
+ width: 260px;
  
  display: flex;
  justify-content: space-between;
@@ -71,24 +69,38 @@ justify-content: space-around;
 @media (max-width: 768px) {
   .HomeMain{
     flex-direction: column;
+    
+  }
+  
+  .HomeMainLeft{
+   width: 80vw;
+  height: auto;
+ gap: 30px;
+  }
+  .HomeMainLeftDown{
+    
+    width: 60vw;
+  
+  }
+  .RightImg{
+    display: none;
   }
 }
 
 @media (max-width: 480px) {
-  .HomeMain{
-    flex-direction: column;
-  }
+  
 }
 
 /* Home Section-2 Started Here ---> */
 
 
 .HomeSec2div{
-max-width: 80vw !important;
+max-width: 75vw !important;
 margin: auto;
 display: flex;
 flex-direction: column;
 gap: 30px;
+
 }
 .HomeSec2div span{
   color:rgb(88, 88, 214);
@@ -119,13 +131,23 @@ gap: 30px;
   
   
 }
+.Swiperdiv div{
+ width: 200px;
+ height: 150px;
 
+ display: flex;
+flex-direction: column;
+justify-content:space-around ;
+}
 
 /* Media queries for responsiveness */
 @media (max-width: 1024px) {
   .swiper-slide img {
     width: 80%;
   }
+  .HomeSec2div{
+    max-width: 85vw !important;
+    }
 }
 
 @media (max-width: 768px) {
@@ -177,9 +199,9 @@ gap: 30px;
  .HomeSec3div2{
   display: flex;
   flex-direction: column;
- 
   width: 85vw;
   align-items:center;
+  gap: 30px;
  }
  .HomeSec3div21 , .HomeSec3div22{
   display: flex;
@@ -188,22 +210,19 @@ gap: 30px;
   width: 75vw;
   justify-content: space-between;
   align-items: center;
+  
  }
  .HomeSec3div21 p, .HomeSec3div22 p{
 width: 30vw;
 font-size: 1.2rem;
  }
- .HomeSec3div21 img, .HomeSec3div22 img{
-  width: 20vw;
-  height: auto;
+ .HomeSec3div22 img,.HomeSec3div21 img{
+  width: 32vw;
+  height: fit-content;
    }
-   .HomeSec3div21 img{
-    width: 25vw;
-    height: auto;
-     }
-
+   
      /* Media queries for responsiveness */
-@media (max-width: 1024px) {
+@media (max-width: 1224px) {
   
 }
 
@@ -211,21 +230,29 @@ font-size: 1.2rem;
   .HomeSec3div21 
   {
     flex-direction: column-reverse;
+    gap: 20px;
+  }
+  .HomeSec3div2{
+    gap: 30px;
   }
   .HomeSec3div22 
   {
     flex-direction: column;
+    gap: 30px;
   }
+  .HomeSec3div21 p, .HomeSec3div22 p{
+    width: 68vw;
+    font-size: 1.2rem;
+     }
+     .HomeSec3div22 img,.HomeSec3div21 img{
+      width: 72vw;
+      max-height: 300px;
+      
+       }
+       
 }
 @media (max-width: 480px) {
-  .HomeSec3div21 
-  {
-    flex-direction: column-reverse;
-  }
-  .HomeSec3div22 
-  {
-    flex-direction: column;
-  }
+ 
 }
 
 

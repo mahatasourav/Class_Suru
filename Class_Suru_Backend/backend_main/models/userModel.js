@@ -11,11 +11,11 @@ const pool = new pg.Pool({
   port: process.env.PG_PORT,
 });
 
-const createUser = async (email, username, hashedPassword) => {
+const createUser = async (name, email, hashedPassword, phone_number) => {
   try {
     const result = await pool.query(
-      "INSERT INTO users (email, username, password) VALUES ($1, $2, $3) RETURNING id",
-      [email, username, hashedPassword]
+      "INSERT INTO users (name, email, password, phone_number) VALUES ($1, $2, $3, $4) RETURNING id",
+      [name, email, hashedPassword, phone_number]
     );
     return result.rows[0];
   } catch (error) {
@@ -24,11 +24,11 @@ const createUser = async (email, username, hashedPassword) => {
   }
 };
 
-const findUserByUsername = async (username) => {
+const findUserByEmail = async (email) => {
   try {
     const result = await pool.query(
-      "SELECT * FROM users WHERE username = $1",
-      [username]
+      "SELECT * FROM users WHERE email = $1",
+      [email]
     );
     return result.rows[0];
   } catch (error) {
@@ -37,4 +37,4 @@ const findUserByUsername = async (username) => {
   }
 };
 
-export { createUser, findUserByUsername };
+export { createUser, findUserByEmail };

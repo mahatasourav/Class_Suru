@@ -1,6 +1,6 @@
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-import { createUser, findUserByUsername } from "../models/userModel.js";
+import { createUser, findUserByEmail} from "../models/userModel.js";
 import dotenv from "dotenv";
 
 dotenv.config();
@@ -8,20 +8,20 @@ dotenv.config();
 const JWT_SECRET = process.env.JWT_SECRET || "defaultsecret";
 
 const signup = async (req, res) => {
-    const { email, username, password } = req.body;
+    const { name, email,  password, phone_number } = req.body;
 
-    if (!email || !username || !password) {
-        return res.status(400).json({ success: false, message: "All fields (email, username, password) are required" });
+    if (!name || !email || !password || !phone_number) {
+        return res.status(400).json({ success: false, message: "All fields (name, email, password, phone_number) are required" });
     }
 
     try {
-        const existingUser = await findUserByUsername(username);
+        const existingUser = await findUserByEmail(email);
         if (existingUser) {
             return res.status(400).json({ success: false, message: "Username already exists" });
         }
 
         const hashedPassword = await bcrypt.hash(password, 10);
-        const newUser = await createUser(email, username, hashedPassword);
+        const newUser = await createUser(name, email,  hashedPassword, phone_number);
 
         res.status(201).json({ success: true, message: "User registered successfully", userId: newUser.id });
     } catch (error) {
@@ -31,25 +31,25 @@ const signup = async (req, res) => {
 };
 
 const login = async (req, res) => {
-    const { username, password } = req.body;
+    const { email, password } = req.body;
 
-    if (!username || !password) {
-        return res.status(400).json({ success: false, message: "All fields (username, password) are required" });
+    if (!email || !password) {
+        return res.status(400).json({ success: false, message: "All fields (email, password) are required" });
     }
 
     try {
-        const user = await findUserByUsername(username);
+        const user = await findUserByEmail(email);
         if (!user) {
-            return res.status(400).json({ success: false, message: "Invalid username or password" });
+            return res.status(400).json({ success: false, message: "Invalid email or password" });
         }
 
         const isPasswordValid = await bcrypt.compare(password, user.password);
         if (!isPasswordValid) {
-            return res.status(400).json({ success: false, message: "Invalid username or password" });
+            return res.status(400).json({ success: false, message: "Invalid email or password" });
         }
 
         const token = jwt.sign(
-            { id: user.id, username: user.username },
+            { id: user.id, email: user.email },
             JWT_SECRET,
             { expiresIn: "1h" }
         );

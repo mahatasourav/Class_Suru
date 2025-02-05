@@ -11,7 +11,20 @@ const pool = new pg.Pool({
   port: process.env.PG_PORT,
 });
 
-const createUser = async (name, email, hashedPassword, phone_number) => {
+
+
+// Test the database connection
+pool.connect((err, client, release) => {
+  if (err) {
+    console.error("Error acquiring client", err.stack);
+    throw new Error("Database connection error");
+  } else {
+    console.log("Database connected successfully");
+    release();
+  }
+});
+
+const createUser = async (email, username, hashedPassword) => {
   try {
     const result = await pool.query(
       "INSERT INTO users (name, email, password, phone_number) VALUES ($1, $2, $3, $4) RETURNING id",

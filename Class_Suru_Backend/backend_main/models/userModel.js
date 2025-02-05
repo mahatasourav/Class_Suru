@@ -27,8 +27,8 @@ pool.connect((err, client, release) => {
 const createUser = async (email, username, hashedPassword, phoneNumber) => {
   try {
     const result = await pool.query(
-      "INSERT INTO public.users (username, email, password) VALUES ($1, $2, $3) RETURNING id",
-      [username, email, hashedPassword] 
+      "INSERT INTO public.users (username, email, password,phone_number) VALUES ($1, $2, $3) RETURNING id",
+      [username, email, hashedPassword,phoneNumber] 
     );
     const display = await pool.query("SELECT * FROM users ORDER BY id ASC ");
     console.log('display',display);

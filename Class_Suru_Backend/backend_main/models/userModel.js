@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
+// Create a new PostgreSQL connection pool
 const pool = new pg.Pool({
   user: process.env.PG_USER,
   host: process.env.PG_HOST,
@@ -10,8 +11,6 @@ const pool = new pg.Pool({
   password: process.env.PG_PASSWORD,
   port: process.env.PG_PORT,
 });
-
-
 
 // Test the database connection
 pool.connect((err, client, release) => {
@@ -24,18 +23,23 @@ pool.connect((err, client, release) => {
   }
 });
 
-const createUser = async (email, name, hashedPassword,phone_number) => {
+
+const createUser = async (email, username, hashedPassword, phoneNumber) => {
   try {
     const result = await pool.query(
-      "INSERT INTO users (email, name, password, phone_number) VALUES ($1, $2, $3, $4) RETURNING id",
-      [email, name, hashedPassword, phone_number]
+      "INSERT INTO public.users (username, email, password) VALUES ($1, $2, $3) RETURNING id",
+      [username, email, hashedPassword] 
     );
+    const display = await pool.query("SELECT * FROM users ORDER BY id ASC ");
+    console.log('display',display);
+    
     return result.rows[0];
   } catch (error) {
     console.error("Database error (createUser):", error);
     throw new Error("Database error");
   }
 };
+
 
 const findUserByEmail = async (email) => {
   try {

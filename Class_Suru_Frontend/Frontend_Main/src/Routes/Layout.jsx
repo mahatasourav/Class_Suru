@@ -6,9 +6,9 @@ import "../css/index.css";
 const Layout = () => {
   return (
     <div className="container">
-      <Navbar />
+      {/* <Navbar /> */}
       <Outlet />
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 };

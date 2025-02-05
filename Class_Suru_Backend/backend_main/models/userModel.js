@@ -11,6 +11,19 @@ const pool = new pg.Pool({
   port: process.env.PG_PORT,
 });
 
+
+
+// Test the database connection
+pool.connect((err, client, release) => {
+  if (err) {
+    console.error("Error acquiring client", err.stack);
+    throw new Error("Database connection error");
+  } else {
+    console.log("Database connected successfully");
+    release();
+  }
+});
+
 const createUser = async (email, username, hashedPassword) => {
   try {
     const result = await pool.query(

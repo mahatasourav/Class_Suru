@@ -1,6 +1,11 @@
 import express from "express";
+<<<<<<< HEAD
+import authRoutes from "./routes/authRoutes.js"; 
+
+=======
 import authRoutes from "./routes/authRoutes.js";  
 import cors from "cors";
+>>>>>>> ed26528597348076325b585058f9713a2d4e6373
 import env from "dotenv";
 env.config();
 
@@ -10,7 +15,11 @@ env.config();
 
 const app = express();
 
+<<<<<<< HEAD
+
+=======
 app.use(cors());
+>>>>>>> ed26528597348076325b585058f9713a2d4e6373
 
 app.use(express.json());
   

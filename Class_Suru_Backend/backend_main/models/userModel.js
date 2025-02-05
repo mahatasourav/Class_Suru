@@ -27,7 +27,7 @@ pool.connect((err, client, release) => {
 const createUser = async (email, username, hashedPassword, phoneNumber) => {
   try {
     const result = await pool.query(
-      "INSERT INTO public.users (name, email, password, phone_number) VALUES ($1, $2, $3, $4) RETURNING id",
+      "INSERT INTO users (name, email, password, phone_number) VALUES ($1, $2, $3, $4) RETURNING id",
       [username, email, hashedPassword, phoneNumber] 
     );
     

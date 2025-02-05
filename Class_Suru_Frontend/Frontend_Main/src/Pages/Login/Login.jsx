@@ -17,11 +17,11 @@ const Login = () => {
 
   const [isPending, startTransition] = useTransition();
 
-  const handleSubmit=(e)=>{
+  const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Form Submitted");
-    console.log("email: ",email);
-    console.log("password: ",password);
+    console.log("email: ", email);
+    console.log("password: ", password);
 
     // startTransition(async ()=>{
     //   setTimeout(() => {
@@ -29,10 +29,7 @@ const Login = () => {
 
     //   }, 3000);
     // })
-    
-    
-  }
-
+  };
 
   return (
     <>
@@ -63,43 +60,59 @@ const Login = () => {
           </div>
           <form className={Style.loginFormSection} onSubmit={handleSubmit}>
             <div className={Style.loginInputSection}>
-              <label className={Style.loginInputLabel} htmlFor={id+"email"} >Email</label>
+              <label className={Style.loginInputLabel} htmlFor={id + "email"+"testing"}>
+                Email
+              </label>
               <input
                 className={Style.loginInput}
                 type="email"
                 name="email"
-                id={id+"email"}
+                id={id + "email"}
                 placeholder="jhon.doe@gmail.com"
-                onChange={(e)=>setEmail(e.target.value)}
+                onChange={(e) => setEmail(e.target.value)}
                 required
               />
             </div>
             <div className={Style.loginInputSection}>
-              <label className={Style.loginInputLabel} htmlFor={id+"password"}>Password</label>
+              <label
+                className={Style.loginInputLabel}
+                htmlFor={id + "password"}
+              >
+                Password
+              </label>
               <div className={Style.passwordContainer}>
                 <input
                   className={Style.loginInput}
-                  type={eye?"text":"password"}
+                  type={eye ? "text" : "password"}
                   name="password"
                   placeholder="password"
-                  id={id+"password"}
-                  onChange={(e)=>setPassword(e.target.value)}
+                  id={id + "password"}
+                  onChange={(e) => setPassword(e.target.value)}
                   required
                 />
-                <div className={`${Style.eye} ${eye?Style.active:""}`} onClick={()=>setEye(!eye)}>
-                  {
-                    eye?<FiEye />:<FiEyeOff />
-                  }
-                
+                <div
+                  className={`${Style.eye} ${eye ? Style.active : ""}`}
+                  onClick={() => setEye(!eye)}
+                >
+                  {eye ? <FiEye /> : <FiEyeOff />}
                 </div>
-                
               </div>
             </div>
-            <Button text="Login Now" className={Style.formBtn} type="submit" isLoading={isPending} />
+            <Button
+              text="Login Now"
+              className={Style.formBtn}
+              type="submit"
+              isLoading={isPending}
+            />
           </form>
           <div className={Style.otherOption}>
             <div className={Style.otherOptionText}>Dont' have any account?</div>
-            <Button text="Register Now" className={Style.registerBtn} isLink={true} link="/register" />
+            <Button
+              text="Register Now"
+              className={Style.registerBtn}
+              isLink={true}
+              link="/register"
+            />
           </div>
         </div>
       </section>

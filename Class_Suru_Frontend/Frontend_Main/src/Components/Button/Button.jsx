@@ -11,6 +11,9 @@ const Button = ({
   isLoading = false,
   isLink = false,
   isHashLink = false,
+  onDualMode = false,
+  isHollow = false,
+  isDisabled = false,
   ...props
 }) => {
   if (isLink) {
@@ -19,9 +22,9 @@ const Button = ({
         to={link}
         className={`${Style.button} ${
           isLoading ? Style.loading : ""
-        } ${className} `}
+        } ${className} ${onDualMode ? isHollow? Style.inactive: Style.active: ""} ${isDisabled ? Style.disabled : ""}`}
         id="actionButton"
-        
+        disabled={isDisabled}
         {...props}
       >
         <span className={Style.text}>{text}</span>
@@ -35,8 +38,9 @@ const Button = ({
         to={link}
         className={`${Style.button} ${
           isLoading ? Style.loading : ""
-        } ${className} `}
+        } ${className} ${onDualMode ? isHollow? Style.inactive: Style.active: ""} ${isDisabled ? Style.disabled : ""}`}
         id="actionButton"
+        disabled={isDisabled}
         {...props}
       >
         <span className={Style.text}>{text}</span>
@@ -48,9 +52,9 @@ const Button = ({
     <button
       className={`${Style.button} ${
         isLoading ? Style.loading : ""
-      } ${className} `}
+      } ${className} ${onDualMode ? isHollow? Style.inactive: Style.active: ""} ${isDisabled ? Style.disabled : ""}`}
       id="actionButton"
-      disabled={isLoading}
+      disabled={isDisabled}
       {...props}
     >
       <span className={Style.text}>{text}</span>

@@ -57,8 +57,8 @@ const HomeSec2 = () => {
             },
           }}
         >
-          {imageData.map((image) => (
-            <SwiperSlide key={image.id} className={Style.customSlide}>
+          {imageData.map((image,index) => (
+            <SwiperSlide key={index} className={Style.customSlide}>
               <div className={Style.Swiperdiv}>
                 <img
                   src={image.src} // Dynamically use the src from imageData.js

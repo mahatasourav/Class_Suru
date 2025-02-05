@@ -30,6 +30,7 @@ const createUser = async (email, username, hashedPassword, phoneNumber) => {
       "INSERT INTO users (name, email, password, phone_number) VALUES ($1, $2, $3, $4) RETURNING id",
       [username, email, hashedPassword, phoneNumber] 
     );
+    
     return result.rows[0];
   } catch (error) {
     console.error("Database error (createUser):", error);

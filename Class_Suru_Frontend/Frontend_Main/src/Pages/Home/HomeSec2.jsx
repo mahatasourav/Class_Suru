@@ -22,42 +22,19 @@ const HomeSec2 = () => {
       </center>
       <div className="max-w-full mx-auto py-10 ">
         <Swiper
-          effect="coverflow"
           grabCursor={true}
           centeredSlides={true}
           spaceBetween={10}
-          coverflowEffect={{
-            rotate: 30,
-            stretch: 0,
-            depth: 200,
-            modifier: 2,
-            slideShadows: true,
-          }}
-          pagination={{ clickable: true }}
-          navigation={true} // Enable next/prev buttons
           autoplay={{
             delay: 2500, // Delay between slides (in ms)
             disableOnInteraction: false, // Keeps autoplay running even after user interaction
           }}
           loop={true}
-          modules={[EffectCoverflow, Pagination, Navigation, Autoplay]}
+          modules={[Autoplay]}
           className={Style.customSwiper}
-          breakpoints={{
-            480: {
-              slidesPerView: 1, // Show 2 slides on screens with max-width 720px
-            },
-            720: {
-              slidesPerView: 2, // Show 2 slides on screens with max-width 720px
-            },
-            1024: {
-              slidesPerView: 2, // Show 3 slides on screens with width 1024px or larger
-            },
-            1550: {
-              slidesPerView: 3, // Show 4 slides on screens with width 1280px or larger
-            },
-          }}
+          slidesPerView={"auto"}
         >
-          {imageData.map((image,index) => (
+          {imageData.map((image, index) => (
             <SwiperSlide key={index} className={Style.customSlide}>
               <div className={Style.Swiperdiv}>
                 <img
@@ -65,9 +42,9 @@ const HomeSec2 = () => {
                   alt={image.alt}
                   loading="lazy" // Lazy loading for performance
                 />
-                <div>
-                  <h3>{image.name}</h3>
-                  <p>{image.college}</p>
+                <div className={Style.infoContainer}>
+                  <h3 className={Style.studentName}>{image.name}</h3>
+                  <p className={Style.instituteName}>{image.college}</p>
                 </div>
               </div>
             </SwiperSlide>

@@ -58,7 +58,7 @@ const Register = () => {
       
 
       try{
-        const signup_response = await axios.post("https://class-suru-backend.vercel.app/api/auth/signup",{
+        const signup_response = await axios.post("http://localhost:5000/api/auth/signup",{
           username: name,
           email: email,
           phone_number: phone,

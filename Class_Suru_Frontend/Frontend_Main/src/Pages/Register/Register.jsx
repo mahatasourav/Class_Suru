@@ -65,7 +65,7 @@ const Register = () => {
           password: password
         })
   
-        if(signup_response.status === 200){
+        if(signup_response.status === 201){
           toast.dismiss(loadingToastId);
           toast.success("Signup Successful");
           console.log(signup_response.data);

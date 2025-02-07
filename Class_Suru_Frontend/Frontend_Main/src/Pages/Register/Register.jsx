@@ -63,6 +63,7 @@ const Register = () => {
           email: email,
           phone_number: phone,
           password: password
+          
         })
   
         if(signup_response.status === 201){

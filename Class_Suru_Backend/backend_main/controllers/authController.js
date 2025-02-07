@@ -1,4 +1,4 @@
-import bcrypt from "bcrypt";
+import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import { createUser, findUserByEmail } from "../models/userModel.js";
 import dotenv from "dotenv";
@@ -6,7 +6,35 @@ import dotenv from "dotenv";
 dotenv.config();
 
 const JWT_SECRET = process.env.JWT_SECRET || "defaultsecret";
+const JWT_EXPIRATION = "1h"; // Token expiration time
 
+// Function to generate a JWT token
+const generateToken = (user) => {
+    return jwt.sign(
+        { id: user.id, email: user.email },
+        JWT_SECRET,
+        { expiresIn: JWT_EXPIRATION }
+    );
+};
+
+// Middleware to verify JWT token
+const verifyToken = (req, res, next) => {
+    const token = req.headers.authorization?.split(" ")[1]; // Extract token from "Bearer <token>"
+
+    if (!token) {
+        return res.status(401).json({ success: false, message: "Unauthorized: No token provided" });
+    }
+
+    try {
+        const decoded = jwt.verify(token, JWT_SECRET);
+        req.user = decoded; // Attach user info to request
+        next();
+    } catch (error) {
+        return res.status(401).json({ success: false, message: "Unauthorized: Invalid token" });
+    }
+};
+
+// Signup Route
 const signup = async (req, res) => {
     try {
         const { username, email, password, phone_number } = req.body;
@@ -26,16 +54,16 @@ const signup = async (req, res) => {
             });
         }
 
-        
         const hashedPassword = await bcrypt.hash(password, 10);
-
-        
         const newUser = await createUser(email, username, hashedPassword, phone_number);
+
+        const token = generateToken(newUser); // Generate JWT for new user
 
         res.status(201).json({
             success: true,
             message: "User registered successfully",
-            userId: newUser.id
+            userId: newUser.id,
+            token // Send JWT token in response
         });
     } catch (error) {
         console.error("Signup error:", error);
@@ -43,6 +71,7 @@ const signup = async (req, res) => {
     }
 };
 
+// Login Route
 const login = async (req, res) => {
     try {
         const { email, password } = req.body;
@@ -70,12 +99,7 @@ const login = async (req, res) => {
             });
         }
 
-        
-        const token = jwt.sign(
-            { id: user.id, email: user.email },
-            JWT_SECRET,
-            { expiresIn: "1h" }
-        );
+        const token = generateToken(user); // Generate JWT for user
 
         res.status(200).json({ 
             success: true, 
@@ -88,4 +112,9 @@ const login = async (req, res) => {
     }
 };
 
-export { signup, login };
+// Protected Route Example
+const protectedRoute = (req, res) => {
+    res.json({ success: true, message: "This is a protected route", user: req.user });
+};
+
+export { signup, login, verifyToken, protectedRoute };

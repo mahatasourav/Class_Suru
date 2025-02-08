@@ -140,19 +140,14 @@ height: 235px !important;
 
 .Swiperdiv{
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
   
   
 }
 .Swiperdiv div{
- width: 200px;
- height: 150px;
-
- display: flex;
-flex-direction: column;
-justify-content:space-around ;
+border: 2px solid red;
 }
 
 /* Media queries for responsiveness */

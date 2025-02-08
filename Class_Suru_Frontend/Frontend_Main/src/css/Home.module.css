@@ -226,7 +226,11 @@ border: 2px solid red;
 width: 30vw;
 font-size: 1.2rem;
  }
- .HomeSec3div22 img,.HomeSec3div21 img{
+ .HomeSec3div21iframe{
+  width: 450px;
+  height: 300px;
+ }
+ .HomeSec3div22 img{
   width: 32vw;
   height: fit-content;
    }

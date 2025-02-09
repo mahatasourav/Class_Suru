@@ -23,7 +23,6 @@ pool.connect((err, client, release) => {
   }
 });
 
-
 const createUser = async (email, username, hashedPassword, phoneNumber) => {
   try {
     const result = await pool.query(
@@ -38,7 +37,6 @@ const createUser = async (email, username, hashedPassword, phoneNumber) => {
   }
 };
 
-
 const findUserByEmail = async (email) => {
   try {
     const result = await pool.query(
@@ -52,4 +50,17 @@ const findUserByEmail = async (email) => {
   }
 };
 
-export { createUser, findUserByEmail };
+const findUserById = async (userId) => {
+  try {
+    const result = await pool.query(
+      "SELECT id, name, email, phone_number FROM users WHERE id = $1",
+      [userId]
+    );
+    return result.rows[0];
+  } catch (error) {
+    console.error("Database error (findUserById):", error);
+    throw new Error("Database error");
+  }
+};
+
+export { createUser, findUserByEmail, findUserById };

@@ -24,7 +24,15 @@ const HomeSec3 = () => {
               </span>
               -তে সাফল্য অর্জনে সাহায্য করছি।
             </p>
-            <img src={HomeSec3Img} alt="" />
+            <iframe
+              src="https://www.youtube.com/embed/PsVTQgKQdLI?si=WoqGwc3-csMiIndq"
+              title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen
+              className={Style.HomeSec3div21iframe}
+            ></iframe>
           </div>
           <div className={Style.HomeSec3div22}>
             <img src={HomeSec3Img2} alt="" />

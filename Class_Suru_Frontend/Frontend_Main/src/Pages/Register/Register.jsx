@@ -16,6 +16,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {jwtDecode} from 'jwt-decode';
 
 import axios from "axios";
+import { signupApi } from "../../apis";
 
 const Register = () => {
   // Redux Hooks
@@ -60,13 +61,17 @@ const Register = () => {
       
 
       try{
-        const signup_response = await axios.post("http://localhost:5000/api/auth/signup",{
+        const reqBody = {
           username: name,
           email: email,
           phone_number: phone,
-          password: password
-          
-        })
+          password: password  
+        }
+        console.log(reqBody);
+
+        // const signup_response = reqBody;
+        
+        const signup_response = await axios.post(signupApi,reqBody);
   
         if(signup_response.status === 201){
           toast.dismiss(loadingToastId);

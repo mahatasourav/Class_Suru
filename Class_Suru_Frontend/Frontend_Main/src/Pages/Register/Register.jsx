@@ -13,6 +13,8 @@ import { useNavigate } from "react-router-dom";
 
 import { useDispatch, useSelector } from "react-redux";
 
+import {jwtDecode} from 'jwt-decode';
+
 import axios from "axios";
 
 const Register = () => {
@@ -70,6 +72,13 @@ const Register = () => {
           toast.dismiss(loadingToastId);
           toast.success("Signup Successful");
           console.log(signup_response.data);
+
+          const data = jwtDecode(signup_response.data.token);
+
+          console.log("Decoed Token: ",data);
+          
+
+          
           
         }else{
           toast.dismiss(loadingToastId);

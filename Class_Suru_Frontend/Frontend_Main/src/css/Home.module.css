@@ -194,7 +194,7 @@ border: 2px solid red;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  height: 90vh;
+  
   width: 80vw;
   margin: auto;
   gap: 40px;
@@ -265,25 +265,20 @@ font-size: 1.2rem;
        }
        
 }
-@media (max-width: 480px) {
- 
-}
 
 
 /* Home Section-4 Started Here ---> */
 
 /* Home.module.css */
 
-.HomeSec4{
-  border: 2px solid red;
-}
+
 .HomeSec42 {
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 20px;
   background-color: #f9f9f9;
-  border: 2px solid red;
+  
 }
 
 .examSection {
@@ -292,10 +287,10 @@ font-size: 1.2rem;
   padding: 20px;
   margin: 10px 0;
   width: 80%;
-  height: 300px;
+
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: box-shadow 0.3s ease;
-  border: 2px solid rgb(24, 217, 24);
+ 
   display: flex;
   
 }
@@ -337,4 +332,40 @@ font-size: 1.2rem;
 
 .examSection:hover {
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+@media (min-width: 768x) {
+  .examSection {
+    height:300px;
+  }
+
+}
+
+/* Home Section-5 Started Here ---> */
+.HomeSec5{
+  display: flex;
+  max-width: 80%;
+  flex-direction: column;
+  justify-content: center;
+  border: 2px solid red;
+  margin: auto;
+}
+.HomeSec52{
+  display: flex;
+
+  justify-content: center;
+  border: 2px solid red;
+}
+.HomeSec521{
+  display: flex;
+  flex-direction: column;
+  border: 2px solid red;
+
+}
+.HomeSec5IMG{
+  height: 400px;
+}
+.ServiceInfo{
+  display: flex;
+  flex-direction: row;
+  
 }

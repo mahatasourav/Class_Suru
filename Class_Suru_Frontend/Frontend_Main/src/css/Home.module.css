@@ -270,3 +270,71 @@ font-size: 1.2rem;
 }
 
 
+/* Home Section-4 Started Here ---> */
+
+/* Home.module.css */
+
+.HomeSec4{
+  border: 2px solid red;
+}
+.HomeSec42 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border: 2px solid red;
+}
+
+.examSection {
+  background-color: white;
+  border-radius: 8px;
+  padding: 20px;
+  margin: 10px 0;
+  width: 80%;
+  height: 300px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+  border: 2px solid rgb(24, 217, 24);
+  display: flex;
+  
+}
+.examImage{
+  height: 250px;
+}
+.examInfo{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+.examSection h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.examSection p {
+  font-size: 16px;
+  margin-bottom: 15px;
+  color: #666;
+}
+
+.examSection button {
+  background-color: #007bff;
+  color: white;
+  width: 150px;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.examSection button:hover {
+  background-color: #0056b3;
+}
+
+.examSection:hover {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}

@@ -12,6 +12,7 @@ const basApi = "https://class-suru-beta.vercel.app";
  * @returns {object} { success, userId, token }
  */
 
+
 const signupApi = `${basApi}/api/auth/signup`;
 const loginApi = `${basApi}/api/auth/login`;
 const userDetailsApi = `${basApi}/api/auth/user`;

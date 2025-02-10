@@ -6,6 +6,7 @@ import HomeSec2 from "./HomeSec2";
 import HomeSec3 from "./HomeSec3";
 import HomeSec4 from "./HomeSec4";
 import HomeSec5 from "./HomeSec5";
+import HomeSec6 from "./HomeSec6";
 
 const Home = () => {
   return (
@@ -16,6 +17,7 @@ const Home = () => {
         <HomeSec3 />
         <HomeSec4 />
         <HomeSec5 />
+        <HomeSec6 />
       </div>
     </>
   );

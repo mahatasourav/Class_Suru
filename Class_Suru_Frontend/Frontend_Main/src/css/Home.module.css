@@ -422,8 +422,56 @@ box-shadow:
 0px -5px 15px 2px rgba(111, 108, 108, 0.1), /* Top shadow (4px spread, more blur) */
 0px 5px 15px 7px rgba(111, 108, 108, 0.1);  /* Bottom shadow with more blur */
 border-radius: 0px 10px 10px 0px ;
-
-
- 
    
+ }
+
+
+ /* Home Section-6 Started Here ---> */
+ .HomeSec6{
+  width: 85%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  
+ }
+ .HomeSec6faqsec{
+ display: flex;
+ flex-direction: column;
+ gap: 15px;
+ }
+ .HomeSec6faqsec1{
+  
+ width: 85vw;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  
+ }
+ .HomeSec6faqQue{
+background-color:rgb(88, 86, 214);
+color: #fff;
+ padding: 10px;
+ padding-left: 25px;
+   margin: 5px 0;
+  cursor: pointer;
+  border-radius: 7px;
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  
+ }
+ .HomeSec6faqQue h5{
+  font-size: 25px;
+ }
+ .HomeSec6faqAns{
+  background-color: whitesmoke;
+  
+  border-radius: 7px;
+  padding: 15px;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
  }

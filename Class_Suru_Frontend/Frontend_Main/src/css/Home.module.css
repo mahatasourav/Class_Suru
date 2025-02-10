@@ -237,10 +237,12 @@ gap: 10px;
  .HomeSec3div21 , .HomeSec3div22{
   display: flex;
   flex-direction: row;
- 
+ height: 400px;
   width: 75vw;
   justify-content: space-between;
   align-items: center;
+  border: 2px solid red;
+  padding: 20px;
   
  }
  .HomeSec3div21 p, .HomeSec3div22 p{
@@ -248,20 +250,27 @@ width: 30vw;
 font-size: 1.2rem;
  }
  .HomeSec3div21iframe{
-  width: 450px;
-  height: 300px;
+  width:420px;
+height: 300px;
  }
  .HomeSec3div22 img{
-  width: 32vw;
-  height: fit-content;
+  width:420px;
+height: 300px;
    }
    
      /* Media queries for responsiveness */
-@media (max-width: 1224px) {
-  
+@media (max-width:1024px) {
+  .HomeSec3div21iframe ,.HomeSec3div22 img{
+    width:320px;
+  height: 260px;
+   }
+   .HomeSec3div21 p, .HomeSec3div22 p{
+   
+    font-size: 1rem;
+     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 850px) {
   .HomeSec3div21 
   {
     flex-direction: column-reverse;
@@ -274,13 +283,17 @@ font-size: 1.2rem;
   {
     flex-direction: column;
     gap: 30px;
+    height: auto;
   }
   .HomeSec3div21 p, .HomeSec3div22 p{
     width: 68vw;
-    font-size: 1.2rem;
+    font-size: 1rem;
      }
-     .HomeSec3div22 img,.HomeSec3div21 img{
-      width: 72vw;
+     .HomeSec3div21 img{
+      width: 80vw;
+     }
+     .HomeSec3div22 img{
+      width: 50vw;
       max-height: 300px;
       
        }
@@ -361,6 +374,21 @@ font-size: 1.2rem;
 
 }
 
+@media (max-width: 720px) {
+  .examSection{
+    flex-direction: column-reverse;
+    align-items: center;
+    gap: 40px;
+  }
+  .examImage{
+    height: 200px;
+    width: fit-content;
+  }
+  .examInfo{
+    justify-content: space-evenly;
+    align-items: center;
+  }
+}
 
 /* Home Section-5 Started Here ---> */
 .HomeSec5{
@@ -429,12 +457,12 @@ border-radius: 0px 10px 10px 0px ;
     display: none;
   }
   .HomeSec521 {
-    border: 2px solid rgb(49, 215, 12);
-    gap: 40px;
+   
+    gap: 30px;
   }
   .ServiceInfo{
     width: 100%;
-    border: 2px solid rgb(49, 215, 12);
+    
     display: flex;
     justify-content: center;
   }
@@ -442,7 +470,8 @@ border-radius: 0px 10px 10px 0px ;
     width: 90%;
   }
   .ServiceInfo h1{
-    height: fit-content;
+    height: auto;
+   
   }
 }
 

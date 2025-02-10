@@ -34,6 +34,7 @@ const HomeSec2 = () => {
           className={Style.customSwiper}
           slidesPerView={5}
         >
+          {" "}
           {imageData.map((image, index) => (
             <SwiperSlide key={index} className={Style.customSlide}>
               <div className={Style.Swiperdiv}>

@@ -3,7 +3,7 @@ import ServiceData from "../../assets/ServiceData";
 import Style from "../../css/Home.module.css";
 import HomeSec5IMG from "../../assets/HomeSec5IMG.png";
 
-const HomeSec4 = () => {
+const HomeSec5 = () => {
   return (
     <div className={Style.HomeSec5}>
       <div>
@@ -33,4 +33,4 @@ const HomeSec4 = () => {
   );
 };
 
-export default HomeSec4;
+export default HomeSec5;

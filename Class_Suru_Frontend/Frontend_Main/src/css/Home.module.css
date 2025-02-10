@@ -354,12 +354,13 @@ font-size: 1.2rem;
 .examSection:hover {
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
-@media (min-width: 768x) {
+@media (min-width: 768px) {
   .examSection {
     height:300px;
   }
 
 }
+
 
 /* Home Section-5 Started Here ---> */
 .HomeSec5{
@@ -422,6 +423,28 @@ box-shadow:
 border-radius: 0px 10px 10px 0px ;
    
  }
+
+ @media (max-width: 1024px) {
+  .HomeSec5IMG{
+    display: none;
+  }
+  .HomeSec521 {
+    border: 2px solid rgb(49, 215, 12);
+    gap: 40px;
+  }
+  .ServiceInfo{
+    width: 100%;
+    border: 2px solid rgb(49, 215, 12);
+    display: flex;
+    justify-content: center;
+  }
+  .ServiceInfo div{
+    width: 90%;
+  }
+  .ServiceInfo h1{
+    height: fit-content;
+  }
+}
 
 
  /* Home Section-6 Started Here ---> */

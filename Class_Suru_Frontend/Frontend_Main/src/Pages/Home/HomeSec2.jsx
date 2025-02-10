@@ -32,8 +32,9 @@ const HomeSec2 = () => {
           loop={true}
           modules={[Autoplay]}
           className={Style.customSwiper}
-          slidesPerView={"auto"}
+          slidesPerView={5}
         >
+          {" "}
           {imageData.map((image, index) => (
             <SwiperSlide key={index} className={Style.customSlide}>
               <div className={Style.Swiperdiv}>

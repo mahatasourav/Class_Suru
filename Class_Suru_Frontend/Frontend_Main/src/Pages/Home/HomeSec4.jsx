@@ -8,9 +8,10 @@ const HomeSec4 = () => {
       <div className={Style.HomeSec41}>
         <center>
           {" "}
-          <h1>
-            সবার জন্য <span>ফ্রি অনলাইন</span> পরীক্ষা
-          </h1>
+          <h2>
+            সবার জন্য <span className={Style.spancolor}>ফ্রি অনলাইন</span>{" "}
+            পরীক্ষা
+          </h2>
         </center>
       </div>
       <div className={Style.HomeSec42}>

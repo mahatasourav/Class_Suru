@@ -199,6 +199,13 @@ gap: 10px;
   .swiper {
     padding: 0 5px;
   }
+  .customSlide  {
+  
+     overflow: visible !important;
+    }
+    .customSwiper{
+      width: 100vw;
+    }
 }
 
 
@@ -241,7 +248,7 @@ gap: 10px;
   width: 75vw;
   justify-content: space-between;
   align-items: center;
-  border: 2px solid red;
+ 
   padding: 20px;
   
  }

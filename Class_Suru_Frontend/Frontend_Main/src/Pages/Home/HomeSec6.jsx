@@ -51,7 +51,7 @@ const HomeSec6 = () => {
               onClick={() => toggleFAQ(index)}
               className={Style.HomeSec6faqQue}
             >
-              <h5>+</h5>
+              <h5>{activeIndex === index ? "×" : "+"}</h5>
               {faq.question}
             </div>
             {activeIndex === index && (

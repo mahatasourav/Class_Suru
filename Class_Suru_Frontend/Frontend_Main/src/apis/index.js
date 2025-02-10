@@ -1,5 +1,7 @@
 const basApi = "https://class-suru-beta.vercel.app";
 
+// const basApi = "http://localhost:5000";
+
 /**
  * @description API for signup
  * @method POST

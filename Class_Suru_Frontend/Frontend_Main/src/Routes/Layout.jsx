@@ -6,7 +6,7 @@ import axios from "axios";
 import { userDetailsApi } from "../apis";
 import { jwtDecode } from "jwt-decode";
 import { useDispatch } from "react-redux";
-import { setUserData, setUserId, setUserStatus } from "../Redux/features/userSlice";
+import { setUserData, setUserId, setUserStatus } from "../Redux/store/userSlice";
 
 const Layout = () => {
   const dispatch = useDispatch();

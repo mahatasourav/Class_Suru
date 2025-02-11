@@ -11,7 +11,7 @@ import toast, { Toaster } from "react-hot-toast";
 import axios from "axios";
 import { loginApi } from "../../apis";
 import { useDispatch, useSelector } from "react-redux";
-import { setUserId, setUserStatus } from "../../Redux/features/userSlice";
+import { setUserId, setUserStatus } from "../../Redux/store/userSlice";
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {

@@ -17,7 +17,7 @@ import {jwtDecode} from 'jwt-decode';
 
 import axios from "axios";
 import { signupApi } from "../../apis";
-import { setUserId, setUserStatus } from "../../Redux/features/userSlice";
+import { setUserId, setUserStatus } from "../../Redux/store/userSlice";
 
 const Register = () => {
   // Redux Hooks

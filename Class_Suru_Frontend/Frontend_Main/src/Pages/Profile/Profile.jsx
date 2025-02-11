@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Button } from "../../Components";
-import { logout, setUserData, setUserId, setUserStatus } from "../../Redux/features/userSlice";
+import { logout, setUserData, setUserId, setUserStatus } from "../../Redux/store/userSlice";
 import { useNavigate } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
 import axios from "axios";

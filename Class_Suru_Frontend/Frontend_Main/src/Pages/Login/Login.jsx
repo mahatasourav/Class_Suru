@@ -13,6 +13,7 @@ import { loginApi } from "../../apis";
 import { useDispatch, useSelector } from "react-redux";
 import { setUserId, setUserStatus } from "../../Redux/features/userSlice";
 import { useNavigate } from "react-router-dom";
+import apiCall from "../../utils/apiCall";
 
 const Login = () => {
   const id = useId();
@@ -52,7 +53,7 @@ const Login = () => {
         }
         console.log(reqBody);
         
-        const login_response = await axios.post(loginApi,reqBody);
+        const login_response = await apiCall.post(loginApi,reqBody);
 
         console.log(login_response.data);
         

@@ -18,6 +18,7 @@ import {jwtDecode} from 'jwt-decode';
 import axios from "axios";
 import { signupApi } from "../../apis";
 import { setUserId, setUserStatus } from "../../Redux/features/userSlice";
+import apiCall from "../../utils/apiCall";
 
 const Register = () => {
   // Redux Hooks
@@ -72,7 +73,7 @@ const Register = () => {
 
         // const signup_response = reqBody;
         
-        const signup_response = await axios.post(signupApi,reqBody);
+        const signup_response = await apiCall.post(signupApi,reqBody);
   
         if(signup_response.status === 201){
           

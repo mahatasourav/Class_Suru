@@ -1,0 +1,51 @@
+.loadingContainer{
+    height: 100vh;
+    width: 100%;
+    background-color: rgba(75, 75, 75, 0.74);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    /* From https://css.glass */
+background: rgba(77, 77, 77, 0.32);
+backdrop-filter: blur(1.5px);
+-webkit-backdrop-filter: blur(8.2px);
+
+    
+}
+
+.spinnerContainer{
+    /* border: 1px solid yellow; */
+    height: fit-content;
+    width: fit-content;
+    position: relative;
+}
+.spinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100px;
+    height: 100px;
+    border: 10px solid white;
+    border-top: 10px solid var(--primary_color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    transform: translate(-50%, -50%);
+    /* display: none; */
+    /* background-color: red; */
+  }
+
+
+
+  @keyframes spin {
+    0% {
+      transform: translate(-50%, -50%) rotate(0deg);
+    }
+    100% {
+      transform: translate(-50%, -50%) rotate(360deg);
+    }
+  }

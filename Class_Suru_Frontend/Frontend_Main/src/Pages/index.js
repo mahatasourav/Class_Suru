@@ -1,3 +1,4 @@
+import Loading from "../Components/Loading/Loading";
 import Error from "./Error/Error";
 import Home from "./Home/Home";
 import Login from "./Login/Login";
@@ -7,4 +8,5 @@ import Register from "./Register/Register";
 
 
 
-export {Home,Profile,Error,Login,Register,Questions};
+
+export {Home,Profile,Error,Login,Register,Questions,Loading};

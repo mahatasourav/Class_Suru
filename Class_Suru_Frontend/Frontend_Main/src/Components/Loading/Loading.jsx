@@ -1,17 +1,32 @@
-import React from "react";
+import { createContext, useContext, useState } from "react";
 import Style from "../../css/loading.module.css";
 
-const Loading = () => {
+export const LoadingContext = createContext();
+
+export const LoadingProvider = ({ children }) => {
+  const [loading, setLoading] = useState(false);
+
+  const addLoading = () => {
+    setLoading(true);
+  };
+
+  const removeLoading = () => {
+    setLoading(false);
+  };
+
   return (
     <>
-      <div className={Style.loadingContainer}>
-        <div className={Style.spinnerContainer}>
-            <div className={Style.spinner}></div>
-        </div>
-        
-      </div>
+      <LoadingContext.Provider value={{ loading, addLoading, removeLoading }}>
+        {loading && (
+          <div className={Style.loadingContainer}>
+            <div className={Style.spinnerContainer}>
+              <div className={Style.spinner}></div>
+            </div>
+          </div>
+        )}
+
+        {children}
+      </LoadingContext.Provider>
     </>
   );
 };
-
-export default Loading;

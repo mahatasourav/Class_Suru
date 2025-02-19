@@ -67,10 +67,10 @@ const Navbar = () => {
 
       <div className={Style.navLower}>
         <div className={Style.nav}>
-          <div className={Style.logo}>
+          <Link className={Style.logo} to="/">
             <img className={Style.logoImg} src={logo} alt="class suru logo" />
             <div className={Style.logoText}>Class Suru</div>
-          </div>
+          </Link>
           <div
             className={`${Style.navLinks} ${
               menuOpen ? Style.active : Style.inactive

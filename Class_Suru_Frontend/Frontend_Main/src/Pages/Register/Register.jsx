@@ -44,23 +44,14 @@ const Register = () => {
     if(selectorStatus){
       navigate("/");
     }
-  },[navigate]);
+  },[selectorStatus]);
 
   // Handle Submit
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(isPending);
     const loadingToastId = toast.loading("Loading...");
-    startTransition(async () => {
-      // setTimeout(() => {
-      //   toast.dismiss(loadingToastId);
-      //   toast.success("Signup Successful");
-      //   setTimeout(() => {
-      //     navigate("/questions");
-      //   }, 2000);
-      // }, 3000);
-
-      
+    startTransition(async () => {    
 
       try{
         const reqBody = {

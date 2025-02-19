@@ -13,6 +13,7 @@ import {
 } from "../Redux/features/userSlice";
 import apiCall from "../utils/apiCall";
 import { LoadingContext } from "../Components/Loading/Loading";
+import { getUserData } from "../utils/getUserData";
 
 // import { useLoadingContext } from "../Components/Loading/Loading";
 
@@ -25,65 +26,26 @@ const Layout = () => {
 
   // const {addLoading, removeLoading} = useLoadingContext();
 
-  const getUserData = async () => {
-    const token = localStorage.getItem("token");
-    if (token) {
-      // console.log("Token is present");
-
-      const user = jwtDecode(token);
-      // console.log("User is:", user);
-
-      if (user.iat <= user.exp) {
-        try {
-          // console.log("User id is:", user.id);
-          addLoading();
-
-          const tokenObj = {
-            token: token,
-          };
-
-          const user_data = await apiCall.post(
-            `${userDetailsApi}/${user.id}`,
-            tokenObj
-          );
-
-          if (user_data.status === 200) {
-            console.log(user_data.data);
-            dispatch(setUserId(user.id));
-            dispatch(setUserStatus(true));
-            dispatch(setUserData(user_data.data.user));
-          } else {
-            console.log("Error fetching data");
-          }
-        } catch (error) {
-          console.error("Error fetching data:", error);
-        }
-        finally{
-          removeLoading();
-        }
-      }
-      else
-      {
-        removeLoading();
-        localStorage.removeItem("token");
-      }
+  const handleUserData = async () => {
+    addLoading();
+    const data = await getUserData();
+    if(data !== null){
+      dispatch(setUserId(data.userId));
+      dispatch(setUserStatus(true));
+      dispatch(setUserData(data.user));
     }
-  };
-  useEffect(() => {    
-    if(location.pathname === "/dashboard")
-    {
-      getUserData();
-    }
-    // getUserData();
-  }, [navigate,location]);
+    removeLoading();
+  }
+  
+  useEffect(() => {
+    handleUserData();
+    
+  }, []);
 
   return (
     <div className="container">
-      
-      
       <Navbar />
       <Outlet />
-      
       {/* <Footer /> */}
     </div>
   );

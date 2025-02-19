@@ -14,6 +14,7 @@ import { userDetailsApi } from "../../apis";
 import { LoadingContext } from "../../Components/Loading/Loading";
 
 import Style from "../../css/profile.module.css"
+import { getUserData } from "../../utils/getUserData";
 
 const Dashboard = () => {
   const userData = useSelector((state)=>state.user.userData);
@@ -54,10 +55,22 @@ const Dashboard = () => {
   //   }
   // };
   let userExistToken;
+  const handleUserData = async ()=>{
+    const data = await getUserData();
+    if(data !== null){
+      dispatch(setUserId(data.userId));
+      dispatch(setUserStatus(true));
+      dispatch(setUserData(data.user));
+    }
+  }
   useEffect(() => {
     userExistToken  = localStorage.getItem("token");
     if(userExistToken === null){
       navigate("/login");
+    }
+    else
+    {
+      handleUserData();
     }
 
   }, []);

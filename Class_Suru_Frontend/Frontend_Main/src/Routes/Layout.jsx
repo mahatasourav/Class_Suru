@@ -29,7 +29,9 @@ const Layout = () => {
   const handleUserData = async () => {
     addLoading();
     const data = await getUserData();
-    if(data !== null){
+    // console.log(data);
+    
+    if(data){
       dispatch(setUserId(data.userId));
       dispatch(setUserStatus(true));
       dispatch(setUserData(data.user));

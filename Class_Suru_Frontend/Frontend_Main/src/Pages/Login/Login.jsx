@@ -1,4 +1,4 @@
-import React, { useEffect, useId, useState, useTransition } from "react";
+import React, { useContext, useEffect, useId, useState, useTransition } from "react";
 import Style from "../../css/login.module.css";
 import GoogleIcon from "../../assets/google.svg";
 import FacebookIcon from "../../assets/facebook.svg";
@@ -14,25 +14,30 @@ import { useDispatch, useSelector } from "react-redux";
 import { setUserId, setUserStatus } from "../../Redux/features/userSlice";
 import { useNavigate } from "react-router-dom";
 import apiCall from "../../utils/apiCall";
+import { LoadingContext } from "../../Components/Loading/Loading";
 
 const Login = () => {
   const id = useId();
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [eye, setEye] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const [isPending, startTransition] = useTransition();
 
   const selectorStatus = useSelector((state) => state.user.status);
+  
 
   useEffect(()=>{
+
       if(selectorStatus){
         navigate("/");
       }
-    },[navigate]);
+    },[selectorStatus]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -161,7 +166,7 @@ const Login = () => {
               text="Login Now"
               className={Style.formBtn}
               type="submit"
-              isLoading={isPending}
+              isLoading={false}
             />
           </form>
           <div className={Style.otherOption}>

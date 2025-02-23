@@ -6,8 +6,15 @@ import "../css/index.css";
 const Layout = () => {
   return (
     <div className="container">
-      <Navbar />
-      <Outlet />
+      <div className="container-navbar">
+        {" "}
+        <Navbar> </Navbar>
+      </div>
+      <div className="child-container">
+        {" "}
+        <Outlet />
+      </div>
+
       {/* <Footer /> */}
     </div>
   );

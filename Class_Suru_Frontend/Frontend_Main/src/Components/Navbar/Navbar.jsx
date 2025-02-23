@@ -10,12 +10,15 @@ import { FaYoutube } from "react-icons/fa";
 
 import logo from "../../assets/class_suru_logo.png";
 import Button from "../Button/Button";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Menu from "./Menu";
 
 import { MdMenu, MdClose } from "react-icons/md";
+import { useSelector } from "react-redux";
 
 const Navbar = () => {
+  const userStatus = useSelector((state) => state.user.status);
+  const navigate = useNavigate();
   const [menuOpen, setMenuOpen] = useState(true);
   const menuRef = useRef();
   useEffect(() => {
@@ -64,10 +67,10 @@ const Navbar = () => {
 
       <div className={Style.navLower}>
         <div className={Style.nav}>
-          <div className={Style.logo}>
+          <Link className={Style.logo} to="/">
             <img className={Style.logoImg} src={logo} alt="class suru logo" />
             <div className={Style.logoText}>Class Suru</div>
-          </div>
+          </Link>
           <div
             className={`${Style.navLinks} ${
               menuOpen ? Style.active : Style.inactive
@@ -113,7 +116,7 @@ const Navbar = () => {
           <div className={Style.navButtons}>
             <Button
               text="Login/Signup"
-              className={Style.navButton}
+              className={`${Style.navButton} ${userStatus?"":Style.active}`}
               isLink={true}
               link="/login"
             />
@@ -131,9 +134,14 @@ const Navbar = () => {
                 <MdClose />
               </div>
             </div>
-            {/* <div className={Style.profile}>
+            <div className={`${Style.profile} ${userStatus?Style.active:""}`} onClick={()=>navigate("/dashboard")}>
+              <img
+                className={Style.profileImg}
+                src="https://www.w3schools.com/howto/img_avatar.png"
+                alt="profile"
+              />
               
-            </div> */}
+            </div>
           </div>
         </div>
       </div>

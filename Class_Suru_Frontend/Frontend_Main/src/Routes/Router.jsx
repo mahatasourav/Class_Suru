@@ -8,7 +8,7 @@ import {
   Error,
   Home,
   Login,
-  Profile,
+  Dashboard,
   Questions,
   Register,
   Exam,
@@ -18,8 +18,8 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Layout />}>
       <Route path="/" element={<Home />} />
+      <Route path="/dashboard" element={<Dashboard />} />
       <Route path="/exam" element={<Exam />} />
-      <Route path="/dashboard" element={<Profile />} />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
       <Route path="/questions" element={<Questions />} />

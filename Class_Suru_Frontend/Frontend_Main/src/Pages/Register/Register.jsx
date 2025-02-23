@@ -13,7 +13,12 @@ import { useNavigate } from "react-router-dom";
 
 import { useDispatch, useSelector } from "react-redux";
 
+import {jwtDecode} from 'jwt-decode';
+
 import axios from "axios";
+import { signupApi } from "../../apis";
+import { setUserId, setUserStatus } from "../../Redux/features/userSlice";
+import apiCall from "../../utils/apiCall";
 
 const Register = () => {
   // Redux Hooks
@@ -39,45 +44,54 @@ const Register = () => {
     if(selectorStatus){
       navigate("/");
     }
-  },[navigate]);
+  },[selectorStatus]);
 
   // Handle Submit
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(isPending);
     const loadingToastId = toast.loading("Loading...");
-    startTransition(async () => {
-      // setTimeout(() => {
-      //   toast.dismiss(loadingToastId);
-      //   toast.success("Signup Successful");
-      //   setTimeout(() => {
-      //     navigate("/questions");
-      //   }, 2000);
-      // }, 3000);
-
-      
+    startTransition(async () => {    
 
       try{
-        const signup_response = await axios.post("http://localhost:5000/api/auth/signup",{
+        const reqBody = {
           username: name,
           email: email,
           phone_number: phone,
-          password: password
-        })
+          password: password  
+        }
+        console.log(reqBody);
+
+        // const signup_response = reqBody;
+        
+        const signup_response = await apiCall.post(signupApi,reqBody);
   
         if(signup_response.status === 201){
+          
+          dispatch(setUserId(signup_response.data.userId));
+          dispatch(setUserStatus(true));
+
+          const token = signup_response.data.token;
+
+          localStorage.setItem("token",token);
+
           toast.dismiss(loadingToastId);
           toast.success("Signup Successful");
-          console.log(signup_response.data);
+
+          setTimeout(() => {
+            navigate("/dashboard");
+          }, 2000);
           
         }else{
           toast.dismiss(loadingToastId);
           toast.error("Signup Failed");
+
         }
 
       }catch(error){
         toast.dismiss(loadingToastId);
-        toast.error(`${error.response.data.message}`);
+        console.log(error);
+        toast.error(`Signup Failed`);
       }
 
     });

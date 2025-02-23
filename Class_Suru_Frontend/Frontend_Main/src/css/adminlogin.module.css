@@ -1,0 +1,67 @@
+.adminLoginContainer{
+    margin-top: 70px;
+    min-height: calc(100vh - 70px);
+    width: 100%;
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.adminLoginBox{
+    width: 400px;
+    height: fit-content;
+    /* border: 1px solid red; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.26);
+    
+}
+.adminLoginHeading{
+    font-size: 25px;
+    font-weight: 600;
+    /* margin-bottom: 20px; */
+}
+.adminLoginInputContainer{
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    flex-direction: column;
+}
+
+.adminLoginInput{
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+}
+
+.adminLoginInput{
+    width: 100%;
+    padding: 10px;
+    font-size: 15px;
+    border-radius: 5px;
+    border: 1.5px solid #ecedec;
+    transition: all 0.2s ease-in-out;
+}
+
+.adminLoginInput:focus {
+    outline: none;
+  }
+  
+  .adminLoginInput:focus-within {
+    border: 1.5px solid var(--primary_color);
+  }
+
+  .adminLoginButton{
+    width: 100%;
+  }

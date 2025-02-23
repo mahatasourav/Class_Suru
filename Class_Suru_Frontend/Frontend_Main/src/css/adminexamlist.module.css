@@ -1,0 +1,61 @@
+.adminExamListContainerPage{
+    min-height: calc(100vh - 70px);
+    width: 100%;
+    max-width: 1500px;
+    margin: 0 auto;
+    margin-top: 70px;
+    padding-top: 20px;
+    /* border: 1px solid red; */
+}
+
+.paths{
+    /* border: 1px solid orange; */
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 5px;
+    
+}
+.path{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    color: var(--dark_color);
+    /* transition: all 0.2s linear; */
+
+}
+.path:hover{
+    color: var(--primary_color);
+    text-decoration: underline;
+}
+.pathIcon{
+    font-size: 8px;
+    color: var(--dark_color);
+    
+}
+
+.examListContainer{
+    margin-top: 30px;
+    /* border: 1px solid red; */
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+
+}
+
+.examListHeaderText{
+    font-size: 30px;
+    font-weight: 600;
+    color: var(--dark_color);
+    /* word-spacing: 5px; */
+    /* letter-spacing: 1px; */
+    /* font-family: tatsama !important; */
+}
+.examListHeaderText span{
+    /* font-weight: 700; */
+    /* font-weight: 300; */
+    color: var(--primary_color);
+}

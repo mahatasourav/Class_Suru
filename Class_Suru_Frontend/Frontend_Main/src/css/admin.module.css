@@ -1,0 +1,7 @@
+.AdminContainer{
+    min-height: calc(100vh - 70px);
+    max-width: 1500px;
+    margin: 0 auto;
+    margin-top: 70px;
+    
+}

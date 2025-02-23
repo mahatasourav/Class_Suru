@@ -27,5 +27,14 @@
     width: 100%;
     /* min-height: 120vh; */
     position: relative;
+   
 
+}
+.conatiner-navbar{
+    position: fixed;
+   
+}
+.child-container{
+    padding-top: 103px;
+   
 }

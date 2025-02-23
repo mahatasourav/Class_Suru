@@ -5,8 +5,9 @@ import Login from "./Login/Login";
 import Dashboard from "./Dashboard/Dashboard";
 import Questions from "./Register/Questions";
 import Register from "./Register/Register";
+import Exam from "./Exam/Exam";
 
 
 
 
-export {Home,Dashboard,Error,Login,Register,Questions};
+export {Home,Dashboard,Error,Exam,Login,Register,Questions};

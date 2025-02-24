@@ -59,7 +59,7 @@
   border-radius: 10px;
   border-bottom-right-radius: 30%;
   border-bottom-left-radius: 30%;
-  background-color: rgb(159, 159, 230, 0.5);
+  background-color: rgba(166, 166, 250, 0.5);
 }
 .ExamButton {
   background-color: rgb(255, 255, 255);

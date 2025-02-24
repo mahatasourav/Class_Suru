@@ -7,6 +7,7 @@ import HomeSec3 from "./HomeSec3";
 import HomeSec4 from "./HomeSec4";
 import HomeSec5 from "./HomeSec5";
 import HomeSec6 from "./HomeSec6";
+import Breadcrumb from "../Exam/Breadcrumb";
 
 const Home = () => {
   return (

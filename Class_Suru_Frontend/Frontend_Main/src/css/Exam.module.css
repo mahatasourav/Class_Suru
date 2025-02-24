@@ -1,0 +1,49 @@
+.spancolor{
+  color: rgb(88, 88, 214);
+ }
+ .spanbold{
+  font-weight: bold;
+ }
+
+
+/* Exam-selection Section */
+
+.ExamSelection{
+  border: 2px solid rgb(12, 195, 42);
+  width: 70vw;
+  margin: auto;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 45px;
+  padding-top: 40px;
+}
+.ExamSelectionHeading{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+}
+.ExamSelectionHeading p{
+ text-align: center;
+}
+.ExamLists{
+  border: 2px solid red;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 45px;
+}
+.ExamList{
+  width: 200px;
+  height: 220px;
+  border: 2px solid red;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+
+}
+.ExamList h2{
+ text-align: center;
+}

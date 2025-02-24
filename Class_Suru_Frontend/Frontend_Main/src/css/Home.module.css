@@ -1,184 +1,212 @@
-.Homestyle{
+/* Home.module.css */
+.Homestyle {
   display: flex;
   flex-direction: column;
   gap: 80px;
- 
 }
 
 /* Home Section-1 Started Here ---> */
 
 /* Home Upper */
-.HomeMain{
-  display:flex;
+.HomeMain {
+  display: flex;
   justify-content: space-around;
-  width:80vw;
+  width: 80vw;
   margin: auto;
   height: auto;
   align-items: center;
- padding-top: 100px;
+  padding-top: 100px;
 }
-/* Home Upper Right*/
-.RightImg{
+
+/* Home Upper Right */
+.RightImg {
   width: 20vw;
   height: 45vh;
 }
 
 /* Home Upper Left */
-.HomeMainLeft{
-  
+.HomeMainLeft {
   width: 45vw;
-height: 45vh;
-display: flex;
-flex-flow: column;
-justify-content: space-around;
-
-}
-
-.HomeMainLeft h1 span ,.HomeMainLeftDown p span{
-  color:rgb(88, 88, 214);
-}
-.HomeMainLeft p span{
-
-  font-weight:bold;
-}
-.HomeMainLeftDown{
+  height: 45vh;
   display: flex;
- align-items: center;
- gap: 10px;
-
+  flex-flow: column;
+  justify-content: space-around;
 }
-.HomeMainLeftDownImg{
+
+.HomeMainLeft h1 span,
+.HomeMainLeftDown p span {
+  color: rgb(88, 88, 214);
+}
+
+.HomeMainLeft p span {
+  font-weight: bold;
+}
+
+.HomeMainLeftDown {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.HomeMainLeftDownImg {
   width: 80px;
   height: 40px;
-  
 }
-.HomeMainLeftButton{
- width: 260px;
- 
- display: flex;
- justify-content: space-between;
+
+.HomeMainLeftButton {
+  width: 260px;
+  display: flex;
+  justify-content: space-between;
 }
-.HomeMainLeftDown p{
+
+.HomeMainLeftDown p {
   font-weight: bold;
- }
-
- /* Media queries for responsiveness */
-@media (max-width: 1024px) {
-  
 }
 
-@media (max-width: 768px) {
-  .HomeMain{
+/* Media queries for responsiveness */
+@media (max-width: 1024px) {
+  .HomeMain {
     flex-direction: column;
-    
+    align-items: center;
+    padding-top: 40px;
   }
-  
-  .HomeMainLeft{
-   width: 80vw;
-  height: auto;
- gap: 30px;
+
+  .HomeMainLeft {
+    width: 85vw;
+    height: auto;
+    gap: 30px;
   }
-  .HomeMainLeftDown{
-    
-    width: 60vw;
-  
+
+  .HomeMainLeftDown {
+    width: 80vw;
   }
-  .RightImg{
+
+  .RightImg {
     display: none;
   }
 }
+@media (max-width: 768px) {
+  .HomeMainLeft {
+    width: 100vw;
+    padding: 0 20px;
+  }
 
-@media (max-width: 480px) {
-  
+  .HomeMainLeftDown {
+    width: 90vw;
+  }
+
+  .RightImg {
+    width: 80vw;
+    height: auto;
+  }
+
+  .HomeMainLeftButton {
+    width: 100%;
+    justify-content: space-around;
+  }
 }
+@media (max-width: 480px) {
+  .HomeMainLeft {
+    width: 100vw;
+    padding: 0 10px;
+  }
+
+  .HomeMainLeftDown {
+    width: 100vw;
+  }
+
+  .RightImg {
+    width: 100vw;
+    height: auto;
+  }
+
+  .HomeMainLeftButton {
+    width: 100%;
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
 
 /* Home Section-2 Started Here ---> */
-
-
-.HomeSec2div{
-max-width: 75vw !important;
-padding: 20px;
-margin: auto;
-display: flex;
-flex-direction: column;
-gap: 30px;
-
-}
-.HomeSec2div span{
-  color:rgb(88, 88, 214);
+.HomeSec2div {
+  max-width: 75vw !important;
+  padding: 20px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
 }
 
- /* swiperStyles.css */
+.HomeSec2div span {
+  color: rgb(88, 88, 214);
+}
+
+/* swiperStyles.css */
 .customSwiper {
-  width:100%;
-  overflow:hidden !important;
+  width: 100%;
+  overflow: hidden !important;
   padding: 50px 50px 50px 50px;
-
   display: flex;
   justify-content: center;
-  
 }
 
-.customSlide  {
-width: 200px !important;
-height: 235px !important;
- overflow: visible !important;
- padding-top: 20px;
- background-color: #ffffff;
-   border-radius: 7px;
-  
+.customSlide {
+  width: 200px !important;
+  height: 235px !important;
+  overflow: visible !important;
+  padding-top: 20px;
+  background-color: #ffffff;
+  border-radius: 7px;
   box-shadow: 0px 6px 14px rgba(0, 0, 0, 0.3), 0px 4px 4px rgba(0, 0, 0, 0.2);
   margin: 40px;
-   transition: transform 0.3s ease-in-out; /* Smooth hover effect */
-
+  transition: transform 0.3s ease-in-out; /* Smooth hover effect */
 }
+
 .Swiperdiv img {
   width: 110px;
   height: 152px;
   height: auto;
   border-radius: 50%;
   border: 3px solid rgb(88, 86, 214);
-
-
 }
 
-.Swiperdiv{
+.Swiperdiv {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 10px;
-  
-  
 }
+
 .Swiperdiv img {
   width: 110px;
   height: 152px;
   height: auto;
   border-radius: 50%;
   border: 3.5px solid rgb(88, 86, 214);
-
 }
 
-.Swiperdiv div{
-display: flex;
-flex-direction: column;
-justify-content: space-between;
-align-items: center;
-gap: 10px;
-
+.Swiperdiv div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
 }
-.instituteName{
+
+.instituteName {
   font-size: 10px;
   padding: 10px;
 }
+
 /* Media queries for responsiveness */
 @media (max-width: 1024px) {
   .swiper-slide img {
     width: 80%;
   }
-  .HomeSec2div{
+  .HomeSec2div {
     max-width: 85vw !important;
-    }
+  }
 }
 
 @media (max-width: 768px) {
@@ -199,127 +227,120 @@ gap: 10px;
   .swiper {
     padding: 0 5px;
   }
-  .customSlide  {
-  
-     overflow: visible !important;
-    }
-    .customSwiper{
-      width: 100vw;
-    }
+  .customSlide {
+    overflow: visible !important;
+  }
+  .customSwiper {
+    width: 100vw;
+  }
 }
 
-
- /* Home Section-3 Started Here ---> */
- .spancolor{
+/* Home Section-3 Started Here ---> */
+.spancolor {
   color: rgb(88, 88, 214);
- }
- .spanbold{
-  font-weight: bold;
- }
+}
 
- .HomeSec3{
+.spanbold {
+  font-weight: bold;
+}
+
+.HomeSec3 {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  
   width: 80vw;
   margin: auto;
   gap: 40px;
-  
- }
- .HomeSec3div1 h2{
+}
+
+.HomeSec3div1 h2 {
   font-weight: bold;
   font-size: 1.6rem;
+}
 
-
- }
- .HomeSec3div2{
+.HomeSec3div2 {
   display: flex;
   flex-direction: column;
   width: 85vw;
-  align-items:center;
+  align-items: center;
   gap: 30px;
- }
- .HomeSec3div21 , .HomeSec3div22{
+}
+
+.HomeSec3div21,
+.HomeSec3div22 {
   display: flex;
   flex-direction: row;
- height: 400px;
+  height: 400px;
   width: 75vw;
   justify-content: space-between;
   align-items: center;
- 
   padding: 20px;
-  
- }
- .HomeSec3div21 p, .HomeSec3div22 p{
-width: 30vw;
-font-size: 1.2rem;
- }
- .HomeSec3div21iframe{
-  width:420px;
-height: 300px;
- }
- .HomeSec3div22 img{
-  width:420px;
-height: 300px;
-   }
-   
-     /* Media queries for responsiveness */
-@media (max-width:1024px) {
-  .HomeSec3div21iframe ,.HomeSec3div22 img{
-    width:320px;
-  height: 260px;
-   }
-   .HomeSec3div21 p, .HomeSec3div22 p{
-   
+}
+
+.HomeSec3div21 p,
+.HomeSec3div22 p {
+  width: 30vw;
+  font-size: 1.2rem;
+}
+
+.HomeSec3div21iframe {
+  width: 420px;
+  height: 300px;
+}
+
+.HomeSec3div22 img {
+  width: 420px;
+  height: 300px;
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 1024px) {
+  .HomeSec3div21iframe,
+  .HomeSec3div22 img {
+    width: 320px;
+    height: 260px;
+  }
+  .HomeSec3div21 p,
+  .HomeSec3div22 p {
     font-size: 1rem;
-     }
+  }
 }
 
 @media (max-width: 850px) {
-  .HomeSec3div21 
-  {
+  .HomeSec3div21 {
     flex-direction: column-reverse;
     gap: 20px;
   }
-  .HomeSec3div2{
+  .HomeSec3div2 {
     gap: 30px;
   }
-  .HomeSec3div22 
-  {
+  .HomeSec3div22 {
     flex-direction: column;
     gap: 30px;
     height: auto;
   }
-  .HomeSec3div21 p, .HomeSec3div22 p{
+  .HomeSec3div21 p,
+  .HomeSec3div22 p {
     width: 68vw;
     font-size: 1rem;
-     }
-     .HomeSec3div21 img{
-      width: 80vw;
-     }
-     .HomeSec3div22 img{
-      width: 50vw;
-      max-height: 300px;
-      
-       }
-       
+  }
+  .HomeSec3div21 img {
+    width: 80vw;
+  }
+  .HomeSec3div22 img {
+    width: 50vw;
+    max-height: 300px;
+  }
 }
 
-
 /* Home Section-4 Started Here ---> */
-
-/* Home.module.css */
-
-
 .HomeSec42 {
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 20px;
   background-color: #f9f9f9;
-  
 }
 
 .examSection {
@@ -328,21 +349,21 @@ height: 300px;
   padding: 20px;
   margin: 10px 0;
   width: 80%;
-
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: box-shadow 0.3s ease;
- 
   display: flex;
-  
 }
-.examImage{
+
+.examImage {
   height: 250px;
 }
-.examInfo{
+
+.examInfo {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
 }
+
 .examSection h2 {
   font-size: 24px;
   margin-bottom: 10px;
@@ -374,161 +395,148 @@ height: 300px;
 .examSection:hover {
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
+
 @media (min-width: 768px) {
   .examSection {
-    height:300px;
+    height: 300px;
   }
-
 }
 
 @media (max-width: 720px) {
-  .examSection{
+  .examSection {
     flex-direction: column-reverse;
     align-items: center;
     gap: 40px;
   }
-  .examImage{
+  .examImage {
     height: 200px;
     width: fit-content;
   }
-  .examInfo{
+  .examInfo {
     justify-content: space-evenly;
     align-items: center;
   }
 }
 
 /* Home Section-5 Started Here ---> */
-.HomeSec5{
+.HomeSec5 {
   display: flex;
   max-width: 80%;
   flex-direction: column;
   justify-content: center;
- 
   margin: auto;
   gap: 30px;
 }
-.HomeSec52{
+
+.HomeSec52 {
   display: flex;
-
   justify-content: center;
-
 }
-.HomeSec521{
+
+.HomeSec521 {
   display: flex;
   flex-direction: column;
- 
   justify-content: space-evenly;
-
 }
-.HomeSec5IMG{
+
+.HomeSec5IMG {
   height: 480px;
 }
-.ServiceInfo{
+
+.ServiceInfo {
   display: flex;
   flex-direction: row;
- 
-
-  
 }
-.ServiceInfo h1{
- width: 80px;
+
+.ServiceInfo h1 {
+  width: 80px;
   display: flex;
- justify-content: center;
- align-items: center;
- background-color: rgb(88, 86, 214);
- color: rgb(255, 255, 255);
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(88, 86, 214);
+  color: rgb(255, 255, 255);
   height: 120px;
   border-radius: 10px 0px 0px 10px;
-
-
-  
 }
-.ServiceInfo div{
-  
-   display: flex;
-   flex-direction: column;
-  justify-content: space-evenly;
-  
-  width: 70%;
-padding-left: 20px;
-box-shadow: 
-5px 0px 20px 9px rgba(111, 108, 108, 0.1),  /* Right shadow with more blur */
-0px -5px 15px 2px rgba(111, 108, 108, 0.1), /* Top shadow (4px spread, more blur) */
-0px 5px 15px 7px rgba(111, 108, 108, 0.1);  /* Bottom shadow with more blur */
-border-radius: 0px 10px 10px 0px ;
-   
- }
 
- @media (max-width: 1024px) {
-  .HomeSec5IMG{
+.ServiceInfo div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  width: 70%;
+  padding-left: 20px;
+  box-shadow: 5px 0px 20px 9px rgba(111, 108, 108, 0.1), /* Right shadow with more blur */
+    0px -5px 15px 2px rgba(111, 108, 108, 0.1), /* Top shadow (4px spread, more blur) */
+    0px 5px 15px 7px rgba(111, 108, 108, 0.1); /* Bottom shadow with more blur */
+  border-radius: 0px 10px 10px 0px;
+}
+
+@media (max-width: 1024px) {
+  .HomeSec5IMG {
     display: none;
   }
   .HomeSec521 {
-   
     gap: 30px;
   }
-  .ServiceInfo{
+  .ServiceInfo {
     width: 100%;
-    
     display: flex;
     justify-content: center;
   }
-  .ServiceInfo div{
+  .ServiceInfo div {
     width: 90%;
   }
-  .ServiceInfo h1{
+  .ServiceInfo h1 {
     height: auto;
-   
   }
 }
 
-
- /* Home Section-6 Started Here ---> */
- .HomeSec6{
+/* Home Section-6 Started Here ---> */
+.HomeSec6 {
   width: 85%;
   margin: auto;
   display: flex;
   flex-direction: column;
   gap: 30px;
-  
- }
- .HomeSec6faqsec{
- display: flex;
- flex-direction: column;
- gap: 15px;
- }
- .HomeSec6faqsec1{
-  
- width: 85vw;
+}
+
+.HomeSec6faqsec {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.HomeSec6faqsec1 {
+  width: 85vw;
   height: auto;
   display: flex;
   flex-direction: column;
   gap: 15px;
-  
- }
- .HomeSec6faqQue{
-background-color:rgb(88, 86, 214);
-color: #fff;
- padding: 10px;
- padding-left: 25px;
-   margin: 5px 0;
+}
+
+.HomeSec6faqQue {
+  background-color: rgb(88, 86, 214);
+  color: #fff;
+  padding: 10px;
+  padding-left: 25px;
+  margin: 5px 0;
   cursor: pointer;
   border-radius: 7px;
   display: flex;
   gap: 15px;
   align-items: center;
-  
- }
- .HomeSec6faqQue h5{
+}
+
+.HomeSec6faqQue h5 {
   font-size: 25px;
- }
- .HomeSec6faqAns{
+}
+
+.HomeSec6faqAns {
   background-color: whitesmoke;
-  
   border-radius: 7px;
   padding: 15px;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   display: flex;
   flex-direction: column;
   gap: 5px;
- }
+}

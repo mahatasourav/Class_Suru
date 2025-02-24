@@ -17,8 +17,8 @@ function Breadcrumb() {
 
   return (
     <div style={{ marginBottom: "20px", fontSize: "18px" }}>
-      <Link to="/">Exam Portal</Link>
-      {breadcrumbItems.length > 0 && <span> </span>}
+      <Link to="/">Home</Link>
+      {breadcrumbItems.length > 0 && <span> &gt; </span>}
       {breadcrumbItems}
     </div>
   );

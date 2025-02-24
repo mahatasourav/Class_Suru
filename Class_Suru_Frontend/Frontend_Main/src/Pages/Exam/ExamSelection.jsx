@@ -8,10 +8,12 @@ import {
   Route,
   Routes,
 } from "react-router-dom";
+import Breadcrumb from "./Breadcrumb";
 const examlists = ["JEE Mains", "NEET", "BOARD", "JENPAS"];
 const ExamSelection = () => {
   return (
     <div className={Style.ExamSelection}>
+      <Breadcrumb />
       <div className={Style.ExamSelectionHeading}>
         {" "}
         <h2>

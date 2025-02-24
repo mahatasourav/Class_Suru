@@ -1,21 +1,20 @@
 import React from "react";
-import Button from "../../Components/Button/Button";
+import { Link } from "react-router-dom";
 import Style from "../../css/Exam.module.css";
-
-import {
-  createBrowserRouter,
-  createRoutesFromElements,
-  Route,
-  Routes,
-} from "react-router-dom";
 import Breadcrumb from "./Breadcrumb";
-const examlists = ["JEE Mains", "NEET", "BOARD", "JENPAS"];
+
+const examlists = {
+  JEE: ["Math", "Physics", "Chemistry"],
+  NEET: ["Biology", "Physics", "Chemistry"],
+  GATE: ["Computer Science", "Mechanical", "Electrical"],
+  UPSC: ["History", "Polity", "Geography"],
+};
+
 const ExamSelection = () => {
   return (
     <div className={Style.ExamSelection}>
       <Breadcrumb />
       <div className={Style.ExamSelectionHeading}>
-        {" "}
         <h2>
           পরীক্ষা <span className={Style.spancolor}>পোর্টাল</span>
         </h2>
@@ -27,10 +26,12 @@ const ExamSelection = () => {
         </p>
       </div>
       <div className={Style.ExamLists}>
-        {examlists.map((exam, index) => (
-          <div className={Style.ExamList}>
-            <h2 key={index}>{exam}</h2>
-            <Button text="Select" className={Style.ExamButton} />
+        {Object.keys(examlists).map((exam) => (
+          <div key={exam} className={Style.ExamList}>
+            <h2>{exam}</h2>
+            <Link to={`/exam/${exam}`} className={Style.ExamButton}>
+              Select
+            </Link>
           </div>
         ))}
       </div>

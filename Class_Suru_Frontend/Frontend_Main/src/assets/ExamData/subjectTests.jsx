@@ -1,0 +1,66 @@
+export const subjectTests = {
+  Math: [
+    "Math Mock Test-1",
+    "Math Mock Test-2",
+    "Math Mock Test-3",
+    "Math Mock Test-4",
+    "Math Mock Test-5",
+  ],
+  Physics: [
+    "Physics Mock Test-1",
+    "Physics Mock Test-2",
+    "Physics Mock Test-3",
+    "Physics Mock Test-4",
+    "Physics Mock Test-5",
+  ],
+  Chemistry: [
+    "Chemistry Mock Test-1",
+    "Chemistry Mock Test-2",
+    "Chemistry Mock Test-3",
+    "Chemistry Mock Test-4",
+    "Chemistry Mock Test-5",
+  ],
+  Biology: [
+    "Biology Mock Test-1",
+    "Biology Mock Test-2",
+    "Biology Mock Test-3",
+    "Biology Mock Test-4",
+    "Biology Mock Test-5",
+  ],
+  ComputerScience: [
+    "Computer Science Mock Test-1",
+    "Computer Science Mock Test-2",
+    "Computer Science Mock Test-3",
+    "Computer Science Mock Test-4",
+    "Computer Science Mock Test-5",
+  ],
+  Mechanical: [
+    "Mechanical Mock Test-1",
+    "Mechanical Mock Test-2",
+    "Mechanical Mock Test-3",
+    "Mechanical Mock Test-4",
+    "Mechanical Mock Test-5",
+  ],
+  Electrical: [
+    "Electrical Mock Test-1",
+    "Electrical Mock Test-2",
+    "Electrical Mock Test-3",
+    "Electrical Mock Test-4",
+    "Electrical Mock Test-5",
+  ],
+
+  PoliticalScience: [
+    "Political Science Mock Test-1",
+    "Political Science Mock Test-2",
+    "Political Science Mock Test-3",
+    "Political Science Mock Test-4",
+    "Political Science Mock Test-5",
+  ],
+  Geography: [
+    "Geography Mock Test-1",
+    "Geography Mock Test-2",
+    "Geography Mock Test-3",
+    "Geography Mock Test-4",
+    "Geography Mock Test-5",
+  ],
+};

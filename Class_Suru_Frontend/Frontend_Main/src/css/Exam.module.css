@@ -1,15 +1,16 @@
-.spancolor{
-  color: rgb(88, 88, 214);
- }
- .spanbold{
-  font-weight: bold;
- }
+/* Exam.module.css */
 
+/* Existing styles */
+.spancolor {
+  color: rgb(88, 88, 214);
+}
+.spanbold {
+  font-weight: bold;
+}
 
 /* Exam-selection Section */
-
-.ExamSelection{
-  border: 2px solid rgb(12, 195, 42);
+.ExamSelection {
+  padding: 30px;
   width: 70vw;
   margin: auto;
   height: auto;
@@ -17,33 +18,119 @@
   flex-direction: column;
   gap: 45px;
   padding-top: 40px;
+ 
 }
-.ExamSelectionHeading{
+.ExamSelectionHeading {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   gap: 20px;
+ 
+  width: 70vw;
 }
-.ExamSelectionHeading p{
- text-align: center;
+.ExamSelectionHeading p {
+  text-align: center;
 }
-.ExamLists{
-  border: 2px solid red;
+.ExamLists {
   display: flex;
   flex-direction: row;
   justify-content: center;
   gap: 45px;
 }
-.ExamList{
-  width: 200px;
-  height: 220px;
-  border: 2px solid red;
+.ExamList {
+  width: 170px;
+  height: 180px;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
-
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 10px;
+  box-shadow: -10px 10px 10px rgba(0, 0, 0, 0.1), 10px 10px 10px rgba(0, 0, 0, 0.1);
 }
-.ExamList h2{
- text-align: center;
+.ExamList h2 {
+  text-align: center;
+  color: rgb(88, 88, 214);
+  width: 100%;
+  height: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  border-bottom-right-radius: 30%;
+  border-bottom-left-radius: 30%;
+  background-color: rgb(159, 159, 230, 0.5);
+}
+.ExamButton {
+  background-color: rgb(255, 255, 255);
+  color: rgb(88, 88, 214);
+  border: 2px solid rgb(88, 88, 214);
+  width: 110px;
+  font-weight: 600;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+.ExamButton:hover {
+  background-color: rgb(88, 88, 214);
+  color: rgb(255, 255, 255);
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 1024px) {
+  .ExamSelection {
+    width: 90vw;
+  }
+  .ExamSelectionHeading {
+    width: 90vw;
+  }
+  .ExamLists {
+    flex-direction: column;
+    align-items: center;
+  }
+  .ExamList {
+    width: 80%;
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .ExamSelection {
+    padding: 20px;
+  }
+  .ExamSelectionHeading {
+    gap: 10px;
+  }
+  .ExamLists {
+    gap: 20px;
+  }
+  .ExamList {
+    width: 100%;
+  }
+  .ExamList h2 {
+    font-size: 18px;
+  }
+  .ExamButton {
+    width: 100px;
+  }
+}
+
+@media (max-width: 480px) {
+  .ExamSelection {
+    padding: 10px;
+  }
+  .ExamSelectionHeading {
+    gap: 5px;
+  }
+  .ExamLists {
+    gap: 10px;
+  }
+  .ExamList {
+    width: 100%;
+  }
+  .ExamList h2 {
+    font-size: 16px;
+  }
+  .ExamButton {
+    width: 90px;
+  }
 }

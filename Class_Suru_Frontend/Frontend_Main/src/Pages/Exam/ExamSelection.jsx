@@ -8,7 +8,7 @@ import {
   Route,
   Routes,
 } from "react-router-dom";
-const examlists = ["JEE Mains", "NEET", "BOARD", "JENPAHS"];
+const examlists = ["JEE Mains", "NEET", "BOARD", "JENPAS"];
 const ExamSelection = () => {
   return (
     <div className={Style.ExamSelection}>
@@ -28,7 +28,7 @@ const ExamSelection = () => {
         {examlists.map((exam, index) => (
           <div className={Style.ExamList}>
             <h2 key={index}>{exam}</h2>
-            <Button text="Select" />
+            <Button text="Select" className={Style.ExamButton} />
           </div>
         ))}
       </div>

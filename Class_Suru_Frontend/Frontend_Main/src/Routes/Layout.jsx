@@ -22,7 +22,7 @@ const Layout = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const {addLoading, removeLoading} = useContext(LoadingContext)
+  const { addLoading, removeLoading } = useContext(LoadingContext);
 
   // const {addLoading, removeLoading} = useLoadingContext();
 
@@ -30,18 +30,17 @@ const Layout = () => {
     addLoading();
     const data = await getUserData();
     // console.log(data);
-    
-    if(data){
+
+    if (data) {
       dispatch(setUserId(data.userId));
       dispatch(setUserStatus(true));
       dispatch(setUserData(data.user));
     }
     removeLoading();
-  }
-  
+  };
+
   useEffect(() => {
     handleUserData();
-    
   }, []);
 
   return (

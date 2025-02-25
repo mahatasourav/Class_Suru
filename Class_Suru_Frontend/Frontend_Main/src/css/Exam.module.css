@@ -10,14 +10,15 @@
 
 /* Exam-selection Section */
 .ExamSelection {
-  padding: 30px;
-  width: 70vw;
+  
+  padding: 20px;
+  width: 100vw;
   margin: auto;
   height: auto;
   display: flex;
   flex-direction: column;
   gap: 45px;
-  padding-top: 40px;
+ padding-top: 30px;
  
 }
 .ExamSelectionHeading {
@@ -26,8 +27,8 @@
   align-items: center;
   flex-direction: column;
   gap: 20px;
- 
-  width: 70vw;
+ margin: auto;
+  max-width: 70vw;
 }
 .ExamSelectionHeading p {
   text-align: center;
@@ -47,6 +48,14 @@
   align-items: center;
   border-radius: 10px;
   box-shadow: -10px 10px 10px rgba(0, 0, 0, 0.1), 10px 10px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+
+
+
+}
+.ExamList:hover {
+  transform: translateY(-10px);
+  box-shadow: -10px 20px 20px rgba(0, 0, 0, 0.2), 10px 20px 20px rgba(0, 0, 0, 0.2);
 }
 .ExamList h2 {
   text-align: center;
@@ -70,11 +79,22 @@
   border-radius: 5px;
   margin-bottom: 20px;
   text-align: center;
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+
 }
 .ExamButton:hover {
   background-color: rgb(88, 88, 214);
   color: rgb(255, 255, 255);
 }
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 
 /* Media Queries for Responsiveness */
 @media (max-width: 1024px) {
@@ -155,6 +175,68 @@
 .SubjectName{
   border:  2px solid rgb(237, 0, 0);
 }
-.BackToPrev{
-  border: 2px solid red;
+.BackToPrev {
+  max-width: 40px;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.BackToPrev:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  transform: translateY(-5px);
+}
+
+/* Test Section CSS Started  */
+
+.TestSection{
+  
+  padding: 20px;
+  width: 100vw;
+  margin: auto;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  padding-top: 30px;
+
+  gap: 10px;
+}
+.Tests{
+  
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  padding: 20px;
+
+}
+.Test {
+  
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1), 0 -6px 12px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
+  border-radius: 6px;
+}
+
+.Test:hover {
+
+  transform: translateY(-2px);
+}
+.TestLower{
+  
+  padding: 10px;
+  display: flex;
+  gap: 25px;
+}
+.TestLower span{
+ 
+ justify-content: center;
+  display: flex;
+  gap: 5px;
+  align-items: center;
 }

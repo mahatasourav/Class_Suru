@@ -16,7 +16,7 @@ const Tests = () => {
         {Tests.length > 0 ? (
           Tests.map((Test, index) => (
             <li key={index}>
-              <Link to={`/exam/${examName}/${subjectName}/${Test}`}>
+              <Link to={`/exam/${examName}/${subjectName}/instruction`}>
                 {Test}
               </Link>
             </li>

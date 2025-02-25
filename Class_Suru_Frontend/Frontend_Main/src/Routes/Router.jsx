@@ -15,6 +15,7 @@ import {
 } from "../Pages";
 import Subjects from "../Pages/Exam/Subjects";
 import Tests from "../Pages/Exam/Tests";
+import InstructionPage from "../Pages/Exam/InstructionPage";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -24,6 +25,11 @@ const router = createBrowserRouter(
       <Route path="/exam" element={<Exam />} />
       <Route path="/exam/:examName" element={<Subjects />} />
       <Route path="/exam/:examName/:subjectName" element={<Tests />} />
+      <Route
+        path="/exam/:examName/:subjectName/instruction"
+        element={<InstructionPage />}
+      />
+
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
       <Route path="/questions" element={<Questions />} />

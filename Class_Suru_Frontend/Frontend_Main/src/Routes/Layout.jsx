@@ -1,36 +1,24 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import { Footer, Navbar } from "../Components";
-import { Outlet, useLocation, useNavigate } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import "../css/index.css";
-import axios from "axios";
-import { userDetailsApi } from "../apis";
-import { jwtDecode } from "jwt-decode";
 import { useDispatch } from "react-redux";
 import {
   setUserData,
   setUserId,
   setUserStatus,
 } from "../Redux/features/userSlice";
-import apiCall from "../utils/apiCall";
 import { LoadingContext } from "../Components/Loading/Loading";
 import { getUserData } from "../utils/getUserData";
 
-// import { useLoadingContext } from "../Components/Loading/Loading";
-
 const Layout = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const location = useLocation();
-
   const { addLoading, removeLoading } = useContext(LoadingContext);
-
-  // const {addLoading, removeLoading} = useLoadingContext();
 
   const handleUserData = async () => {
     addLoading();
     const data = await getUserData();
-    // console.log(data);
-
     if (data) {
       dispatch(setUserId(data.userId));
       dispatch(setUserStatus(true));
@@ -43,14 +31,19 @@ const Layout = () => {
     handleUserData();
   }, []);
 
+  // 🔹 Remove Navbar Completely from Instruction Page
+  const isInstructionPage = location.pathname.includes("/instruction");
+
   return (
     <div className="container">
-      <div className="container-navbar">
-        {" "}
-        <Navbar> </Navbar>
-      </div>
-      <div className="child-container">
-        {" "}
+      {/* 🔥 Completely remove Navbar instead of using display: none */}
+      {!isInstructionPage && <Navbar />}
+
+      <div
+        className={
+          isInstructionPage ? "instruction-container" : "child-container"
+        }
+      >
         <Outlet />
       </div>
 

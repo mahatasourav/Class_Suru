@@ -16,7 +16,7 @@ import {
 import Subjects from "../Pages/Exam/Subjects";
 import Tests from "../Pages/Exam/Tests";
 import InstructionPage from "../Pages/Exam/InstructionPage";
-
+import MainExamPage from "../Pages/Exam/MainExamPage";
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Layout />}>
@@ -28,6 +28,10 @@ const router = createBrowserRouter(
       <Route
         path="/exam/:examName/:subjectName/instruction"
         element={<InstructionPage />}
+      />
+      <Route
+        path="/exam/:examName/:subjectName/instruction/MainExamPage"
+        element={<MainExamPage />}
       />
 
       <Route path="/login" element={<Login />} />

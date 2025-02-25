@@ -31,9 +31,9 @@ const Subjects = () => {
           <p>No subjects found for this exam.</p>
         )}
       </ul>
-      <Link to="/exam" className={Style.BackToPrev}>
-        🔙 Back to Exam Selection
-      </Link>
+      {/* <Link to="/exam" className={Style.BackToPrev}>
+        🔙
+      </Link> */}
     </div>
   );
 };

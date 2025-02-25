@@ -4,27 +4,36 @@ import Style from "../../css/Exam.module.css";
 import Breadcrumb from "./Breadcrumb";
 
 import { examlists } from "../../assets/ExamData/examList";
+import ExamSelection from "./ExamSelection";
 
 const Subjects = () => {
   const { examName } = useParams(); // Get exam name from URL
-  const subjects = examlists[examName] || []; // Get subjects or empty array if not found
-
+  const subjects = examlists[examName] || [];
+  /* Here i Use the same class anme of component  <ExamSelection/> to get the same structures that's why class name may looks like unrealted to the content : */
   return (
-    <div className={Style.Subjects}>
-      <Breadcrumb /> {/* Breadcrumb Navigation */}
-      <h2>{examName} Subjects</h2>
-      <ul>
+    <div className={Style.ExamSelection}>
+      <Breadcrumb />
+      <ul className={Style.ExamLists}>
         {subjects.length > 0 ? (
           subjects.map((subject) => (
-            <li key={subject}>
-              <Link to={`/exam/${examName}/${subject}`}>{subject}</Link>
+            <li key={subject} className={Style.ExamList}>
+              <h2>{subject}</h2>
+              <Link
+                to={`/exam/${examName}/${subject}`}
+                key={subject}
+                className={Style.ExamButton}
+              >
+                Select
+              </Link>
             </li>
           ))
         ) : (
           <p>No subjects found for this exam.</p>
         )}
       </ul>
-      <Link to="/exam">🔙 Back to Exam Selection</Link>
+      <Link to="/exam" className={Style.BackToPrev}>
+        🔙 Back to Exam Selection
+      </Link>
     </div>
   );
 };

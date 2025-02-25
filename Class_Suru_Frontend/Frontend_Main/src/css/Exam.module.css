@@ -240,3 +240,120 @@
   gap: 5px;
   align-items: center;
 }
+/* Media Queries for Test Section */
+@media (max-width: 1024px) {
+  .TestSection {
+    padding: 15px;
+  }
+  .Tests {
+    gap: 30px;
+    padding: 15px;
+  }
+  .Test {
+    padding: 15px;
+  }
+}
+
+@media (max-width: 768px) {
+  .TestSection {
+    padding: 10px;
+  }
+  .Tests {
+    gap: 20px;
+    padding: 10px;
+  }
+  .Test {
+    padding: 10px;
+   
+   
+  }
+}
+
+@media (max-width: 480px) {
+  .TestSection {
+    padding: 5px;
+  }
+  .Tests {
+    gap: 10px;
+    padding: 15px;
+  }
+  .Test {
+    padding: 15px;
+    
+    flex-direction: column;
+    align-items: center;
+  }
+  .Test div h2{
+    text-align: center;
+  }
+  .TestLower {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+/* InstructionPage CSS Start */
+.InstructionPage{
+  max-width: 90vw;
+  margin: auto;
+}
+.InstructionPage h2{
+ 
+  text-align: center;
+  margin-top: 20px;
+}
+.InstructionPageSec1{
+ 
+  display: flex;
+}
+
+.InstructionPageInstructions{
+  
+  padding: 50px 100px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  
+}
+.InstructionPageImg{
+  width: 400px;
+  height: auto;
+}
+.ReadyCheckbox{
+ 
+  display: flex;
+  gap: 5px;
+  justify-content: center;
+  align-items: flex-start;
+  max-width: 90vw;
+  padding: 20px 80px;
+}
+.ReadyCheckbox input{
+ 
+ margin-top: 5px;
+}
+.InstructionPageSec2{
+  border: 2px solid red;
+  display: flex;
+  max-width: 350px;
+  margin: auto;
+  padding: 10px ;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.InstructionPageSec2Back{
+border: 1.5px solid rgb(88, 86, 214);
+border-radius: 5px;
+color:rgb(88, 86, 214) ;
+padding: 4px 15px;
+font-weight: 500;
+ }
+ .StartExamButton{
+  background-color:rgb(88, 86, 214)  ;
+  color: white;
+  padding: 4px 15px;
+  border-radius: 5px;
+ }
+ .StartExamButton:hover{
+ cursor: pointer;
+ }

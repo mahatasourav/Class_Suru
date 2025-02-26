@@ -116,7 +116,7 @@ const Navbar = () => {
           <div className={Style.navButtons}>
             <Button
               text="Login/Signup"
-              className={`${Style.navButton} ${userStatus?"":Style.active}`}
+              className={`${Style.navButton} ${userStatus ? "" : Style.active}`}
               isLink={true}
               link="/login"
             />
@@ -134,13 +134,15 @@ const Navbar = () => {
                 <MdClose />
               </div>
             </div>
-            <div className={`${Style.profile} ${userStatus?Style.active:""}`} onClick={()=>navigate("/dashboard")}>
+            <div
+              className={`${Style.profile} ${userStatus ? Style.active : ""}`}
+              onClick={() => navigate("/dashboard")}
+            >
               <img
                 className={Style.profileImg}
                 src="https://www.w3schools.com/howto/img_avatar.png"
                 alt="profile"
               />
-              
             </div>
           </div>
         </div>

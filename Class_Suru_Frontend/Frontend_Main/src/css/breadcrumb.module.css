@@ -1,0 +1,12 @@
+.breadcrumbSpan{
+    color: var(--dark_color);
+    font-style: italic;
+    font-size: 12px;
+}
+.breadcrumbLink{
+    color: var(--dark_color);  
+}
+.breadcrumbLink:hover{
+    color: var(--primary_color);
+    text-decoration: underline;
+}

@@ -1,7 +1,65 @@
+.AdminPage{
+    background-color: var(--light_primary_color);
+}
 .AdminContainer{
-    min-height: calc(100vh - 70px);
+    /* height: calc(100vh - 70px); */
+    max-height: fit-content;
     max-width: 1500px;
     margin: 0 auto;
-    margin-top: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    gap: 20px;
+    /* border: 1px solid red; */
+    /* margin-top: 70px; */
+    position: relative;
+    background-color: var(--background_color);
     
+}
+
+.LeftNavBar{
+    width: 300px;
+    height: calc(100vh - 70px);
+    position: sticky;
+    top: 70px;
+    left: 0;
+    /* border: 1px solid green; */
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+    
+}
+.LeftNavBarItems{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    flex-direction: column;
+    gap: 10px;
+}
+
+.LeftNavBarLink{
+    display: block;
+    width: 100%;
+    padding: 10px 20px;
+    border-radius: 10px;
+    background-color: #dddddd;
+    color: var(--dark_color);
+    border: 1.5px solid transparent;
+    transition: all 0.3s ease;
+}
+.LeftNavBarLink.active{
+    background-color: var(--primary_color);
+    color: var(--light_primary_color);
+    border: 1.5px solid var(--primary_color);
+}
+.LeftNavBarLink:hover{
+    /* background-color: var(--primary_color); */
+    /* color: var(--light_primary_color); */
+    border: 1.5px solid var(--primary_color);
+}
+
+.RightContainer{
+    width: calc(100% - 300px);
+    height: fit-content;
+    /* border: 1px solid blue; */
 }

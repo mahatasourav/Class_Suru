@@ -1,6 +1,6 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import { Footer, Navbar } from "../Components";
-import { Outlet, useLocation, useNavigate } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import "../css/index.css";
 import axios from "axios";
 import { userDetailsApi } from "../apis";
@@ -11,18 +11,18 @@ import {
   setUserId,
   setUserStatus,
 } from "../Redux/features/userSlice";
-import apiCall from "../utils/apiCall";
 import { LoadingContext } from "../Components/Loading/Loading";
 import { getUserData } from "../utils/getUserData";
 import AdminNavbar from "../Components/Navbar/AdminNavbar";
+import Admin from "../Pages/Admin/Admin";
 
 // import { useLoadingContext } from "../Components/Loading/Loading";
 
 const Layout = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const location = useLocation();
   const userState = useSelector((state)=>state.user.status)
+  const isInstructionPage = location.pathname.includes("/instruction");
 
   const {addLoading, removeLoading} = useContext(LoadingContext)
 
@@ -31,16 +31,14 @@ const Layout = () => {
   const handleUserData = async () => {
     addLoading();
     const data = await getUserData();
-    // console.log(data);
-    
-    if(data){
+    if (data) {
       dispatch(setUserId(data.userId));
       dispatch(setUserStatus(true));
       dispatch(setUserData(data.user));
     }
     removeLoading();
-  }
-  
+  };
+
   useEffect(() => {
     if (!location.pathname.startsWith("/admin")) {
       if(!userState){
@@ -55,11 +53,20 @@ const Layout = () => {
   return (
     <div className="container">
       {
-        location.pathname.startsWith("/admin") ? <AdminNavbar /> : <Navbar />
+        location.pathname.startsWith("/admin") ? <AdminNavbar /> : !isInstructionPage && <Navbar />
           
       }
       {/* <Navbar /> */}
-      <Outlet />
+      <div
+        className={
+          isInstructionPage ? "instruction-container" : "child-container"
+        }
+      >
+        {
+          location.pathname.startsWith("/admin") ? <Admin/> : <Outlet />
+        }
+        
+      </div>
       {/* <Footer /> */}
     </div>
   );

@@ -19,7 +19,7 @@ import { useSelector } from "react-redux";
 const Navbar = () => {
   const userStatus = useSelector((state) => state.user.status);
   const navigate = useNavigate();
-  const [menuOpen, setMenuOpen] = useState(true);
+  const [menuOpen, setMenuOpen] = useState(false);
   const menuRef = useRef();
   useEffect(() => {
     const toggleSidebar = (e) => {

@@ -10,32 +10,40 @@ import { FaYoutube } from "react-icons/fa";
 
 import logo from "../../assets/class_suru_logo.png";
 import Button from "../Button/Button";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Menu from "./Menu";
 
 import { MdMenu, MdClose } from "react-icons/md";
 import { useSelector } from "react-redux";
 
-const Navbar = () => {
-  const userStatus = useSelector((state) => state.user.status);
-  const navigate = useNavigate();
-  const [menuOpen, setMenuOpen] = useState(false);
-  const menuRef = useRef();
-  useEffect(() => {
-    const toggleSidebar = (e) => {
-      if (!menuRef.current.contains(e.target)) {
-        setMenuOpen(false);
-        // console.log(menuRef.current);
-      }
-    };
-    document.addEventListener("mousedown", toggleSidebar);
-    return () => {
-      document.removeEventListener("mousedown", toggleSidebar);
-    };
-  }, []);
+const AdminNavbar = () => {
+    const adminStatus = useSelector((state) => state.admin.status);
+      const navigate = useNavigate();
+      const [menuOpen, setMenuOpen] = useState(true);
+      const menuRef = useRef();
+      const location = useLocation();
+      // useEffect(() => {
+      //   const toggleSidebar = (e) => {
+      //     if (!menuRef.current.contains(e.target)) {
+      //       setMenuOpen(false);
+      //       // console.log(menuRef.current);
+      //     }
+      //   };
+      //   document.addEventListener("mousedown", toggleSidebar);
+      //   return () => {
+      //     document.removeEventListener("mousedown", toggleSidebar);
+      //   };
+      // }, []);
+
+      // useEffect(() => {
+      //   if(!adminStatus)
+      //   {
+      //     navigate("/admin/login")
+      //   }
+      // }, []);
   return (
-    <nav className={Style.navContainer}>
-      <div className={Style.navUpper}>
+    <nav className={`${Style.navContainer} ${Style.adminnavContainer}`}>
+      {/* <div className={Style.navUpper}>
         <div className={Style.nav}>
           <div className={Style.contactOptionContainer}>
             <a className={Style.contactOption} href="#">
@@ -63,15 +71,15 @@ const Navbar = () => {
             </a>
           </div>
         </div>
-      </div>
+      </div> */}
 
       <div className={Style.navLower}>
         <div className={Style.nav}>
-          <Link className={Style.logo} to="/">
+          <Link className={Style.logo} to="/admin">
             <img className={Style.logoImg} src={logo} alt="class suru logo" />
-            <div className={Style.logoText}>Class Suru</div>
+            <div className={Style.logoText}>Class Suru | Admin Portal</div>
           </Link>
-          <div
+          {/* <div
             className={`${Style.navLinks} ${
               menuOpen ? Style.active : Style.inactive
             }`}
@@ -79,48 +87,35 @@ const Navbar = () => {
           >
             <Link
               className={Style.navLink}
-              to="/"
+              to="/admin/examlist"
               onClick={() => setMenuOpen(false)}
             >
-              Home
+              Exam List
             </Link>
             <Link
               className={Style.navLink}
-              to="/about"
+              to="/admin/users"
               onClick={() => setMenuOpen(false)}
             >
-              About Us
+              Users
             </Link>
-            <Link
-              className={Style.navLink}
-              to="/services"
-              onClick={() => setMenuOpen(false)}
-            >
-              Services
-            </Link>
-            <Link
-              className={Style.navLink}
-              to="/courses"
-              onClick={() => setMenuOpen(false)}
-            >
-              Courses
-            </Link>
-            <Link
-              className={Style.navLink}
-              to="/exam"
-              onClick={() => setMenuOpen(false)}
-            >
-              Online Exam
-            </Link>
-          </div>
+            
+          </div> */}
           <div className={Style.navButtons}>
-            <Button
-              text="Login/Signup"
-              className={`${Style.navButton} ${userStatus ? "" : Style.active}`}
-              isLink={true}
-              link="/login"
-            />
-            <div className={Style.menuSection} id="menuSection">
+            {
+              adminStatus ? <Button
+              text="Logout"
+              // className={`${Style.navButton}`}
+            /> : <Button
+            text="Login"
+            // className={`${Style.navButton}`}
+            isLink={true}
+            link="/admin/login"
+          />
+            }
+            
+            
+            {/* <div className={Style.menuSection} id="menuSection">
               <div
                 className={`${Style.menu} ${!menuOpen ? Style.open : ""}`}
                 onClick={() => setMenuOpen(true)}
@@ -133,22 +128,20 @@ const Navbar = () => {
               >
                 <MdClose />
               </div>
-            </div>
-            <div
-              className={`${Style.profile} ${userStatus ? Style.active : ""}`}
-              onClick={() => navigate("/dashboard")}
-            >
+            </div> */}
+            {/* <div className={`${Style.profile} ${userStatus?Style.active:""}`} onClick={()=>navigate("/dashboard")}>
               <img
                 className={Style.profileImg}
                 src="https://www.w3schools.com/howto/img_avatar.png"
                 alt="profile"
               />
-            </div>
+              
+            </div> */}
           </div>
         </div>
       </div>
     </nav>
-  );
-};
+  )
+}
 
-export default Navbar;
+export default AdminNavbar

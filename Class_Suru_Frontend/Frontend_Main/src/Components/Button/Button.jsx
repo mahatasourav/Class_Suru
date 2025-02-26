@@ -27,6 +27,7 @@ const Button = ({
         disabled={isDisabled}
         {...props}
       >
+        {children}
         <span className={Style.text}>{text}</span>
         <div className={Style.spinner}></div>
       </Link>
@@ -43,6 +44,7 @@ const Button = ({
         disabled={isDisabled}
         {...props}
       >
+        {children}
         <span className={Style.text}>{text}</span>
         <div className={Style.spinner}></div>
       </HashLink>
@@ -57,6 +59,7 @@ const Button = ({
       disabled={isDisabled}
       {...props}
     >
+      {children}
       <span className={Style.text}>{text}</span>
       <div className={Style.spinner}></div>
     </button>

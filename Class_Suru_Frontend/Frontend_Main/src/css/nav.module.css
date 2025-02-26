@@ -10,6 +10,10 @@
     z-index: 999;
 }
 
+.adminnavContainer{
+    height: 70px;
+}
+
 .nav{
     max-width: 1500px;
     margin: 0 auto;

@@ -1,6 +1,5 @@
 /* ====================== Poppins Font ====================== */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@100..900&family=Noto+Serif+Bengali:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 @font-face {
     font-family: tatsama;
     src: url('../../public/AlinurTatsama/Unicode/Li Alinur Tatsama Unicode.ttf') ;
@@ -17,10 +16,12 @@
 
 :root{
     --primary_color: #504eec;
+    --primary_dark_color: #29278A;
     --secondary_color: #7b79ff;
     --light_primary_color: #f6f6ff;
     --dark_color: #000000;
     --background_color: #fff;
+    --dark_secondary_color: rgba(0, 0, 0, 0.171);
 }
 
 .container{
@@ -33,9 +34,13 @@
    
 }
 .child-container{
-    padding-top: 101px;
+    padding-top: 100px;
    
 }
 .instruction-container{
     padding-top: 71px;
+}
+
+.jodit-status-bar-link{
+    display: none;
 }

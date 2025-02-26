@@ -1,5 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import { Footer, Navbar } from "../Components";
+import ExamNavbar from "../Pages/Exam/ExamNavbar";
 import { Outlet, useLocation } from "react-router-dom";
 import "../css/index.css";
 import axios from "axios";
@@ -40,23 +41,14 @@ const Layout = () => {
   };
 
   useEffect(() => {
-    if (!location.pathname.startsWith("/admin")) {
-      if(!userState){
-        handleUserData();
-      }
-    }
-    
-    
-    
-  }, [location]);
+    handleUserData();
+  }, []);
 
   return (
     <div className="container">
-      {
-        location.pathname.startsWith("/admin") ? <AdminNavbar /> : !isInstructionPage && <Navbar />
-          
-      }
-      {/* <Navbar /> */}
+      {/* 🔥 Completely remove Navbar instead of using display: none */}
+      {!isInstructionPage && <Navbar />}
+
       <div
         className={
           isInstructionPage ? "instruction-container" : "child-container"
@@ -65,8 +57,10 @@ const Layout = () => {
         {
           location.pathname.startsWith("/admin") ? <Admin/> : <Outlet />
         }
+        {/* {isInstructionPage && <ExamNavbar />} */}
         
       </div>
+
       {/* <Footer /> */}
     </div>
   );

@@ -1,9 +1,80 @@
-import React from 'react'
-
+import React from "react";
+import Style from "../../css/footer.module.css";
+import logo from "../../assets/class_suru_logo.png";
+import { FaFacebookF } from "react-icons/fa";
+import { FaInstagram } from "react-icons/fa";
+import { FaLinkedin, FaXTwitter } from "react-icons/fa6";
+import { FaYoutube } from "react-icons/fa";
+import { MdOutlineLocalPhone } from "react-icons/md";
+import { MdOutlineEmail } from "react-icons/md";
+import { TbWorld } from "react-icons/tb";
 const Footer = () => {
   return (
-    <div>this is footer</div>
-  )
-}
+    <div className={Style.Footer}>
+      <div className={Style.FooterUpper}>
+        <div className={Style.FooterUpperSec1}>
+          <div className={Style.FooterUpperSec11}>
+            <img src={logo} alt="Class_Suru_Logo" />
+            <h2>Class Suru</h2>
+          </div>
+          <div className={Style.FooterUpperSec12}>
+            <p>
+              Class শুরু, established in 2020, Jhargram, offers premier coaching
+              for IIT JEE, NEET, WBJEE, and board exams, ensuring success
+            </p>
+            <p>
+              {" "}
+              <MdOutlineLocalPhone />
+              +91 9064895938
+            </p>
+            <p>
+              <MdOutlineEmail />
+              classsuru22@gmail.com{" "}
+            </p>
+          </div>
+        </div>
 
-export default Footer
+        <div className={Style.FooterUpperSec2}>
+          <h2 className={Style.FooterUpperSec21}>Useful Links</h2>
+          <div className={Style.FooterUpperSec22}>
+            <p>
+              {" "}
+              <FaYoutube />
+              Youtube
+            </p>
+            <p>
+              {" "}
+              <FaInstagram />
+              Instagram
+            </p>
+            <p>
+              {" "}
+              <FaFacebookF />
+              facebook
+            </p>
+            <p>
+              <FaLinkedin />
+              Linkdin
+            </p>
+            <p>
+              {" "}
+              <FaXTwitter />
+              Twitter
+            </p>
+          </div>
+        </div>
+        <div className={Style.FooterUpperSec3}>
+          <h4>
+            <TbWorld />
+            Bengali
+          </h4>
+        </div>
+      </div>
+      <div className={Style.FooterLower}>
+        <p>@copyright All Right Reserved 2024, Education</p>
+      </div>
+    </div>
+  );
+};
+
+export default Footer;

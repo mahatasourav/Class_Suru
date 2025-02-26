@@ -1,5 +1,6 @@
 .AdminPage{
     background-color: var(--light_primary_color);
+    /* margin-top: 30px; */
 }
 .AdminContainer{
     /* height: calc(100vh - 70px); */

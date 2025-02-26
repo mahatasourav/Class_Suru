@@ -1,5 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import { Footer, Navbar } from "../Components";
+import ExamNavbar from "../Pages/Exam/ExamNavbar";
 import { Outlet, useLocation } from "react-router-dom";
 import "../css/index.css";
 import { useDispatch } from "react-redux";
@@ -37,6 +38,7 @@ const Layout = () => {
     <div className="container">
       {/* 🔥 Completely remove Navbar instead of using display: none */}
       {!isInstructionPage && <Navbar />}
+      {isInstructionPage && <ExamNavbar />}
 
       <div
         className={

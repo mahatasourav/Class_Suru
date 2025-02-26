@@ -41,17 +41,25 @@ const Layout = () => {
   };
 
   useEffect(() => {
-    handleUserData();
+    if (!location.pathname.startsWith("/admin")) {
+      if(!userState){
+        handleUserData();
+      }
+    }
   }, []);
 
   return (
     <div className="container">
       {/* 🔥 Completely remove Navbar instead of using display: none */}
-      {!isInstructionPage && <Navbar />}
+      {/* {!isInstructionPage && <Navbar />} */}
+      {
+        location.pathname.startsWith("/admin") ? <AdminNavbar /> : !isInstructionPage && <Navbar />
+
+      }
 
       <div
         className={
-          isInstructionPage ? "instruction-container" : "child-container"
+          isInstructionPage ? "instruction-container" : !location.pathname.startsWith("/admin") ? "child-container" : "admin-container"
         }
       >
         {

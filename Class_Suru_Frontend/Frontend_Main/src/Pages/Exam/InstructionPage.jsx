@@ -11,13 +11,23 @@ const InstructionPage = () => {
   const location = useLocation(); // Get the current URL
 
   // Function to enter fullscreen mode
-  const goFullScreen = () => {
-    if (!document.fullscreenElement) {
-      document.documentElement.requestFullscreen().catch((err) => {
-        console.error("Error entering fullscreen:", err);
-      });
+  function goFullScreen() {
+    const element = document.documentElement;
+    if (element.requestFullscreen) {
+      element.requestFullscreen();
+    } else if (element.mozRequestFullScreen) {
+      // Firefox
+      element.mozRequestFullScreen();
+    } else if (element.webkitRequestFullscreen) {
+      // Chrome, Safari, Opera
+      element.webkitRequestFullscreen();
+    } else if (element.msRequestFullscreen) {
+      // IE/Edge
+      element.msRequestFullscreen();
+    } else {
+      console.warn("Fullscreen mode is not supported.");
     }
-  };
+  }
 
   // Function to exit fullscreen mode
   const exitFullScreen = () => {

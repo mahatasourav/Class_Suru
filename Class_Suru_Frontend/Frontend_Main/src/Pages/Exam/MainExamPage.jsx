@@ -30,7 +30,7 @@ const MainExamPage = () => {
 
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedAnswers, setSelectedAnswers] = useState({});
-  const [timeLeft, setTimeLeft] = useState(600); // 10 minutes
+  const [timeLeft, setTimeLeft] = useState(3 * 3600); // 10 minutes
 
   // Enter Full-Screen Mode
   const goFullScreen = () => {
@@ -113,10 +113,6 @@ const MainExamPage = () => {
 
   return (
     <div className={Style.ExamPage}>
-      <div className={Style.Timer}>
-        Time Left: {Math.floor(timeLeft / 60)}:{timeLeft % 60}
-      </div>
-
       <div className={Style.QuestionPanel}>
         {questionsData.map((q, index) => (
           <button

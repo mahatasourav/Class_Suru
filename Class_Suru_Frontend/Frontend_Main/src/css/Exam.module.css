@@ -333,7 +333,7 @@
  margin-top: 5px;
 }
 .InstructionPageSec2{
-  border: 2px solid red;
+ 
   display: flex;
   max-width: 350px;
   margin: auto;
@@ -357,3 +357,57 @@ font-weight: 500;
  .StartExamButton:hover{
  cursor: pointer;
  }
+ /* Media Queries for Responsiveness */
+@media (max-width: 1024px) {
+  .InstructionPageInstructions {
+    padding: 40px 80px;
+  }
+
+  .InstructionPageImg {
+    width: 300px;
+  }
+
+  .ReadyCheckbox {
+    padding: 15px 60px;
+  }
+}
+
+@media (max-width: 768px) {
+  .InstructionPageSec1 {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .InstructionPageInstructions {
+    padding: 30px 60px;
+  }
+
+  .InstructionPageImg {
+    width: 250px;
+  }
+
+  .ReadyCheckbox {
+    padding: 10px 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .InstructionPageInstructions {
+    padding: 20px 20px;
+  }
+
+  .InstructionPageImg {
+    width: 200px;
+  }
+
+  .ReadyCheckbox {
+    padding: 10px 20px;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .InstructionPageSec2 {
+    flex-direction: column;
+    gap: 10px;
+  }
+}

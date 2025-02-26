@@ -124,10 +124,7 @@ const InstructionPage = () => {
         </Link>
 
         {/* Start Exam Button */}
-        <Link
-          to={`/exam/${examName}/${subjectName}/instruction/MainExamPage`}
-          className={Style.InstructionPageSec2Back}
-        >
+        <Link to={`/exam/${examName}/${subjectName}/instruction/MainExamPage`}>
           <button
             className={Style.StartExamButton}
             onClick={handleStartExam}

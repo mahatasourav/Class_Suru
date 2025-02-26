@@ -1,0 +1,149 @@
+.Footer{
+  background-color: rgb(88, 86, 214);
+  width: 100vw;
+  min-height:400px;
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 30px 120px;
+  color: white;
+}
+.FooterUpper{
+  
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.FooterUpperSec1,.FooterUpperSec2 ,.FooterUpperSec3{
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  gap: 20px;
+}
+.FooterUpperSec11 img{
+  
+  height: 40px;
+  width: auto;
+  background-color: white;
+  
+}
+.FooterUpperSec11 ,.FooterUpperSec21{
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  
+}
+.FooterUpperSec12 ,.FooterUpperSec22{
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 3px 15px;
+}
+.FooterUpperSec12 p, .FooterUpperSec22 p{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.FooterUpperSec3{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+ 
+}
+.FooterUpperSec3 h4{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  color: rgb(88, 86, 214);
+  background-color: white;
+  gap: 4px;
+  padding: 2px 7px;
+  border-radius: 5px;
+ 
+}
+
+.FooterLower{
+
+ display: flex;
+ justify-content: space-around;
+ align-items: center;
+}
+/* Media Queries for Responsiveness */
+@media (max-width: 1024px) {
+  .Footer {
+    padding: 20px 60px;
+    width: 100vw;
+  }
+  
+  .FooterUpperSec21{
+    text-align: center;
+    justify-content: center;
+  }
+  .FooterUpperSec22 p{
+    text-align: center;
+    justify-content: center;
+      }
+  .FooterUpperSec1,
+  .FooterUpperSec2,
+  .FooterUpperSec3 {
+    width: 80%;
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .FooterUpper {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .Footer {
+    padding: 20px 30px;
+  }
+
+  .FooterUpperSec1,
+  .FooterUpperSec2,
+  .FooterUpperSec3 {
+    width: 90%;
+  }
+  .FooterUpperSec11,.FooterUpperSec21{
+text-align: center;
+justify-content: center;
+
+  }
+  .FooterUpperSec12,.FooterUpperSec22 {
+  gap: 5px;
+      }
+  .FooterUpperSec12 p ,.FooterUpperSec22 p{
+    text-align: center;
+    justify-content: center;
+      }
+}
+
+@media (max-width: 480px) {
+  .Footer {
+    padding: 10px 20px;
+  }
+
+  .FooterUpperSec1,
+  .FooterUpperSec2,
+  .FooterUpperSec3 {
+    width: 100%;
+  }
+
+  .FooterUpperSec3 h4 {
+    font-size: 1rem;
+    padding: 2px 5px;
+  }
+
+  .FooterLower {
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
+  }
+}

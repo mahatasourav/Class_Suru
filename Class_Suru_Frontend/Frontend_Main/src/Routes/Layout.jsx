@@ -33,7 +33,6 @@ const Layout = () => {
 
   // 🔹 Remove Navbar Completely from Instruction Page
   const isInstructionPage = location.pathname.includes("/instruction");
-
   return (
     <div className="container">
       {/* 🔥 Completely remove Navbar instead of using display: none */}
@@ -46,8 +45,7 @@ const Layout = () => {
       >
         <Outlet />
       </div>
-
-      {/* <Footer /> */}
+      {!isInstructionPage && <Footer />}
     </div>
   );
 };

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams, useNavigate, useLocation } from "react-router-dom";
 import Style from "../../css/Exam.module.css";
 
+import { ExamNavbarRight, ExamMainNavRight } from "./ExamNavbarRightCorner";
 const questionsData = [
   {
     id: 1,
@@ -113,6 +114,13 @@ const MainExamPage = () => {
 
   return (
     <div className={Style.ExamPage}>
+      <div>
+        <img
+          className={Style.profileImg}
+          src="https://www.w3schools.com/howto/img_avatar.png"
+          alt="profile"
+        />
+      </div>
       <div className={Style.QuestionPanel}>
         {questionsData.map((q, index) => (
           <button

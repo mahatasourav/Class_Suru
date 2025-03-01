@@ -10,27 +10,30 @@ const Admin = () => {
       <div className={Style.AdminContainer}>
         {/* <Link to="/admin/examlist" className={Style.AdminPath}>Exam List</Link> */}
         {/* <Link to="/admin/users" className={Style.AdminPath}>Users</Link> */}
-        <div className={Style.LeftNavBar}>
-          <div className={Style.LeftNavBarItems}>
-            <Link
-              to="/admin/list"
-              className={`${Style.LeftNavBarLink} ${
-                location.pathname.includes("/admin/list") && Style.active
-              }`}
-            >
-              Manage Exams
-            </Link>
-            <Link
-              to="/admin/users"
-              className={`${Style.LeftNavBarLink} ${
-                location.pathname.includes("/admin/users") && Style.active
-              }`}
-            >
-              Users
-            </Link>
-            {/* <Link to="/admin/examlist" className={Style.LeftNavBarLink}>Exam List</Link> */}
-          </div>
-        </div>
+        {
+          !location.pathname.includes("/admin/login") && (<div className={Style.LeftNavBar}>
+            <div className={Style.LeftNavBarItems}>
+              <Link
+                to="/admin/list"
+                className={`${Style.LeftNavBarLink} ${
+                  location.pathname.includes("/admin/list") && Style.active
+                }`}
+              >
+                Manage Exams
+              </Link>
+              <Link
+                to="/admin/users"
+                className={`${Style.LeftNavBarLink} ${
+                  location.pathname.includes("/admin/users") && Style.active
+                }`}
+              >
+                Users
+              </Link>
+              {/* <Link to="/admin/examlist" className={Style.LeftNavBarLink}>Exam List</Link> */}
+            </div>
+          </div>)
+        }
+        
         <div className={Style.RightContainer}>
           <Outlet />
         </div>

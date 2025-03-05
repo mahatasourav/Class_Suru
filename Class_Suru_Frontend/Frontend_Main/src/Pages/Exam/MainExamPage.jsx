@@ -34,13 +34,23 @@ const MainExamPage = () => {
   const [timeLeft, setTimeLeft] = useState(3 * 3600); // 10 minutes
 
   // Enter Full-Screen Mode
-  const goFullScreen = () => {
-    if (!document.fullscreenElement) {
-      document.documentElement.requestFullscreen().catch((err) => {
-        console.error("Error entering fullscreen:", err);
-      });
+  function goFullScreen() {
+    const element = document.documentElement;
+    if (element.requestFullscreen) {
+      element.requestFullscreen();
+    } else if (element.mozRequestFullScreen) {
+      // Firefox
+      element.mozRequestFullScreen();
+    } else if (element.webkitRequestFullscreen) {
+      // Chrome, Safari, Opera
+      element.webkitRequestFullscreen();
+    } else if (element.msRequestFullscreen) {
+      // IE/Edge
+      element.msRequestFullscreen();
+    } else {
+      console.warn("Fullscreen mode is not supported.");
     }
-  };
+  }
 
   // Exit Full-Screen Mode
   const exitFullScreen = () => {
@@ -51,26 +61,6 @@ const MainExamPage = () => {
     }
   };
 
-  // Handle Full-Screen Mode if URL contains "MainExamPage"
-  useEffect(() => {
-    if (location.pathname.includes("instruction/MainExamPage")) {
-      goFullScreen(); // Enable fullscreen only when on the instruction page
-
-      const handleKeyDown = (event) => {
-        if (event.key === "Escape") {
-          exitFullScreen();
-          navigate(-1); // Go back to the previous page
-        }
-      };
-
-      window.addEventListener("keydown", handleKeyDown);
-
-      return () => {
-        exitFullScreen(); // Exit fullscreen when leaving the page
-        window.removeEventListener("keydown", handleKeyDown);
-      };
-    }
-  }, [location.pathname, navigate]); // Runs only when pathname changes
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -107,7 +97,7 @@ const MainExamPage = () => {
   };
 
   const submitExam = () => {
-    alert("Exam submitted successfully!");
+    // alert("Exam submitted successfully!");
     exitFullScreen();
     navigate(`/exam/${examName}/${subjectName}/result`);
   };

@@ -155,3 +155,7 @@
     min-height: 500px !important;
 
   }
+
+  .required{
+    color: red;
+  }

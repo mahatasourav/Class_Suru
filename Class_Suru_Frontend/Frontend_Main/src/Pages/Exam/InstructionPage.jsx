@@ -42,20 +42,6 @@ const InstructionPage = () => {
   useEffect(() => {
     if (location.pathname.includes("instruction")) {
       goFullScreen(); // Enable fullscreen only when on the instruction page
-
-      const handleKeyDown = (event) => {
-        if (event.key === "Escape") {
-          exitFullScreen();
-          navigate(-1); // Go back to the previous page
-        }
-      };
-
-      window.addEventListener("keydown", handleKeyDown);
-
-      return () => {
-        exitFullScreen(); // Exit fullscreen when leaving the page
-        window.removeEventListener("keydown", handleKeyDown);
-      };
     }
   }, [location.pathname, navigate]); // Runs only when pathname changes
 

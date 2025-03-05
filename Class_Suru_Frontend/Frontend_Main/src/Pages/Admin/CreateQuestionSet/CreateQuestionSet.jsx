@@ -35,7 +35,7 @@ const CreateQuestionSet = () => {
         </div>
         <div className={Style.createQuestionSetContainer}>
           <div className={Style.inputSection}>
-            <label htmlFor="questionSet">Question Set Name</label>
+            <label htmlFor="questionSet">Question Set Name <span className={Style.required}>*</span></label>
             <input
               value={setName}
               type="text"
@@ -56,7 +56,7 @@ const CreateQuestionSet = () => {
             ></textarea>
           </div>
           <div className={Style.inputSection}>
-            <label htmlFor="questionSetDuration">Exam Duration (hours)</label>
+            <label htmlFor="questionSetDuration">Exam Duration (hours) <span className={Style.required}>*</span></label>
             <input
               type="number"
               id="questionSetDuration"

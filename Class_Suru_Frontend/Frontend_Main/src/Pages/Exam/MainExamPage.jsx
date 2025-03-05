@@ -179,7 +179,7 @@ const MainExamPage = () => {
       </div>
 
       <button className={Style.SubmitButton} onClick={submitExam}>
-        Submit Exam
+        Submit Exams
       </button>
     </div>
   );

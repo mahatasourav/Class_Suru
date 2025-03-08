@@ -16,5 +16,7 @@ const basApi = "https://class-suru-beta.vercel.app";
 const signupApi = `${basApi}/api/auth/signup`;
 const loginApi = `${basApi}/api/auth/login`;
 const userDetailsApi = `${basApi}/api/auth/user`;
+const createExamApi = `${basApi}/api/auth/exam`;
 
-export { signupApi, loginApi, userDetailsApi };
+
+export { signupApi, loginApi, userDetailsApi ,createExamApi};

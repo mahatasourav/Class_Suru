@@ -2,20 +2,67 @@ import React, { useMemo, useRef, useState } from "react";
 import { Button } from "../../../Components";
 import { FaArrowLeft } from "react-icons/fa";
 import Style from "../../../css/createQuestionSet.module.css";
-import { useParams } from "react-router-dom";
-import JoditEditor from "jodit-react";
-import { FaPlus } from "react-icons/fa";
-import { Link } from "react-router-dom";
-import { IoCloseCircle } from "react-icons/io5";
+import { useNavigate, useParams } from "react-router-dom";
+
+import apiCall from "../../../utils/apiCall";
+import { createExamApi } from "../../../apis";
 
 const CreateQuestionSet = () => {
   const { examName, subjectName } = useParams();
+  const navigate = useNavigate();
 
-  const [setName, setSetName] = useState("");
-  const [setDescription, setSetDescription] = useState("");
-  const [setDuration, setSetDuration] = useState(0);
-  const [questionNo, setQuestionNo] = useState([]);
-  const [currentQuestionNo, setCurrentQuestionNo] = useState(0);
+  const [name, setName] = useState("");
+  const [description, setDescription] = useState("");
+  const [duration, setDuration] = useState(0);
+  const [totalMarks, setTotalMarks] = useState(0);
+
+  const [loading, setLoading] = useState(false);
+  
+  
+
+  const handleSubmit = async()=>{
+    // e.preventDefault();
+
+    // console.log("Button Clicked");
+
+    // console.log("Loading...");
+    
+    try {
+      const data = {
+        "title": name,
+        "type": examName,
+        "exam_description": description,
+        "exam_duration": duration.toString(),
+        "exam_total_marks": totalMarks.toString(),
+        "exam_subject": subjectName
+      }
+
+          // console.log(data);
+
+          setLoading(true);
+          
+
+          const response = await apiCall.post(createExamApi,data);
+
+          // console.log(response);
+          
+
+          if(response.status === 201)
+          {
+            console.log("Exam Created Successfully");
+            // alert("Exam Created Successfully");
+            console.log(response.data);
+            navigate(`/admin/list/${examName}/${subjectName}/createQuestionSet/questionlist/${response.data.exam.id}`);
+          }
+            
+    } catch (error) {
+        console.log("Error: ", error);
+        
+    }
+    finally{
+      setLoading(false);
+    }
+  }
 
 
   return (
@@ -37,12 +84,12 @@ const CreateQuestionSet = () => {
           <div className={Style.inputSection}>
             <label htmlFor="questionSet">Question Set Name <span className={Style.required}>*</span></label>
             <input
-              value={setName}
+              value={name}
               type="text"
               id="questionSet"
               name="questionSet"
               placeholder="Enter Question Set Name"
-              onChange={(e) => setSetName(e.target.value)}
+              onChange={(e) => setName(e.target.value)}
             />
           </div>
           <div className={Style.inputSection}>
@@ -51,8 +98,8 @@ const CreateQuestionSet = () => {
               name="description"
               id="questionSetDescription"
               placeholder="Enter a Short Description for this Question set..."
-              onChange={(e) => setSetDescription(e.target.value)}
-              value={setDescription}
+              onChange={(e) => setDescription(e.target.value)}
+              value={description}
             ></textarea>
           </div>
           <div className={Style.inputSection}>
@@ -62,42 +109,25 @@ const CreateQuestionSet = () => {
               id="questionSetDuration"
               name="questionSetDuration"
               placeholder="Enter Question Set Name"
-              value={setDuration}
-              onChange={(e) => setSetDuration(e.target.value)}
+              value={duration}
+              onChange={(e) => setDuration(e.target.value)}
             />
           </div>
 
-          <div className={Style.addQuestionSection}>
-            <div className={Style.addQuestionLabel}>Add Questions</div>
-            <div className={Style.questionList}>
-            <div className={Style.questionCardAdd} onClick={() => {setQuestionNo([...questionNo, currentQuestionNo + 1]); setCurrentQuestionNo(currentQuestionNo + 1)}}>
-                <FaPlus />
-              </div>
-              {questionNo.length > 0
-                ? questionNo.map((question, index) => {
-                    return (
-                        <div className={Style.questionCardContainer}>
-                        <IoCloseCircle className={Style.close} onClick={()=>{
-                            const updatedQuestions = questionNo.filter((_, i) => i !== index);
-                            setQuestionNo(updatedQuestions);
-                        }}/>
-                        <Link
-                        className={Style.questionCard}
-                        to={`/admin/list/${examName}/${subjectName}/createQuestionSet/${question}`}
-                      >
-                        
-                        {question}
-                      </Link>
-                        </div>
-                      
-                    );
-                  })
-                : null}
-
-              
-            </div>
+          <div className={Style.inputSection}>
+            <label htmlFor="totalMarks">Total Marks<span className={Style.required}>*</span></label>
+            <input
+              type="number"
+              id="totalMarks"
+              name="totalMarks"
+              placeholder="Enter Total Marks"
+              value={totalMarks}
+              onChange={(e) => setTotalMarks(e.target.value)}
+            />
           </div>
-          <Button text="Submit" className={Style.createButton} />
+
+          
+          <Button text="Submit" className={Style.createButton} onClick={handleSubmit} isDisabled={loading} isLoading={loading} />
         </div>
       </div>
     </>

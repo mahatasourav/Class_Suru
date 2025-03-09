@@ -4,7 +4,10 @@ import Navbar from "./Navbar/Navbar";
 
 import BreadCrumb from "./BreadCrumb/BreadCrumb";
 import ExamCard from "./ExamCard/ExamCard";
+import ExamNavbar from "./Navbar/ExamNavbar";
 
 
 
-export {Navbar, Footer,Button,BreadCrumb,ExamCard};
+
+
+export {Navbar, Footer,Button,BreadCrumb,ExamCard,ExamNavbar};

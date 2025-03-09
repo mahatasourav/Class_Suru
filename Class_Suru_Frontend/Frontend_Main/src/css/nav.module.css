@@ -421,3 +421,41 @@ ExamNavbar CSS  */
     box-shadow: 0px 5px 10px #0000001e;
     z-index: 999;
 }
+
+.examNavContainer{
+    height: 70px;
+
+}
+
+.logoText b{
+    color: #000;
+    font-weight: 500;
+}
+
+.timeLeft{
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    font-size: 18px;
+    font-weight: 500;
+}
+.timeLeftBlocks{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3px;
+}
+
+.timeBlock{
+    height: 30px;
+    width: 30px;
+    /* border: 1px solid red; */
+    background-color: var(--dark_secondary_color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+
+}

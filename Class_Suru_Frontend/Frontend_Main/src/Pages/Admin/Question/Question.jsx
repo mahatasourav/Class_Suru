@@ -2,7 +2,7 @@ import React, { useMemo, useRef, useState } from "react";
 import { Button } from "../../../Components";
 import { FaArrowLeft } from "react-icons/fa";
 import Style from "../../../css/createQuestionSet.module.css";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import JoditEditor from "jodit-react";
 import { FaPlus } from "react-icons/fa";
 import { Link } from "react-router-dom";
@@ -10,6 +10,7 @@ import { IoCloseCircle } from "react-icons/io5";
 
 const Question = () => {
   const { examName, subjectName } = useParams();
+  const navigate = useNavigate();
 
   const [setName, setSetName] = useState("");
   const [option1, setOption1] = useState("");
@@ -47,8 +48,9 @@ const Question = () => {
         <div className={Style.backSection}>
           <Button
             text="Back"
-            isLink={true}
-            link={`/admin/list/${examName}/${subjectName}/createQuestionSet`}
+            // isLink={true}
+            // link={`/admin/list/${examName}/${subjectName}/createQuestionSet`}
+            onClick={() => navigate(-1)}
             className={Style.backButton}
             onDualMode={true}
             isHollow={true}

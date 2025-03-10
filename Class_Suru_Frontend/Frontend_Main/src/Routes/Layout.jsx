@@ -22,10 +22,10 @@ import Admin from "../Pages/Admin/Admin";
 const Layout = () => {
   const dispatch = useDispatch();
   const location = useLocation();
-  const userState = useSelector((state)=>state.user.status)
+  const userState = useSelector((state) => state.user.status);
   const isInstructionPage = location.pathname.includes("/instruction");
 
-  const {addLoading, removeLoading} = useContext(LoadingContext)
+  const { addLoading, removeLoading } = useContext(LoadingContext);
 
   // const {addLoading, removeLoading} = useLoadingContext();
 
@@ -42,34 +42,37 @@ const Layout = () => {
 
   useEffect(() => {
     if (!location.pathname.startsWith("/admin")) {
-      if(!userState){
-        handleUserData();
+      if (!userState) {
+        // handleUserData();
       }
     }
   }, []);
 
   return (
     <div className="container">
-      {/* 🔥 Completely remove Navbar instead of using display: none */}
       {/* {!isInstructionPage && <Navbar />} */}
-      {
-        location.pathname.startsWith("/admin") ? <AdminNavbar /> : !isInstructionPage ? <Navbar /> : <ExamNavbar />
-
-      }
+      {location.pathname.startsWith("/admin") ? (
+        <AdminNavbar />
+      ) : !isInstructionPage ? (
+        <Navbar />
+      ) : (
+        <ExamNavbar />
+      )}
 
       <div
         className={
-          isInstructionPage ? "instruction-container" : !location.pathname.startsWith("/admin") ? "child-container" : "admin-container"
+          isInstructionPage
+            ? "instruction-container"
+            : !location.pathname.startsWith("/admin")
+            ? "child-container"
+            : "admin-container"
         }
       >
-        {
-          location.pathname.startsWith("/admin") ? <Admin/> : <Outlet />
-        }
+        {location.pathname.startsWith("/admin") ? <Admin /> : <Outlet />}
         {/* {isInstructionPage && <ExamNavbar />} */}
-        
       </div>
 
-      {/* <Footer /> */}
+      {!isInstructionPage && <Footer />}
     </div>
   );
 };

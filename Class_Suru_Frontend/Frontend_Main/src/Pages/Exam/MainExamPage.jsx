@@ -95,12 +95,7 @@ const MainExamPage = () => {
               </p>
             </div>
             <div className={Style.examPageContentImg}>
-              <img
-                className={Style.examImg}
-                src={questionImage}
-                
-                alt=""
-              />
+              <img className={Style.examImg} src={questionImage} alt="" />
             </div>
             <div className={Style.optionsSection}>
               <div className={`${Style.option} ${Style.selected}`}>
@@ -111,8 +106,10 @@ const MainExamPage = () => {
                   Lorem ipsum dolor sit amet.
                 </div>
               </div>
-              <div className={Style.option}>
-                <div className={Style.optionCheckBox}></div>
+              <div className={`${Style.option} ${Style.selected}`}>
+                <div className={Style.optionCheckBox}>
+                  <div className={Style.optionCheckBoxInner}></div>
+                </div>
                 <div className={Style.optionText}>
                   Lorem ipsum dolor sit amet.
                 </div>
@@ -205,13 +202,16 @@ const MainExamPage = () => {
                   alt="instruction1 icon"
                 />
               </div>
-              <div className={Style.indicationText}>Answered & Marked for Review
-              (will be considered for evaluation)</div>
+              <div className={Style.indicationText}>
+                Answered & Marked for Review (will be considered for evaluation)
+              </div>
             </div>
           </div>
           <div className={Style.examQuestionListSection}>
-            <div className={`${Style.examQuestion} ${Style.notVisited}`}>
-              <div className={Style.examQuestionText}>1</div>
+            <div
+              className={`${Style.examQuestion} ${Style.answeredAndMarkedForReview}`}
+            >
+              <div className={Style.examQuestionText}>99</div>
             </div>
             <div className={`${Style.examQuestion} ${Style.notAnswered}`}>
               <div className={Style.examQuestionText}>2</div>
@@ -223,7 +223,9 @@ const MainExamPage = () => {
               <div className={Style.examQuestionText}>4</div>
             </div>
 
-            <div className={`${Style.examQuestion} ${Style.answeredAndMarkedForReview}`}>
+            <div
+              className={`${Style.examQuestion} ${Style.answeredAndMarkedForReview}`}
+            >
               <div className={Style.examQuestionText}>5</div>
             </div>
             <div className={`${Style.examQuestion} ${Style.notVisited}`}>
@@ -266,7 +268,9 @@ const MainExamPage = () => {
               <div className={Style.examQuestionText}>4</div>
             </div>
 
-            <div className={`${Style.examQuestion} ${Style.answeredAndMarkedForReview}`}>
+            <div
+              className={`${Style.examQuestion} ${Style.answeredAndMarkedForReview}`}
+            >
               <div className={Style.examQuestionText}>5</div>
             </div>
             <div className={`${Style.examQuestion} ${Style.notVisited}`}>
@@ -309,7 +313,9 @@ const MainExamPage = () => {
               <div className={Style.examQuestionText}>4</div>
             </div>
 
-            <div className={`${Style.examQuestion} ${Style.answeredAndMarkedForReview}`}>
+            <div
+              className={`${Style.examQuestion} ${Style.answeredAndMarkedForReview}`}
+            >
               <div className={Style.examQuestionText}>5</div>
             </div>
             <div className={`${Style.examQuestion} ${Style.notVisited}`}>
@@ -352,7 +358,9 @@ const MainExamPage = () => {
               <div className={Style.examQuestionText}>4</div>
             </div>
 
-            <div className={`${Style.examQuestion} ${Style.answeredAndMarkedForReview}`}>
+            <div
+              className={`${Style.examQuestion} ${Style.answeredAndMarkedForReview}`}
+            >
               <div className={Style.examQuestionText}>5</div>
             </div>
             <div className={`${Style.examQuestion} ${Style.notVisited}`}>
@@ -395,7 +403,9 @@ const MainExamPage = () => {
               <div className={Style.examQuestionText}>4</div>
             </div>
 
-            <div className={`${Style.examQuestion} ${Style.answeredAndMarkedForReview}`}>
+            <div
+              className={`${Style.examQuestion} ${Style.answeredAndMarkedForReview}`}
+            >
               <div className={Style.examQuestionText}>5</div>
             </div>
             <div className={`${Style.examQuestion} ${Style.notVisited}`}>
@@ -427,8 +437,7 @@ const MainExamPage = () => {
             </div>
           </div>
           <div className={Style.submitButtonContainer}>
-            
-          <Button text="Submit Exam" className={Style.submitButton} />
+            <Button text="Submit Exam" className={Style.submitButton} />
           </div>
         </div>
       </div>

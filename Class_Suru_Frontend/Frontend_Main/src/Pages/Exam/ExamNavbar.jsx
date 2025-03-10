@@ -32,10 +32,10 @@ const ExamNavbar = () => {
     <nav className={Style.ExamnavContainer}>
       <div className={Style.navLower}>
         <div className={Style.nav}>
-          <Link className={Style.logo} to="/">
+          <div className={Style.logo}>
             <img className={Style.logoImg} src={logo} alt="class suru logo" />
             <div className={Style.logoText}>Class Suru</div>
-          </Link>
+          </div>
           <div>
             <p> {subjectName} Mock Test</p>
           </div>

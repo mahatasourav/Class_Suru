@@ -6,7 +6,6 @@ import { useState, useEffect } from "react";
 
 const ExamNavbarRight = () => {
   const userStatus = useSelector((state) => state.user.status);
-  const navigate = useNavigate(); // Fixing undefined navigate
 
   return (
     <div className={Style.navButtons}>
@@ -17,10 +16,7 @@ const ExamNavbarRight = () => {
         link="/login"
       />
 
-      <div
-        className={`${Style.profile} ${userStatus ? Style.active : ""}`}
-        onClick={() => navigate("/dashboard")}
-      >
+      <div className={`${Style.profile} ${userStatus ? Style.active : ""}`}>
         <img
           className={Style.profileImg}
           src="https://www.w3schools.com/howto/img_avatar.png"

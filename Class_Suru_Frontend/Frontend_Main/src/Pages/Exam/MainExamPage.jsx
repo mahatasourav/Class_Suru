@@ -1,187 +1,447 @@
-import React, { useState, useEffect } from "react";
-import { useParams, useNavigate, useLocation } from "react-router-dom";
-import Style from "../../css/Exam.module.css";
+import React from "react";
+import Button from "../../Components/Button/Button";
+import Style from "../../css/mainexampage.module.css";
+import { MdOutlineBookmarkAdd } from "react-icons/md";
+import questionImage from "../../assets/questionImage.png";
+import profile from "../../assets/JEEMainIMG.png";
+import instruction1 from "../../assets/instruction1.png";
+import instruction2 from "../../assets/instruction2.png";
+import instruction3 from "../../assets/instruction3.png";
+import instruction4 from "../../assets/instruction4.png";
+import instruction5 from "../../assets/instruction5.png";
 
-import { ExamNavbarRight, ExamMainNavRight } from "./ExamNavbarRightCorner";
-const questionsData = [
-  {
-    id: 1,
-    question: "What is the capital of France?",
-    options: ["Berlin", "Madrid", "Paris", "Rome"],
-    correctAnswer: "Paris",
-  },
-  {
-    id: 2,
-    question: "Which planet is known as the Red Planet?",
-    options: ["Earth", "Mars", "Jupiter", "Saturn"],
-    correctAnswer: "Mars",
-  },
-  {
-    id: 3,
-    question: "What is 2 + 2?",
-    options: ["3", "4", "5", "6"],
-    correctAnswer: "4",
-  },
-];
+import { HiChevronDoubleRight } from "react-icons/hi";
+import { HiChevronDoubleLeft } from "react-icons/hi";
 
 const MainExamPage = () => {
-  const { examName, subjectName, testName } = useParams();
-  const navigate = useNavigate();
-  const location = useLocation();
-
-  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [selectedAnswers, setSelectedAnswers] = useState({});
-  const [timeLeft, setTimeLeft] = useState(3 * 3600); // 10 minutes
-
-  // Enter Full-Screen Mode
-  const goFullScreen = () => {
-    if (!document.fullscreenElement) {
-      document.documentElement.requestFullscreen().catch((err) => {
-        console.error("Error entering fullscreen:", err);
-      });
-    }
-  };
-
-  // Exit Full-Screen Mode
-  const exitFullScreen = () => {
-    if (document.fullscreenElement) {
-      document.exitFullscreen().catch((err) => {
-        console.error("Error exiting fullscreen:", err);
-      });
-    }
-  };
-
-  // Handle Full-Screen Mode if URL contains "MainExamPage"
-  useEffect(() => {
-    if (location.pathname.includes("instruction/MainExamPage")) {
-      goFullScreen(); // Enable fullscreen only when on the instruction page
-
-      const handleKeyDown = (event) => {
-        if (event.key === "Escape") {
-          exitFullScreen();
-          navigate(-1); // Go back to the previous page
-        }
-      };
-
-      window.addEventListener("keydown", handleKeyDown);
-
-      return () => {
-        exitFullScreen(); // Exit fullscreen when leaving the page
-        window.removeEventListener("keydown", handleKeyDown);
-      };
-    }
-  }, [location.pathname, navigate]); // Runs only when pathname changes
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setTimeLeft((prevTime) => {
-        if (prevTime <= 1) {
-          clearInterval(timer);
-          submitExam();
-          return 0;
-        }
-        return prevTime - 1;
-      });
-    }, 1000);
-
-    return () => clearInterval(timer);
-  }, []);
-
-  const handleOptionSelect = (questionId, option) => {
-    setSelectedAnswers((prev) => ({
-      ...prev,
-      [questionId]: option,
-    }));
-  };
-
-  const goToNextQuestion = () => {
-    if (currentQuestionIndex < questionsData.length - 1) {
-      setCurrentQuestionIndex((prev) => prev + 1);
-    }
-  };
-
-  const goToPrevQuestion = () => {
-    if (currentQuestionIndex > 0) {
-      setCurrentQuestionIndex((prev) => prev - 1);
-    }
-  };
-
-  const submitExam = () => {
-    alert("Exam submitted successfully!");
-    exitFullScreen();
-    navigate(`/exam/${examName}/${subjectName}/result`);
-  };
-
   return (
-    <div className={Style.ExamPage}>
-      <div>
-        <img
-          className={Style.profileImg}
-          src="https://www.w3schools.com/howto/img_avatar.png"
-          alt="profile"
-        />
-      </div>
-      <div className={Style.QuestionPanel}>
-        {questionsData.map((q, index) => (
-          <button
-            key={q.id}
-            className={
-              selectedAnswers[q.id]
-                ? Style.AttemptedQuestion
-                : Style.QuestionButton
-            }
-            onClick={() => setCurrentQuestionIndex(index)}
-          >
-            {index + 1}
-          </button>
-        ))}
-      </div>
+    <>
+      <div className={Style.examPageContainer}>
+        <div className={Style.examPageLeft}>
+          <div className={Style.examPageLeftHeader}>
+            <div className={Style.examPageLeftHeaderTitle}>Question 1:</div>
 
-      <div className={Style.QuestionContainer}>
-        <h3>{questionsData[currentQuestionIndex].question}</h3>
-        <div className={Style.Options}>
-          {questionsData[currentQuestionIndex].options.map((option, index) => (
-            <label key={index} className={Style.OptionLabel}>
-              <input
-                type="radio"
-                name={`question-${questionsData[currentQuestionIndex].id}`}
-                value={option}
-                checked={
-                  selectedAnswers[questionsData[currentQuestionIndex].id] ===
-                  option
-                }
-                onChange={() =>
-                  handleOptionSelect(
-                    questionsData[currentQuestionIndex].id,
-                    option
-                  )
-                }
-              />
-              {option}
-            </label>
-          ))}
+            <div className={Style.examPageLeftOptions}>
+              <div className={Style.examPageLeftMarksDristibution}>
+                <div className={Style.examPageLeftMarksDristibutionTitle}>
+                  Marks:
+                </div>
+                <div
+                  className={Style.examPageLeftMarksDristibutionValueContainer}
+                >
+                  <div
+                    className={`${Style.examPageLeftMarksDristibutionValueCorrect} ${Style.correct}`}
+                  >
+                    +1
+                  </div>
+                  <div
+                    className={`${Style.examPageLeftMarksDristibutionValueCorrect} ${Style.wrong}`}
+                  >
+                    -0.25
+                  </div>
+                </div>
+              </div>
+              <div className={Style.examPageLeftOptionsTime}>
+                <div className={Style.examPageLeftOptionsTimeTitle}>Time:</div>
+                <div className={Style.examPageLeftOptionsTimeValue}>01:00</div>
+              </div>
+              {/* <Button
+                text="Save"
+                isHollow={true}
+                onDualMode={true}
+                className={Style.examPageLeftOptionsSaveButton}
+              >
+                <MdOutlineBookmarkAdd />
+              </Button> */}
+            </div>
+          </div>
+          <div className={Style.examPageContent}>
+            <div className={Style.examPageContentQuestion}>
+              <p>
+                A ball is thrown vertically upward with an initial velocity of
+                20
+                <span class="katex katex-html base mord" aria-hidden="true">
+                  20
+                </span>{" "}
+                m/s. Ignoring air resistance, what is the maximum height it will
+                reach? (Take{" "}
+                <i>
+                  <span
+                    class="katex katex-html base mord mathnormal"
+                    aria-hidden="true"
+                  >
+                    g
+                  </span>
+                  <span
+                    class="katex katex-html base mspace"
+                    aria-hidden="true"
+                  ></span>
+                  <span class="katex katex-html base mrel" aria-hidden="true">
+                    =
+                  </span>
+                  <span
+                    class="katex katex-html base mspace"
+                    aria-hidden="true"
+                  ></span>
+                  <span
+                    class="katex katex-html base strut"
+                    aria-hidden="true"
+                  ></span>
+                  <span class="katex katex-html base mord" aria-hidden="true">
+                    10
+                  </span>
+                </i>{" "}
+                m/s²)
+              </p>
+            </div>
+            <div className={Style.examPageContentImg}>
+              <img className={Style.examImg} src={questionImage} alt="" />
+            </div>
+            <div className={Style.optionsSection}>
+              <div className={`${Style.option} ${Style.selected}`}>
+                <div className={Style.optionCheckBox}>
+                  <div className={Style.optionCheckBoxInner}></div>
+                </div>
+                <div className={Style.optionText}>
+                  Lorem ipsum dolor sit amet.
+                </div>
+              </div>
+              <div className={`${Style.option} ${Style.selected}`}>
+                <div className={Style.optionCheckBox}>
+                  <div className={Style.optionCheckBoxInner}></div>
+                </div>
+                <div className={Style.optionText}>
+                  Lorem ipsum dolor sit amet.
+                </div>
+              </div>
+              <div className={Style.option}>
+                <div className={Style.optionCheckBox}></div>
+                <div className={Style.optionText}>
+                  Lorem ipsum dolor sit amet.
+                </div>
+              </div>
+              <div className={Style.option}>
+                <div className={Style.optionCheckBox}></div>
+                <div className={Style.optionText}>
+                  Lorem ipsum dolor sit amet.
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className={Style.examPageControllSection}>
+            <div className={Style.controlButton}>
+              <Button text="previous" className={Style.previous}>
+                <HiChevronDoubleLeft />
+              </Button>
+            </div>
+            <div className={Style.controlButton}>
+              <Button text="Save & Next" className={Style.save} />
+              <Button text="Clear" className={Style.clear} />
+              <Button text="Mark For Review" className={Style.markForReview} />
+            </div>
+            <div className={Style.controlButton}>
+              <Button text="Next" className={Style.next}>
+                <HiChevronDoubleRight />
+              </Button>
+            </div>
+          </div>
+        </div>
+        <div className={Style.examPageRightSideBar}>
+          <div className={Style.profileSection}>
+            <div className={Style.profileSectionImage}>
+              <img className={Style.profile} src={profile} alt="" />
+            </div>
+            <div className={Style.profileSectionName}>John Doe</div>
+          </div>
+          <div className={Style.examIndicationSection}>
+            <div className={Style.examIndication}>
+              <div className={Style.indicationIcon}>
+                <img
+                  className={Style.indication}
+                  src={instruction1}
+                  alt="instruction1 icon"
+                />
+              </div>
+              <div className={Style.indicationText}>Not Visited</div>
+            </div>
+            <div className={Style.examIndication}>
+              <div className={Style.indicationIcon}>
+                <img
+                  className={Style.indication}
+                  src={instruction2}
+                  alt="instruction1 icon"
+                />
+              </div>
+              <div className={Style.indicationText}>Not Answered</div>
+            </div>
+            <div className={Style.examIndication}>
+              <div className={Style.indicationIcon}>
+                <img
+                  className={Style.indication}
+                  src={instruction3}
+                  alt="instruction1 icon"
+                />
+              </div>
+              <div className={Style.indicationText}>Answered</div>
+            </div>
+            <div className={Style.examIndication}>
+              <div className={Style.indicationIcon}>
+                <img
+                  className={Style.indication}
+                  src={instruction4}
+                  alt="instruction1 icon"
+                />
+              </div>
+              <div className={Style.indicationText}>Marked for Review</div>
+            </div>
+            <div className={Style.examIndication}>
+              <div className={Style.indicationIcon}>
+                <img
+                  className={Style.indication}
+                  src={instruction5}
+                  alt="instruction1 icon"
+                />
+              </div>
+              <div className={Style.indicationText}>
+                Answered & Marked for Review (will be considered for evaluation)
+              </div>
+            </div>
+          </div>
+          <div className={Style.examQuestionListSection}>
+            <div
+              className={`${Style.examQuestion} ${Style.answeredAndMarkedForReview}`}
+            >
+              <div className={Style.examQuestionText}>99</div>
+            </div>
+            <div className={`${Style.examQuestion} ${Style.notAnswered}`}>
+              <div className={Style.examQuestionText}>2</div>
+            </div>
+            <div className={`${Style.examQuestion} ${Style.answered}`}>
+              <div className={Style.examQuestionText}>3</div>
+            </div>
+            <div className={`${Style.examQuestion} ${Style.markedForReview}`}>
+              <div className={Style.examQuestionText}>4</div>
+            </div>
+
+            <div
+              className={`${Style.examQuestion} ${Style.answeredAndMarkedForReview}`}
+            >
+              <div className={Style.examQuestionText}>5</div>
+            </div>
+            <div className={`${Style.examQuestion} ${Style.notVisited}`}>
+              <div className={Style.examQuestionText}>1</div>
+            </div>
+            <div className={`${Style.examQuestion} ${Style.notVisited}`}>
+              <div className={Style.examQuestionText}>1</div>
+            </div>
+            <div className={`${Style.examQuestion} ${Style.notVisited}`}>
+              <div className={Style.examQuestionText}>1</div>
+            </div>
+            <div className={`${Style.examQuestion} ${Style.notVisited}`}>
+              <div className={Style.examQuestionText}>1</div>
+            </div>
+            <div className={`${Style.examQuestion} ${Style.notVisited}`}>
+              <div className={Style.examQuestionText}>1</div>
+            </div>
+            <div className={`${Style.examQuestion} ${Style.notVisited}`}>
+              <div className={Style.examQuestionText}>1</div>
+            </div>
+            <div className={`${Style.examQuestion} ${Style.notVisited}`}>
+              <div className={Style.examQuestionText}>1</div>
+            </div>
+            <div className={`${Style.examQuestion} ${Style.notVisited}`}>
+              <div className={Style.examQuestionText}>1</div>
+            </div>
+            <div className={`${Style.examQuestion} ${Style.notVisited}`}>
+              <div className={Style.examQuestionText}>1</div>
+            </div>
+            <div className={`${Style.examQuestion} ${Style.notVisited}`}>
+              <div className={Style.examQuestionText}>1</div>
+            </div>
+            <div className={`${Style.examQuestion} ${Style.notAnswered}`}>
+              <div className={Style.examQuestionText}>2</div>
+            </div>
+            <div className={`${Style.examQuestion} ${Style.answered}`}>
+              <div className={Style.examQuestionText}>3</div>
+            </div>
+            <div className={`${Style.examQuestion} ${Style.markedForReview}`}>
+              <div className={Style.examQuestionText}>4</div>
+            </div>
+
+            <div
+              className={`${Style.examQuestion} ${Style.answeredAndMarkedForReview}`}
+            >
+              <div className={Style.examQuestionText}>5</div>
+            </div>
+            <div className={`${Style.examQuestion} ${Style.notVisited}`}>
+              <div className={Style.examQuestionText}>1</div>
+            </div>
+            <div className={`${Style.examQuestion} ${Style.notVisited}`}>
+              <div className={Style.examQuestionText}>1</div>
+            </div>
+            <div className={`${Style.examQuestion} ${Style.notVisited}`}>
+              <div className={Style.examQuestionText}>1</div>
+            </div>
+            <div className={`${Style.examQuestion} ${Style.notVisited}`}>
+              <div className={Style.examQuestionText}>1</div>
+            </div>
+            <div className={`${Style.examQuestion} ${Style.notVisited}`}>
+              <div className={Style.examQuestionText}>1</div>
+            </div>
+            <div className={`${Style.examQuestion} ${Style.notVisited}`}>
+              <div className={Style.examQuestionText}>1</div>
+            </div>
+            <div className={`${Style.examQuestion} ${Style.notVisited}`}>
+              <div className={Style.examQuestionText}>1</div>
+            </div>
+            <div className={`${Style.examQuestion} ${Style.notVisited}`}>
+              <div className={Style.examQuestionText}>1</div>
+            </div>
+            <div className={`${Style.examQuestion} ${Style.notVisited}`}>
+              <div className={Style.examQuestionText}>1</div>
+            </div>
+            <div className={`${Style.examQuestion} ${Style.notVisited}`}>
+              <div className={Style.examQuestionText}>1</div>
+            </div>
+            <div className={`${Style.examQuestion} ${Style.notAnswered}`}>
+              <div className={Style.examQuestionText}>2</div>
+            </div>
+            <div className={`${Style.examQuestion} ${Style.answered}`}>
+              <div className={Style.examQuestionText}>3</div>
+            </div>
+            <div className={`${Style.examQuestion} ${Style.markedForReview}`}>
+              <div className={Style.examQuestionText}>4</div>
+            </div>
+
+            <div
+              className={`${Style.examQuestion} ${Style.answeredAndMarkedForReview}`}
+            >
+              <div className={Style.examQuestionText}>5</div>
+            </div>
+            <div className={`${Style.examQuestion} ${Style.notVisited}`}>
+              <div className={Style.examQuestionText}>1</div>
+            </div>
+            <div className={`${Style.examQuestion} ${Style.notVisited}`}>
+              <div className={Style.examQuestionText}>1</div>
+            </div>
+            <div className={`${Style.examQuestion} ${Style.notVisited}`}>
+              <div className={Style.examQuestionText}>1</div>
+            </div>
+            <div className={`${Style.examQuestion} ${Style.notVisited}`}>
+              <div className={Style.examQuestionText}>1</div>
+            </div>
+            <div className={`${Style.examQuestion} ${Style.notVisited}`}>
+              <div className={Style.examQuestionText}>1</div>
+            </div>
+            <div className={`${Style.examQuestion} ${Style.notVisited}`}>
+              <div className={Style.examQuestionText}>1</div>
+            </div>
+            <div className={`${Style.examQuestion} ${Style.notVisited}`}>
+              <div className={Style.examQuestionText}>1</div>
+            </div>
+            <div className={`${Style.examQuestion} ${Style.notVisited}`}>
+              <div className={Style.examQuestionText}>1</div>
+            </div>
+            <div className={`${Style.examQuestion} ${Style.notVisited}`}>
+              <div className={Style.examQuestionText}>1</div>
+            </div>
+            <div className={`${Style.examQuestion} ${Style.notVisited}`}>
+              <div className={Style.examQuestionText}>1</div>
+            </div>
+            <div className={`${Style.examQuestion} ${Style.notAnswered}`}>
+              <div className={Style.examQuestionText}>2</div>
+            </div>
+            <div className={`${Style.examQuestion} ${Style.answered}`}>
+              <div className={Style.examQuestionText}>3</div>
+            </div>
+            <div className={`${Style.examQuestion} ${Style.markedForReview}`}>
+              <div className={Style.examQuestionText}>4</div>
+            </div>
+
+            <div
+              className={`${Style.examQuestion} ${Style.answeredAndMarkedForReview}`}
+            >
+              <div className={Style.examQuestionText}>5</div>
+            </div>
+            <div className={`${Style.examQuestion} ${Style.notVisited}`}>
+              <div className={Style.examQuestionText}>1</div>
+            </div>
+            <div className={`${Style.examQuestion} ${Style.notVisited}`}>
+              <div className={Style.examQuestionText}>1</div>
+            </div>
+            <div className={`${Style.examQuestion} ${Style.notVisited}`}>
+              <div className={Style.examQuestionText}>1</div>
+            </div>
+            <div className={`${Style.examQuestion} ${Style.notVisited}`}>
+              <div className={Style.examQuestionText}>1</div>
+            </div>
+            <div className={`${Style.examQuestion} ${Style.notVisited}`}>
+              <div className={Style.examQuestionText}>1</div>
+            </div>
+            <div className={`${Style.examQuestion} ${Style.notVisited}`}>
+              <div className={Style.examQuestionText}>1</div>
+            </div>
+            <div className={`${Style.examQuestion} ${Style.notVisited}`}>
+              <div className={Style.examQuestionText}>1</div>
+            </div>
+            <div className={`${Style.examQuestion} ${Style.notVisited}`}>
+              <div className={Style.examQuestionText}>1</div>
+            </div>
+            <div className={`${Style.examQuestion} ${Style.notVisited}`}>
+              <div className={Style.examQuestionText}>1</div>
+            </div>
+            <div className={`${Style.examQuestion} ${Style.notVisited}`}>
+              <div className={Style.examQuestionText}>1</div>
+            </div>
+            <div className={`${Style.examQuestion} ${Style.notAnswered}`}>
+              <div className={Style.examQuestionText}>2</div>
+            </div>
+            <div className={`${Style.examQuestion} ${Style.answered}`}>
+              <div className={Style.examQuestionText}>3</div>
+            </div>
+            <div className={`${Style.examQuestion} ${Style.markedForReview}`}>
+              <div className={Style.examQuestionText}>4</div>
+            </div>
+
+            <div
+              className={`${Style.examQuestion} ${Style.answeredAndMarkedForReview}`}
+            >
+              <div className={Style.examQuestionText}>5</div>
+            </div>
+            <div className={`${Style.examQuestion} ${Style.notVisited}`}>
+              <div className={Style.examQuestionText}>1</div>
+            </div>
+            <div className={`${Style.examQuestion} ${Style.notVisited}`}>
+              <div className={Style.examQuestionText}>1</div>
+            </div>
+            <div className={`${Style.examQuestion} ${Style.notVisited}`}>
+              <div className={Style.examQuestionText}>1</div>
+            </div>
+            <div className={`${Style.examQuestion} ${Style.notVisited}`}>
+              <div className={Style.examQuestionText}>1</div>
+            </div>
+            <div className={`${Style.examQuestion} ${Style.notVisited}`}>
+              <div className={Style.examQuestionText}>1</div>
+            </div>
+            <div className={`${Style.examQuestion} ${Style.notVisited}`}>
+              <div className={Style.examQuestionText}>1</div>
+            </div>
+            <div className={`${Style.examQuestion} ${Style.notVisited}`}>
+              <div className={Style.examQuestionText}>1</div>
+            </div>
+            <div className={`${Style.examQuestion} ${Style.notVisited}`}>
+              <div className={Style.examQuestionText}>1</div>
+            </div>
+            <div className={`${Style.examQuestion} ${Style.notVisited}`}>
+              <div className={Style.examQuestionText}>1</div>
+            </div>
+          </div>
+          <div className={Style.submitButtonContainer}>
+            <Button text="Submit Exam" className={Style.submitButton} />
+          </div>
         </div>
       </div>
-
-      <div className={Style.NavigationButtons}>
-        <button
-          onClick={goToPrevQuestion}
-          disabled={currentQuestionIndex === 0}
-        >
-          Previous
-        </button>
-        <button
-          onClick={goToNextQuestion}
-          disabled={currentQuestionIndex === questionsData.length - 1}
-        >
-          Next
-        </button>
-      </div>
-
-      <button className={Style.SubmitButton} onClick={submitExam}>
-        Submit Exams
-      </button>
-    </div>
+    </>
   );
 };
 

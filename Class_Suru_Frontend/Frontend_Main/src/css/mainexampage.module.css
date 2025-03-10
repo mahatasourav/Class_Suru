@@ -1,0 +1,476 @@
+.examPageContainer{
+    /* width: 100%; */
+    /* max-width: 1500px; */
+    margin: 0 auto;
+    /* border: 1px solid red; */
+    min-height: calc(100vh - 75px);
+    /* padding: 10px; */
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    
+}
+
+/* ====================== Left Section ====================== */
+.examPageLeft{
+    width: 100%;
+    max-width: 1500px;
+    /* height: 500vh; */
+    height: fit-content;
+    /* border: 1px solid blue; */
+    /* padding: 10px; */
+    /* padding-bottom: 0px; */
+    position: relative;
+}
+
+.examPageLeftHeader{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #e0e0e0;
+    /* padding-bottom: 10px; */
+    /* padding-top: 10px; */
+    gap: 50px;
+    /* padding-right: 20px; */
+    /* margin: 10px; */
+    padding: 20px;
+}
+
+.examPageLeftHeaderTitle{
+    font-size: 16px;
+    margin-left: 10px;
+    font-weight: 600;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    /* white-space: nowrap; */
+}
+
+.examPageLeftMarksDristibutionTitle{
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.examPageLeftOptions{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+}
+
+.examPageLeftMarksDristibution{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* flex-direction: column; */
+    gap: 10px;
+}
+
+.examPageLeftMarksDristibutionValueContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.examPageLeftMarksDristibutionValueCorrect{
+    padding: 0px 18px;
+    border-radius: 20px;
+    /* border: 1px solid red; */
+    
+}
+
+.correct{
+    background-color: #00bd00;
+    color: white;
+
+
+}
+
+.wrong{
+    background-color: rgb(255, 35, 35);
+    color: white;
+
+}
+
+
+
+.examPageLeftOptionsTime{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* flex-direction: column; */
+    gap: 5px;
+}
+
+.examPageLeftOptionsTimeTitle{
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.examPageLeftOptionsTimeValue{
+    letter-spacing: 1.5px;
+    white-space: nowrap;
+}
+
+.examPageLeftOptionsSaveButton{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.examPageContent{
+    /* border: 1px solid red; */
+    padding: 30px;
+    /* height: 500vh; */
+    /* max-width: 900px; */
+    /* border: 1px solid red; */
+}
+
+.examPageContentImg{
+    margin-top: 20px;
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* border: 1px solid red; */
+    
+}
+.examImg{
+    height: 100%;
+    width: auto;
+}
+
+.examPageContentQuestion{
+    font-size: 20px;
+}
+
+
+.optionsSection{
+    /* border: 1px solid red; */
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    flex-direction: column;
+    /* flex-wrap: wrap; */
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.option{
+    padding: 15px 20px;
+    width: 100%;
+    /* max-width: 500px; */
+    /* border: 1px solid red; */
+    border-radius: 10px;
+    background-color: #f1f1f1;
+    cursor: pointer;
+    /* font-size: 15px; */
+    /* font-weight: 600; */
+    transition: all 0.2s ease;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    
+    gap: 20px;
+    border: 2px solid transparent;
+}
+
+.option:hover{
+    /* transform: translateY(-2px) scale(1.01); */
+    /* background-color: #d4d4d4; */
+    border: 2px solid var(--primary_color);
+}
+
+.optionCheckBox{
+    width: 20px;
+    height: 20px;
+    border: 2px solid #000;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.option:hover .optionCheckBox{
+    border: 2px solid var(--primary_color);
+}
+
+.option.selected{
+    /* background-color: var(--primary_color); */
+    /* color: white; */
+    border: 2px solid var(--primary_color);
+}
+
+.option.selected .optionCheckBox
+{
+    /* background-color: #fff; */
+    border: 2px solid var(--primary_color);
+}
+
+.option.selected .optionCheckBoxInner{
+    background-color: var(--primary_color);
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    transform: scale(0.7);
+}
+
+.examPageControllSection{
+    width: 100%;
+    /* width: 1500px; */
+    height: 80px;
+    position: sticky;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    padding: 10px;
+    background-color: #fff;
+    box-shadow: 0px -5px 10px rgba(0, 0, 0, 0.1);
+    flex-wrap: wrap;
+    /* background-color: red; */
+    /* background-color: #e2e2e2; */
+    /* border: 1px solid green; */
+}
+
+.save{
+    background-color: #00bd00;
+    white-space: nowrap;
+    width: fit-content;
+    
+}
+.save:hover{
+    background-color: #00a800;
+    /* white-space: nowrap; */
+}
+
+.clear{
+    background-color: #ff0000;
+    white-space: nowrap;
+}
+
+.clear:hover{
+    background-color: #d40000;
+}
+
+.markForReview{
+    background-color: #f0c99c;
+    color: var(--dark_color);
+    white-space: nowrap;
+}
+.markForReview:hover{
+    background-color: #e0b08c;
+}
+
+.controlButton{
+    /* width: 100%; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    
+}
+/* .controlButton:last-child{ */
+    /* margin-left: 0; */
+    /* margin-right: auto; */
+/* } */
+
+.next{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-direction: row-reverse;
+}
+
+.previous{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+/* ====================== Right Section ====================== */
+.examPageRightSideBar{
+    position: sticky;
+    top: 70px;
+    right: 0px;
+    max-width: 400px;
+    height: calc(100vh - 70px);
+    /* background-color: green; */
+    /* border: 1px solid green; */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    
+}
+
+.profileSection{
+    width: 100%;
+    /* border: 1px solid red; */
+    border-bottom: 1px solid #e0e0e0;
+    padding: 10px;
+    padding-left: 20px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 12px;
+    
+}
+.profileSectionImage{
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* margin: 0 auto; */
+    /* margin-bottom: 10px; */
+    /* border: 1px solid red; */
+    border: 2px solid var(--primary_color);
+}
+.profile{
+    height: 100%;
+    width: auto;
+}
+.profileSectionName{
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.examIndicationSection{
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.examIndication{
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+.indicationIcon{
+    height: 25px;
+    min-width: 25px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    object-fit: cover;
+    
+}
+
+.indication{
+    height: 100%;
+    width: 100%;
+}
+
+.indicationText{
+    font-size: 16px;
+    font-weight: 400;
+    text-wrap: wrap;
+}
+
+.examQuestionListSection{
+    width: 99%;
+    max-height: 350px;
+    /* height: fit-content; */
+    overflow: hidden;
+    overflow-y: scroll;
+    margin-right: 20px;
+    padding: 20px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    border-top: 1px solid #e0e0e0;
+}
+
+.examQuestion{
+    position: relative;
+    width: 40px;
+    height: 40px;
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
+    
+}
+
+.notVisited{
+    background-image: url("/instruction1.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    
+}
+
+.notAnswered{
+    background-image: url("/instruction2.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: var(--background_color);
+}
+.answered{
+    background-image: url("/instruction3.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    /* color: var(--background_color); */
+}
+
+.markedForReview{
+    background-image: url("/instruction4.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: var(--background_color);
+}
+
+.markedForReview{
+    background-image: url("/instruction4.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: var(--background_color);
+}
+.answeredAndMarkedForReview{
+    background-image: url("/instruction5.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: var(--background_color);
+}
+
+.submitButtonContainer{
+    /* height: 100px; */
+    border-top: 1px solid #e0e0e0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    /* border: 1px solid red; */
+}
+
+.submitButton{
+    width: 100%;
+}
+

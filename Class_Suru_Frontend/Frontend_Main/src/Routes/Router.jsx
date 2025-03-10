@@ -14,6 +14,8 @@ import {
   Exam,
   Admin,
   AdminLogin,
+  Users,
+  QuestionList,
 } from "../Pages";
 
 import Subjects from "../Pages/Exam/Subjects";
@@ -55,9 +57,10 @@ const router = createBrowserRouter(
       <Route path="/admin/list/:examName" element={<SubjectList />} />
       <Route path="/admin/list/:examName/:subjectName" element={<ExamsList />} />
       <Route path="/admin/list/:examName/:subjectName/createQuestionSet" element={<CreateQuestionSet/>} />
-      <Route path="/admin/list/:examName/:subjectName/createQuestionSet/:qid" element={<Question/>} />
-
+      <Route path="/admin/list/:examName/:subjectName/createQuestionSet/questionlist/:examId/createQuestion" element={<Question/>} />
+      <Route path="/admin/list/:examName/:subjectName/createQuestionSet/questionlist/:examId" element={<QuestionList/>} />
       <Route path="/admin/list/:examName/:subjectName/editQuestionSet" element={<EditQuestionSet/>} />
+      <Route path="/admin/users" element={<Users/>} />
       {/* Error Page Routes */}
       <Route path="*" element={<Error />} />
     </Route>

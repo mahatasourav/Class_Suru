@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from "react";
-import { Footer, Navbar } from "../Components";
-import ExamNavbar from "../Pages/Exam/ExamNavbar";
+import { ExamNavbar, Footer, Navbar } from "../Components";
+
 import { Outlet, useLocation } from "react-router-dom";
 import "../css/index.css";
 import axios from "axios";
@@ -72,7 +72,7 @@ const Layout = () => {
         {/* {isInstructionPage && <ExamNavbar />} */}
       </div>
 
-      <Footer />
+      {!isInstructionPage && <Footer />}
     </div>
   );
 };

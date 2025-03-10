@@ -8,6 +8,10 @@ import Register from "./Register/Register";
 import Admin from "./Admin/Admin";
 import AdminLogin from "./Admin/Login/AdminLogin";
 import Exam from "./Exam/Exam";
+import Users from "./Admin/Users/Users";
+import QuestionList from "./Admin/Question/QuestionList";
 
 
-export {Home,Dashboard,Error,Exam,Login,Register,Questions,Admin,AdminLogin};
+
+
+export {Home,Dashboard,Error,Exam,Login,Register,Questions,Admin,AdminLogin,Users,QuestionList};

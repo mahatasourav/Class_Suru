@@ -12,14 +12,22 @@ import { jwtDecode } from "jwt-decode";
 import axios from "axios";
 import { userDetailsApi } from "../../apis";
 import { LoadingContext } from "../../Components/Loading/Loading";
+import { useState } from "react";
 
-import Style from "../../css/profile.module.css"
+import Style from "../../css/profile.module.css";
 import { getUserData } from "../../utils/getUserData";
+import DashboardRightProfile from "./DashboardRightProfile";
+import { Link } from "react-router-dom";
+import DashboardRightRecentExam from "./DashboardRightRecentExam";
+import { IoPersonSharp } from "react-icons/io5";
+import { FaFileInvoice } from "react-icons/fa6";
+import { GrLogout } from "react-icons/gr";
 
 const Dashboard = () => {
-  const userData = useSelector((state)=>state.user.userData);
+  const userData = useSelector((state) => state.user.userData);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [selectedOption, setSelectedOption] = useState("profile"); // State to track selection
 
   // const getUserData = async () => {
   //   const token = localStorage.getItem("token");
@@ -55,28 +63,22 @@ const Dashboard = () => {
   //   }
   // };
   let userExistToken;
-  const handleUserData = async ()=>{
+  const handleUserData = async () => {
     const data = await getUserData();
-    if(data !== null){
+    if (data !== null) {
       dispatch(setUserId(data.userId));
       dispatch(setUserStatus(true));
       dispatch(setUserData(data.user));
     }
-  }
+  };
   useEffect(() => {
-    userExistToken  = localStorage.getItem("token");
-    if(userExistToken === null){
+    userExistToken = localStorage.getItem("token");
+    if (userExistToken === null) {
       navigate("/login");
-    }
-    else
-    {
+    } else {
       handleUserData();
     }
-
   }, []);
-
-  
-
 
   return (
     // <div>
@@ -92,18 +94,54 @@ const Dashboard = () => {
     //   />
     // </div>
     <>
-      <div className={Style.userProfileSection}>
-        {/* <h1>hello world</h1> */}
-        <div className={Style.text}><span>Welcome Back, </span><b>{userData && userData.name}</b></div>
-      <Button
-        text="Logout"
-        onClick={() => {
-          localStorage.removeItem("token");
-          // window.location.reload();
-          dispatch(logout());
-          navigate("/");
-        }}
-        />
+      <div className={Style.userDashboardSection}>
+        <div className={Style.userDashboardLeft}>
+          <div className={Style.userDashboardButton}>
+            <p
+              className={selectedOption === "profile" ? Style.activeButton : ""}
+              onClick={() => setSelectedOption("profile")}
+            >
+              <IoPersonSharp />
+              <span>User Dashboard</span>
+            </p>
+          </div>
+          <div className={Style.recentExamButton}>
+            <p
+              className={
+                selectedOption === "recentExams" ? Style.activeButton : ""
+              }
+              onClick={() => setSelectedOption("recentExams")}
+            >
+              <FaFileInvoice />
+              <span>Recent Exams</span>
+            </p>
+          </div>
+          <div className={Style.logoutButton}>
+            {" "}
+            <p
+              onClick={() => {
+                const confirmLogout = window.confirm(
+                  "Do you really want to logout?"
+                );
+                if (confirmLogout) {
+                  localStorage.removeItem("token");
+                  dispatch(logout());
+                  navigate("/");
+                }
+              }}
+            >
+              <GrLogout />
+              <span>Log Out</span>
+            </p>{" "}
+          </div>
+        </div>
+        <div className={Style.userDashboardRight}>
+          {selectedOption === "profile" ? (
+            <DashboardRightProfile />
+          ) : (
+            <DashboardRightRecentExam />
+          )}
+        </div>
       </div>
     </>
   );

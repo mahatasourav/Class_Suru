@@ -29,6 +29,9 @@ import ExamsList from "../Pages/Admin/ExamsList/ExamsList";
 import CreateQuestionSet from "../Pages/Admin/CreateQuestionSet/CreateQuestionSet";
 import EditQuestionSet from "../Pages/Admin/EditQuestionSet/EditQuestionSet";
 import Question from "../Pages/Admin/Question/Question";
+//importing Dashboard Profiles and recent exam
+import DashboardRightProfile from "../Pages/Dashboard/DashboardRightProfile";
+import DashboardRightRecentExam from "../Pages/Dashboard/DashboardRightRecentExam";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -55,12 +58,28 @@ const router = createBrowserRouter(
       <Route path="/admin/login" element={<AdminLogin />} />
       <Route path="/admin/list" element={<ExamNameList />} />
       <Route path="/admin/list/:examName" element={<SubjectList />} />
-      <Route path="/admin/list/:examName/:subjectName" element={<ExamsList />} />
-      <Route path="/admin/list/:examName/:subjectName/createQuestionSet" element={<CreateQuestionSet/>} />
-      <Route path="/admin/list/:examName/:subjectName/createQuestionSet/questionlist/:examId/createQuestion" element={<Question/>} />
-      <Route path="/admin/list/:examName/:subjectName/createQuestionSet/questionlist/:examId" element={<QuestionList/>} />
-      <Route path="/admin/list/:examName/:subjectName/editQuestionSet" element={<EditQuestionSet/>} />
-      <Route path="/admin/users" element={<Users/>} />
+      <Route
+        path="/admin/list/:examName/:subjectName"
+        element={<ExamsList />}
+      />
+      <Route
+        path="/admin/list/:examName/:subjectName/createQuestionSet"
+        element={<CreateQuestionSet />}
+      />
+      <Route
+        path="/admin/list/:examName/:subjectName/createQuestionSet/questionlist/:examId/createQuestion"
+        element={<Question />}
+      />
+      <Route
+        path="/admin/list/:examName/:subjectName/createQuestionSet/questionlist/:examId"
+        element={<QuestionList />}
+      />
+      <Route
+        path="/admin/list/:examName/:subjectName/editQuestionSet"
+        element={<EditQuestionSet />}
+      />
+      <Route path="/admin/users" element={<Users />} />
+
       {/* Error Page Routes */}
       <Route path="*" element={<Error />} />
     </Route>

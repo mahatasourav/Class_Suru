@@ -16,7 +16,15 @@ const basApi = "https://class-suru-beta.vercel.app";
 const signupApi = `${basApi}/api/auth/signup`;
 const loginApi = `${basApi}/api/auth/login`;
 const userDetailsApi = `${basApi}/api/auth/user`;
+
+// exam apis
 const createExamApi = `${basApi}/api/auth/exam`;
+const getExamsApi = `${basApi}/api/auth/exam`;
+
+// Question apis
+const createQuestionApi = `${basApi}/api/auth/question/add`;
+const getQuestionListApi = `${basApi}/api/auth/question/exam`;
+const deleteQuestionApi = `${basApi}/api/auth/question/delete`;
 
 
-export { signupApi, loginApi, userDetailsApi ,createExamApi};
+export { signupApi, loginApi, userDetailsApi ,createExamApi,getExamsApi,createQuestionApi,getQuestionListApi,deleteQuestionApi};

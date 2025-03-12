@@ -13,7 +13,7 @@ import axios from "axios";
 import { userDetailsApi } from "../../apis";
 import { LoadingContext } from "../../Components/Loading/Loading";
 import { useState } from "react";
-
+import { usePopup } from "popine";
 import Style from "../../css/profile.module.css";
 import { getUserData } from "../../utils/getUserData";
 import DashboardRightProfile from "./DashboardRightProfile";
@@ -28,7 +28,7 @@ const Dashboard = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [selectedOption, setSelectedOption] = useState("profile"); // State to track selection
-
+  const { PopUp, pop } = usePopup();
   // const getUserData = async () => {
   //   const token = localStorage.getItem("token");
   //   if (token) {
@@ -94,6 +94,7 @@ const Dashboard = () => {
     //   />
     // </div>
     <>
+      <PopUp />
       <div className={Style.userDashboardSection}>
         <div className={Style.userDashboardLeft}>
           <div className={Style.userDashboardButton}>
@@ -120,9 +121,10 @@ const Dashboard = () => {
             {" "}
             <p
               onClick={() => {
-                const confirmLogout = window.confirm(
-                  "Do you really want to logout?"
-                );
+                // const confirmLogout = window.confirm(
+                //   "Do you really want to logout?"
+                // );
+                pop.alert("Do you really want to logout?");
                 if (confirmLogout) {
                   localStorage.removeItem("token");
                   dispatch(logout());

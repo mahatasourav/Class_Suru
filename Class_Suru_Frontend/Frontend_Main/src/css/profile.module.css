@@ -1,133 +1,349 @@
-.userDashboardSection{
-   
+/* profile.module.css */
+.userDashboardSection {
     min-height: calc(100vh - 100px);
-    /* border: 1px solid red; */
     display: flex;
     justify-content: space-between;
     flex-direction: row;
+  }
+  
+  .userDashboardButton,
+  .recentExamButton {
+    cursor: pointer;
+  }
+  
+  .activeButton {
+    background-color: rgb(196, 192, 255, 50%);
+  }
+  
+  .userDashboardLeft {
+    width: 20vw;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding-top: 20px;
+  }
+  
+  .userDashboardButton p,
+  .recentExamButton p,
+  .logoutButton p {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-direction: row;
+    padding: 10px 20px;
+  }
+  
+  .userDashboardRight {
+    width: 80vw;
+    background-color: rgb(216, 216, 216);
+  }
+  
+  /* userDashboardRightProfile Section */
+  .DashboardRightProfile {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    padding: 30px 40px;
+  }
+  
+  .DashboardRightProfileLeft {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    border-radius: 10px;
+    width: 50vw;
+  }
+  
+  .DashboardRightProfileImgSection {
+    display: flex;
+    height: 170px;
+    justify-content: flex-start;
+    padding: 30px;
+  }
+  
+  .DashboardRightProfileImgUpload {
+    display: flex;
+    height: 110px;
+    padding: 20px;
+    gap: 40px;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .DashboardRightProfileImgUpload2 {
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    justify-content: center;
+    gap: 10px;
+  }
+  
+  .UploadImage,
+  .EditDetails {
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: 1px solid rgb(88, 86, 214);
+    display: flex;
+    gap: 7px;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .DashboardRightProfileImgUpload2 p {
+    font-size: 12px;
+  }
+  
+  .profileImage {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+  }
+  
+  .DashboardRightProfileInformation {
+    border-top: 2px solid rgba(216, 216, 216, 1);
+    display: flex;
+    flex-direction: column;
+    padding: 30px 50px;
+  }
+  
+  .DashboardRightProfileInformationUpper {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .DashboardRightProfileInformationLower {
+    display: flex;
+    margin-top: 20px;
+    flex-direction: column;
+    gap: 5px;
+  }
+  .inputError {
+    border: 1px solid red;
+  }
+   /* userDashboardRightProfileRightSection Started */
+  
+
+   .DashboardRightProfileRight{
+
+    width: 20vw;
+   display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 50px;
+  }
+  .pichart{
+   border-radius: 10px;
+    background-color: white;
+    max-height: 300px;
+    overflow-y: auto;
     
-
-}
-
-.userDashboardButton,.recentExamButton{
-cursor: pointer;
-}
-
-
-    .activeButton {
-        background-color: rgb(196, 192, 255,50%);
-    }
-
-    .userDashboardLeft{
-        width: 20vw;
-        display: flex;
-        flex-direction: column;
-        gap: 5px;
-        
-        padding-top: 20px;
-    }
-
-    .userDashboardButton p, .recentExamButton p,.logoutButton p{
-        display: flex;
-        align-items: center;
-        gap: 20px;
-        flex-direction: row;
-        padding: 10px 20px;
-    }
-    .userDashboardRight{
-        width: 80vw;
-        background-color: rgb(216, 216, 216);
-    }
-
-
-    /* userDashboardRightProfile Section */
-
-    .DashboardRightProfile{
-        display: flex;
-        flex-direction: row;
-        gap: 30px;
-        padding: 30px 40px;
-        
-    }
-
-    .DashboardRightProfileLeft{
-        display: flex;
-        flex-direction: column;
-       background-color: white;
-       border-radius: 10px;
-        width: 50vw;
-        
-    }
-    .DashboardRightProfileImgSection{
-       
-        display: flex;
-        height: 170px;
-        justify-content: flex-start;
-        padding: 30px;
-       
-        
-    }
-    .DashboardRightProfileImgUpload{
-        
-        display: flex;
-        height: 110px;
-        padding: 20px;
-        gap: 40px;
-        justify-content: center;
-        align-items: center;
-
-    }
-    .DashboardRightProfileImgUpload2{
+  }
+ 
+  .piePhoto{
 display: flex;
-flex-direction: column;
-width: 200px;
 justify-content: center;
-gap: 10px;
+
+align-items: center;
+width: 300px;
+margin: auto;
 
   }
-  .UploadImage , .EditDetails{
-        padding: 5px 10px;
-        border-radius: 5px;
-        border: 1px solid rgb(88, 86, 214);
-        display: flex;
-        gap: 7px;
-        align-items: center;
-        justify-content: center;
+  .pie{
+    text-align: center;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .piData{
+    padding: 20px 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .pichart p{
+   display: flex;
+  gap: 5px;
+   align-items: center;
+   padding: 2px 10px;
+  }
+  .circle{
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+  }
+  .circlePassed{
+background-color: rgba(88, 86, 214, 1);
+  }
+  .circleAttend{
+    background-color: rgba(201, 159, 255, 1);
+  }
+  .circleNotAttend{
+    background-color: rgb(221, 215, 227);
+  }
+.circleFailed{
+  background-color: rgba(255, 110, 110, 1);
+}
+  .Notifications{
+    
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    border-radius: 7px;
+    max-height:200px;
+    overflow-y:auto;
+  }
+  .NotificationsText{
+   display: flex;
+    gap: 10px;
+    align-items: center;
+    background-color: rgba(88, 86, 214, 1);
+    padding: 5px 10px ;
+   border-radius: 10px 10px 0px 0px;
+   color: white;
+  }
+  .NotificationsList{
+    border-top: 1px solid grey;
+    display: flex;
+    gap: 4px;
+justify-content: center;
+align-items: center;
+padding: 3px 10px;
+  }
+  
+  
+ /* page -2  */
+  /* userDashboardRightRecentExam Section */
+  .RecentExam {
+    max-width: 65vw;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    margin-top: 30px;
+    border-radius: 10px;
+    
+  }
+  
+  .RecentExamUpper {
+    padding: 5px 5px;
+    padding-bottom: 0px;
+  }
+  
+  .RecentExamUpperSpan {
+    padding: 10px 10px;
+    background-color:rgb(88, 86, 214);
+    color: white;
+    padding: 10px 30px;
+    border-radius: 6px 6px 0px 0px;
+  }
+  
+  .RecentExamLower {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 15px 30px;
+    background-color: white;
+ 
+  
+  }
+  
+  .userName,
+  .userPhone,
+  .userEmail,
+  .userLocation {
+    padding: 5px 10px;
+    width: 400px;
+    border-radius: 5px;
+  }
+  
+  /* Media Queries for Responsiveness */
+  @media (max-width: 1024px) {
+    .userDashboardSection {
+      flex-direction: column;
+      gap: 45px;
+    }
+  
+    .userDashboardLeft,
+    .userDashboardRight {
+      width: 100%;
+    }
+  
+    .DashboardRightProfile {
+      flex-direction: column;
+      padding: 20px;
+    }
+  
+    .DashboardRightProfileLeft,
+    .DashboardRightProfileRight {
+      width: 100%;
     }
     .DashboardRightProfileImgUpload2 p{
-font-size: 12px;
+      visibility: hidden;
     }
-
-    .profileImage{
-        width: 100px;
-        height: 100px;
-        border-radius: 50%;
+    .RecentExam {
+      max-width: 90vw;
     }
-    .DashboardRightProfileInformation{
-        border-top: 2px solid rgba(216, 216, 216, 1);
-        display: flex;
-        flex-direction: column;
-        padding: 30px 50px;
-        
+  }
+  
+  @media (max-width: 768px) {
+    .DashboardRightProfile {
+      padding: 15px;
     }
-    .DashboardRightProfileInformationUpper{
-        
-     display: flex;
-    justify-content: space-between;
-        
+  
+    .DashboardRightProfileImgSection {
+      height: auto;
+      padding: 20px;
     }
-    .DashboardRightProfileInformationLower{
-        display: flex;
-        margin-top:20px ;
-        
-        flex-direction: column;
-        gap: 5px;
+  
+    .DashboardRightProfileImgUpload {
+      flex-direction: column;
+      gap: 20px;
     }
-
-
-    .DashboardRightProfileRight{
-        border: 2px solid green;
-         width: 20vw;
+  
+    .DashboardRightProfileInformation {
+      padding: 20px;
     }
-
-       /* userDashboardRightRecentExam Section */
+  
+    .RecentExam {
+      max-width: 95vw;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .DashboardRightProfile {
+      padding: 10px;
+    }
+  
+    .DashboardRightProfileImgSection {
+      padding: 10px;
+    }
+  
+    .DashboardRightProfileImgUpload {
+      padding: 10px;
+      gap: 10px;
+    }
+  
+    .DashboardRightProfileInformation {
+      padding: 10px;
+    }
+  
+    .RecentExam {
+      max-width: 100vw;
+    }
+  
+    .RecentExamLower {
+      flex-direction: column;
+      gap: 10px;
+    }
+  
+    .userName,
+    .userPhone,
+    .userEmail,
+    .userLocation {
+      width: 100%;
+    }
+  }

@@ -3,10 +3,16 @@ import { useSelector } from "react-redux";
 import Style from "../../css/profile.module.css";
 import { FiUpload } from "react-icons/fi";
 import { MdOutlineEdit } from "react-icons/md";
+import { MdOutlineAccessAlarm } from "react-icons/md";
+import { RiPagesLine } from "react-icons/ri";
+import PhoneInput from "react-phone-input-2";
+import "react-phone-input-2/lib/style.css";
+import Pichart from "./Pichart";
 
 const DashboardRightProfile = () => {
   const userData = useSelector((state) => state.user.userData);
   const [selectedImage, setSelectedImage] = useState(null);
+  const [isEditing, setIsEditing] = useState(false);
 
   // Load saved image from localStorage when the component mounts
   useEffect(() => {
@@ -34,6 +40,29 @@ const DashboardRightProfile = () => {
   const handleRemoveImage = () => {
     setSelectedImage(null);
     localStorage.removeItem("profileImage");
+  };
+
+  // State for user details
+  const [userName, setUserName] = useState(userData?.name || "");
+  const [userEmail, setUserEmail] = useState(userData?.email || "");
+  const [userPhone, setUserPhone] = useState(userData?.phone_number || "");
+  const [phoneError, setPhoneError] = useState("");
+  const [userLocation, setUserLocation] = useState("Kolkata");
+
+  // Toggle Edit Mode
+  const handleEditClick = () => {
+    setIsEditing(true);
+  };
+
+  // Save Changes
+  const handleSaveClick = () => {
+    if (userPhone.length !== 10) {
+      setPhoneError("Phone number must be exactly 10 digits!");
+      return;
+    }
+    setPhoneError(""); // Clear error if valid
+    setIsEditing(false);
+    console.log("Updated User Details:", { userName, userEmail, userPhone });
   };
 
   return (
@@ -67,11 +96,10 @@ const DashboardRightProfile = () => {
                   onClick={handleImageUpload}
                   className={Style.UploadImage}
                 >
-                  {" "}
                   <FiUpload />
                   <span>Upload a new photo</span>
                 </button>
-                <p> (JPG or PNG, 800×800 px recommended)</p>
+                <p>(JPG or PNG, 800×800 px recommended)</p>
               </div>
 
               {/* Remove Image Button */}
@@ -89,31 +117,124 @@ const DashboardRightProfile = () => {
           <div className={Style.DashboardRightProfileInformation}>
             <div className={Style.DashboardRightProfileInformationUpper}>
               <span>Personal info</span>
-              <button className={Style.EditDetails}>
-                <MdOutlineEdit />
-                <span>Edit Details</span>
-              </button>
+              {!isEditing ? (
+                <button className={Style.EditDetails} onClick={handleEditClick}>
+                  <MdOutlineEdit />
+                  <span>Edit Details</span>
+                </button>
+              ) : (
+                <button className={Style.SaveChanges} onClick={handleSaveClick}>
+                  <span>Save Changes</span>
+                </button>
+              )}
             </div>
+            {/* Name as input */}
             <div className={Style.DashboardRightProfileInformationLower}>
               <div>
-                <p>Full Name :</p> {userData?.name}
+                <p>Full Name:</p>
+                <input
+                  type="text"
+                  disabled={!isEditing}
+                  value={userName}
+                  onChange={(e) => setUserName(e.target.value)}
+                  className={Style.userName}
+                />
               </div>
+              {/* Email as Input */}
               <div>
-                {" "}
-                <p>Email :</p> {userData?.email}
+                <p>Email:</p>
+                <input
+                  type="email"
+                  disabled={!isEditing}
+                  value={userEmail}
+                  onChange={(e) => setUserEmail(e.target.value)}
+                  className={Style.userEmail}
+                />
               </div>
+              {/* phone no as input */}
               <div>
-                <p>Phone No : </p>1234567890
+                <p>Phone No:</p>
+                <input
+                  country={"in"}
+                  type="number"
+                  disabled={!isEditing}
+                  value={userPhone}
+                  onChange={(e) => {
+                    const value = e.target.value;
+                    if (value.length <= 10) {
+                      setUserPhone(value);
+                    }
+                    setPhoneError(
+                      value.length === 10
+                        ? ""
+                        : "Phone number must be 10 digits!"
+                    );
+                  }}
+                  className={`${Style.userPhone} ${
+                    phoneError ? Style.inputError : ""
+                  }`}
+                />
+                {phoneError && (
+                  <p style={{ color: "red", fontSize: "12px" }}>{phoneError}</p>
+                )}
               </div>
+
               <div>
-                <p>Location :</p> kolkata
+                <p>Location:</p>{" "}
+                <input
+                  type="text"
+                  disabled={!isEditing}
+                  value={userLocation}
+                  onChange={(e) => setUserLocation(e.target.value)}
+                  className={Style.userLocation}
+                />
               </div>
             </div>
-            {/* <b></b> */}
           </div>
         </div>
+
         <div className={Style.DashboardRightProfileRight}>
-          <p>Here You can See your exam statistics</p>
+          <div className={Style.pichart}>
+            <div>
+              <Pichart />
+            </div>
+          </div>
+          <div className={Style.Notifications}>
+            <div className={Style.NotificationsText}>
+              <MdOutlineAccessAlarm />
+              <h3>Notifications</h3>
+            </div>
+            <div className={Style.NotificationsLists}>
+              <p className={Style.NotificationsList}>
+                <RiPagesLine />
+                <span>units and measurements</span>
+                <span>
+                  3:00pm <p>23/12/2024</p>{" "}
+                </span>
+              </p>
+              <p className={Style.NotificationsList}>
+                <RiPagesLine />
+                <span>units and measurements</span>
+                <span>
+                  3:00pm <p>23/12/2024</p>{" "}
+                </span>
+              </p>
+              <p className={Style.NotificationsList}>
+                <RiPagesLine />
+                <span>units and measurements</span>
+                <span>
+                  3:00pm <p>23/12/2024</p>{" "}
+                </span>
+              </p>
+              <p className={Style.NotificationsList}>
+                <RiPagesLine />
+                <span>units and measurements</span>
+                <span>
+                  3:00pm <p>23/12/2024</p>{" "}
+                </span>
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </>

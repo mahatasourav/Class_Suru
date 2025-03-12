@@ -117,8 +117,106 @@
     flex-direction: column;
     gap: 5px;
   }
+  .inputError {
+    border: 1px solid red;
+  }
+   /* userDashboardRightProfileRightSection Started */
   
+
+   .DashboardRightProfileRight{
+
+    width: 20vw;
+   display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 50px;
+  }
+  .pichart{
+   border-radius: 10px;
+    background-color: white;
+    max-height: 300px;
+    overflow-y: auto;
+    
+  }
  
+  .piePhoto{
+display: flex;
+justify-content: center;
+
+align-items: center;
+width: 300px;
+margin: auto;
+
+  }
+  .pie{
+    text-align: center;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .piData{
+    padding: 20px 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .pichart p{
+   display: flex;
+  gap: 5px;
+   align-items: center;
+   padding: 2px 10px;
+  }
+  .circle{
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+  }
+  .circlePassed{
+background-color: rgba(88, 86, 214, 1);
+  }
+  .circleAttend{
+    background-color: rgba(201, 159, 255, 1);
+  }
+  .circleNotAttend{
+    background-color: rgb(221, 215, 227);
+  }
+.circleFailed{
+  background-color: rgba(255, 110, 110, 1);
+}
+  .Notifications{
+    
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    border-radius: 7px;
+    max-height:200px;
+    overflow-y:auto;
+  }
+  .NotificationsText{
+   display: flex;
+    gap: 10px;
+    align-items: center;
+    background-color: rgba(88, 86, 214, 1);
+    padding: 5px 10px ;
+   border-radius: 10px 10px 0px 0px;
+   color: white;
+  }
+  .NotificationsList{
+    border-top: 1px solid grey;
+    display: flex;
+    gap: 4px;
+justify-content: center;
+align-items: center;
+padding: 3px 10px;
+  }
+  
+  
+ /* page -2  */
   /* userDashboardRightRecentExam Section */
   .RecentExam {
     max-width: 65vw;
@@ -246,45 +344,3 @@
       width: 100%;
     }
   }
- /* userDashboardRightProfileRightSection Started */
-  
-
-  .DashboardRightProfileRight{
-
-    width: 20vw;
-   display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    gap: 50px;
-  }
-  .pichart{
-   
-    background-color: white;
-  }
-  .Notifications{
-    
-    background-color: white;
-    display: flex;
-    flex-direction: column;
-    border-radius: 7px;
-    max-height:200px;
-    overflow-y:scroll;
-  }
-  .NotificationsText{
-   display: flex;
-    gap: 10px;
-    align-items: center;
-    background-color: rgba(88, 86, 214, 1);
-    padding: 5px 10px ;
-   border-radius: 10px 10px 0px 0px;
-   color: white;
-  }
-  .NotificationsList{
-    border-top: 1px solid grey;
-    display: flex;
-    gap: 4px;
-justify-content: center;
-align-items: center;
-padding: 3px 10px;
-  }
-  

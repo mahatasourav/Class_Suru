@@ -22,13 +22,15 @@ const createExamApi = `${basApi}/api/auth/exam`;
 const getExamsApi = `${basApi}/api/auth/exam`;
 const deleteExamApi = `${basApi}/api/auth/exam/delete`;
 const getExamByIdApi = `${basApi}/api/auth/exam`;
+const updateExamApi = `${basApi}/api/auth/exam/update`;
 
 // Question apis
 const createQuestionApi = `${basApi}/api/auth/question/add`;
 const getQuestionListApi = `${basApi}/api/auth/question/exam`;
 const deleteQuestionApi = `${basApi}/api/auth/question/delete`;
 const getQuestionByIdApi = `${basApi}/api/auth/question`;
+const updateQuestionApi = `${basApi}/api/auth/question/update`;
 
 
 
-export { signupApi, loginApi, userDetailsApi ,createExamApi,getExamsApi,createQuestionApi,getQuestionListApi,deleteQuestionApi,deleteExamApi,getExamByIdApi,getQuestionByIdApi};
+export { signupApi, loginApi, userDetailsApi ,createExamApi,getExamsApi,createQuestionApi,getQuestionListApi,deleteQuestionApi,deleteExamApi,getExamByIdApi,getQuestionByIdApi,updateQuestionApi,updateExamApi};

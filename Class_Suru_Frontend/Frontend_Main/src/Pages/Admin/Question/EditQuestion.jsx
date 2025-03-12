@@ -8,7 +8,7 @@ import { FaPlus } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { IoCloseCircle } from "react-icons/io5";
 import apiCall from "../../../utils/apiCall";
-import { createQuestionApi, getQuestionByIdApi } from "../../../apis";
+import { createQuestionApi, getQuestionByIdApi, updateQuestionApi } from "../../../apis";
 
 import toast, { Toaster } from "react-hot-toast";
 
@@ -52,7 +52,6 @@ const EditQuestion = () => {
   const handleSubmit = async(e)=>{
     e.preventDefault();
     const data = {
-      exam_id: examId,
       question_text: questionBody,
       question_img_url: imgUrl, 
       option_1: option1,
@@ -65,11 +64,11 @@ const EditQuestion = () => {
     }
     try {
       setLoading(true);
-      const response = await apiCall.post(createQuestionApi, data);
+      const response = await apiCall.put(`${updateQuestionApi}/${questionId}`, data);
       console.log(response);
-      if(response.status === 201)
+      if(response.status === 200)
       {
-        toast.success("Question Created Successfully");
+        toast.success("Question updated Successfully");
           setTimeout(() => {
             navigate(-1);
           }, 2000);
@@ -265,7 +264,7 @@ const EditQuestion = () => {
             />
           </div>
 
-          <Button text="Submit" className={Style.createButton} isLoading={loading}  onClick={handleSubmit} isDisabled={loading} />
+          <Button text="Update Question" className={Style.createButton} isLoading={loading}  onClick={handleSubmit} isDisabled={loading} />
         </form>
       </div>
       <Toaster />

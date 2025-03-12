@@ -81,11 +81,39 @@ const del = async(url) => {
     }
 }
 
+let countPut = 0;
+
+const put = async(url, data) => {
+    try {
+        const response = await axios.put(url, data);
+        if(response)
+        {
+            return response;
+        }
+        else
+        {
+            throw new Error("Error in PUT request");
+        }
+    } catch (error) {
+        console.log(error);
+        countPut++;
+        if(countPut<3 || error.code === "ERR_NETWORK")
+        {
+            return put(url, data);
+        }
+        else
+        {
+            return error;
+        }
+    }
+}
+
 
 const apiCall = {
     post: post,
     get: get,
-    delete: del
+    delete: del,
+    put: put
 }
 
 export default apiCall;

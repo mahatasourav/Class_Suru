@@ -264,7 +264,7 @@ padding: 3px 10px;
   @media (max-width: 1024px) {
     .userDashboardSection {
       flex-direction: column;
-      gap: 40px;
+      gap: 45px;
     }
   
     .userDashboardLeft,

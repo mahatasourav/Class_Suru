@@ -1,4 +1,4 @@
-import React, { useMemo, useRef, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import { Button } from "../../../Components";
 import { FaArrowLeft } from "react-icons/fa";
 import Style from "../../../css/createQuestionSet.module.css";
@@ -8,12 +8,12 @@ import { FaPlus } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { IoCloseCircle } from "react-icons/io5";
 import apiCall from "../../../utils/apiCall";
-import { createQuestionApi } from "../../../apis";
+import { createQuestionApi, getQuestionByIdApi, updateQuestionApi } from "../../../apis";
 
 import toast, { Toaster } from "react-hot-toast";
 
-const Question = () => {
-  const { examName, subjectName,examId } = useParams();
+const EditQuestion = () => {
+  const { examName, subjectName,questionId } = useParams();
   const navigate = useNavigate();
 
   const [name, setName] = useState("");
@@ -52,7 +52,6 @@ const Question = () => {
   const handleSubmit = async(e)=>{
     e.preventDefault();
     const data = {
-      exam_id: examId,
       question_text: questionBody,
       question_img_url: imgUrl, 
       option_1: option1,
@@ -65,11 +64,11 @@ const Question = () => {
     }
     try {
       setLoading(true);
-      const response = await apiCall.post(createQuestionApi, data);
+      const response = await apiCall.put(`${updateQuestionApi}/${questionId}`, data);
       console.log(response);
-      if(response.status === 201)
+      if(response.status === 200)
       {
-        toast.success("Question Created Successfully");
+        toast.success("Question updated Successfully");
           setTimeout(() => {
             navigate(-1);
           }, 2000);
@@ -87,6 +86,34 @@ const Question = () => {
     }
     
   }
+
+  const getQuestionData = async()=>{
+    try {
+      const response = await apiCall.get(`${getQuestionByIdApi}/${questionId}`);
+      console.log(response);
+      if(response.status === 200)
+      {
+        const data = response.data.question[0];
+        // setName(data.question_text);
+        setOption1(data.option_1);
+        setOption2(data.option_2);
+        setOption3(data.option_3);
+        setOption4(data.option_4);
+        setCorrectOption(data.correct_option);
+        setCorrect(data.correct_marks);
+        setWrong(data.wrong_marks);
+        setQuestionBody(data.question_text);
+        setImgUrl(data.question_img_url);
+      }
+    } catch (error) {
+      console.log(error);
+      
+    }
+  }
+
+  useEffect(() => {
+    getQuestionData();
+  }, []);
 
   return (
     <>
@@ -237,7 +264,7 @@ const Question = () => {
             />
           </div>
 
-          <Button text="Submit" className={Style.createButton} isLoading={loading}  onClick={handleSubmit} isDisabled={loading} />
+          <Button text="Update Question" className={Style.createButton} isLoading={loading}  onClick={handleSubmit} isDisabled={loading} />
         </form>
       </div>
       <Toaster />
@@ -245,4 +272,4 @@ const Question = () => {
   );
 };
 
-export default Question;
+export default EditQuestion;

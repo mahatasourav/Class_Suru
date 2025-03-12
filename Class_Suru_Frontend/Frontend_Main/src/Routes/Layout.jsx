@@ -43,7 +43,7 @@ const Layout = () => {
   useEffect(() => {
     if (!location.pathname.startsWith("/admin")) {
       if (!userState) {
-        // handleUserData();
+        handleUserData();
       }
     }
   }, []);

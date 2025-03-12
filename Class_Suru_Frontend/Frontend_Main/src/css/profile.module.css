@@ -264,6 +264,7 @@ padding: 3px 10px;
   @media (max-width: 1024px) {
     .userDashboardSection {
       flex-direction: column;
+      gap: 40px;
     }
   
     .userDashboardLeft,
@@ -280,7 +281,9 @@ padding: 3px 10px;
     .DashboardRightProfileRight {
       width: 100%;
     }
-  
+    .DashboardRightProfileImgUpload2 p{
+      visibility: hidden;
+    }
     .RecentExam {
       max-width: 90vw;
     }

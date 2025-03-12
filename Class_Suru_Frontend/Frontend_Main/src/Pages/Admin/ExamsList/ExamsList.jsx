@@ -9,11 +9,14 @@ import TestStyle from "../../../css/Exam.module.css";
 import { FaFileCircleQuestion } from "react-icons/fa6";
 import { TfiTimer } from "react-icons/tfi";
 import { TbTargetArrow } from "react-icons/tb";
+import { MdDelete } from "react-icons/md";
 
 import { FaPlus } from "react-icons/fa6";
 import { MdEdit } from "react-icons/md";
 import apiCall from "../../../utils/apiCall";
-import { getExamsApi } from "../../../apis";
+import { deleteExamApi, getExamsApi } from "../../../apis";
+
+import toast, { Toaster } from "react-hot-toast";
 
 const ExamsList = () => {
     const {examName,subjectName} = useParams();
@@ -25,13 +28,13 @@ const ExamsList = () => {
     const getTestData = async () => {
         try{
             setLoading(true);
-            console.log(`${getExamsApi}/${subjectName}/${examName}`);
+            // console.log(`${getExamsApi}/${subjectName}/${examName}`);
             
             
             const response = await apiCall.get(`${getExamsApi}/${subjectName}/${examName}`);
             if(response.status === 200)
             {
-                // console.log(response.data);
+                console.log(response.data);
                 setTest(response.data.exam);
             }
             
@@ -43,6 +46,33 @@ const ExamsList = () => {
         {
             setLoading(false);
         }
+    }
+
+    const handleDeleteData = async (id)=>{
+      try {
+        const confirmDeleteExam = window.confirm(
+          "Do you really want to delete the Exam ?"
+        );
+        if (confirmDeleteExam) {
+          const response = await apiCall.delete(
+            `${deleteExamApi}/${id}`
+          );
+          if (response.status === 200) {
+            toast.success("Exam deleted successfully");
+            setTimeout(() => {
+              getTestData();
+            }, 1000);
+          }
+        }
+        else
+        {
+          return ;
+        }
+      } catch (error) {
+        console.log(error);
+        toast.error("Error in deleting Exam");
+        
+      }
     }
 
     useEffect(() => {
@@ -79,20 +109,28 @@ const ExamsList = () => {
                             </span> */}
                             <span className={Style.testLowerText}>
                               <TfiTimer />
-                              {ele.exam_duration}
+                              {ele.exam_duration} hrs
                             </span>
                             <span className={Style.testLowerText}>
                               <TbTargetArrow />
-                              {ele.exam_total_marks}Marks
+                              {ele.exam_total_marks} Marks
                             </span>
                           </p>
                         </div>
-          
-                        <Link to={`/admin/list/${examName}/${subjectName}/editQuestionSet`}>
+                              <div className={Style.ButtonContainer}>
+                                
+                              
+                        <Link to={`/admin/list/${examName}/${subjectName}/editQuestionSet/${ele.id}`}>
                           <Button text="Edit Exam" className={Style.editExam} onDualMode={true} isHollow={true} >
                           <MdEdit />
                           </Button>
                         </Link>
+                        {/* <Link to={`/admin/list/${examName}/${subjectName}/editQuestionSet`}> */}
+                          <Button text="Delete Exam" className={Style.deleteExam} onDualMode={true} isHollow={true} onClick={()=>{handleDeleteData(ele.id)}} > 
+                          <MdDelete />
+                          </Button>
+                        {/* </Link> */}
+                      </div>
                       </div>
                     ))
                   ) : (
@@ -101,6 +139,7 @@ const ExamsList = () => {
                 </div>
         </div>
       </div>
+      <Toaster />
     </>
   );
 };

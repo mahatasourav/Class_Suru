@@ -32,6 +32,7 @@ import Question from "../Pages/Admin/Question/Question";
 //importing Dashboard Profiles and recent exam
 import DashboardRightProfile from "../Pages/Dashboard/DashboardRightProfile";
 import DashboardRightRecentExam from "../Pages/Dashboard/DashboardRightRecentExam";
+import EditQuestion from "../Pages/Admin/Question/EditQuestion";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -75,8 +76,12 @@ const router = createBrowserRouter(
         element={<QuestionList />}
       />
       <Route
-        path="/admin/list/:examName/:subjectName/editQuestionSet"
+        path="/admin/list/:examName/:subjectName/editQuestionSet/:examId"
         element={<EditQuestionSet />}
+      />
+      <Route
+        path="/admin/list/:examName/:subjectName/editQuestion/:questionId"
+        element={<EditQuestion />}
       />
       <Route path="/admin/users" element={<Users />} />
 

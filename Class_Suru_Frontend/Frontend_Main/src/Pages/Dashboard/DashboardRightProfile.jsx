@@ -5,6 +5,9 @@ import { FiUpload } from "react-icons/fi";
 import { MdOutlineEdit } from "react-icons/md";
 import { MdOutlineAccessAlarm } from "react-icons/md";
 import { RiPagesLine } from "react-icons/ri";
+import PhoneInput from "react-phone-input-2";
+import "react-phone-input-2/lib/style.css";
+import Pichart from "./Pichart";
 
 const DashboardRightProfile = () => {
   const userData = useSelector((state) => state.user.userData);
@@ -43,6 +46,7 @@ const DashboardRightProfile = () => {
   const [userName, setUserName] = useState(userData?.name || "");
   const [userEmail, setUserEmail] = useState(userData?.email || "");
   const [userPhone, setUserPhone] = useState(userData?.phone_number || "");
+  const [phoneError, setPhoneError] = useState("");
   const [userLocation, setUserLocation] = useState("Kolkata");
 
   // Toggle Edit Mode
@@ -52,8 +56,12 @@ const DashboardRightProfile = () => {
 
   // Save Changes
   const handleSaveClick = () => {
+    if (userPhone.length !== 10) {
+      setPhoneError("Phone number must be exactly 10 digits!");
+      return;
+    }
+    setPhoneError(""); // Clear error if valid
     setIsEditing(false);
-    // Here you can send updated details to an API if needed
     console.log("Updated User Details:", { userName, userEmail, userPhone });
   };
 
@@ -120,7 +128,7 @@ const DashboardRightProfile = () => {
                 </button>
               )}
             </div>
-
+            {/* Name as input */}
             <div className={Style.DashboardRightProfileInformationLower}>
               <div>
                 <p>Full Name:</p>
@@ -132,6 +140,7 @@ const DashboardRightProfile = () => {
                   className={Style.userName}
                 />
               </div>
+              {/* Email as Input */}
               <div>
                 <p>Email:</p>
                 <input
@@ -142,16 +151,34 @@ const DashboardRightProfile = () => {
                   className={Style.userEmail}
                 />
               </div>
+              {/* phone no as input */}
               <div>
                 <p>Phone No:</p>
                 <input
+                  country={"in"}
                   type="number"
                   disabled={!isEditing}
                   value={userPhone}
-                  onChange={(e) => setUserPhone(e.target.value)}
-                  className={Style.userPhone}
+                  onChange={(e) => {
+                    const value = e.target.value;
+                    if (value.length <= 10) {
+                      setUserPhone(value);
+                    }
+                    setPhoneError(
+                      value.length === 10
+                        ? ""
+                        : "Phone number must be 10 digits!"
+                    );
+                  }}
+                  className={`${Style.userPhone} ${
+                    phoneError ? Style.inputError : ""
+                  }`}
                 />
+                {phoneError && (
+                  <p style={{ color: "red", fontSize: "12px" }}>{phoneError}</p>
+                )}
               </div>
+
               <div>
                 <p>Location:</p>{" "}
                 <input
@@ -168,9 +195,9 @@ const DashboardRightProfile = () => {
 
         <div className={Style.DashboardRightProfileRight}>
           <div className={Style.pichart}>
-            <p>35 exam passed</p>
-            <p>2 exam failed</p>
-            <p>10 exam attend</p>
+            <div>
+              <Pichart />
+            </div>
           </div>
           <div className={Style.Notifications}>
             <div className={Style.NotificationsText}>

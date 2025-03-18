@@ -5,7 +5,7 @@ import Style from "../../css/profile.module.css";
 const Pichart = () => {
   // Exam Data
   const data = [
-    { name: "Not Attended", value: 50, color: "#ccc" },
+    { name: "Not Attended", value: 150, color: "#ccc" },
     { name: "Passed", value: 35, color: "#4caf50" },
     { name: "Failed", value: 5, color: "#f44336" },
     { name: "Attended", value: 10, color: "#2196f3" },

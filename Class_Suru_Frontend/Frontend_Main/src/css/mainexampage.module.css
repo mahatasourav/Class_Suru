@@ -132,7 +132,7 @@
 .examPageContentImg{
     margin-top: 20px;
     width: 100%;
-    height: 300px;
+    height: auto;
     overflow: hidden;
     display: flex;
     justify-content: center;
@@ -411,9 +411,12 @@
     justify-content: center;
     align-items: center;
     font-weight: 600;
-    
+ transition: all 0.2s linear;   
 }
-
+.examQuestion:hover{
+    transform: scale(0.9);
+    cursor: pointer;
+}
 .notVisited{
     background-image: url("/instruction1.png");
     background-size: cover;

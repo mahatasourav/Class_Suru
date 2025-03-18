@@ -128,68 +128,75 @@ const DashboardRightProfile = () => {
                 </button>
               )}
             </div>
-            {/* Name as input */}
-            <div className={Style.DashboardRightProfileInformationLower}>
-              <div>
-                <p>Full Name:</p>
-                <input
-                  type="text"
-                  disabled={!isEditing}
-                  value={userName}
-                  onChange={(e) => setUserName(e.target.value)}
-                  className={Style.userName}
-                />
-              </div>
-              {/* Email as Input */}
-              <div>
-                <p>Email:</p>
-                <input
-                  type="email"
-                  disabled={!isEditing}
-                  value={userEmail}
-                  onChange={(e) => setUserEmail(e.target.value)}
-                  className={Style.userEmail}
-                />
-              </div>
-              {/* phone no as input */}
-              <div>
-                <p>Phone No:</p>
-                <input
-                  country={"in"}
-                  type="number"
-                  disabled={!isEditing}
-                  value={userPhone}
-                  onChange={(e) => {
-                    const value = e.target.value;
-                    if (value.length <= 10) {
-                      setUserPhone(value);
-                    }
-                    setPhoneError(
-                      value.length === 10
-                        ? ""
-                        : "Phone number must be 10 digits!"
-                    );
-                  }}
-                  className={`${Style.userPhone} ${
-                    phoneError ? Style.inputError : ""
-                  }`}
-                />
-                {phoneError && (
-                  <p style={{ color: "red", fontSize: "12px" }}>{phoneError}</p>
-                )}
-              </div>
 
-              <div>
-                <p>Location:</p>{" "}
-                <input
-                  type="text"
-                  disabled={!isEditing}
-                  value={userLocation}
-                  onChange={(e) => setUserLocation(e.target.value)}
-                  className={Style.userLocation}
-                />
+            {/* Name as input */}
+            {!userData ? (
+              "loading..."
+            ) : (
+              <div className={Style.DashboardRightProfileInformationLower}>
+                <div>
+                  <p>Full Name:</p>
+                  <input
+                    type="text"
+                    disabled={!isEditing}
+                    value={userData.name}
+                    onChange={(e) => setUserName(e.target.value)}
+                    className={Style.userName}
+                  />
+                </div>
+                {/* Email as Input */}
+                <div>
+                  <p>Email:</p>
+                  <input
+                    type="email"
+                    disabled={!isEditing}
+                    value={userData.email}
+                    onChange={(e) => setUserEmail(e.target.value)}
+                    className={Style.userEmail}
+                  />
+                </div>
+                {/* phone no as input */}
+                <div>
+                  <p>Phone No:</p>
+                  <input
+                    country={"in"}
+                    type="number"
+                    disabled={!isEditing}
+                    value={userData.phone_number}
+                    onChange={(e) => {
+                      const value = e.target.value;
+                      if (value.length <= 10) {
+                        setUserPhone(value);
+                      }
+                      setPhoneError(
+                        value.length === 10
+                          ? ""
+                          : "Phone number must be 10 digits!"
+                      );
+                    }}
+                    className={`${Style.userPhone} ${
+                      phoneError ? Style.inputError : ""
+                    }`}
+                  />
+                  {phoneError && (
+                    <p style={{ color: "red", fontSize: "12px" }}>
+                      {phoneError}
+                    </p>
+                  )}
+                </div>
+
+                <div>
+                  <p>Location:</p>{" "}
+                  <input
+                    type="text"
+                    disabled={!isEditing}
+                    value={userLocation}
+                    onChange={(e) => setUserLocation(e.target.value)}
+                    className={Style.userLocation}
+                  />
+                </div>
               </div>
-            </div>
+            )}
           </div>
         </div>
 
@@ -206,33 +213,15 @@ const DashboardRightProfile = () => {
             </div>
             <div className={Style.NotificationsLists}>
               <p className={Style.NotificationsList}>
+                *Notification will come soon
+              </p>
+              {/* <p className={Style.NotificationsList}>
                 <RiPagesLine />
                 <span>units and measurements</span>
                 <span>
                   3:00pm <p>23/12/2024</p>{" "}
                 </span>
-              </p>
-              <p className={Style.NotificationsList}>
-                <RiPagesLine />
-                <span>units and measurements</span>
-                <span>
-                  3:00pm <p>23/12/2024</p>{" "}
-                </span>
-              </p>
-              <p className={Style.NotificationsList}>
-                <RiPagesLine />
-                <span>units and measurements</span>
-                <span>
-                  3:00pm <p>23/12/2024</p>{" "}
-                </span>
-              </p>
-              <p className={Style.NotificationsList}>
-                <RiPagesLine />
-                <span>units and measurements</span>
-                <span>
-                  3:00pm <p>23/12/2024</p>{" "}
-                </span>
-              </p>
+              </p> */}
             </div>
           </div>
         </div>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Button from "../../Components/Button/Button";
 import Style from "../../css/mainexampage.module.css";
 import { MdOutlineBookmarkAdd } from "react-icons/md";
@@ -12,14 +12,21 @@ import instruction5 from "../../assets/instruction5.png";
 
 import { HiChevronDoubleRight } from "react-icons/hi";
 import { HiChevronDoubleLeft } from "react-icons/hi";
+import QuestionData from "../../assets/ExamData/Question";
 
 const MainExamPage = () => {
+  const [currentQuestionIndex, setcurrentQuestionIndex] = useState(0);
+
+  const [optionSelected, setoptionSelected] = useState();
+
   return (
     <>
       <div className={Style.examPageContainer}>
         <div className={Style.examPageLeft}>
           <div className={Style.examPageLeftHeader}>
-            <div className={Style.examPageLeftHeaderTitle}>Question 1:</div>
+            <div className={Style.examPageLeftHeaderTitle}>
+              Question {currentQuestionIndex + 1}
+            </div>
 
             <div className={Style.examPageLeftOptions}>
               <div className={Style.examPageLeftMarksDristibution}>
@@ -57,45 +64,14 @@ const MainExamPage = () => {
           </div>
           <div className={Style.examPageContent}>
             <div className={Style.examPageContentQuestion}>
-              <p>
-                A ball is thrown vertically upward with an initial velocity of
-                20
-                <span class="katex katex-html base mord" aria-hidden="true">
-                  20
-                </span>{" "}
-                m/s. Ignoring air resistance, what is the maximum height it will
-                reach? (Take{" "}
-                <i>
-                  <span
-                    class="katex katex-html base mord mathnormal"
-                    aria-hidden="true"
-                  >
-                    g
-                  </span>
-                  <span
-                    class="katex katex-html base mspace"
-                    aria-hidden="true"
-                  ></span>
-                  <span class="katex katex-html base mrel" aria-hidden="true">
-                    =
-                  </span>
-                  <span
-                    class="katex katex-html base mspace"
-                    aria-hidden="true"
-                  ></span>
-                  <span
-                    class="katex katex-html base strut"
-                    aria-hidden="true"
-                  ></span>
-                  <span class="katex katex-html base mord" aria-hidden="true">
-                    10
-                  </span>
-                </i>{" "}
-                m/s²)
-              </p>
+              {QuestionData[currentQuestionIndex].question_body}
             </div>
             <div className={Style.examPageContentImg}>
-              <img className={Style.examImg} src={questionImage} alt="" />
+              <img
+                className={Style.examImg}
+                src={QuestionData[currentQuestionIndex].question_img}
+                alt=""
+              />
             </div>
             <div className={Style.optionsSection}>
               <div className={`${Style.option} ${Style.selected}`}>
@@ -103,27 +79,25 @@ const MainExamPage = () => {
                   <div className={Style.optionCheckBoxInner}></div>
                 </div>
                 <div className={Style.optionText}>
-                  Lorem ipsum dolor sit amet.
+                  {QuestionData[currentQuestionIndex].option_1}
                 </div>
               </div>
-              <div className={`${Style.option} ${Style.selected}`}>
-                <div className={Style.optionCheckBox}>
-                  <div className={Style.optionCheckBoxInner}></div>
-                </div>
+              <div className={`${Style.option}`}>
+                <div className={Style.optionCheckBox}></div>
                 <div className={Style.optionText}>
-                  Lorem ipsum dolor sit amet.
+                  {QuestionData[currentQuestionIndex].option_2}
                 </div>
               </div>
               <div className={Style.option}>
                 <div className={Style.optionCheckBox}></div>
                 <div className={Style.optionText}>
-                  Lorem ipsum dolor sit amet.
+                  {QuestionData[currentQuestionIndex].option_3}
                 </div>
               </div>
               <div className={Style.option}>
                 <div className={Style.optionCheckBox}></div>
                 <div className={Style.optionText}>
-                  Lorem ipsum dolor sit amet.
+                  {QuestionData[currentQuestionIndex].option_4}
                 </div>
               </div>
             </div>
@@ -208,10 +182,63 @@ const MainExamPage = () => {
             </div>
           </div>
           <div className={Style.examQuestionListSection}>
+            {QuestionData.map((question, index) => {
+              return (
+                <div
+                  className={`${Style.examQuestion} ${Style.notVisited}`}
+                  key={index}
+                  onClick={() => {
+                    setcurrentQuestionIndex(index);
+                  }}
+                >
+                  <div className={Style.examQuestionText}>{index + 1}</div>
+                </div>
+              );
+            })}
+            {/* <div className={`${Style.examQuestion} ${Style`}>
+              <div className={Style.examQuestionText}>2</div>
+            </div>
+            <div className={`${Style.examQuestion} ${Style.answered}`}>
+              <div className={Style.examQuestionText}>3</div>
+            </div>
+            <div className={`${Style.examQuestion} ${Style.markedForReview}`}>
+              <div className={Style.examQuestionText}>4</div>
+            </div>
+
             <div
               className={`${Style.examQuestion} ${Style.answeredAndMarkedForReview}`}
             >
-              <div className={Style.examQuestionText}>99</div>
+              <div className={Style.examQuestionText}>5</div>.notAnswered}
+            </div>
+            <div className={`${Style.examQuestion} ${Style.notVisited}`}>
+              <div className={Style.examQuestionText}>1</div>
+            </div>
+            <div className={`${Style.examQuestion} ${Style.notVisited}`}>
+              <div className={Style.examQuestionText}>1</div>
+            </div>
+            <div className={`${Style.examQuestion} ${Style.notVisited}`}>
+              <div className={Style.examQuestionText}>1</div>
+            </div>
+            <div className={`${Style.examQuestion} ${Style.notVisited}`}>
+              <div className={Style.examQuestionText}>1</div>
+            </div>
+            <div className={`${Style.examQuestion} ${Style.notVisited}`}>
+              <div className={Style.examQuestionText}>1</div>
+            </div>
+            <div className={`${Style.examQuestion} ${Style.notVisited}`}>
+              <div className={Style.examQuestionText}>1</div>
+            </div>
+            <div className={`${Style.examQuestion} ${Style.notVisited}`}>
+              <div className={Style.examQuestionText}>1</div>
+            </div>
+            <div className={`${Style.examQuestion} ${Style.notVisited}`}>
+              <div className={Style.examQuestionText}>1</div>
+            </div>
+            <div className={`${Style.examQuestion} ${Style.notVisited}`}>
+              <div className={Style.examQuestionText}>1</div>
+            </div>
+            <div className={`${Style.examQuestion} ${Style.notVisited}`}>
+              <div className={Style.examQuestionText}>1</div>
             </div>
             <div className={`${Style.examQuestion} ${Style.notAnswered}`}>
               <div className={Style.examQuestionText}>2</div>
@@ -389,52 +416,7 @@ const MainExamPage = () => {
             </div>
             <div className={`${Style.examQuestion} ${Style.notVisited}`}>
               <div className={Style.examQuestionText}>1</div>
-            </div>
-            <div className={`${Style.examQuestion} ${Style.notVisited}`}>
-              <div className={Style.examQuestionText}>1</div>
-            </div>
-            <div className={`${Style.examQuestion} ${Style.notAnswered}`}>
-              <div className={Style.examQuestionText}>2</div>
-            </div>
-            <div className={`${Style.examQuestion} ${Style.answered}`}>
-              <div className={Style.examQuestionText}>3</div>
-            </div>
-            <div className={`${Style.examQuestion} ${Style.markedForReview}`}>
-              <div className={Style.examQuestionText}>4</div>
-            </div>
-
-            <div
-              className={`${Style.examQuestion} ${Style.answeredAndMarkedForReview}`}
-            >
-              <div className={Style.examQuestionText}>5</div>
-            </div>
-            <div className={`${Style.examQuestion} ${Style.notVisited}`}>
-              <div className={Style.examQuestionText}>1</div>
-            </div>
-            <div className={`${Style.examQuestion} ${Style.notVisited}`}>
-              <div className={Style.examQuestionText}>1</div>
-            </div>
-            <div className={`${Style.examQuestion} ${Style.notVisited}`}>
-              <div className={Style.examQuestionText}>1</div>
-            </div>
-            <div className={`${Style.examQuestion} ${Style.notVisited}`}>
-              <div className={Style.examQuestionText}>1</div>
-            </div>
-            <div className={`${Style.examQuestion} ${Style.notVisited}`}>
-              <div className={Style.examQuestionText}>1</div>
-            </div>
-            <div className={`${Style.examQuestion} ${Style.notVisited}`}>
-              <div className={Style.examQuestionText}>1</div>
-            </div>
-            <div className={`${Style.examQuestion} ${Style.notVisited}`}>
-              <div className={Style.examQuestionText}>1</div>
-            </div>
-            <div className={`${Style.examQuestion} ${Style.notVisited}`}>
-              <div className={Style.examQuestionText}>1</div>
-            </div>
-            <div className={`${Style.examQuestion} ${Style.notVisited}`}>
-              <div className={Style.examQuestionText}>1</div>
-            </div>
+            </div> */}
           </div>
           <div className={Style.submitButtonContainer}>
             <Button text="Submit Exam" className={Style.submitButton} />

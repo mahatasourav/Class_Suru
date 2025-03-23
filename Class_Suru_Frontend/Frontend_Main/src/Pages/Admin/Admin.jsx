@@ -1,10 +1,24 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import Style from "../../css/admin.module.css";
 import { Outlet, useLocation } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Admin = () => {
   const location = useLocation();
+  const navigate = useNavigate();
+  const adminStatus = useSelector((state)=>state.admin.status);
+  console.log(adminStatus);
+
+  useEffect(() => {
+    if(!adminStatus)
+    {
+      navigate("/admin/login")
+    }
+    
+  }, [adminStatus]);
+
+  
   return (
     <div className={Style.AdminPage}>
       <div className={Style.AdminContainer}>

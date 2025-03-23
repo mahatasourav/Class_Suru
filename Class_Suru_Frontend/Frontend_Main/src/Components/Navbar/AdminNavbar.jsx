@@ -14,33 +14,35 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import Menu from "./Menu";
 
 import { MdMenu, MdClose } from "react-icons/md";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { logout } from "../../Redux/features/adminSlice";
 
 const AdminNavbar = () => {
-    const adminStatus = useSelector((state) => state.admin.status);
-      const navigate = useNavigate();
-      const [menuOpen, setMenuOpen] = useState(true);
-      const menuRef = useRef();
-      const location = useLocation();
-      // useEffect(() => {
-      //   const toggleSidebar = (e) => {
-      //     if (!menuRef.current.contains(e.target)) {
-      //       setMenuOpen(false);
-      //       // console.log(menuRef.current);
-      //     }
-      //   };
-      //   document.addEventListener("mousedown", toggleSidebar);
-      //   return () => {
-      //     document.removeEventListener("mousedown", toggleSidebar);
-      //   };
-      // }, []);
+  const adminStatus = useSelector((state) => state.admin.status);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const [menuOpen, setMenuOpen] = useState(true);
+  const menuRef = useRef();
+  const location = useLocation();
+  // useEffect(() => {
+  //   const toggleSidebar = (e) => {
+  //     if (!menuRef.current.contains(e.target)) {
+  //       setMenuOpen(false);
+  //       // console.log(menuRef.current);
+  //     }
+  //   };
+  //   document.addEventListener("mousedown", toggleSidebar);
+  //   return () => {
+  //     document.removeEventListener("mousedown", toggleSidebar);
+  //   };
+  // }, []);
 
-      // useEffect(() => {
-      //   if(!adminStatus)
-      //   {
-      //     navigate("/admin/login")
-      //   }
-      // }, []);
+  // useEffect(() => {
+  //   if(!adminStatus)
+  //   {
+  //     navigate("/admin/login")
+  //   }
+  // }, []);
   return (
     <nav className={`${Style.navContainer} ${Style.adminnavContainer}`}>
       {/* <div className={Style.navUpper}>
@@ -102,19 +104,24 @@ const AdminNavbar = () => {
             
           </div> */}
           <div className={Style.navButtons}>
-            {
-              adminStatus ? <Button
-              text="Logout"
-              // className={`${Style.navButton}`}
-            /> : <Button
-            text="Login"
-            // className={`${Style.navButton}`}
-            isLink={true}
-            link="/admin/login"
-          />
-            }
-            
-            
+            {adminStatus ? (
+              <Button
+                text="Logout"
+                onClick={()=>{
+                  dispatch(logout());
+                  navigate("/admin/login");
+                }}
+                // className={`${Style.navButton}`}
+              />
+            ) : (
+              <Button
+                text="Login"
+                // className={`${Style.navButton}`}
+                isLink={true}
+                link="/admin/login"
+              />
+            )}
+
             {/* <div className={Style.menuSection} id="menuSection">
               <div
                 className={`${Style.menu} ${!menuOpen ? Style.open : ""}`}
@@ -141,7 +148,7 @@ const AdminNavbar = () => {
         </div>
       </div>
     </nav>
-  )
-}
+  );
+};
 
-export default AdminNavbar
+export default AdminNavbar;

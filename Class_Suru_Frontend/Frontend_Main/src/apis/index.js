@@ -17,6 +17,10 @@ const signupApi = `${basApi}/api/auth/signup`;
 const loginApi = `${basApi}/api/auth/login`;
 const userDetailsApi = `${basApi}/api/auth/user`;
 
+// Admin Apis
+const adminLoginApi = `${basApi}/api/auth/admin/login`;
+const adminLoginOTPApi = `${basApi}/api/auth/admin/login/otp`;
+
 // exam apis
 const createExamApi = `${basApi}/api/auth/exam`;
 const getExamsApi = `${basApi}/api/auth/exam`;
@@ -33,4 +37,4 @@ const updateQuestionApi = `${basApi}/api/auth/question/update`;
 
 
 
-export { signupApi, loginApi, userDetailsApi ,createExamApi,getExamsApi,createQuestionApi,getQuestionListApi,deleteQuestionApi,deleteExamApi,getExamByIdApi,getQuestionByIdApi,updateQuestionApi,updateExamApi};
+export { signupApi, loginApi, userDetailsApi ,createExamApi,getExamsApi,createQuestionApi,getQuestionListApi,deleteQuestionApi,deleteExamApi,getExamByIdApi,getQuestionByIdApi,updateQuestionApi,updateExamApi,adminLoginApi,adminLoginOTPApi};

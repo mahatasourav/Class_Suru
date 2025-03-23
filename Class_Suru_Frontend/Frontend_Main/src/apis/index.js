@@ -1,6 +1,6 @@
-const basApi = "https://class-suru-beta.vercel.app";
+// const basApi = "https://class-suru-beta.vercel.app";
 
-// const basApi = "http://localhost:5000";
+const basApi = "http://localhost:5000";
 
 /**
  * @description API for signup
@@ -16,6 +16,10 @@ const basApi = "https://class-suru-beta.vercel.app";
 const signupApi = `${basApi}/api/auth/signup`;
 const loginApi = `${basApi}/api/auth/login`;
 const userDetailsApi = `${basApi}/api/auth/user`;
+
+// Admin Apis
+const adminLoginApi = `${basApi}/api/auth/admin/login`;
+const adminLoginOTPApi = `${basApi}/api/auth/admin/login/otp`;
 
 // exam apis
 const createExamApi = `${basApi}/api/auth/exam`;
@@ -33,4 +37,4 @@ const updateQuestionApi = `${basApi}/api/auth/question/update`;
 
 
 
-export { signupApi, loginApi, userDetailsApi ,createExamApi,getExamsApi,createQuestionApi,getQuestionListApi,deleteQuestionApi,deleteExamApi,getExamByIdApi,getQuestionByIdApi,updateQuestionApi,updateExamApi};
+export { signupApi, loginApi, userDetailsApi ,createExamApi,getExamsApi,createQuestionApi,getQuestionListApi,deleteQuestionApi,deleteExamApi,getExamByIdApi,getQuestionByIdApi,updateQuestionApi,updateExamApi,adminLoginApi,adminLoginOTPApi};

@@ -121,10 +121,10 @@ const Dashboard = () => {
             {" "}
             <p
               onClick={() => {
-                // const confirmLogout = window.confirm(
-                //   "Do you really want to logout?"
-                // );
-                pop.alert("Do you really want to logout?");
+                const confirmLogout = window.confirm(
+                  "Do you really want to logout?"
+                );
+                // pop.alert("Do you really want to logout?");
                 if (confirmLogout) {
                   localStorage.removeItem("token");
                   dispatch(logout());

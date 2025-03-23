@@ -134,15 +134,14 @@
   .pichart{
    border-radius: 10px;
     background-color: white;
-    max-height: 300px;
-    overflow-y: auto;
+    height: auto;
+    
     
   }
  
   .piePhoto{
 display: flex;
 justify-content: center;
-
 align-items: center;
 width: 300px;
 margin: auto;
@@ -163,7 +162,8 @@ margin: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items:flex-start;
+    padding-left: 50px;
   }
   .pichart p{
    display: flex;

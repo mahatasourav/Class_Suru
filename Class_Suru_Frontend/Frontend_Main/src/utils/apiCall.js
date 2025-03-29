@@ -16,14 +16,14 @@ const post = async(url, data) =>{
     } catch (error) {
         console.log(error);
         countPost++;
-        if(countPost<3 || error.code === "ERR_NETWORK")
-        {
-            return post(url, data);
-        }
-        else
-        {
-            return error;
-        }
+        // if(countPost<3 || error.code === "ERR_NETWORK")
+        // {
+        //     return post(url, data);
+        // }
+        // else
+        // {
+        //     return error;
+        // }
     }
 }
 
@@ -43,14 +43,14 @@ const get = async(url) => {
     } catch (error) {
         console.log(error);
         countGet++;
-        if(countGet<3 || error.code === "ERR_NETWORK")
-        {
-            return get(url);
-        }
-        else
-        {
-            return error;
-        }
+        // if(countGet<3 || error.code === "ERR_NETWORK")
+        // {
+        //     return get(url);
+        // }
+        // else
+        // {
+        //     return error;
+        // }
     }
 }
 
@@ -70,14 +70,14 @@ const del = async(url) => {
     } catch (error) {
         console.log(error);
         countDelete++;
-        if(countDelete<3 || error.code === "ERR_NETWORK")
-        {
-            return del(url);
-        }
-        else
-        {
-            return error;
-        }
+        // if(countDelete<3 || error.code === "ERR_NETWORK")
+        // {
+        //     return del(url);
+        // }
+        // else
+        // {
+        //     return error;
+        // }
     }
 }
 
@@ -97,14 +97,14 @@ const put = async(url, data) => {
     } catch (error) {
         console.log(error);
         countPut++;
-        if(countPut<3 || error.code === "ERR_NETWORK")
-        {
-            return put(url, data);
-        }
-        else
-        {
-            return error;
-        }
+        // if(countPut<3 || error.code === "ERR_NETWORK")
+        // {
+        //     return put(url, data);
+        // }
+        // else
+        // {
+        //     return error;
+        // }
     }
 }
 

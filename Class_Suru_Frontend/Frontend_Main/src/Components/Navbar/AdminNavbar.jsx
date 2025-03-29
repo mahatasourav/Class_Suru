@@ -15,9 +15,13 @@ import Menu from "./Menu";
 
 import { MdMenu, MdClose } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
-import { logout } from "../../Redux/features/adminSlice";
+import { logout, setAdminEmail, setAdminStatus } from "../../Redux/features/adminSlice";
+import { useCookies } from "react-cookie";
+import { jwtDecode } from "jwt-decode";
 
 const AdminNavbar = () => {
+  const [cookies,setCookie, removeCookie] = useCookies(['adminToken']);
+
   const adminStatus = useSelector((state) => state.admin.status);
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -37,12 +41,39 @@ const AdminNavbar = () => {
   //   };
   // }, []);
 
-  // useEffect(() => {
-  //   if(!adminStatus)
-  //   {
-  //     navigate("/admin/login")
-  //   }
-  // }, []);
+  useEffect(() => {
+    
+    if(!cookies['adminToken'])
+    {
+      
+      
+      navigate("/admin/login")
+    }
+    else
+    {
+      
+      const data = jwtDecode(cookies['adminToken']);
+      
+      
+      const currentTime = Date.now() / 1000;
+      if(data.exp < currentTime)
+      {
+        
+        removeCookie("adminToken");
+        dispatch(logout());
+        navigate("/admin/login")
+      }
+      else
+      {
+        if (location.pathname === "/admin/login" || location.pathname === "/admin/otp") {
+          navigate("/admin");
+        }
+        dispatch(setAdminEmail(data.email));
+        dispatch(setAdminStatus(true));
+
+      }
+    }
+  }, []);
   return (
     <nav className={`${Style.navContainer} ${Style.adminnavContainer}`}>
       {/* <div className={Style.navUpper}>
@@ -77,10 +108,10 @@ const AdminNavbar = () => {
 
       <div className={Style.navLower}>
         <div className={Style.nav}>
-          <Link className={Style.logo} to="/admin">
+          <div className={Style.logo}>
             <img className={Style.logoImg} src={logo} alt="class suru logo" />
             <div className={Style.logoText}>Class Suru | Admin Portal</div>
-          </Link>
+          </div>
           {/* <div
             className={`${Style.navLinks} ${
               menuOpen ? Style.active : Style.inactive
@@ -108,6 +139,7 @@ const AdminNavbar = () => {
               <Button
                 text="Logout"
                 onClick={()=>{
+                  removeCookie("adminToken");
                   dispatch(logout());
                   navigate("/admin/login");
                 }}

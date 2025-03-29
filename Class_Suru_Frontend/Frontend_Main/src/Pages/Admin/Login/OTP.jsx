@@ -6,8 +6,10 @@ import apiCall from '../../../utils/apiCall';
 import { adminLoginOTPApi } from '../../../apis';
 import { setAdminStatus, setAdminToken } from '../../../Redux/features/adminSlice';
 import { useNavigate } from 'react-router-dom';
+import {useCookies} from 'react-cookie'
 
 const OTP = () => {
+    const [cookies,setCookie, removeCookie] = useCookies();
     const [otp, setOtp] = useState("");
     const navigate = useNavigate();
     const [loading, setLoading] = useState(false);
@@ -25,6 +27,8 @@ const OTP = () => {
             if(response.status == 200){
                 dispatch(setAdminStatus(true));
                 dispatch(setAdminToken(response.data.token));
+                // localStorage.setItem("adminToken", response.data.token);
+                setCookie("adminToken", response.data.token, { path: '/' });
                 navigate("/admin");
             }
 

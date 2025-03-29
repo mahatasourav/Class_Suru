@@ -2,6 +2,7 @@ import { jwtDecode } from "jwt-decode";
 import apiCall from "./apiCall";
 import { userDetailsApi } from "../apis";
 import { useDispatch } from "react-redux";
+import axios from "axios";
 
 export const getUserData = async () => {
 
@@ -20,13 +21,13 @@ export const getUserData = async () => {
           token: token,
         };
 
-        const user_data = await apiCall.post(
+        const user_data = await axios.post(
           `${userDetailsApi}/${user.id}`,
           tokenObj
         );
 
         if (user_data.status === 200) {
-          console.log(user_data.data);
+          // console.log(user_data.data);
           return user_data.data;
         } else {
           console.log("Error fetching data");

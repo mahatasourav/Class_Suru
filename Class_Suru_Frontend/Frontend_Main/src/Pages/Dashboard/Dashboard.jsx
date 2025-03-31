@@ -98,28 +98,28 @@ const Dashboard = () => {
       <div className={Style.userDashboardSection}>
         <div className={Style.userDashboardLeft}>
           <div className={Style.userDashboardButton}>
-            <p
-              className={selectedOption === "profile" ? Style.activeButton : ""}
+            <div
+              className={`${selectedOption === "profile" ? Style.activeButton : ""} ${Style.dashboardButton}`}
               onClick={() => setSelectedOption("profile")}
             >
               <IoPersonSharp />
               <span>User Dashboard</span>
-            </p>
+            </div>
           </div>
           <div className={Style.recentExamButton}>
-            <p
+            <div
               className={
-                selectedOption === "recentExams" ? Style.activeButton : ""
+                `${selectedOption === "recentExams" ? Style.activeButton : ""} ${Style.dashboardButton}`
               }
               onClick={() => setSelectedOption("recentExams")}
             >
               <FaFileInvoice />
               <span>Recent Exams</span>
-            </p>
+            </div>
           </div>
           <div className={Style.logoutButton}>
             {" "}
-            <p
+            <div
               onClick={() => {
                 const confirmLogout = window.confirm(
                   "Do you really want to logout?"
@@ -134,7 +134,7 @@ const Dashboard = () => {
             >
               <GrLogout />
               <span>Log Out</span>
-            </p>{" "}
+            </div>{" "}
           </div>
         </div>
         <div className={Style.userDashboardRight}>

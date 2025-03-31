@@ -18,6 +18,7 @@ import { useSelector } from "react-redux";
 
 const Navbar = () => {
   const userStatus = useSelector((state) => state.user.status);
+  const user = useSelector((state) => state.user.userData);
   const navigate = useNavigate();
   const [menuOpen, setMenuOpen] = useState(false);
   const menuRef = useRef();
@@ -140,7 +141,7 @@ const Navbar = () => {
             >
               <img
                 className={Style.profileImg}
-                src="https://www.w3schools.com/howto/img_avatar.png"
+                src={user?.avatar}
                 alt="profile"
               />
             </div>

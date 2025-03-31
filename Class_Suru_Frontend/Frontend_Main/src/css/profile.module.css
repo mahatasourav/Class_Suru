@@ -19,7 +19,7 @@
     width: 20vw;
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 10px;
     padding-top: 20px;
   }
   
@@ -31,6 +31,26 @@
     gap: 20px;
     flex-direction: row;
     padding: 10px 20px;
+  }
+  .logoutButton{
+    width: 100%;
+    /* border: 1px solid red; */
+    padding: 10px 20px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 20px;
+  }
+  .logoutButton:hover{
+    background-color: #E1DFFF;
+  }
+  .logoutButton div{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    /* border: 1px solid red; */
   }
   
   .userDashboardRight {
@@ -80,13 +100,18 @@
   
   .UploadImage,
   .EditDetails {
-    padding: 5px 10px;
-    border-radius: 5px;
-    border: 1px solid rgb(88, 86, 214);
+
+    white-space: nowrap;
+    gap: 10px;
     display: flex;
-    gap: 7px;
-    align-items: center;
     justify-content: center;
+    align-items: center;
+    
+    width: fit-content;
+    
+  }
+  .UploadImage:hover{
+    transform: none;
   }
   
   .DashboardRightProfileImgUpload2 p {
@@ -115,7 +140,7 @@
     display: flex;
     margin-top: 20px;
     flex-direction: column;
-    gap: 5px;
+    gap: 10px;
   }
   .inputError {
     border: 1px solid red;
@@ -258,6 +283,18 @@ padding: 3px 10px;
     padding: 5px 10px;
     width: 400px;
     border-radius: 5px;
+  }
+  .dashboardButton{
+    padding: 10px 20px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    /* border: 1px solid red; */
+    gap: 10px;
+    width: 100%;
+  }
+  .dashboardButton:hover{
+    background-color: #E1DFFF;
   }
   
   /* Media Queries for Responsiveness */

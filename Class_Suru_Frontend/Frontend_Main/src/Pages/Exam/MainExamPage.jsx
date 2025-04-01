@@ -16,6 +16,7 @@ import QuestionData from "../../assets/ExamData/Question";
 
 const MainExamPage = () => {
   const [currentQuestionIndex, setcurrentQuestionIndex] = useState(0);
+
   const [answers, setanswers] = useState(
     QuestionData.map((_, index) => ({
       question_id: index,
@@ -24,28 +25,29 @@ const MainExamPage = () => {
     }))
   );
   console.log(answers);
-  const [questionStatus, setquestionStatus] = useState(
-    Array(QuestionData.length).fill(0)
-  );
+
+  // const [questionStatus, setquestionStatus] = useState(
+  //   Array(QuestionData.length).fill(0)
+  // );
 
   // questionStatus = 0 means the question is not visited
   // questionStatus = 1 means the question is not answered
   // questionStatus = 2 means the question is answered
   // questionStatus = 3 means the question is marked for review
   // questionStatus = 4 means the question is answered and marked for review
-  const getQuestionStatus = (index) => {
-    if (questionStatus[index] === 0) {
-      return Style.notVisited;
-    } else if (questionStatus[index] === 1) {
-      return Style.notAnswered;
-    } else if (questionStatus[index] === 2) {
-      return Style.answered;
-    } else if (questionStatus[index] === 3) {
-      return Style.markForReview;
-    } else if (questionStatus[index] === 4) {
-      return Style.answeredAndMarkedForReview;
-    }
-  };
+  // const getQuestionStatus = (index) => {
+  //   if (questionStatus[index] === 0) {
+  //     return Style.notVisited;
+  //   } else if (questionStatus[index] === 1) {
+  //     return Style.notAnswered;
+  //   } else if (questionStatus[index] === 2) {
+  //     return Style.answered;
+  //   } else if (questionStatus[index] === 3) {
+  //     return Style.markForReview;
+  //   } else if (questionStatus[index] === 4) {
+  //     return Style.answeredAndMarkedForReview;
+  //   }
+  // };
 
   const handelOptionClick = (index) => {
     if (answers[index].selected_option === null) {
@@ -249,21 +251,33 @@ const MainExamPage = () => {
                 text="Save & Next"
                 className={Style.save}
                 onClick={() => {
+                  if (answers[currentQuestionIndex].selected_option === null) {
+                    alert("Please select an options before save");
+                    return;
+                  }
+
                   setanswers((prevData) => {
                     const newData = [...prevData];
                     newData[currentQuestionIndex] = {
                       ...newData[currentQuestionIndex],
-                      status: 1,
+                      status: 2,
                     };
 
+                    if (
+                      currentQuestionIndex < QuestionData.length - 1 &&
+                      answers[currentQuestionIndex + 1].status === 0
+                    ) {
+                      newData[currentQuestionIndex + 1] = {
+                        ...newData[currentQuestionIndex + 1],
+                        status: 1,
+                      };
+                    }
                     return newData;
                   });
-                  setquestionStatus((prevStatus) => {
-                    const updatedStatus = [...prevStatus];
-                    updatedStatus[currentQuestionIndex] =
-                      handelOptionClick(currentQuestionIndex);
-                    return updatedStatus;
-                  });
+
+                  currentQuestionIndex === QuestionData.length - 1
+                    ? setcurrentQuestionIndex(currentQuestionIndex)
+                    : setcurrentQuestionIndex(currentQuestionIndex + 1);
                 }}
               />
               <Button
@@ -274,14 +288,33 @@ const MainExamPage = () => {
                     const newData = [...prevData];
                     newData[currentQuestionIndex] = {
                       ...newData[currentQuestionIndex],
-                      status: 0,
+                      selected_option: null,
+                      status: 1,
                     };
 
                     return newData;
                   });
                 }}
               />
-              <Button text="Mark For Review" className={Style.markForReview} />
+              <Button
+                text="Mark For Review"
+                className={Style.markForReview}
+                onClick={() => {
+                  setanswers((prevData) => {
+                    const newData = [...prevData];
+                    newData[currentQuestionIndex] = {
+                      ...newData[currentQuestionIndex],
+
+                      status:
+                        newData[currentQuestionIndex].selected_option === null
+                          ? 3
+                          : 4,
+                    };
+
+                    return newData;
+                  });
+                }}
+              />
             </div>
             <div className={Style.controlButton}>
               <Button
@@ -292,9 +325,24 @@ const MainExamPage = () => {
                     : Style.next
                 }
                 onClick={() => {
-                  currentQuestionIndex === QuestionData.length - 1
-                    ? setcurrentQuestionIndex(currentQuestionIndex)
-                    : setcurrentQuestionIndex(currentQuestionIndex + 1);
+                  if (currentQuestionIndex === QuestionData.length - 1) {
+                    setcurrentQuestionIndex(currentQuestionIndex);
+                  } else {
+                    setcurrentQuestionIndex(currentQuestionIndex + 1);
+                  }
+                  if (answers[currentQuestionIndex + 1].status === 0) {
+                    setanswers((prevData) => {
+                      const newData = [...answers];
+                      newData[currentQuestionIndex + 1] = {
+                        ...newData[currentQuestionIndex + 1],
+                        status: 1,
+                      };
+                      return newData;
+                    });
+                  }
+                  // currentQuestionIndex === QuestionData.length - 1
+                  //   ? setcurrentQuestionIndex(currentQuestionIndex)
+                  //   : setcurrentQuestionIndex(currentQuestionIndex + 1);
                 }}
               >
                 <HiChevronDoubleRight />
@@ -368,19 +416,28 @@ const MainExamPage = () => {
               return (
                 <div
                   className={`${Style.examQuestion} ${
-                    // questionStatus[index] === 0
-                    // ? Style.notAnswered
-                    // : Style.notVisited
-                    getQuestionStatus(index)
-                  }`}
+                    answers[index].status === 0 && Style.notVisited
+                  } ${answers[index].status === 1 && Style.notAnswered}
+                  ${answers[index].status === 2 && Style.answered}
+                  ${answers[index].status === 3 && Style.markedForReview}
+                  ${
+                    answers[index].status === 4 &&
+                    Style.answeredAndMarkedForReview
+                  }
+              `}
                   key={index}
                   onClick={() => {
                     setcurrentQuestionIndex(index);
-                    setquestionStatus((prevStatus) => {
-                      const updatedStatus = [...prevStatus];
-                      updatedStatus[index] = handelOptionClick(index);
-                      return updatedStatus;
-                    });
+                    if (answers[index].status === 0) {
+                      setanswers((prevData) => {
+                        const newData = [...answers];
+                        newData[index] = {
+                          ...newData[index],
+                          status: 1,
+                        };
+                        return newData;
+                      });
+                    }
                   }}
                 >
                   <div className={`${Style.examQuestionText} `}>

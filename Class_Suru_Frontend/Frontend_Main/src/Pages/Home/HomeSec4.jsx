@@ -1,6 +1,8 @@
 import React from "react";
 import examData from "../../assets/examData";
 import Style from "../../css/Home.module.css";
+import { FaArrowCircleRight } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const HomeSec4 = () => {
   return (
@@ -21,7 +23,9 @@ const HomeSec4 = () => {
               <h2>{exam.title}</h2>
               <h5>{exam.heading}</h5>
               <p>{exam.description}</p>
-              <button className={Style.examButton}>{exam.buttonText}</button>
+              <Link to={`/exam`} className={Style.examButton}>
+                {exam.buttonText} <FaArrowCircleRight />
+              </Link>
             </div>
             <img
               src={exam.image}

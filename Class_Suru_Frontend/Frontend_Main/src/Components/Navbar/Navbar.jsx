@@ -38,24 +38,35 @@ const Navbar = () => {
       <div className={Style.navUpper}>
         <div className={Style.nav}>
           <div className={Style.contactOptionContainer}>
-            <a className={Style.contactOption} href="#">
+            <a className={Style.contactOption} href="tel:+919064895938">
               <MdOutlineLocalPhone className={Style.contactIcon} />
               <div className={Style.contactText}>+91 9064895938</div>
             </a>
-            <a className={Style.contactOption} href="#">
+            <a
+              className={Style.contactOption}
+              href="mailto:classsuru22@gmail.com"
+            >
               <MdOutlineEmail className={Style.contactIcon} />
               <div className={Style.contactText}>classsuru22@gmail.com</div>
             </a>
           </div>
 
           <div className={Style.socials}>
-            <a href="#" className={Style.socailsIcons}>
+            <a
+              href="https://www.facebook.com/ClassSuru?mibextid=ZbWKwL"
+              target="blank"
+              className={Style.socailsIcons}
+            >
               <FaFacebookF />
             </a>
             <a href="#" className={Style.socailsIcons}>
               <FaXTwitter />
             </a>
-            <a href="#" className={Style.socailsIcons}>
+            <a
+              href="https://www.youtube.com/@class_suru/videos"
+              target="blank"
+              className={Style.socailsIcons}
+            >
               <FaYoutube />
             </a>
             <a href="#" className={Style.socailsIcons}>

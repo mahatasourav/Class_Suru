@@ -292,12 +292,31 @@
     gap: 10px;
     flex-direction: row-reverse;
 }
+.nextDisable{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-direction: row-reverse;
+    background-color: gray;
+    cursor:default;
+    pointer-events: none;
+}
 
 .previous{
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 10px;
+}
+.previousDisable{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    background-color: gray;
+    
+    pointer-events: none;
 }
 
 /* ====================== Right Section ====================== */

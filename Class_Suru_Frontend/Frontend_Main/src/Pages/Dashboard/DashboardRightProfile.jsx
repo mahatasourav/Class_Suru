@@ -57,7 +57,7 @@ const DashboardRightProfile = () => {
         {
           const imagePath = userData.avatar.split("/").slice(-3).join("/");
           const truncatedImagePath = imagePath.replace(/\.jpg$/, "");
-          const response_delete = await axios.delete("http://localhost:5000/api/auth/delete-image", {
+          const response_delete = await axios.delete(deleteImageApi, {
             data: {
               "public_id": truncatedImagePath,
             },

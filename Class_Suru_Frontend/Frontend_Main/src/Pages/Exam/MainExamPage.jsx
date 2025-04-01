@@ -20,6 +20,7 @@ const MainExamPage = () => {
     QuestionData.map((_, index) => ({
       question_id: index,
       selected_option: null,
+      status: 0,
     }))
   );
   console.log(answers);
@@ -43,6 +44,21 @@ const MainExamPage = () => {
       return Style.markForReview;
     } else if (questionStatus[index] === 4) {
       return Style.answeredAndMarkedForReview;
+    }
+  };
+
+  const handelOptionClick = (index) => {
+    if (answers[index].selected_option === null) {
+      return 1;
+    } else if (
+      answers[index].selected_option <= 4 &&
+      answers[index].selected_option >= 1
+    ) {
+      if (answers[index].status === 0) {
+        return 1;
+      } else if (answers[index].status === 1) {
+        return 2;
+      }
     }
   };
   return (
@@ -100,7 +116,26 @@ const MainExamPage = () => {
               />
             </div>
             <div className={Style.optionsSection}>
-              <div className={`${Style.option} ${Style.selected}`}>
+              {/* options 1 */}
+              <div
+                className={`${Style.option} ${
+                  answers[currentQuestionIndex].selected_option === 1 &&
+                  Style.selected
+                }`}
+                onClick={() => {
+                  setanswers((prevData) => {
+                    const newData = [...prevData];
+                    const currentSelection =
+                      newData[currentQuestionIndex].selected_option;
+                    newData[currentQuestionIndex] = {
+                      ...newData[currentQuestionIndex],
+                      selected_option: currentSelection === 1 ? null : 1,
+                    };
+                    console.log(newData);
+                    return newData;
+                  });
+                }}
+              >
                 <div className={Style.optionCheckBox}>
                   <div className={Style.optionCheckBoxInner}></div>
                 </div>
@@ -108,20 +143,83 @@ const MainExamPage = () => {
                   {QuestionData[currentQuestionIndex].option_1}
                 </div>
               </div>
-              <div className={`${Style.option}`}>
-                <div className={Style.optionCheckBox}></div>
+              {/* options 2 */}
+              <div
+                className={`${Style.option} ${
+                  answers[currentQuestionIndex].selected_option === 2 &&
+                  Style.selected
+                }`}
+                onClick={() => {
+                  setanswers((prevData) => {
+                    const newData = [...prevData];
+                    const currentSelection =
+                      newData[currentQuestionIndex].selected_option;
+                    newData[currentQuestionIndex] = {
+                      ...newData[currentQuestionIndex],
+                      selected_option: currentSelection === 2 ? null : 2,
+                    };
+                    console.log(newData);
+                    return newData;
+                  });
+                }}
+              >
+                <div className={Style.optionCheckBox}>
+                  <div className={Style.optionCheckBoxInner}></div>
+                </div>
                 <div className={Style.optionText}>
                   {QuestionData[currentQuestionIndex].option_2}
                 </div>
               </div>
-              <div className={Style.option}>
-                <div className={Style.optionCheckBox}></div>
+              {/* options 3 */}
+              <div
+                className={`${Style.option} ${
+                  answers[currentQuestionIndex].selected_option === 3 &&
+                  Style.selected
+                }`}
+                onClick={() => {
+                  setanswers((prevData) => {
+                    const newData = [...prevData];
+                    const currentSelection =
+                      newData[currentQuestionIndex].selected_option;
+                    newData[currentQuestionIndex] = {
+                      ...newData[currentQuestionIndex],
+                      selected_option: currentSelection === 3 ? null : 3,
+                    };
+                    console.log(newData);
+                    return newData;
+                  });
+                }}
+              >
+                <div className={Style.optionCheckBox}>
+                  <div className={Style.optionCheckBoxInner}></div>
+                </div>
                 <div className={Style.optionText}>
                   {QuestionData[currentQuestionIndex].option_3}
                 </div>
               </div>
-              <div className={Style.option}>
-                <div className={Style.optionCheckBox}></div>
+              {/* options 4 */}
+              <div
+                className={`${Style.option} ${
+                  answers[currentQuestionIndex].selected_option === 4 &&
+                  Style.selected
+                }`}
+                onClick={() => {
+                  setanswers((prevData) => {
+                    const newData = [...prevData];
+                    const currentSelection =
+                      newData[currentQuestionIndex].selected_option;
+                    newData[currentQuestionIndex] = {
+                      ...newData[currentQuestionIndex],
+                      selected_option: currentSelection === 4 ? null : 4,
+                    };
+                    console.log(newData);
+                    return newData;
+                  });
+                }}
+              >
+                <div className={Style.optionCheckBox}>
+                  <div className={Style.optionCheckBoxInner}></div>
+                </div>
                 <div className={Style.optionText}>
                   {QuestionData[currentQuestionIndex].option_4}
                 </div>
@@ -147,8 +245,42 @@ const MainExamPage = () => {
               </Button>
             </div>
             <div className={Style.controlButton}>
-              <Button text="Save & Next" className={Style.save} />
-              <Button text="Clear" className={Style.clear} />
+              <Button
+                text="Save & Next"
+                className={Style.save}
+                onClick={() => {
+                  setanswers((prevData) => {
+                    const newData = [...prevData];
+                    newData[currentQuestionIndex] = {
+                      ...newData[currentQuestionIndex],
+                      status: 1,
+                    };
+
+                    return newData;
+                  });
+                  setquestionStatus((prevStatus) => {
+                    const updatedStatus = [...prevStatus];
+                    updatedStatus[currentQuestionIndex] =
+                      handelOptionClick(currentQuestionIndex);
+                    return updatedStatus;
+                  });
+                }}
+              />
+              <Button
+                text="Clear"
+                className={Style.clear}
+                onClick={() => {
+                  setanswers((prevData) => {
+                    const newData = [...prevData];
+                    newData[currentQuestionIndex] = {
+                      ...newData[currentQuestionIndex],
+                      status: 0,
+                    };
+
+                    return newData;
+                  });
+                }}
+              />
               <Button text="Mark For Review" className={Style.markForReview} />
             </div>
             <div className={Style.controlButton}>
@@ -246,7 +378,7 @@ const MainExamPage = () => {
                     setcurrentQuestionIndex(index);
                     setquestionStatus((prevStatus) => {
                       const updatedStatus = [...prevStatus];
-                      updatedStatus[index] = handelOptionClick();
+                      updatedStatus[index] = handelOptionClick(index);
                       return updatedStatus;
                     });
                   }}

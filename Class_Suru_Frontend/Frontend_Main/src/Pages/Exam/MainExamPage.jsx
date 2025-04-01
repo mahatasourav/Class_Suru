@@ -16,9 +16,35 @@ import QuestionData from "../../assets/ExamData/Question";
 
 const MainExamPage = () => {
   const [currentQuestionIndex, setcurrentQuestionIndex] = useState(0);
+  const [answers, setanswers] = useState(
+    QuestionData.map((_, index) => ({
+      question_id: index,
+      selected_option: null,
+    }))
+  );
+  console.log(answers);
+  const [questionStatus, setquestionStatus] = useState(
+    Array(QuestionData.length).fill(0)
+  );
 
-  const [optionSelected, setoptionSelected] = useState();
-
+  // questionStatus = 0 means the question is not visited
+  // questionStatus = 1 means the question is not answered
+  // questionStatus = 2 means the question is answered
+  // questionStatus = 3 means the question is marked for review
+  // questionStatus = 4 means the question is answered and marked for review
+  const getQuestionStatus = (index) => {
+    if (questionStatus[index] === 0) {
+      return Style.notVisited;
+    } else if (questionStatus[index] === 1) {
+      return Style.notAnswered;
+    } else if (questionStatus[index] === 2) {
+      return Style.answered;
+    } else if (questionStatus[index] === 3) {
+      return Style.markForReview;
+    } else if (questionStatus[index] === 4) {
+      return Style.answeredAndMarkedForReview;
+    }
+  };
   return (
     <>
       <div className={Style.examPageContainer}>
@@ -104,7 +130,19 @@ const MainExamPage = () => {
           </div>
           <div className={Style.examPageControllSection}>
             <div className={Style.controlButton}>
-              <Button text="previous" className={Style.previous}>
+              <Button
+                text="previous"
+                className={
+                  currentQuestionIndex === 0
+                    ? Style.previousDisable
+                    : Style.previous
+                }
+                onClick={() => {
+                  currentQuestionIndex === 0
+                    ? setcurrentQuestionIndex(currentQuestionIndex)
+                    : setcurrentQuestionIndex(currentQuestionIndex - 1);
+                }}
+              >
                 <HiChevronDoubleLeft />
               </Button>
             </div>
@@ -114,7 +152,19 @@ const MainExamPage = () => {
               <Button text="Mark For Review" className={Style.markForReview} />
             </div>
             <div className={Style.controlButton}>
-              <Button text="Next" className={Style.next}>
+              <Button
+                text="Next"
+                className={
+                  currentQuestionIndex === QuestionData.length - 1
+                    ? Style.nextDisable
+                    : Style.next
+                }
+                onClick={() => {
+                  currentQuestionIndex === QuestionData.length - 1
+                    ? setcurrentQuestionIndex(currentQuestionIndex)
+                    : setcurrentQuestionIndex(currentQuestionIndex + 1);
+                }}
+              >
                 <HiChevronDoubleRight />
               </Button>
             </div>
@@ -185,13 +235,25 @@ const MainExamPage = () => {
             {QuestionData.map((question, index) => {
               return (
                 <div
-                  className={`${Style.examQuestion} ${Style.notVisited}`}
+                  className={`${Style.examQuestion} ${
+                    // questionStatus[index] === 0
+                    // ? Style.notAnswered
+                    // : Style.notVisited
+                    getQuestionStatus(index)
+                  }`}
                   key={index}
                   onClick={() => {
                     setcurrentQuestionIndex(index);
+                    setquestionStatus((prevStatus) => {
+                      const updatedStatus = [...prevStatus];
+                      updatedStatus[index] = handelOptionClick();
+                      return updatedStatus;
+                    });
                   }}
                 >
-                  <div className={Style.examQuestionText}>{index + 1}</div>
+                  <div className={`${Style.examQuestionText} `}>
+                    {index + 1}
+                  </div>
                 </div>
               );
             })}

@@ -39,27 +39,52 @@ const Footer = () => {
           <div className={Style.FooterUpperSec22}>
             <p>
               {" "}
-              <FaYoutube />
-              Youtube
+              <a
+                href="https://www.youtube.com/@class_suru/videos"
+                target="blank"
+              >
+                <FaYoutube />
+                Youtube
+              </a>
             </p>
             <p>
               {" "}
-              <FaInstagram />
-              Instagram
+              <a
+                href="https://www.facebook.com/ClassSuru?mibextid=ZbWKwL"
+                target="blank"
+              >
+                <FaInstagram />
+                Instagram
+              </a>
             </p>
             <p>
               {" "}
-              <FaFacebookF />
-              facebook
+              <a
+                href="https://www.facebook.com/ClassSuru?mibextid=ZbWKwL"
+                target="blank"
+              >
+                <FaFacebookF />
+                facebook
+              </a>
             </p>
             <p>
-              <FaLinkedin />
-              Linkdin
+              <a
+                href="https://www.facebook.com/ClassSuru?mibextid=ZbWKwL"
+                target="blank"
+              >
+                <FaLinkedin />
+                Linkdin
+              </a>
             </p>
             <p>
               {" "}
-              <FaXTwitter />
-              Twitter
+              <a
+                href="https://www.facebook.com/ClassSuru?mibextid=ZbWKwL"
+                target="blank"
+              >
+                <FaXTwitter />
+                Twitter
+              </a>
             </p>
           </div>
         </div>

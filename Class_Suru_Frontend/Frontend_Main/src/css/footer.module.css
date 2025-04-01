@@ -42,10 +42,12 @@ margin: 0 auto;
   gap: 15px;
   padding: 3px 15px;
 }
-.FooterUpperSec12 p, .FooterUpperSec22 p{
+.FooterUpperSec12 p , .FooterUpperSec22 p a{
   display: flex;
   align-items: center;
   gap: 8px;
+  
+  color: white;
 }
 
 .FooterUpperSec3{

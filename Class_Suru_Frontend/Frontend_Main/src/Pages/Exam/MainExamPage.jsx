@@ -9,10 +9,11 @@ import instruction2 from "../../assets/instruction2.png";
 import instruction3 from "../../assets/instruction3.png";
 import instruction4 from "../../assets/instruction4.png";
 import instruction5 from "../../assets/instruction5.png";
-
 import { HiChevronDoubleRight } from "react-icons/hi";
 import { HiChevronDoubleLeft } from "react-icons/hi";
 import QuestionData from "../../assets/ExamData/Question";
+import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const MainExamPage = () => {
   const [currentQuestionIndex, setcurrentQuestionIndex] = useState(0);
@@ -26,43 +27,29 @@ const MainExamPage = () => {
   );
   console.log(answers);
 
-  // const [questionStatus, setquestionStatus] = useState(
-  //   Array(QuestionData.length).fill(0)
-  // );
-
-  // questionStatus = 0 means the question is not visited
-  // questionStatus = 1 means the question is not answered
-  // questionStatus = 2 means the question is answered
-  // questionStatus = 3 means the question is marked for review
-  // questionStatus = 4 means the question is answered and marked for review
-  // const getQuestionStatus = (index) => {
-  //   if (questionStatus[index] === 0) {
-  //     return Style.notVisited;
-  //   } else if (questionStatus[index] === 1) {
-  //     return Style.notAnswered;
-  //   } else if (questionStatus[index] === 2) {
-  //     return Style.answered;
-  //   } else if (questionStatus[index] === 3) {
-  //     return Style.markForReview;
-  //   } else if (questionStatus[index] === 4) {
-  //     return Style.answeredAndMarkedForReview;
+  // const handelOptionClick = (index) => {
+  //   if (answers[index].selected_option === null) {
+  //     return 1;
+  //   } else if (
+  //     answers[index].selected_option <= 4 &&
+  //     answers[index].selected_option >= 1
+  //   ) {
+  //     if (answers[index].status === 0) {
+  //       return 1;
+  //     } else if (answers[index].status === 1) {
+  //       return 2;
+  //     }
   //   }
   // };
 
-  const handelOptionClick = (index) => {
-    if (answers[index].selected_option === null) {
-      return 1;
-    } else if (
-      answers[index].selected_option <= 4 &&
-      answers[index].selected_option >= 1
-    ) {
-      if (answers[index].status === 0) {
-        return 1;
-      } else if (answers[index].status === 1) {
-        return 2;
-      }
-    }
+  // Add at the top of your component (after useState etc.)
+  const { examName, subjectName } = useParams();
+  const handleSubmitExam = () => {
+    // Add submission logic here if needed, for now we log and navigate
+    alert("Exam submitted");
+    console.log("Exam submitted", answers);
   };
+
   return (
     <>
       <div className={Style.examPageContainer}>
@@ -304,7 +291,6 @@ const MainExamPage = () => {
                     const newData = [...prevData];
                     newData[currentQuestionIndex] = {
                       ...newData[currentQuestionIndex],
-
                       status:
                         newData[currentQuestionIndex].selected_option === null
                           ? 3
@@ -340,9 +326,6 @@ const MainExamPage = () => {
                       return newData;
                     });
                   }
-                  // currentQuestionIndex === QuestionData.length - 1
-                  //   ? setcurrentQuestionIndex(currentQuestionIndex)
-                  //   : setcurrentQuestionIndex(currentQuestionIndex + 1);
                 }}
               >
                 <HiChevronDoubleRight />
@@ -446,230 +429,11 @@ const MainExamPage = () => {
                 </div>
               );
             })}
-            {/* <div className={`${Style.examQuestion} ${Style`}>
-              <div className={Style.examQuestionText}>2</div>
-            </div>
-            <div className={`${Style.examQuestion} ${Style.answered}`}>
-              <div className={Style.examQuestionText}>3</div>
-            </div>
-            <div className={`${Style.examQuestion} ${Style.markedForReview}`}>
-              <div className={Style.examQuestionText}>4</div>
-            </div>
-
-            <div
-              className={`${Style.examQuestion} ${Style.answeredAndMarkedForReview}`}
-            >
-              <div className={Style.examQuestionText}>5</div>.notAnswered}
-            </div>
-            <div className={`${Style.examQuestion} ${Style.notVisited}`}>
-              <div className={Style.examQuestionText}>1</div>
-            </div>
-            <div className={`${Style.examQuestion} ${Style.notVisited}`}>
-              <div className={Style.examQuestionText}>1</div>
-            </div>
-            <div className={`${Style.examQuestion} ${Style.notVisited}`}>
-              <div className={Style.examQuestionText}>1</div>
-            </div>
-            <div className={`${Style.examQuestion} ${Style.notVisited}`}>
-              <div className={Style.examQuestionText}>1</div>
-            </div>
-            <div className={`${Style.examQuestion} ${Style.notVisited}`}>
-              <div className={Style.examQuestionText}>1</div>
-            </div>
-            <div className={`${Style.examQuestion} ${Style.notVisited}`}>
-              <div className={Style.examQuestionText}>1</div>
-            </div>
-            <div className={`${Style.examQuestion} ${Style.notVisited}`}>
-              <div className={Style.examQuestionText}>1</div>
-            </div>
-            <div className={`${Style.examQuestion} ${Style.notVisited}`}>
-              <div className={Style.examQuestionText}>1</div>
-            </div>
-            <div className={`${Style.examQuestion} ${Style.notVisited}`}>
-              <div className={Style.examQuestionText}>1</div>
-            </div>
-            <div className={`${Style.examQuestion} ${Style.notVisited}`}>
-              <div className={Style.examQuestionText}>1</div>
-            </div>
-            <div className={`${Style.examQuestion} ${Style.notAnswered}`}>
-              <div className={Style.examQuestionText}>2</div>
-            </div>
-            <div className={`${Style.examQuestion} ${Style.answered}`}>
-              <div className={Style.examQuestionText}>3</div>
-            </div>
-            <div className={`${Style.examQuestion} ${Style.markedForReview}`}>
-              <div className={Style.examQuestionText}>4</div>
-            </div>
-
-            <div
-              className={`${Style.examQuestion} ${Style.answeredAndMarkedForReview}`}
-            >
-              <div className={Style.examQuestionText}>5</div>
-            </div>
-            <div className={`${Style.examQuestion} ${Style.notVisited}`}>
-              <div className={Style.examQuestionText}>1</div>
-            </div>
-            <div className={`${Style.examQuestion} ${Style.notVisited}`}>
-              <div className={Style.examQuestionText}>1</div>
-            </div>
-            <div className={`${Style.examQuestion} ${Style.notVisited}`}>
-              <div className={Style.examQuestionText}>1</div>
-            </div>
-            <div className={`${Style.examQuestion} ${Style.notVisited}`}>
-              <div className={Style.examQuestionText}>1</div>
-            </div>
-            <div className={`${Style.examQuestion} ${Style.notVisited}`}>
-              <div className={Style.examQuestionText}>1</div>
-            </div>
-            <div className={`${Style.examQuestion} ${Style.notVisited}`}>
-              <div className={Style.examQuestionText}>1</div>
-            </div>
-            <div className={`${Style.examQuestion} ${Style.notVisited}`}>
-              <div className={Style.examQuestionText}>1</div>
-            </div>
-            <div className={`${Style.examQuestion} ${Style.notVisited}`}>
-              <div className={Style.examQuestionText}>1</div>
-            </div>
-            <div className={`${Style.examQuestion} ${Style.notVisited}`}>
-              <div className={Style.examQuestionText}>1</div>
-            </div>
-            <div className={`${Style.examQuestion} ${Style.notVisited}`}>
-              <div className={Style.examQuestionText}>1</div>
-            </div>
-            <div className={`${Style.examQuestion} ${Style.notAnswered}`}>
-              <div className={Style.examQuestionText}>2</div>
-            </div>
-            <div className={`${Style.examQuestion} ${Style.answered}`}>
-              <div className={Style.examQuestionText}>3</div>
-            </div>
-            <div className={`${Style.examQuestion} ${Style.markedForReview}`}>
-              <div className={Style.examQuestionText}>4</div>
-            </div>
-
-            <div
-              className={`${Style.examQuestion} ${Style.answeredAndMarkedForReview}`}
-            >
-              <div className={Style.examQuestionText}>5</div>
-            </div>
-            <div className={`${Style.examQuestion} ${Style.notVisited}`}>
-              <div className={Style.examQuestionText}>1</div>
-            </div>
-            <div className={`${Style.examQuestion} ${Style.notVisited}`}>
-              <div className={Style.examQuestionText}>1</div>
-            </div>
-            <div className={`${Style.examQuestion} ${Style.notVisited}`}>
-              <div className={Style.examQuestionText}>1</div>
-            </div>
-            <div className={`${Style.examQuestion} ${Style.notVisited}`}>
-              <div className={Style.examQuestionText}>1</div>
-            </div>
-            <div className={`${Style.examQuestion} ${Style.notVisited}`}>
-              <div className={Style.examQuestionText}>1</div>
-            </div>
-            <div className={`${Style.examQuestion} ${Style.notVisited}`}>
-              <div className={Style.examQuestionText}>1</div>
-            </div>
-            <div className={`${Style.examQuestion} ${Style.notVisited}`}>
-              <div className={Style.examQuestionText}>1</div>
-            </div>
-            <div className={`${Style.examQuestion} ${Style.notVisited}`}>
-              <div className={Style.examQuestionText}>1</div>
-            </div>
-            <div className={`${Style.examQuestion} ${Style.notVisited}`}>
-              <div className={Style.examQuestionText}>1</div>
-            </div>
-            <div className={`${Style.examQuestion} ${Style.notVisited}`}>
-              <div className={Style.examQuestionText}>1</div>
-            </div>
-            <div className={`${Style.examQuestion} ${Style.notAnswered}`}>
-              <div className={Style.examQuestionText}>2</div>
-            </div>
-            <div className={`${Style.examQuestion} ${Style.answered}`}>
-              <div className={Style.examQuestionText}>3</div>
-            </div>
-            <div className={`${Style.examQuestion} ${Style.markedForReview}`}>
-              <div className={Style.examQuestionText}>4</div>
-            </div>
-
-            <div
-              className={`${Style.examQuestion} ${Style.answeredAndMarkedForReview}`}
-            >
-              <div className={Style.examQuestionText}>5</div>
-            </div>
-            <div className={`${Style.examQuestion} ${Style.notVisited}`}>
-              <div className={Style.examQuestionText}>1</div>
-            </div>
-            <div className={`${Style.examQuestion} ${Style.notVisited}`}>
-              <div className={Style.examQuestionText}>1</div>
-            </div>
-            <div className={`${Style.examQuestion} ${Style.notVisited}`}>
-              <div className={Style.examQuestionText}>1</div>
-            </div>
-            <div className={`${Style.examQuestion} ${Style.notVisited}`}>
-              <div className={Style.examQuestionText}>1</div>
-            </div>
-            <div className={`${Style.examQuestion} ${Style.notVisited}`}>
-              <div className={Style.examQuestionText}>1</div>
-            </div>
-            <div className={`${Style.examQuestion} ${Style.notVisited}`}>
-              <div className={Style.examQuestionText}>1</div>
-            </div>
-            <div className={`${Style.examQuestion} ${Style.notVisited}`}>
-              <div className={Style.examQuestionText}>1</div>
-            </div>
-            <div className={`${Style.examQuestion} ${Style.notVisited}`}>
-              <div className={Style.examQuestionText}>1</div>
-            </div>
-            <div className={`${Style.examQuestion} ${Style.notVisited}`}>
-              <div className={Style.examQuestionText}>1</div>
-            </div>
-            <div className={`${Style.examQuestion} ${Style.notVisited}`}>
-              <div className={Style.examQuestionText}>1</div>
-            </div>
-            <div className={`${Style.examQuestion} ${Style.notAnswered}`}>
-              <div className={Style.examQuestionText}>2</div>
-            </div>
-            <div className={`${Style.examQuestion} ${Style.answered}`}>
-              <div className={Style.examQuestionText}>3</div>
-            </div>
-            <div className={`${Style.examQuestion} ${Style.markedForReview}`}>
-              <div className={Style.examQuestionText}>4</div>
-            </div>
-
-            <div
-              className={`${Style.examQuestion} ${Style.answeredAndMarkedForReview}`}
-            >
-              <div className={Style.examQuestionText}>5</div>
-            </div>
-            <div className={`${Style.examQuestion} ${Style.notVisited}`}>
-              <div className={Style.examQuestionText}>1</div>
-            </div>
-            <div className={`${Style.examQuestion} ${Style.notVisited}`}>
-              <div className={Style.examQuestionText}>1</div>
-            </div>
-            <div className={`${Style.examQuestion} ${Style.notVisited}`}>
-              <div className={Style.examQuestionText}>1</div>
-            </div>
-            <div className={`${Style.examQuestion} ${Style.notVisited}`}>
-              <div className={Style.examQuestionText}>1</div>
-            </div>
-            <div className={`${Style.examQuestion} ${Style.notVisited}`}>
-              <div className={Style.examQuestionText}>1</div>
-            </div>
-            <div className={`${Style.examQuestion} ${Style.notVisited}`}>
-              <div className={Style.examQuestionText}>1</div>
-            </div>
-            <div className={`${Style.examQuestion} ${Style.notVisited}`}>
-              <div className={Style.examQuestionText}>1</div>
-            </div>
-            <div className={`${Style.examQuestion} ${Style.notVisited}`}>
-              <div className={Style.examQuestionText}>1</div>
-            </div>
-            <div className={`${Style.examQuestion} ${Style.notVisited}`}>
-              <div className={Style.examQuestionText}>1</div>
-            </div> */}
           </div>
           <div className={Style.submitButtonContainer}>
+            {/* <Link to={`/exam/${examName}/${subjectName}/result/{resultId}`}>
+              <Button text="Submit Exam" className={Style.submitButton} />
+            </Link> */}
             <Button text="Submit Exam" className={Style.submitButton} />
           </div>
         </div>

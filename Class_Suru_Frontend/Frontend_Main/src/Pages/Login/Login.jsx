@@ -16,7 +16,13 @@ import { useNavigate } from "react-router-dom";
 import apiCall from "../../utils/apiCall";
 import { LoadingContext } from "../../Components/Loading/Loading";
 
+import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import app from "../../utils/firebase";
+
 const Login = () => {
+  const auth = getAuth(app);
+  const provider = new GoogleAuthProvider();
+
   const id = useId();
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -81,19 +87,92 @@ const Login = () => {
           
         }else{
           toast.dismiss(loadingToastId);
-          toast.error("login Failed");
+          toast.error("Email not Found, Please Register");
 
         }
 
       }catch(error){
         toast.dismiss(loadingToastId);
         console.log(error);
-        toast.error(`login Failed`);
+        toast.error(`Email not Found, Please Register`);
       }
     })
 
     
   };
+  const handleSubmitOAuth = async(email,password) => {
+
+    console.log("Form Submitted");
+    console.log("email: ", email);
+    console.log("password: ", password);
+    
+    startTransition(async ()=>{
+      // setTimeout(() => {
+      //   console.log("Simulating async operation");
+
+      // }, 3000);
+      const loadingToastId = toast.loading("Loading...");
+      try{
+        const reqBody = {
+          email: email,
+          password: password  
+        }
+        console.log(reqBody);
+        
+        const login_response = await apiCall.post(loginApi,reqBody);
+
+        console.log(login_response.data);
+        
+  
+        if(login_response.status === 200){
+          
+          dispatch(setUserId(login_response.data.userId));
+          dispatch(setUserStatus(true));
+
+          const token = login_response.data.token;
+
+          localStorage.setItem("token",token);
+
+          toast.dismiss(loadingToastId);
+          toast.success("login Successful");
+
+          setTimeout(() => {
+            navigate("/dashboard");
+          }, 2000);
+          
+        }else{
+          toast.dismiss(loadingToastId);
+          toast.error("Email not Found, Please Register");
+
+        }
+
+      }catch(error){
+        toast.dismiss(loadingToastId);
+        console.log(error);
+        toast.error(`Email not Found, Please Register`);
+      }
+    })
+
+    
+  };
+
+  const handleGoogleSignIn = async () => {
+      try {
+        const result = await signInWithPopup(auth, provider);
+        const user = result.user;
+        console.log(user);
+        if(user)
+        {
+          await handleSubmitOAuth(user.email,user.uid);
+          
+        }
+        
+        
+      } catch (error) {
+        console.log(error);
+        
+      }
+    }
 
   return (
     <>
@@ -102,19 +181,19 @@ const Login = () => {
           <div className={Style.loginOAuthSection}>
             <div className={Style.loginHeading}>Login With</div>
             <div className={Style.loginOAuthContainer}>
-              <div className={Style.loginOAuth}>
+              <div className={Style.loginOAuth} onClick={handleGoogleSignIn}>
                 <div className={Style.loginOAuthIcon}>
                   <img src={GoogleIcon} alt="google icon" />
                 </div>
                 <div className={Style.loginOAuthText}>Google</div>
               </div>
-              <div className={Style.loginOAuth}>
+              {/* <div className={Style.loginOAuth}>
                 <div className={Style.loginOAuthIcon}>
                   <img src={FacebookIcon} alt="facebookIcon" />
-                  {/* <FacebookIcon/> */}
+                  
                 </div>
                 <div className={Style.loginOAuthText}>Facebook</div>
-              </div>
+              </div> */}
             </div>
           </div>
           <div className={Style.orSection}>

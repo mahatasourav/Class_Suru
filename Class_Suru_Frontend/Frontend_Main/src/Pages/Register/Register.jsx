@@ -16,11 +16,18 @@ import { useDispatch, useSelector } from "react-redux";
 import {jwtDecode} from 'jwt-decode';
 
 import axios from "axios";
-import { signupApi } from "../../apis";
+import { signupApi, updateUserDetailsApi } from "../../apis";
 import { setUserId, setUserStatus } from "../../Redux/features/userSlice";
 import apiCall from "../../utils/apiCall";
 
+import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import app from "../../utils/firebase";
+
 const Register = () => {
+
+  const auth = getAuth(app);
+  const provider = new GoogleAuthProvider();
+
   // Redux Hooks
   const dispatch = useDispatch();
   const selectorStatus = useSelector((state) => state.user.status);
@@ -37,6 +44,7 @@ const Register = () => {
   const [password, setPassword] = useState("");
   const [eye, setEye] = useState(false);
   const [isPending, startTransition] = useTransition();
+  // const [userId, setUserId] = useState(null);
 
   
   // UseEffect Hook
@@ -71,7 +79,11 @@ const Register = () => {
           dispatch(setUserId(signup_response.data.userId));
           dispatch(setUserStatus(true));
 
+          setUserId(signup_response.data.userId);
+
           const token = signup_response.data.token;
+
+
 
           localStorage.setItem("token",token);
 
@@ -84,37 +96,107 @@ const Register = () => {
           
         }else{
           toast.dismiss(loadingToastId);
-          toast.error("Signup Failed");
+          toast.error("Email Already Exists");
 
         }
 
       }catch(error){
         toast.dismiss(loadingToastId);
         console.log(error);
-        toast.error(`Signup Failed`);
+        toast.error("Cannot Signup, Please try again later");
       }
 
     });
   };
+  const handleSubmitOAuth = async (email,name,phone,password) => {
+    console.log(isPending);
+    const loadingToastId = toast.loading("Loading...");
+    startTransition(async () => {    
+
+      try{
+        const reqBody = {
+          username: name,
+          email: email,
+          phone_number: phone,
+          password: password  
+        }
+        console.log(reqBody);
+
+        // const signup_response = reqBody;
+        
+        const signup_response = await apiCall.post(signupApi,reqBody);
+        console.log(signup_response);
+        
+        if(signup_response.status === 201){
+          
+          dispatch(setUserId(signup_response.data.userId));
+          dispatch(setUserStatus(true));
+
+          
+
+          const token = signup_response.data.token;
+
+
+
+          localStorage.setItem("token",token);
+
+          toast.dismiss(loadingToastId);
+          toast.success("Signup Successful");
+
+          
+
+          return signup_response.data.userId;
+          
+        }else{
+          toast.dismiss(loadingToastId);
+          toast.error("Email Already Exists");
+
+        }
+
+      }catch(error){
+        toast.dismiss(loadingToastId);
+        console.log(error);
+        toast.error(`Signup Failed, Tray again later`);
+      }
+
+    });
+  };
+  const handleGoogleSignup = async () => {
+    try {
+      const result = await signInWithPopup(auth, provider);
+      const user = result.user;
+      console.log(user);
+      if(user)
+      {
+        await handleSubmitOAuth(user.email,user.displayName,"",user.uid);
+        
+      }
+      
+      
+    } catch (error) {
+      console.log(error);
+      
+    }
+  }
   return (
     <section className={Style.signupSection}>
       <div className={Style.signupContainer}>
         <div className={Style.signupOAuthSection}>
           <div className={Style.signupHeading}>Signup With</div>
           <div className={Style.signupOAuthContainer}>
-            <div className={Style.signupOAuth}>
+            <div className={Style.signupOAuth} onClick={handleGoogleSignup}>
               <div className={Style.signupOAuthIcon}>
                 <img src={GoogleIcon} alt="google icon" />
               </div>
               <div className={Style.signupOAuthText}>Google</div>
             </div>
-            <div className={Style.signupOAuth}>
+            {/* <div className={Style.signupOAuth}>
               <div className={Style.signupOAuthIcon}>
                 <img src={FacebookIcon} alt="facebookIcon" />
-                {/* <FacebookIcon/> */}
+                
               </div>
               <div className={Style.signupOAuthText}>Facebook</div>
-            </div>
+            </div> */}
           </div>
         </div>
         <div className={Style.orSection}>

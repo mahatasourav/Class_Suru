@@ -17,6 +17,9 @@ import {
   Users,
   QuestionList,
 } from "../Pages";
+import About from "../Components/About Us/about";
+import Services from "../Components/Servicess/Services";
+import CoursesMainPage from "../Pages/Courses/CoursesMainPage";
 
 import Subjects from "../Pages/Exam/Subjects";
 import Tests from "../Pages/Exam/Tests";
@@ -46,6 +49,9 @@ const router = createBrowserRouter(
       <Route path="/questions" element={<Questions />} />
       {/* Exam Routes */}
       <Route path="/exam" element={<Exam />} />
+      <Route path="/about" element={<About />} />
+      <Route path="/services" element={<Services />} />
+      <Route path="/courses" element={<CoursesMainPage />} />
       <Route path="/exam/:examName" element={<Subjects />} />
       <Route path="/exam/:examName/:subjectName" element={<Tests />} />
       <Route

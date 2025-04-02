@@ -10,13 +10,13 @@ const Admin = () => {
   const adminStatus = useSelector((state)=>state.admin.status);
   console.log(adminStatus);
 
-  useEffect(() => {
-    if(!adminStatus)
-    {
-      navigate("/admin/login")
-    }
+  // useEffect(() => {
+  //   if(!adminStatus)
+  //   {
+  //     navigate("/admin/login")
+  //   }
     
-  }, [adminStatus]);
+  // }, [adminStatus]);
 
   
   return (

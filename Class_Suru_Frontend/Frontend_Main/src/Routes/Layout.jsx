@@ -32,6 +32,8 @@ const Layout = () => {
   const handleUserData = async () => {
     addLoading();
     const data = await getUserData();
+    console.log("get user data called");
+    
     if (data) {
       dispatch(setUserId(data.userId));
       dispatch(setUserStatus(true));

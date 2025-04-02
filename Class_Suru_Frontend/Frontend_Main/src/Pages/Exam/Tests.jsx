@@ -1,16 +1,36 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import Style from "../../css/Exam.module.css";
 import Breadcrumb from "./Breadcrumb";
-import { subjectTests } from "../../assets/ExamData/subjectTests";
+// import { subjectTests } from "../../assets/ExamData/subjectTests";
 import Button from "../../Components/Button/Button";
 import { FaFileCircleQuestion } from "react-icons/fa6";
 import { TfiTimer } from "react-icons/tfi";
 import { TbTargetArrow } from "react-icons/tb";
+import axios from "axios";
+import { getExamsApi } from "../../apis";
+
 const Tests = () => {
   const { examName, subjectName } = useParams(); // Get exam & subject from URL
-  const Tests = subjectTests[subjectName] || []; // Get modules or empty array
+  // const Tests = subjectTests[subjectName] || []; // Get modules or empty array
 
+  const [examData, setexamData] = useState([]);
+  const getData = async () => {
+    try {
+      const response = await axios.get(
+        `${getExamsApi}/${subjectName}/${examName}`
+      );
+      // console.log(response);
+      if (response.status === 200) {
+        setexamData(response.data.exam);
+      }
+    } catch (error) {
+      console.log("error", error);
+    }
+  };
+  useEffect(() => {
+    getData();
+  }, []);
   return (
     <div className={Style.TestSection}>
       <div>
@@ -20,11 +40,11 @@ const Tests = () => {
       </div>{" "}
       {/* Breadcrumb Navigation */}
       <div className={Style.Tests}>
-        {Tests.length > 0 ? (
-          Tests.map((Test, index) => (
+        {examData.length > 0 ? (
+          examData.map((Test, index) => (
             <p key={index} className={Style.Test}>
               <div>
-                <h2> {Test}</h2>
+                <h2> {Test.title}</h2>
                 <p className={Style.TestLower}>
                   <span>
                     <FaFileCircleQuestion />
@@ -32,11 +52,11 @@ const Tests = () => {
                   </span>
                   <span>
                     <TfiTimer />
-                    180 minutes
+                    {Test.exam_duration} hours
                   </span>
                   <span>
                     <TbTargetArrow />
-                    300 Marks
+                    {Test.exam_total_marks} Marks
                   </span>
                 </p>
               </div>

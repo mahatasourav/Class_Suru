@@ -1,6 +1,6 @@
-const basApi = "https://class-suru-beta.vercel.app";
+// const basApi = "https://class-suru-beta.vercel.app";
 
-// const basApi = "http://localhost:5000";
+const basApi = "http://localhost:5000";
 
 /**
  * @description API for signup
@@ -11,7 +11,6 @@ const basApi = "https://class-suru-beta.vercel.app";
  * @param {string} password
  * @returns {object} { success, userId, token }
  */
-
 
 const signupApi = `${basApi}/api/auth/signup`;
 const loginApi = `${basApi}/api/auth/login`;
@@ -28,6 +27,7 @@ const getExamsApi = `${basApi}/api/auth/exam`;
 const deleteExamApi = `${basApi}/api/auth/exam/delete`;
 const getExamByIdApi = `${basApi}/api/auth/exam`;
 const updateExamApi = `${basApi}/api/auth/exam/update`;
+const getQuestionForExamApi = `${basApi}/api/auth/exam/user`;
 
 // Question apis
 const createQuestionApi = `${basApi}/api/auth/question/add`;
@@ -40,6 +40,24 @@ const updateQuestionApi = `${basApi}/api/auth/question/update`;
 const uploadImageApi = `${basApi}/api/auth/upload-image`;
 const deleteImageApi = `${basApi}/api/auth/delete-image`;
 
-
-
-export { signupApi, loginApi, userDetailsApi ,createExamApi,getExamsApi,createQuestionApi,getQuestionListApi,deleteQuestionApi,deleteExamApi,getExamByIdApi,getQuestionByIdApi,updateQuestionApi,updateExamApi,adminLoginApi,adminLoginOTPApi,updateUserDetailsApi,uploadImageApi,deleteImageApi};
+export {
+  signupApi,
+  loginApi,
+  userDetailsApi,
+  createExamApi,
+  getExamsApi,
+  createQuestionApi,
+  getQuestionListApi,
+  deleteQuestionApi,
+  deleteExamApi,
+  getExamByIdApi,
+  getQuestionByIdApi,
+  updateQuestionApi,
+  updateExamApi,
+  adminLoginApi,
+  adminLoginOTPApi,
+  updateUserDetailsApi,
+  uploadImageApi,
+  deleteImageApi,
+  getQuestionForExamApi,
+};

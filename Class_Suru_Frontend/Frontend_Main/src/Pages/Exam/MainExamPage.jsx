@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Button from "../../Components/Button/Button";
 import Style from "../../css/mainexampage.module.css";
 import { MdOutlineBookmarkAdd } from "react-icons/md";
@@ -11,36 +11,20 @@ import instruction4 from "../../assets/instruction4.png";
 import instruction5 from "../../assets/instruction5.png";
 import { HiChevronDoubleRight } from "react-icons/hi";
 import { HiChevronDoubleLeft } from "react-icons/hi";
-import QuestionData from "../../assets/ExamData/Question";
+// import QuestionData from "../../assets/ExamData/Question";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import parse from "html-react-parser";
+import { getQuestionForExamApi } from "../../apis";
 
 const MainExamPage = () => {
+  const [questionData, setquestionData] = useState(null);
   const [currentQuestionIndex, setcurrentQuestionIndex] = useState(0);
+  const { examId } = useParams();
 
-  const [answers, setanswers] = useState(
-    QuestionData.map((_, index) => ({
-      question_id: index,
-      selected_option: null,
-      status: 0,
-    }))
-  );
+  const [answers, setanswers] = useState(null);
   console.log(answers);
-
-  // const handelOptionClick = (index) => {
-  //   if (answers[index].selected_option === null) {
-  //     return 1;
-  //   } else if (
-  //     answers[index].selected_option <= 4 &&
-  //     answers[index].selected_option >= 1
-  //   ) {
-  //     if (answers[index].status === 0) {
-  //       return 1;
-  //     } else if (answers[index].status === 1) {
-  //       return 2;
-  //     }
-  //   }
-  // };
 
   // Add at the top of your component (after useState etc.)
   const { examName, subjectName } = useParams();
@@ -49,6 +33,25 @@ const MainExamPage = () => {
     alert("Exam submitted");
     console.log("Exam submitted", answers);
   };
+  const getQuestionData = async () => {
+    try {
+      const response = await axios.post(`${getQuestionForExamApi}/${examId}`);
+      console.log(response);
+      if (response.status == 200) {
+        setquestionData(response.data.data);
+        setanswers(
+          response.data.data.map((_, index) => ({
+            question_id: index,
+            selected_option: null,
+            status: 0,
+          }))
+        );
+      }
+    } catch (error) {}
+  };
+  useEffect(() => {
+    getQuestionData();
+  }, []);
 
   return (
     <>
@@ -95,12 +98,16 @@ const MainExamPage = () => {
           </div>
           <div className={Style.examPageContent}>
             <div className={Style.examPageContentQuestion}>
-              {QuestionData[currentQuestionIndex].question_body}
+              {questionData &&
+                parse(questionData[currentQuestionIndex].question_text)}
             </div>
             <div className={Style.examPageContentImg}>
               <img
                 className={Style.examImg}
-                src={QuestionData[currentQuestionIndex].question_img}
+                src={
+                  questionData &&
+                  questionData[currentQuestionIndex].question_img_url
+                }
                 alt=""
               />
             </div>
@@ -108,6 +115,7 @@ const MainExamPage = () => {
               {/* options 1 */}
               <div
                 className={`${Style.option} ${
+                  answers &&
                   answers[currentQuestionIndex].selected_option === 1 &&
                   Style.selected
                 }`}
@@ -129,12 +137,14 @@ const MainExamPage = () => {
                   <div className={Style.optionCheckBoxInner}></div>
                 </div>
                 <div className={Style.optionText}>
-                  {QuestionData[currentQuestionIndex].option_1}
+                  {questionData &&
+                    parse(questionData[currentQuestionIndex].option_1)}
                 </div>
               </div>
               {/* options 2 */}
               <div
                 className={`${Style.option} ${
+                  answers &&
                   answers[currentQuestionIndex].selected_option === 2 &&
                   Style.selected
                 }`}
@@ -156,12 +166,14 @@ const MainExamPage = () => {
                   <div className={Style.optionCheckBoxInner}></div>
                 </div>
                 <div className={Style.optionText}>
-                  {QuestionData[currentQuestionIndex].option_2}
+                  {questionData &&
+                    parse(questionData[currentQuestionIndex].option_2)}
                 </div>
               </div>
               {/* options 3 */}
               <div
                 className={`${Style.option} ${
+                  answers &&
                   answers[currentQuestionIndex].selected_option === 3 &&
                   Style.selected
                 }`}
@@ -183,12 +195,14 @@ const MainExamPage = () => {
                   <div className={Style.optionCheckBoxInner}></div>
                 </div>
                 <div className={Style.optionText}>
-                  {QuestionData[currentQuestionIndex].option_3}
+                  {questionData &&
+                    parse(questionData[currentQuestionIndex].option_3)}
                 </div>
               </div>
               {/* options 4 */}
               <div
                 className={`${Style.option} ${
+                  answers &&
                   answers[currentQuestionIndex].selected_option === 4 &&
                   Style.selected
                 }`}
@@ -210,7 +224,8 @@ const MainExamPage = () => {
                   <div className={Style.optionCheckBoxInner}></div>
                 </div>
                 <div className={Style.optionText}>
-                  {QuestionData[currentQuestionIndex].option_4}
+                  {questionData &&
+                    parse(questionData[currentQuestionIndex].option_4)}
                 </div>
               </div>
             </div>
@@ -251,7 +266,7 @@ const MainExamPage = () => {
                     };
 
                     if (
-                      currentQuestionIndex < QuestionData.length - 1 &&
+                      currentQuestionIndex < questionData?.length - 1 &&
                       answers[currentQuestionIndex + 1].status === 0
                     ) {
                       newData[currentQuestionIndex + 1] = {
@@ -262,7 +277,7 @@ const MainExamPage = () => {
                     return newData;
                   });
 
-                  currentQuestionIndex === QuestionData.length - 1
+                  currentQuestionIndex === questionData?.length - 1
                     ? setcurrentQuestionIndex(currentQuestionIndex)
                     : setcurrentQuestionIndex(currentQuestionIndex + 1);
                 }}
@@ -306,12 +321,12 @@ const MainExamPage = () => {
               <Button
                 text="Next"
                 className={
-                  currentQuestionIndex === QuestionData.length - 1
+                  currentQuestionIndex === questionData?.length - 1
                     ? Style.nextDisable
                     : Style.next
                 }
                 onClick={() => {
-                  if (currentQuestionIndex === QuestionData.length - 1) {
+                  if (currentQuestionIndex === questionData.length - 1) {
                     setcurrentQuestionIndex(currentQuestionIndex);
                   } else {
                     setcurrentQuestionIndex(currentQuestionIndex + 1);
@@ -395,12 +410,13 @@ const MainExamPage = () => {
             </div>
           </div>
           <div className={Style.examQuestionListSection}>
-            {QuestionData.map((question, index) => {
-              return (
-                <div
-                  className={`${Style.examQuestion} ${
-                    answers[index].status === 0 && Style.notVisited
-                  } ${answers[index].status === 1 && Style.notAnswered}
+            {questionData &&
+              questionData.map((question, index) => {
+                return (
+                  <div
+                    className={`${Style.examQuestion} ${
+                      answers[index].status === 0 && Style.notVisited
+                    } ${answers[index].status === 1 && Style.notAnswered}
                   ${answers[index].status === 2 && Style.answered}
                   ${answers[index].status === 3 && Style.markedForReview}
                   ${
@@ -408,27 +424,27 @@ const MainExamPage = () => {
                     Style.answeredAndMarkedForReview
                   }
               `}
-                  key={index}
-                  onClick={() => {
-                    setcurrentQuestionIndex(index);
-                    if (answers[index].status === 0) {
-                      setanswers((prevData) => {
-                        const newData = [...answers];
-                        newData[index] = {
-                          ...newData[index],
-                          status: 1,
-                        };
-                        return newData;
-                      });
-                    }
-                  }}
-                >
-                  <div className={`${Style.examQuestionText} `}>
-                    {index + 1}
+                    key={index}
+                    onClick={() => {
+                      setcurrentQuestionIndex(index);
+                      if (answers[index].status === 0) {
+                        setanswers((prevData) => {
+                          const newData = [...answers];
+                          newData[index] = {
+                            ...newData[index],
+                            status: 1,
+                          };
+                          return newData;
+                        });
+                      }
+                    }}
+                  >
+                    <div className={`${Style.examQuestionText} `}>
+                      {index + 1}
+                    </div>
                   </div>
-                </div>
-              );
-            })}
+                );
+              })}
           </div>
           <div className={Style.submitButtonContainer}>
             {/* <Link to={`/exam/${examName}/${subjectName}/result/{resultId}`}>

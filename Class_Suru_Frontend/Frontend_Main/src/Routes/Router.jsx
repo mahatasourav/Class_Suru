@@ -55,11 +55,11 @@ const router = createBrowserRouter(
       <Route path="/exam/:examName" element={<Subjects />} />
       <Route path="/exam/:examName/:subjectName" element={<Tests />} />
       <Route
-        path="/exam/:examName/:subjectName/instruction"
+        path="/exam/:examName/:subjectName/instruction/:examId"
         element={<InstructionPage />}
       />
       <Route
-        path="/exam/:examName/:subjectName/instruction/MainExamPage"
+        path="/exam/:examName/:subjectName/:examId/MainExamPage"
         element={<MainExamPage />}
       />
       {/* Admin Routes */}

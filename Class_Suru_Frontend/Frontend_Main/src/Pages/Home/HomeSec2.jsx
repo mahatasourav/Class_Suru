@@ -20,7 +20,7 @@ const HomeSec2 = () => {
           আমাদের <span>সাফল্যতা</span>
         </h2>
       </center>
-      <div className="max-w-full mx-auto py-10 ">
+      <div className={`${Style.SwipperDiv} max-w-full mx-auto py-10`}>
         <Swiper
           grabCursor={true}
           centeredSlides={true}

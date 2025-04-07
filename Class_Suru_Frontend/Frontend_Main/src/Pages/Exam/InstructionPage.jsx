@@ -5,7 +5,7 @@ import Breadcrumb from "./Breadcrumb";
 import instructionPageImg from "../../assets/instructionPageImg.png";
 
 const InstructionPage = () => {
-  const { examName, subjectName, testName } = useParams();
+  const { examName, subjectName, testName, examId } = useParams();
   const [isChecked, setIsChecked] = useState(false);
   const navigate = useNavigate();
   const location = useLocation(); // Get the current URL
@@ -120,7 +120,7 @@ const InstructionPage = () => {
         </Link>
 
         {/* Start Exam Button */}
-        <Link to={`/exam/${examName}/${subjectName}/instruction/MainExamPage`}>
+        <Link to={`/exam/${examName}/${subjectName}/${examId}/MainExamPage`}>
           <button
             className={Style.StartExamButton}
             onClick={handleStartExam}

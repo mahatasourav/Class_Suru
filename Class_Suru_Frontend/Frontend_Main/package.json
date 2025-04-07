@@ -13,6 +13,7 @@
     "@reduxjs/toolkit": "^2.5.1",
     "axios": "^1.7.9",
     "firebase": "^11.6.0",
+    "html-react-parser": "^5.2.3",
     "jodit-react": "^5.2.15",
     "jwt-decode": "^4.0.0",
     "popine": "^1.0.6",

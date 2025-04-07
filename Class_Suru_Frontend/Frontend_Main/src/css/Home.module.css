@@ -141,7 +141,9 @@
 .HomeSec2div span {
   color: rgb(88, 88, 214);
 }
-
+.SwipperDiv {
+  box-shadow: inset 0px 2px 0px rgba(0, 0, 0, 0.2), inset 0px 1px 0px rgba(0, 0, 0, 0.15);
+}
 /* swiperStyles.css */
 .customSwiper {
   width: 100%;

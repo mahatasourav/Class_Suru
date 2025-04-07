@@ -20,7 +20,7 @@ const Tests = () => {
       const response = await axios.get(
         `${getExamsApi}/${subjectName}/${examName}`
       );
-      // console.log(response);
+      console.log(response);
       if (response.status === 200) {
         setexamData(response.data.exam);
       }
@@ -61,7 +61,9 @@ const Tests = () => {
                 </p>
               </div>
 
-              <Link to={`/exam/${examName}/${subjectName}/instruction`}>
+              <Link
+                to={`/exam/${examName}/${subjectName}/instruction/${Test.id}`}
+              >
                 <Button text="Start Exam" />
               </Link>
             </p>

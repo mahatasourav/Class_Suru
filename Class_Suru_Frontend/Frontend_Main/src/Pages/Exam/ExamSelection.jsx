@@ -6,8 +6,8 @@ import Breadcrumb from "./Breadcrumb";
 const examlists = {
   JEE: ["Math", "Physics", "Chemistry"],
   NEET: ["Biology", "Physics", "Chemistry"],
-  GATE: ["Computer Science", "Mechanical", "Electrical"],
-  UPSC: ["History", "Polity", "Geography"],
+  UPSC: ["Computer Science", "Mechanical", "Electrical"],
+  GATE: ["History", "Polity", "Geography"],
 };
 
 const ExamSelection = () => {

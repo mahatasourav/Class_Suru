@@ -127,6 +127,7 @@
     /* height: 500vh; */
     /* max-width: 900px; */
     /* border: 1px solid red; */
+    overflow:auto;
 }
 
 .examPageContentImg{
@@ -139,11 +140,16 @@
     align-items: center;
     /* border: 1px solid red; */
     
+    
 }
-.examImg{
+.examPageContentImg img{
+max-width: 500px;
+
+}
+/* .examImg{
     height: 100%;
     width: auto;
-}
+} */
 
 .examPageContentQuestion{
     font-size: 20px;

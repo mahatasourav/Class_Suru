@@ -160,3 +160,15 @@
   .required{
     color: red;
   }
+
+  .imagePreview{
+    /* border: 1px solid red; */
+    width: 100%;
+    overflow: hidden;
+
+  }
+  .imagePreview img{
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }

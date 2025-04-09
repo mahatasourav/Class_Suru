@@ -35,7 +35,7 @@
 }
 .child-container{
     padding-top: 100px;
-   overflow-x: hidden;
+   /* overflow-x: hidden; */
 }
 .admin-container{
     padding-top: 70px;

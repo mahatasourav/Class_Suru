@@ -3,19 +3,22 @@ import Style from "../../css/nav.module.css";
 import logo from "../../assets/class_suru_logo.png";
 import Button from "../Button/Button";
 import TimeLeft from "./TimeLeft";
-
+import { useLocation } from "react-router-dom";
 
 const ExamNavbar = () => {
-    const [fullScreen, setFullScreen] = useState(false);
-    const handleFullScreen = () => {
-      if (fullScreen) {
-        document.exitFullscreen();
-        setFullScreen(false);
-      } else {
-        document.documentElement.requestFullscreen();
-        setFullScreen(true);
-      }
-    };
+  const location = useLocation();
+  const isMainExamPage = location.pathname.includes("/MainExamPage");
+  console.log(location);
+  const [fullScreen, setFullScreen] = useState(false);
+  const handleFullScreen = () => {
+    if (fullScreen) {
+      document.exitFullscreen();
+      setFullScreen(false);
+    } else {
+      document.documentElement.requestFullscreen();
+      setFullScreen(true);
+    }
+  };
 
   return (
     <>
@@ -24,11 +27,13 @@ const ExamNavbar = () => {
           <div className={Style.nav}>
             <div className={Style.logo}>
               <img className={Style.logoImg} src={logo} alt="class suru logo" />
-              <div className={Style.logoText}>Class Suru | <b>Exam Mock Test</b></div>
+              <div className={Style.logoText}>
+                Class Suru | <b>Exam Mock Test</b>
+              </div>
             </div>
 
-            <TimeLeft/>
-            
+            {isMainExamPage && <TimeLeft />}
+
             <div className={Style.navButtons}>
               <Button
                 text={fullScreen ? "Exit Full Screen" : "Enter Full Screen"}

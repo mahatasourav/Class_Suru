@@ -31,6 +31,10 @@ const Tests = () => {
   useEffect(() => {
     getData();
   }, []);
+
+  const handelSaveCurrentExam = (index) => {
+    localStorage.setItem("exam", JSON.stringify(examData[index]));
+  };
   return (
     <div className={Style.TestSection}>
       <div>
@@ -61,11 +65,12 @@ const Tests = () => {
                 </p>
               </div>
 
-              <Link
-                to={`/exam/${examName}/${subjectName}/instruction/${Test.id}`}
-              >
-                <Button text="Start Exam" />
-              </Link>
+              <Button
+                text="Start Exam"
+                isLink={true}
+                link={`/exam/${examName}/${subjectName}/instruction/${Test.id}`}
+                onClick={() => handelSaveCurrentExam(index)}
+              />
             </p>
           ))
         ) : (

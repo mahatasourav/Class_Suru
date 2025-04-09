@@ -1,10 +1,31 @@
 import React, { useEffect, useState } from "react";
 import Style from "../../css/nav.module.css";
+import { useLocation } from "react-router-dom";
 
-const TimeLeft = ({ hrs = 0, min = 50, sec = 0 }) => {
+const TimeLeft = () => {
+  const [hrs, sethrs] = useState(0);
+  const [min, setmin] = useState(0);
+  const [sec, setsec] = useState(0);
   // Convert initial time to seconds.
-  const initialSeconds = hrs * 3600 + min * 60 + sec;
+  // const initialSeconds = hrs * 3600 + min * 60 + sec;
+  const [initialSeconds, setinitialSeconds] = useState(0);
+  const location = useLocation();
+  const isMainExamPage = location.pathname.includes("/MainExamPage");
   const [timeLeft, setTimeLeft] = useState(initialSeconds);
+
+  useEffect(() => {
+    if (isMainExamPage) {
+      let time = JSON.parse(localStorage.getItem("exam")).exam_duration.split(
+        ":"
+      );
+      console.log("time", time);
+      sethrs(Number(time[0]));
+      setmin(Number(time[1]));
+      setsec(Number(time[2]));
+      setTimeLeft(hrs * 3600 + min * 60 + sec);
+      setinitialSeconds(hrs * 3600 + min * 60 + sec);
+    }
+  }, []);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -33,17 +54,17 @@ const TimeLeft = ({ hrs = 0, min = 50, sec = 0 }) => {
     };
   };
 
-  const { hours, minutes, seconds } = formatTime(timeLeft);
+  // const { hours, minutes, seconds } = formatTime(timeLeft);
 
   return (
     <div className={Style.timeLeft}>
       <div className={Style.timeLeftText}>Time Left:</div>
       <div className={Style.timeLeftBlocks}>
-        <div className={Style.timeBlock}>{hours}</div>
+        <div className={Style.timeBlock}>{formatTime(timeLeft).hours}</div>
         <div className={Style.timeEsto}>:</div>
-        <div className={Style.timeBlock}>{minutes}</div>
+        <div className={Style.timeBlock}>{formatTime(timeLeft).minutes}</div>
         <div className={Style.timeEsto}>:</div>
-        <div className={Style.timeBlock}>{seconds}</div>
+        <div className={Style.timeBlock}>{formatTime(timeLeft).seconds}</div>
       </div>
     </div>
   );

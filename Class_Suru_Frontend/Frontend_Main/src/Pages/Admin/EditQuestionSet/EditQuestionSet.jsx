@@ -39,16 +39,16 @@ const EditQuestionSet = () => {
 
       if (responseExam.status === 200) {
         console.log("Exam Data", responseExam.data);
-          setSetName(responseExam.data.exam.title);
-          setSetDescription(responseExam.data.exam.exam_description && responseExam.data.exam.exam_description);
-            setSetDuration(parseInt(responseExam.data.exam.exam_duration, 10));
-            setTotalMarks(parseInt(responseExam.data.exam.exam_total_marks, 10));
-          console.log("name",setName);
-          console.log("description",setDescription);
-          console.log("duration",setDuration);
-
-          
-        
+        setSetName(responseExam.data.exam.title);
+        setSetDescription(
+          responseExam.data.exam.exam_description &&
+            responseExam.data.exam.exam_description
+        );
+        setSetDuration(parseInt(responseExam.data.exam.exam_duration, 10));
+        setTotalMarks(parseInt(responseExam.data.exam.exam_total_marks, 10));
+        console.log("name", setName);
+        console.log("description", setDescription);
+        console.log("duration", setDuration);
       }
     } catch (error) {
       console.log(error);
@@ -56,24 +56,22 @@ const EditQuestionSet = () => {
       setLoading(false);
     }
   };
-  const getQuestionData = async ()=>{
-    try{
+  const getQuestionData = async () => {
+    try {
       setQuestionLoading(true);
-      const responseQuestions = await apiCall.get(`${getQuestionListApi}/${examId}`);
-      if(responseQuestions.status === 200)
-      {
-        console.log("Question Data",responseQuestions.data);
+      const responseQuestions = await apiCall.get(
+        `${getQuestionListApi}/${examId}`
+      );
+      if (responseQuestions.status === 200) {
+        console.log("Question Data", responseQuestions.data);
         setQuestionNo(responseQuestions.data.questions);
       }
-    }catch(err)
-    {
+    } catch (err) {
       console.log(err);
-    }
-    finally
-    {
+    } finally {
       setQuestionLoading(false);
     }
-  }
+  };
 
   const handleDeleteQuestion = async (questionId, index) => {
     try {
@@ -90,10 +88,8 @@ const EditQuestionSet = () => {
             getQuestionData();
           }, 1000);
         }
-      }
-      else
-      {
-        return ;
+      } else {
+        return;
       }
     } catch (err) {
       console.log(err);
@@ -104,34 +100,29 @@ const EditQuestionSet = () => {
   const handleUpdateQuestionSet = async (e) => {
     e.preventDefault();
     try {
-      
       setQuestionSetLoading(true);
       const data = {
         title: setName,
         exam_description: setDescription,
         exam_duration: setDuration,
-        exam_total_marks: totalMarks
+        exam_total_marks: totalMarks,
       };
       console.log(data);
       const response = await apiCall.put(`${updateExamApi}/${examId}`, data);
       console.log(response);
-      if(response.status === 200)
-      {
+      if (response.status === 200) {
         toast.success("Question set updated Successfully");
         setTimeout(() => {
           navigate(-1);
-        }, 1000 );
+        }, 1000);
       }
-      
     } catch (error) {
       console.log(error);
       toast.error("Error in updating question set");
-      
-    }
-    finally{
+    } finally {
       setQuestionSetLoading(false);
     }
-  }
+  };
 
   useEffect(() => {
     getExamData();
@@ -179,12 +170,14 @@ const EditQuestionSet = () => {
               ></textarea>
             </div>
             <div className={Style.inputSection}>
-              <label htmlFor="questionSetDuration">Exam Duration (hours)</label>
+              <label htmlFor="questionSetDuration">
+                Exam Duration (hours:min:sec)
+              </label>
               <input
-                type="number"
+                type="text"
                 id="questionSetDuration"
                 name="questionSetDuration"
-                placeholder="Enter Question Set Name"
+                placeholder=" 00:00:00"
                 value={setDuration}
                 onChange={(e) => setSetDuration(e.target.value)}
               />
@@ -217,14 +210,15 @@ const EditQuestionSet = () => {
                 >
                   <FaPlus />
                 </div>
-                {questionLoading? "Loading Questions..":questionNo && questionNo?.length > 0
+                {questionLoading
+                  ? "Loading Questions.."
+                  : questionNo && questionNo?.length > 0
                   ? questionNo.map((ele, index) => {
                       return (
                         <div className={Style.questionCardContainer}>
                           <IoCloseCircle
                             className={Style.close}
                             onClick={() => {
-
                               // const updatedQuestions = questionNo.filter(
                               //   (_, i) => i !== index
                               // );
@@ -236,7 +230,7 @@ const EditQuestionSet = () => {
                             className={Style.questionCard}
                             to={`/admin/list/${examName}/${subjectName}/editQuestion/${ele.question_id}`}
                           >
-                            {index+1}
+                            {index + 1}
                           </Link>
                         </div>
                       );
@@ -244,7 +238,13 @@ const EditQuestionSet = () => {
                   : null}
               </div>
             </div>
-            <Button text="Update Set" className={Style.createButton} onClick={handleUpdateQuestionSet} isDisabled={questionSetLoading} isLoading={questionSetLoading} />
+            <Button
+              text="Update Set"
+              className={Style.createButton}
+              onClick={handleUpdateQuestionSet}
+              isDisabled={questionSetLoading}
+              isLoading={questionSetLoading}
+            />
           </div>
         )}
       </div>

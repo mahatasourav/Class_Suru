@@ -8,6 +8,17 @@ import { PiExclamationMarkFill } from "react-icons/pi";
 import Button from "../../Components/Button/Button";
 
 const Result = () => {
+  React.useEffect(() => {
+    window.history.pushState(null, null, window.location.href);
+    const handlePopState = (event) => {
+      window.history.pushState(null, null, window.location.href);
+    };
+    window.addEventListener("popstate", handlePopState);
+
+    return () => {
+      window.removeEventListener("popstate", handlePopState);
+    };
+  }, []);
   return (
     <div className={Style.Result}>
       {/* UpperResult */}

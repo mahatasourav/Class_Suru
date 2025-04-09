@@ -24,6 +24,8 @@ const Layout = () => {
   const location = useLocation();
   const userState = useSelector((state) => state.user.status);
   const isInstructionPage = location.pathname.includes("/instruction");
+  const isMainExamPage = location.pathname.includes("/MainExamPage");
+  const isAdminPage = location.pathname.includes("/admin");
 
   const { addLoading, removeLoading } = useContext(LoadingContext);
 
@@ -33,7 +35,7 @@ const Layout = () => {
     addLoading();
     const data = await getUserData();
     console.log("get user data called");
-    
+
     if (data) {
       dispatch(setUserId(data.userId));
       dispatch(setUserStatus(true));
@@ -52,14 +54,10 @@ const Layout = () => {
 
   return (
     <div className="container">
-      {/* {!isInstructionPage && <Navbar />} */}
-      {location.pathname.startsWith("/admin") ? (
-        <AdminNavbar />
-      ) : !isInstructionPage ? (
-        <Navbar />
-      ) : (
-        <ExamNavbar />
-      )}
+      {isAdminPage && <AdminNavbar />}
+      {isMainExamPage && <ExamNavbar />}
+      {isInstructionPage && <ExamNavbar />}
+      {!isAdminPage && !isMainExamPage && !isInstructionPage && <Navbar />}
 
       <div
         className={

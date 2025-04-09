@@ -13,57 +13,50 @@ const CreateQuestionSet = () => {
 
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
-  const [duration, setDuration] = useState(0);
+  const [duration, setDuration] = useState();
   const [totalMarks, setTotalMarks] = useState(0);
 
   const [loading, setLoading] = useState(false);
-  
-  
 
-  const handleSubmit = async()=>{
+  const handleSubmit = async () => {
     // e.preventDefault();
 
     // console.log("Button Clicked");
 
     // console.log("Loading...");
-    
+
     try {
       const data = {
-        "title": name,
-        "type": examName,
-        "exam_description": description,
-        "exam_duration": duration.toString(),
-        "exam_total_marks": totalMarks.toString(),
-        "exam_subject": subjectName
+        title: name,
+        type: examName,
+        exam_description: description,
+        exam_duration: duration.toString(),
+        exam_total_marks: totalMarks.toString(),
+        exam_subject: subjectName,
+      };
+
+      // console.log(data);
+
+      setLoading(true);
+
+      const response = await apiCall.post(createExamApi, data);
+
+      // console.log(response);
+
+      if (response.status === 201) {
+        console.log("Exam Created Successfully");
+        // alert("Exam Created Successfully");
+        console.log(response.data);
+        navigate(
+          `/admin/list/${examName}/${subjectName}/createQuestionSet/questionlist/${response.data.exam.id}`
+        );
       }
-
-          // console.log(data);
-
-          setLoading(true);
-          
-
-          const response = await apiCall.post(createExamApi,data);
-
-          // console.log(response);
-          
-
-          if(response.status === 201)
-          {
-            console.log("Exam Created Successfully");
-            // alert("Exam Created Successfully");
-            console.log(response.data);
-            navigate(`/admin/list/${examName}/${subjectName}/createQuestionSet/questionlist/${response.data.exam.id}`);
-          }
-            
     } catch (error) {
-        console.log("Error: ", error);
-        
-    }
-    finally{
+      console.log("Error: ", error);
+    } finally {
       setLoading(false);
     }
-  }
-
+  };
 
   return (
     <>
@@ -82,7 +75,9 @@ const CreateQuestionSet = () => {
         </div>
         <div className={Style.createQuestionSetContainer}>
           <div className={Style.inputSection}>
-            <label htmlFor="questionSet">Question Set Name <span className={Style.required}>*</span></label>
+            <label htmlFor="questionSet">
+              Question Set Name <span className={Style.required}>*</span>
+            </label>
             <input
               value={name}
               type="text"
@@ -103,19 +98,24 @@ const CreateQuestionSet = () => {
             ></textarea>
           </div>
           <div className={Style.inputSection}>
-            <label htmlFor="questionSetDuration">Exam Duration (hours) <span className={Style.required}>*</span></label>
+            <label htmlFor="questionSetDuration">
+              Exam Duration (hours:min:sec)
+              <span className={Style.required}>*</span>
+            </label>
             <input
-              type="number"
+              type="text"
               id="questionSetDuration"
               name="questionSetDuration"
-              placeholder="Enter Question Set Name"
+              placeholder="00:00:00"
               value={duration}
               onChange={(e) => setDuration(e.target.value)}
             />
           </div>
 
           <div className={Style.inputSection}>
-            <label htmlFor="totalMarks">Total Marks<span className={Style.required}>*</span></label>
+            <label htmlFor="totalMarks">
+              Total Marks<span className={Style.required}>*</span>
+            </label>
             <input
               type="number"
               id="totalMarks"
@@ -126,8 +126,13 @@ const CreateQuestionSet = () => {
             />
           </div>
 
-          
-          <Button text="Submit" className={Style.createButton} onClick={handleSubmit} isDisabled={loading} isLoading={loading} />
+          <Button
+            text="Submit"
+            className={Style.createButton}
+            onClick={handleSubmit}
+            isDisabled={loading}
+            isLoading={loading}
+          />
         </div>
       </div>
     </>

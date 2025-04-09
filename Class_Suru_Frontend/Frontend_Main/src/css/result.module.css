@@ -1,0 +1,54 @@
+.Result{
+  max-width: 500px;
+  margin: auto;
+  /* border: 2px solid red; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  margin-top: 80px;
+}
+
+.UpperResult{
+  /* border: 2px solid rgb(35, 128, 62); */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+.UpperResult div{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.UpperResultDiv1{
+  
+  flex-direction: column;
+ 
+}
+.UpperResultDiv2{
+
+ flex-direction: row;
+ gap: 10px;
+}
+.MidResult{
+  /* border: 2px solid red; */
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+}
+.MidResult div{
+  /* border: 2px solid red; */
+  display: flex;
+
+  justify-content: space-between;
+  align-items: center;
+ 
+}
+.MidResult div p{
+  display: flex;
+gap: 10px;
+
+}

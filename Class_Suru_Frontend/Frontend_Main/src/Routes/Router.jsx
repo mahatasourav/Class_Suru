@@ -38,6 +38,7 @@ import DashboardRightRecentExam from "../Pages/Dashboard/DashboardRightRecentExa
 import EditQuestion from "../Pages/Admin/Question/EditQuestion";
 import OTP from "../Pages/Admin/Login/OTP";
 import AdminHome from "../Pages/Admin/AdminHome/AdminHome";
+import Result from "../Pages/Exam/Result";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -62,6 +63,7 @@ const router = createBrowserRouter(
         path="/exam/:examName/:subjectName/:examId/MainExamPage"
         element={<MainExamPage />}
       />
+      <Route path="/exam/result" element={<Result />} />
       {/* Admin Routes */}
       {/* <Route path="/admin" element={<Admin />} /> */}
       <Route path="/admin/login" element={<AdminLogin />} />

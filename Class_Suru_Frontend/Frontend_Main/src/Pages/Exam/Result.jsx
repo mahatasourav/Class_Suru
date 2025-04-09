@@ -8,6 +8,17 @@ import { PiExclamationMarkFill } from "react-icons/pi";
 import Button from "../../Components/Button/Button";
 
 const Result = () => {
+  React.useEffect(() => {
+    window.history.pushState(null, null, window.location.href);
+    const handlePopState = (event) => {
+      window.history.pushState(null, null, window.location.href);
+    };
+    window.addEventListener("popstate", handlePopState);
+
+    return () => {
+      window.removeEventListener("popstate", handlePopState);
+    };
+  }, []);
   return (
     <div className={Style.Result}>
       {/* UpperResult */}
@@ -21,7 +32,10 @@ const Result = () => {
         <div className={Style.UpperResultDiv2}>
           {" "}
           <GiSandsOfTime
-            style={{ color: "rgb(134, 46, 249)", backgroundColor: "white" }}
+            style={{
+              color: "rgb(134, 46, 249)",
+              backgroundColor: "white",
+            }}
           />
           <span>10 minutes , 8 seconds</span>
         </div>
@@ -35,7 +49,11 @@ const Result = () => {
         <div>
           <p>
             <HiQuestionMarkCircle
-              style={{ color: "black", backgroundColor: "white" }}
+              style={{
+                color: "black",
+                backgroundColor: "white",
+                fontSize: "1.5rem",
+              }}
             />
             Total Questions
           </p>
@@ -44,7 +62,11 @@ const Result = () => {
         <div>
           <p>
             <FaCheckCircle
-              style={{ color: "green", backgroundColor: "white" }}
+              style={{
+                color: "green",
+                backgroundColor: "white",
+                fontSize: "1.5rem",
+              }}
             />
             Correct Answers
           </p>
@@ -53,7 +75,11 @@ const Result = () => {
         <div>
           <p>
             <RxCrossCircled
-              style={{ color: "white", backgroundColor: "red" }}
+              style={{
+                color: "white",
+                backgroundColor: "red",
+                fontSize: "1.5rem",
+              }}
             />
             Incorrect Answers
           </p>
@@ -62,7 +88,11 @@ const Result = () => {
         <div>
           <p>
             <PiExclamationMarkFill
-              style={{ color: "white", backgroundColor: "Black" }}
+              style={{
+                color: "white",
+                backgroundColor: "Black",
+                fontSize: "1.5rem",
+              }}
             />
             Unattempted Question
           </p>

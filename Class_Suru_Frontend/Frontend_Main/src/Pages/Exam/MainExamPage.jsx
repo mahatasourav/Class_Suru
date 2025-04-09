@@ -12,20 +12,44 @@ import instruction5 from "../../assets/instruction5.png";
 import { HiChevronDoubleRight } from "react-icons/hi";
 import { HiChevronDoubleLeft } from "react-icons/hi";
 // import QuestionData from "../../assets/ExamData/Question";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import parse from "html-react-parser";
 import { getQuestionForExamApi } from "../../apis";
 
 const MainExamPage = () => {
+  const navigate = useNavigate();
   const [questionData, setquestionData] = useState(null);
   const [currentQuestionIndex, setcurrentQuestionIndex] = useState(0);
   const { examId } = useParams();
 
   const [answers, setanswers] = useState(null);
   console.log(answers);
+  useEffect(() => {
+    const handleBeforeUnload = (event) => {
+      event.preventDefault();
+      event.returnValue = "Exam is running. Are you sure you want to leave?";
+    };
 
+    const handlePopState = () => {
+      alert(
+        "Cannot go back to the previous page because the exam is running. Press 'Submit Exam' to exit the exam window."
+      );
+      window.history.pushState(null, null, window.location.href);
+    };
+
+    window.addEventListener("beforeunload", handleBeforeUnload);
+    window.addEventListener("popstate", handlePopState);
+
+    // Push initial state to prevent back navigation
+    window.history.pushState(null, null, window.location.href);
+
+    return () => {
+      window.removeEventListener("beforeunload", handleBeforeUnload);
+      window.removeEventListener("popstate", handlePopState);
+    };
+  }, []);
   // Add at the top of your component (after useState etc.)
   const { examName, subjectName } = useParams();
   const handleSubmitExam = () => {
@@ -450,7 +474,19 @@ const MainExamPage = () => {
             {/* <Link to={`/exam/${examName}/${subjectName}/result/{resultId}`}>
               <Button text="Submit Exam" className={Style.submitButton} />
             </Link> */}
-            <Button text="Submit Exam" className={Style.submitButton} />
+            <Button
+              text="Submit Exam"
+              className={Style.submitButton}
+              onClick={() => {
+                const confirmLogout = window.confirm(
+                  "Do you really want to Submit ?"
+                );
+                // pop.alert("Do you really want to Submit?");
+                if (confirmLogout) {
+                  navigate("/exam/result");
+                }
+              }}
+            />
           </div>
         </div>
       </div>

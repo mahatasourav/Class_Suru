@@ -44,7 +44,7 @@ const EditQuestionSet = () => {
           responseExam.data.exam.exam_description &&
             responseExam.data.exam.exam_description
         );
-        setSetDuration(parseInt(responseExam.data.exam.exam_duration, 10));
+        setSetDuration(responseExam.data.exam.exam_duration);
         setTotalMarks(parseInt(responseExam.data.exam.exam_total_marks, 10));
         console.log("name", setName);
         console.log("description", setDescription);

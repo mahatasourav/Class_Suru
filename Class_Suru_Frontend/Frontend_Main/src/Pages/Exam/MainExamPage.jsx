@@ -16,16 +16,22 @@ import { useNavigate, useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import parse from "html-react-parser";
-import { getQuestionForExamApi } from "../../apis";
+import { getQuestionForExamApi, submitReslutApi } from "../../apis";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import toast, { Toaster } from "react-hot-toast";
 
 const MainExamPage = () => {
   const navigate = useNavigate();
+  const userData = useSelector((state) => state.user.userData);
+  // console.log(userData);
+  
   const [questionData, setquestionData] = useState(null);
   const [currentQuestionIndex, setcurrentQuestionIndex] = useState(0);
   const { examId } = useParams();
 
   const [answers, setanswers] = useState(null);
-  console.log(answers);
+  // console.log(answers);
   useEffect(() => {
     const handleBeforeUnload = (event) => {
       event.preventDefault();
@@ -52,11 +58,55 @@ const MainExamPage = () => {
   }, []);
   // Add at the top of your component (after useState etc.)
   const { examName, subjectName } = useParams();
-  const handleSubmitExam = () => {
+
+  const handleSubmitExam = async() => {
     // Add submission logic here if needed, for now we log and navigate
-    alert("Exam submitted");
-    console.log("Exam submitted", answers);
+    // alert("Exam submitted");
+    // console.log("Exam submitted", answers);
+    const loadingToastId = toast.loading("Loading...");
+    console.log(userData);
+    
+    
+    const data = {
+      exam_id: examId,
+      user_id: userData?.id,
+      answers: answers?.map((answer) => ({
+      id: answer.id,
+      status: answer.status,
+      selected_option: answer.selected_option === null ? -1 : answer.selected_option,
+      })),
+    };
+
+    // console.log(data);
+    
+    try {
+
+      const response = await axios.post(submitReslutApi, data);
+      console.log(response);
+      if(response.status === 201)
+      {
+        toast.dismiss(loadingToastId);
+        toast.success("Exam submitted successfully");
+
+        setTimeout(() => {
+          navigate(`/exam/result/${response.data.result.result_id}`);
+        }, 1000);
+        // navigate(`/exam/result/${response.data.result_id}`);
+      }
+      
+    } catch (error) {
+      console.log(error);
+      toast.dismiss(loadingToastId);
+      toast.error("Something went wrong", { id: loadingToastId });
+      return;
+    }
+
+    // console.log(data);
+    
+
+
   };
+
   const getQuestionData = async () => {
     try {
       const response = await axios.post(`${getQuestionForExamApi}/${examId}`);
@@ -68,6 +118,7 @@ const MainExamPage = () => {
             question_id: index,
             selected_option: null,
             status: 0,
+            id: response.data.data[index].question_id,
           }))
         );
       }
@@ -75,6 +126,35 @@ const MainExamPage = () => {
   };
   useEffect(() => {
     getQuestionData();
+  }, []);
+
+  // useEffect(()=>{
+  //   localStorage.getItem("timeLeft") &&
+  //   setTimeout(() => {
+  //     const timeLeft = JSON.parse(localStorage.getItem("timeLeft"));
+  //     if (timeLeft == 0) {
+  //       console.log("Time is up!");
+  //       handleSubmitExam();
+  //     }
+  //   }
+  //   , 1000);
+  // },[])
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      // console.log("Timer running...");
+      const timeLeft = localStorage.getItem("timeLeft");
+      // console.log(timeLeft);
+      if (JSON.parse(timeLeft) === 1) {
+        
+        // clearInterval(timer);
+        // alert("Time is up!");
+        localStorage.removeItem("timeLeft");
+        handleSubmitExam();
+      }
+    }, 1000);
+
+    return () => clearInterval(timer);
   }, []);
 
   return (
@@ -97,19 +177,19 @@ const MainExamPage = () => {
                   <div
                     className={`${Style.examPageLeftMarksDristibutionValueCorrect} ${Style.correct}`}
                   >
-                    +1
+                    +{questionData && questionData[currentQuestionIndex]?.correct_marks}
                   </div>
                   <div
                     className={`${Style.examPageLeftMarksDristibutionValueCorrect} ${Style.wrong}`}
                   >
-                    -0.25
+                    -{questionData && questionData[currentQuestionIndex]?.wrong_marks}
                   </div>
                 </div>
               </div>
-              <div className={Style.examPageLeftOptionsTime}>
+              {/* <div className={Style.examPageLeftOptionsTime}>
                 <div className={Style.examPageLeftOptionsTimeTitle}>Time:</div>
                 <div className={Style.examPageLeftOptionsTimeValue}>01:00</div>
-              </div>
+              </div> */}
               {/* <Button
                 text="Save"
                 isHollow={true}
@@ -152,7 +232,7 @@ const MainExamPage = () => {
                       ...newData[currentQuestionIndex],
                       selected_option: currentSelection === 1 ? null : 1,
                     };
-                    console.log(newData);
+                    // console.log(newData);
                     return newData;
                   });
                 }}
@@ -181,7 +261,7 @@ const MainExamPage = () => {
                       ...newData[currentQuestionIndex],
                       selected_option: currentSelection === 2 ? null : 2,
                     };
-                    console.log(newData);
+                    // console.log(newData);
                     return newData;
                   });
                 }}
@@ -210,7 +290,7 @@ const MainExamPage = () => {
                       ...newData[currentQuestionIndex],
                       selected_option: currentSelection === 3 ? null : 3,
                     };
-                    console.log(newData);
+                    // console.log(newData);
                     return newData;
                   });
                 }}
@@ -239,7 +319,7 @@ const MainExamPage = () => {
                       ...newData[currentQuestionIndex],
                       selected_option: currentSelection === 4 ? null : 4,
                     };
-                    console.log(newData);
+                    // console.log(newData);
                     return newData;
                   });
                 }}
@@ -375,9 +455,9 @@ const MainExamPage = () => {
         <div className={Style.examPageRightSideBar}>
           <div className={Style.profileSection}>
             <div className={Style.profileSectionImage}>
-              <img className={Style.profile} src={profile} alt="" />
+              <img className={Style.profile} src={userData && userData.avatar} alt="profile" />
             </div>
-            <div className={Style.profileSectionName}>John Doe</div>
+            <div className={Style.profileSectionName}>{userData?.name}</div>
           </div>
           <div className={Style.examIndicationSection}>
             <div className={Style.examIndication}>
@@ -477,19 +557,21 @@ const MainExamPage = () => {
             <Button
               text="Submit Exam"
               className={Style.submitButton}
-              onClick={() => {
+              onClick={async() => {
                 const confirmLogout = window.confirm(
                   "Do you really want to Submit ?"
                 );
                 // pop.alert("Do you really want to Submit?");
                 if (confirmLogout) {
-                  navigate("/exam/result");
+                  await handleSubmitExam();
+                  // navigate("/exam/result");
                 }
               }}
             />
           </div>
         </div>
       </div>
+      <Toaster />
     </>
   );
 };

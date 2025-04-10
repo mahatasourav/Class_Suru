@@ -37,6 +37,9 @@
 .HomeMainLeftDown p span {
   color: rgb(88, 88, 214);
 }
+.HomeMainLeftDreamExam{
+  color: #D4AF37;
+}
 
 .HomeMainLeft p span {
   font-weight: bold;
@@ -443,6 +446,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
+
 }
 
 .HomeSec5IMG {
@@ -464,19 +468,25 @@
   height: 120px;
   border-radius: 10px 0px 0px 10px;
 }
-
+.ServiceInfo p{
+  padding: 0px 5px;
+}
 .ServiceInfo div {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  width: 70%;
+  width: 80%;
   padding-left: 20px;
   box-shadow: 5px 0px 20px 9px rgba(111, 108, 108, 0.1), /* Right shadow with more blur */
     0px -5px 15px 2px rgba(111, 108, 108, 0.1), /* Top shadow (4px spread, more blur) */
     0px 5px 15px 7px rgba(111, 108, 108, 0.1); /* Bottom shadow with more blur */
   border-radius: 0px 10px 10px 0px;
 }
-
+@media (max-width: 1224px) { 
+  .ServiceInfo div {
+    width: 100%;
+  }
+}
 @media (max-width: 1024px) {
   .HomeSec5IMG {
     display: none;
@@ -489,11 +499,12 @@
     display: flex;
     justify-content: center;
   }
-  .ServiceInfo div {
-    width: 90%;
-  }
+ 
   .ServiceInfo h1 {
     height: auto;
+  }
+  .ServiceInfo p{
+    padding: 5px 5px;
   }
 }
 

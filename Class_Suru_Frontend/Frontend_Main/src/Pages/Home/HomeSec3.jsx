@@ -14,16 +14,24 @@ const HomeSec3 = () => {
         </div>
         <div className={Style.HomeSec3div2}>
           <div className={Style.HomeSec3div21}>
-            <p>
-              ক্লাস শুরু, একটি প্রতিষ্ঠান যা পশ্চিমবঙ্গের শিক্ষার্থীদের জন্য
-              উচ্চমানের শিক্ষা প্রদান করতে প্রতিশ্রুতিবদ্ধ। ঝাড়গ্রামের কেন্দ্রে
-              অবস্থিত, আমরা অফলাইন কোচিংয়ে একটি বিশ্বাসযোগ্য নাম, শিক্ষার্থীদের
-              বোর্ড পরীক্ষা,{" "}
-              <span className={Style.spanbold}>
-                JEE মেইন, JEE অ্যাডভান্সড এবং NEET UG
-              </span>
-              -তে সাফল্য অর্জনে সাহায্য করছি।
-            </p>
+            <div className={Style.HomeSec3div211}>
+              <p>
+                ক্লাস শুরু, একটি প্রতিষ্ঠান যা পশ্চিমবঙ্গের শিক্ষার্থীদের জন্য
+                উচ্চমানের শিক্ষা প্রদান করতে প্রতিশ্রুতিবদ্ধ। ঝাড়গ্রামের
+                কেন্দ্রে অবস্থিত, আমরা অফলাইন কোচিংয়ে একটি বিশ্বাসযোগ্য নাম,
+                শিক্ষার্থীদের বোর্ড পরীক্ষা,{" "}
+                <span className={Style.spanbold}>
+                  JEE মেইন, JEE অ্যাডভান্সড এবং NEET UG
+                </span>
+                -তে সাফল্য অর্জনে সাহায্য করছি।
+              </p>
+              <Button
+                text="Explore Now"
+                isLink={true}
+                link="#"
+                className={Style.ExploreNowButton}
+              />
+            </div>
             <iframe
               src="https://www.youtube.com/embed/PsVTQgKQdLI?si=WoqGwc3-csMiIndq"
               title="YouTube video player"
@@ -34,7 +42,8 @@ const HomeSec3 = () => {
               className={Style.HomeSec3div21iframe}
             ></iframe>
           </div>
-          <div className={Style.HomeSec3div22}>
+
+          {/* <div className={Style.HomeSec3div22}>
             <img src={HomeSec3Img2} alt="" />
             <p>
               আমাদের টিমে রয়েছে অভিজ্ঞ ও বিশেষজ্ঞ শিক্ষকগণ, যারা শিক্ষার্থীদের
@@ -47,10 +56,7 @@ const HomeSec3 = () => {
               সহায়ক এবং অনুপ্রেরণাদায়ক পরিবেশ তৈরি করেছি, যেখানে তারা নিজেদের
               সক্ষমতা ও আত্মবিশ্বাস বৃদ্ধি করতে পারে।
             </p>
-          </div>
-          <div className={Style.HomeSec3div23}>
-            <Button text="Explore Now" />
-          </div>
+          </div> */}
         </div>
       </div>
     </>

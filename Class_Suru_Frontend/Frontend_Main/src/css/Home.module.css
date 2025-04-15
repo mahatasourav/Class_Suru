@@ -2,7 +2,7 @@
 .Homestyle {
   display: flex;
   flex-direction: column;
-  gap: 80px;
+  /* gap: 80px; */
 }
 
 /* Home Section-1 Started Here ---> */

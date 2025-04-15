@@ -1,0 +1,203 @@
+/* Section gap , Top */
+.HomeMain{
+    padding-top: 70px;
+}
+.HomeMain{
+    width: 1500px;
+    height: fit-content;
+    
+    /* padding-bottom: 70px; */
+    /* border: 1px solid red; */
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    gap: 20px;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+/* ========= Left Section ========= */
+
+.HomeMainLeft{
+    width: 55%;
+    height: 100%;
+    /* border: 1px solid blue; */
+    gap: 25px;
+    display: flex;
+    justify-content: start;
+    align-items: start;
+    flex-direction: column;
+    
+}
+.HomeMainLeftHeading{
+    font-size: 38px;
+    font-family: tatsama;
+    word-spacing: 2px;
+    line-height: 150%;
+}
+.HomeMainLeftHeading b{
+    color: var(--primary_color);
+    font-family: 'Poppins', sans-serif;
+    font-size: 35px;
+}
+.HomeMainLeftHeading g{
+    font-family: tatsama;
+}
+
+.HomeMainLeftSubHeading{
+    font-size: 20px;
+    max-width: 650px;
+    font-family: 'Noto Sans Bengali', serif;
+    font-weight: 400;
+    line-height: 160%;
+    word-spacing: 2px;
+}
+.HomeMainLeftSubHeading b{
+    /* color: var(--primary_color); */
+    font-family: 'Noto Sans Bengali', sans-serif;
+    font-size: 20px;
+}
+.buttonSection{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+
+}
+.button{
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+/* ========= Right Section ========= */
+
+.HomeMainRight{
+    /* width: 45%; */
+    height: 100%;
+    /* border: 1px solid green; */
+}
+
+.AutoplaySwiperContainer{
+    width: 550px;
+    height: 355px;
+    /* border: 1px solid yellow; */
+}
+.AutoplaySwiperSlide{
+    height: 320px !important;
+    width: 100%;
+    border: 1px solid;
+    border-radius: 10px;
+    overflow: hidden;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* border: 1px solid red; */
+}
+.AutoplaySwiperSlide img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+/* section Gap , Top */
+.UpdatesSection{
+    margin-top: 20px;
+}
+
+.UpdatesSection{
+    width: 100%;
+    height: 50px;
+    background-color: rgb(236, 236, 236);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* gap: 20px; */
+}
+.UpdatesSectionText{
+    font-size:15px;
+    margin-left: 20px;
+    margin-right: 20px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    color: var(--primary_color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    /* text-decoration: underline; */
+}
+.UpdatesSectionText b{
+    /* font-size: 20px; */
+    color: var(--primary_color);
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    text-decoration: underline;
+}
+
+.iconNew{
+    height: 20px;
+    width: 50px;
+    background-color: red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50px;
+    font-size: 10px;
+    color: var(--background_color);
+}
+
+.PromoVideoSection{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(56, 56, 56, 0.322);
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.PromoVideoContainer{
+    width: 80%;
+    height: 80%;
+    background-color: var(--background_color);
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    /* overflow: hidden; */
+    padding: 20px;
+    /* padding-top: 30px; */
+}
+.PromoVideoClose{
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    font-size: 20px;
+    cursor: pointer;
+    background-color: var(--primary_color);
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid var(--primary_color);
+    color: var(--background_color);
+
+}
+.promoVideo{
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+}

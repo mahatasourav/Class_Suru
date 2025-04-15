@@ -63,20 +63,9 @@
     transition: all 0.3s ease !important;
 }
 
-.swiper-button-prev, .swiper-button-next{
-    color: var(--primary_color) !important;
-    font-size: 10px !important;
-    width: 30px !important;
-    height: 30px !important;
-    /* border: 1px solid red; */
-    background-color: var(--background_color) !important;
-    border-radius: 50%;
-    transition: all 0.3s ease !important;
-    display: none !important;
-}
 
 .swiper-button-prev::after, .swiper-button-next::after{
-    font-size: 15px !important;
+    font-size: 30px !important;
     color: var(--primary_color) !important;
     font-weight: 800 !important;
     transition: all 0.3s ease !important;

@@ -7,20 +7,15 @@ import { Link } from "react-router-dom";
 const HomeSec4 = () => {
   return (
     <div className={Style.HomeSec4}>
-      <div className={Style.HomeSec41}>
-        <center>
-          {" "}
-          <h2>
-            সবার জন্য <span className={Style.spancolor}>ফ্রি অনলাইন</span>{" "}
+          <div className={Style.headingSection4}>
+            সবার জন্য <span>ফ্রি অনলাইন</span>{" "}
             পরীক্ষা
-          </h2>
-        </center>
-      </div>
+          </div>
       <div className={Style.HomeSec42}>
         {examData.map((exam, index) => (
           <div className={Style.examSection} key={index}>
             <div className={Style.examInfo}>
-              <h2>{exam.title}</h2>
+              <div className={Style.examSectionHeading}>{exam.title}</div>
               <h5>{exam.heading}</h5>
               <p>{exam.description}</p>
               <Link to={`/exam`} className={Style.examButton}>

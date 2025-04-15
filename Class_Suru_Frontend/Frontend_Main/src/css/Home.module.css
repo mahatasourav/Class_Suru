@@ -132,41 +132,93 @@
 
 
 /* Home Section-2 Started Here ---> */
+/* Section Gap Top */
+.HomeSec2div{
+  margin-top: 70px;
+}
 .HomeSec2div {
-  max-width: 75vw !important;
+  /* max-width: 75vw !important; */
+  max-width: 1400px;
   padding: 20px;
-  margin: auto;
+  /* margin: auto; */
+  margin-left: auto;
+  margin-right: auto;
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 20px;
+  padding-top: 0px;
+  position: relative;
 }
 
-.HomeSec2div span {
-  color: rgb(88, 88, 214);
+/* .HomeSec2div::before {
+  left: 0;
 }
+
+.HomeSec2div::after {
+  right: 0;
+  background: linear-gradient(to left, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+} */
+
+.HomeSec2div {
+  position: relative;
+}
+
+.section2Heading{
+  font-size: 38px;
+  font-family: tatsama;
+  width: 100%;
+  text-align: center;
+}
+.section2Heading span{
+  font-size: 35px !important;
+  font-family: tatsama;
+  color: var(--primary_color);
+}
+
+/* .HomeSec2div span {
+  color: rgb(88, 88, 214);
+} */
 .SwipperDiv {
-  box-shadow: inset 0px 2px 0px rgba(0, 0, 0, 0.2), inset 0px 1px 0px rgba(0, 0, 0, 0.15);
+  /* box-shadow: inset 0px 2px 0px rgba(0, 0, 0, 0.2), inset 0px 1px 0px rgba(0, 0, 0, 0.15); */
 }
 /* swiperStyles.css */
 .customSwiper {
   width: 100%;
+  height: 380px !important;
   overflow: hidden !important;
-  padding: 50px 50px 50px 50px;
+  /* padding: 50px 50px 50px 50px; */
   display: flex;
   justify-content: center;
+  padding: 30px !important;
+  padding-bottom: 60px !important;
+  /* border: 1px solid red; */
+  /* padding-top: 10px !important; */
+  /* padding-bottom: 10px !important; */
 }
 
 .customSlide {
-  width: 200px !important;
-  height: 235px !important;
+  /* width: 200px !important; */
+  /* height: 235px !important; */
   overflow: visible !important;
-  padding-top: 20px;
+  /* padding-top: 20px; */
   background-color: #ffffff;
   border-radius: 7px;
-  box-shadow: 0px 6px 14px rgba(0, 0, 0, 0.3), 0px 4px 4px rgba(0, 0, 0, 0.2);
-  margin: 40px;
+  box-shadow: 0px 6px 14px rgba(0, 0, 0, 0.144);
+  /* margin: 40px; */
   transition: transform 0.3s ease-in-out; /* Smooth hover effect */
+  /* border: 1px solid red; */
+  width: 250px !important;
+  height: 100% !important;
+  padding: 10px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  transition: all 0.3s ease-in-out; /* Smooth hover effect */
 }
+.customSlide:hover{
+  transform: scale(1.05); /* Scale up on hover */
+  /* box-shadow: 0px 6px 14px rgba(0, 0, 0, 0.15), 0px 4px 4px rgba(0, 0, 0, 0.15); */
+}
+
 
 .Swiperdiv img {
   width: 110px;
@@ -183,12 +235,12 @@
   gap: 10px;
 }
 
-.Swiperdiv img {
+.profileImgContainer img {
   width: 110px;
   height: 152px;
   height: auto;
   border-radius: 50%;
-  border: 3.5px solid rgb(88, 86, 214);
+  /* border: 3.5px solid rgb(88, 86, 214); */
 }
 
 .Swiperdiv div {
@@ -200,8 +252,11 @@
 }
 
 .instituteName {
-  font-size: 10px;
+  font-size: 15px;
   padding: 10px;
+  text-overflow: ellipsis;
+  text-align: center;
+  /* white-space: nowrap; */
 }
 
 /* Media queries for responsiveness */
@@ -249,34 +304,87 @@
   font-weight: bold;
 }
 
+/* ====================== Home Page Section 3 ====================== */
+/* ========= section gap ========= */
+.HomeSec3{
+  /* border: 1px solid red; */
+  width: 100%;
+  margin-top: 50px;
+}
+
 .HomeSec3 {
+  /* display: flex; */
+  /* flex-direction: column; */
+  /* justify-content: space-between; */
+  /* align-items: center; */
+  /* width: 80vw; */
+  /* margin: auto; */
+  /* gap: 40px; */
+  background-color: #514eec;
+  padding: 20px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.headingSection3{
+  /* font-weight: bold; */
+  font-size: 38px;
+  font-family: tatsama;
+  color: #ffffff;
+}
+.headingSection3 span{
+  color: #ffffff;
+  font-size: 38px;
+  font-family: tatsama;
+  font-weight: 500;
+}
+
+.HomeSec3div21{
+  /* border: 1px solid red; */
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: center;
-  width: 80vw;
-  margin: auto;
-  gap: 40px;
+  max-width: 1500px;
+  margin: 0 auto;
+  gap: 20px;
 }
 
-.HomeSec3div1 h2 {
-  font-weight: bold;
-  font-size: 1.6rem;
+.HomeSec3div211{
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  flex-direction: column;
+  gap: 20px;
+  
+}
+.homeSection3Description{
+  color: var(--light_primary_color);
+  font-family: 'Noto Sans Bengali', serif;
+  max-width: 600px;
+  font-size: 20px;
+  line-height: 150%;
+  font-weight: 300;
 }
 
-.HomeSec3div2 {
+.HomeSec3div21iframe{
+  width: 600px;
+  height: 300px;
+  border-radius: 10px;
+}
+
+/* .HomeSec3div21 {
   display: flex;
   flex-direction: column;
   width: 78vw;
   align-items: center;
   gap: 30px;
  justify-content: center;
-  background-color: rgb(88, 86, 214);
+  
   color: white;
   
-}
+} */
 
-.HomeSec3div21,
+/* .HomeSec3div21,
 .HomeSec3div22 {
   display: flex;
   flex-direction: row;
@@ -297,19 +405,23 @@
   display: flex;
   flex-direction: column;
   gap: 15px;
-}
+} */
 .ExploreNowButton{
   background-color: white;
-  color: rgb(88, 86, 214);;
-  width: 150px;
+  color: var(--primary_color);
+  font-weight: 600;
+  letter-spacing: 1.2px;
+  /* width: 150px; */
+  transition: all 0.2s ease-in-out;
 }
 .ExploreNowButton:hover{
-  background-color: white;
-  color: rgb(131, 130, 212);;
-   transform: scale(0.95);
+  /* background-color: white; */
+  /* color: rgb(131, 130, 212);; */
+  background-color: #fff;
+   transform: scale(1.05);
 }
 
-.HomeSec3div21iframe {
+/* .HomeSec3div21iframe {
   width: 420px;
   height: 300px;
 }
@@ -317,7 +429,7 @@
 .HomeSec3div22 img {
   width: 420px;
   height: 300px;
-}
+} */
 
 /* Media queries for responsiveness */
 @media (max-width: 1024px) {
@@ -360,23 +472,53 @@
 }
 
 /* Home Section-4 Started Here ---> */
+.HomeSec4{
+  margin-top: 70px;
+}
+.headingSection4{
+  /* border: 1px solid red; */
+  text-align: center;
+  font-family: tatsama;
+  font-size: 38px;
+}
+.headingSection4 span{
+  color: var(--primary_color);
+  font-size: 38px;
+  font-family: tatsama;
+  /* font-weight: 500; */
+}
 .HomeSec42 {
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 20px;
-  background-color: #f9f9f9;
+  /* border: 1px solid red; */
+  margin-top: 50px;
+  padding-top: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 30px;
+  /* background-color: #f9f9f9; */
 }
 
 .examSection {
   background-color: white;
   border-radius: 8px;
   padding: 20px;
-  margin: 10px 0;
+  /* padding-top: 0px; */
+  /* margin: 10px 0; */
   width: 80%;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: box-shadow 0.3s ease;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.274);
+  transition: all 0.2s ease;
   display: flex;
+  /* border: 1px solid red; */
+}
+
+.examSection:hover {
+  transform: scale(1.015);
+  /* box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); */
 }
 
 .examImage {
@@ -389,10 +531,11 @@
   justify-content: space-evenly;
 }
 
-.examSection h2 {
-  font-size: 24px;
+.examSectionHeading {
+  font-size: 30px;
   margin-bottom: 10px;
-  color: #333;
+  color: #000000;
+  font-family: tatsama;
 }
 
 .examSection p {
@@ -402,7 +545,7 @@
 }
 
 .examButton {
-  background-color: #007bff;
+  background-color: var(--primary_color);
   color: white;
   width: 150px;
   border: none;
@@ -421,9 +564,7 @@
   background-color: #0056b3;
 }
 
-.examSection:hover {
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-}
+
 
 @media (min-width: 768px) {
   .examSection {
@@ -448,12 +589,18 @@
 }
 
 /* Home Section-5 Started Here ---> */
+/* ====================== Section gap Section 5 ====================== */
+.HomeSec5{
+  margin-top: 70px;
+}
 .HomeSec5 {
   display: flex;
   max-width: 80%;
   flex-direction: column;
   justify-content: center;
-  margin: auto;
+  /* margin: auto; */
+  margin-left: auto;
+  margin-right: auto;
   gap: 30px;
 }
 
@@ -529,9 +676,14 @@
 }
 
 /* Home Section-6 Started Here ---> */
+.HomeSec6{
+  margin-top: 70px;
+}
 .HomeSec6 {
   width: 85%;
-  margin: auto;
+  /* margin: auto; */
+  margin-left: auto;
+  margin-right: auto;
   display: flex;
   flex-direction: column;
   gap: 30px;
@@ -548,7 +700,7 @@
   height: auto;
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  /* gap: 15px; */
 }
 
 .HomeSec6faqQue {
@@ -571,9 +723,22 @@
 .HomeSec6faqAns {
   background-color: whitesmoke;
   border-radius: 7px;
-  padding: 15px;
+  /* padding: 15px; */
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   display: flex;
   flex-direction: column;
   gap: 5px;
+  height: 0px;
+  overflow: hidden;
+  transition: all 0.2s ease;
+  margin-top: 10px;
+  font-family: 'Noto sans Bengali', sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  /* display: none; */
+}
+.HomeSec6faqAns.active{
+  padding: 15px;
+  height: 100px;
+  /* display: block; */
 }

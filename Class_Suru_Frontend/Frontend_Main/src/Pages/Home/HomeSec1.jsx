@@ -35,7 +35,7 @@ const HomeSec1 = () => {
       <div className={Style.HomeMain}>
         <div className={Style.HomeMainLeft}>
           <div className={Style.HomeMainLeftHeading}>
-            <b>JEE , NEET, WBJEE</b> থেকে <b>Board</b> সবার জন্য <br />
+            <b>IIT-JEE , NEET, WBJEE</b> থেকে <b>Board</b> সবার জন্য <br />
             সঠিক প্রস্তুতি, সেরা সাফল্য!
           </div>
           <div className={Style.HomeMainLeftSubHeading}>
@@ -88,7 +88,7 @@ const HomeSec1 = () => {
             pagination={{
               clickable: true,
             }}
-            navigation={true}
+            // navigation={true}
             modules={[Pagination, Navigation, Autoplay]}
             // modules={[EffectCoverflow, Autoplay]}
             loop={true}

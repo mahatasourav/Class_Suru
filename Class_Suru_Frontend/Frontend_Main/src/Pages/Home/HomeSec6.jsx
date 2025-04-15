@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Style from "../../css/Home.module.css";
+import { FaPlus } from "react-icons/fa6";
 
 const HomeSec6 = () => {
   const [activeIndex, setActiveIndex] = useState(null);
@@ -38,12 +39,10 @@ const HomeSec6 = () => {
 
   return (
     <div className={Style.HomeSec6}>
-      <center>
-        <h2>
-          <span className={Style.spancolor}>প্রায়শই </span>জিজ্ঞাসিত প্রশ্ন
+        <div className={Style.headingSection4}>
+          <span >প্রায়শই </span>জিজ্ঞাসিত প্রশ্ন
           (FAQ)
-        </h2>
-      </center>
+        </div>
       <div className={Style.HomeSec6faqsec}>
         {faqs.map((faq, index) => (
           <div key={index} className={Style.HomeSec6faqsec1}>
@@ -51,15 +50,30 @@ const HomeSec6 = () => {
               onClick={() => toggleFAQ(index)}
               className={Style.HomeSec6faqQue}
             >
-              <h5>{activeIndex === index ? "×" : "+"}</h5>
+              {/* <h5>{activeIndex === index ? "×" : <FaPlus />}</h5> */}
+              <FaPlus
+                className={activeIndex === index ? Style.active : ""}
+                style={{
+                  transform: activeIndex === index ? "rotate(135deg)" : "none",
+                  transition: "transform 0.3s ease",
+                }}
+              />
               {faq.question}
             </div>
-            {activeIndex === index && (
-              <div className={Style.HomeSec6faqAns}>
+            {/* {activeIndex === index && (
+              <div className={Style.HomeSec6faqAns} >
                 <h5>উত্তর :</h5>
                 {faq.answer}
               </div>
-            )}
+            )} */}
+            <div
+              className={`${Style.HomeSec6faqAns} ${
+                activeIndex === index ? Style.active : ""
+              }`}
+            >
+              <h5>উত্তর :</h5>
+              {faq.answer}
+            </div>
           </div>
         ))}
       </div>

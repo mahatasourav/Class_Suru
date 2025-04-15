@@ -22,7 +22,9 @@ const Button = ({
         to={link}
         className={`${Style.button} ${
           isLoading ? Style.loading : ""
-        } ${className} ${onDualMode ? isHollow? Style.inactive: Style.active: ""} ${isDisabled ? Style.disabled : ""}`}
+        } ${className} ${
+          onDualMode ? (isHollow ? Style.inactive : Style.active) : ""
+        } ${isDisabled ? Style.disabled : ""}`}
         id="actionButton"
         disabled={isDisabled}
         {...props}
@@ -39,7 +41,9 @@ const Button = ({
         to={link}
         className={`${Style.button} ${
           isLoading ? Style.loading : ""
-        } ${className} ${onDualMode ? isHollow? Style.inactive: Style.active: ""} ${isDisabled ? Style.disabled : ""}`}
+        } ${className} ${
+          onDualMode ? (isHollow ? Style.inactive : Style.active) : ""
+        } ${isDisabled ? Style.disabled : ""}`}
         id="actionButton"
         disabled={isDisabled}
         {...props}
@@ -54,7 +58,9 @@ const Button = ({
     <button
       className={`${Style.button} ${
         isLoading ? Style.loading : ""
-      } ${className} ${onDualMode ? isHollow? Style.inactive: Style.active: ""} ${isDisabled ? Style.disabled : ""}`}
+      } ${className} ${
+        onDualMode ? (isHollow ? Style.inactive : Style.active) : ""
+      } ${isDisabled ? Style.disabled : ""}`}
       id="actionButton"
       disabled={isDisabled}
       {...props}

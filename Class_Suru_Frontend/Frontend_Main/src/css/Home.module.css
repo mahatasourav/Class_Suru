@@ -26,7 +26,7 @@
 
 /* Home Upper Left */
 .HomeMainLeft {
-  width: 45vw;
+  width: 35vw;
   height: 45vh;
   display: flex;
   flex-flow: column;
@@ -267,9 +267,13 @@
 .HomeSec3div2 {
   display: flex;
   flex-direction: column;
-  width: 85vw;
+  width: 78vw;
   align-items: center;
   gap: 30px;
+ justify-content: center;
+  background-color: rgb(88, 86, 214);
+  color: white;
+  
 }
 
 .HomeSec3div21,
@@ -287,6 +291,22 @@
 .HomeSec3div22 p {
   width: 30vw;
   font-size: 1.2rem;
+}
+.HomeSec3div211{
+  
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.ExploreNowButton{
+  background-color: white;
+  color: rgb(88, 86, 214);;
+  width: 150px;
+}
+.ExploreNowButton:hover{
+  background-color: white;
+  color: rgb(131, 130, 212);;
+   transform: scale(0.95);
 }
 
 .HomeSec3div21iframe {

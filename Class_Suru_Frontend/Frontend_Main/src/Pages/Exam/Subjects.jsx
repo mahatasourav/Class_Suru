@@ -5,6 +5,7 @@ import Breadcrumb from "./Breadcrumb";
 
 import { examlists } from "../../assets/ExamData/examList";
 import ExamSelection from "./ExamSelection";
+import { ExamCard } from "../../Components";
 
 const Subjects = () => {
   const { examName } = useParams(); // Get exam name from URL
@@ -16,16 +17,17 @@ const Subjects = () => {
       <ul className={Style.ExamLists}>
         {subjects.length > 0 ? (
           subjects.map((subject) => (
-            <li key={subject} className={Style.ExamList}>
-              <h2>{subject}</h2>
-              <Link
-                to={`/exam/${examName}/${subject}`}
-                key={subject}
-                className={Style.ExamButton}
-              >
-                Select
-              </Link>
-            </li>
+            // <li key={subject} className={Style.ExamList}>
+            //   <h2>{subject}</h2>
+            //   <Link
+            //     to={`/exam/${examName}/${subject}`}
+            //     key={subject}
+            //     className={Style.ExamButton}
+            //   >
+            //     Select
+            //   </Link>
+            // </li>
+            <ExamCard text={subject} link={`/exam/${examName}/${subject}`}  key={subject}/>
           ))
         ) : (
           <p>No subjects found for this exam.</p>

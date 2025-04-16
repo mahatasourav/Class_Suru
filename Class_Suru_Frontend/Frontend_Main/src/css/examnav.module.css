@@ -232,177 +232,79 @@
 
 
 /* ========= Navbar ( RESPONSIVE ) ========= */
-@media only screen and (max-width: 1000px)
-{
-    .logo{
-        gap: 5px;
-    }
-    .logoImg{
-        height: 30px;
-    }
-    .logoText{
-        font-size: 15px;
-    }
-    .navLinks{
-        gap: 10px;
-        
-    }
-    .navLink{
-        font-size: 13px;
-    }
 
-    .navButton{
-        font-size: 12px;
-    }
+
+
+
+
+/* 
+ExamNavbar CSS  */
+
+.ExamnavContainer{
+    width: 100%;
+    height: 100px;
+    /* border: 1px solid red; */
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: var(--background_color);
+    box-shadow: 0px 5px 10px #0000001e;
+    z-index: 999;
+}
+
+.navContainer{
+    padding-top: 20px;
+    
+}
+
+.examNavContainer{
+    height: 100px;
+    /* border: 1px solid red; */
+
+}
+
+.logoText b{
+    color: #000;
+    font-weight: 500;
+}
+
+.timeLeft{
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    font-size: 18px;
+    font-weight: 500;
+}
+.timeLeftBlocks{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3px;
+}
+
+.timeBlock{
+    height: 30px;
+    width: 30px;
+    /* border: 1px solid red; */
+    background-color: var(--dark_secondary_color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+
 }
 
 @media only screen and (max-width: 800px)
 {
-    .navButton{
-        padding-left: 10px;
-        padding-right: 10px;
-        letter-spacing: 0.5px;
-        /* border: 2px solid black; */
-    }
-    .navLinks{
-        gap: 5px;
-    }
-}
-
-@media only screen and (max-width: 700px)
-{
-    
-    .navLinks.active{
-        visibility: visible;
-        opacity: 1;
-        /* transform: translateX(0px); */
-    }
-    
-    .navLinks.inactive{
-        visibility: hidden;
-        opacity: 0;
-        /* transform: translateX(110%); */
-    }
-    .menuSection{
-        display: block;
-        /* border: 1px solid red; */
-    }
-    .navLinks{
-        /* border: 1px solid red; */
-        position: absolute;
-        top: 105px;
-        right: 10px;
-        flex-direction: column;
-        padding: 10px;
-        padding-left: 10px;
-        padding-right: 10px;
-        gap: 15px;
-        background-color: var(--background_color);
-        border-radius: 5px;
-        box-shadow: 0px 0px 5px #0000003f;
-        /* transition: none; */
-        gap: 0px;
-    }
-    .navLink{
-        font-size: 15px;
-        transition: none;
-        /* border: 1px solid red; */
-        width: 100%;
-        padding-bottom: 5px;
-        padding-top: 5px;
-        text-align: center;
-        border-bottom: 1px solid #0000001f;
-        transition: all 0.1s linear;
-        padding-left: 20px;
-        padding-right: 20px;
-    }
-    .navLink:last-child{
-        border-bottom: none;
-    }
-    .navLink:hover{
-        color: #000;
-        background-color: #e6e6e6;
-    }
-
-    .navLink::after{
+    .navButtons button{
         display: none;
     }
-
-    .logo{
-        gap: 10px;
-    }
-    .logoImg{
-        height: 40px;
-    }
     .logoText{
-        font-size: 22px;
-    }
-
-    .navButton{
-        padding-left: 15px;
-        padding-right: 15px;
-        letter-spacing: 1px;
-        /* border: 2px solid black; */
-    }
-    .contactText{
         display: none;
     }
-    .contactOptionContainer{
-        gap: 20px;
-    }
-    
-
-}
-
-@media only screen and (max-width: 500px)
-{
-    .logo{
-        gap: 0px;
-        /* border: 1px solid red; */
-    }
-    .logoImg{
-        height: 40px;
-    }
-    .logoText{
-        font-size: 18px;
-    }
     .navLower .nav{
-        padding-right: 10px;
-        padding-left: 10px;
-    }
-    .navLink{
-        font-size: 18px;
-    }
-    .navButton{
-        font-size: 15px
+        justify-content: space-between;
     }
 }
-
-@media only screen and (max-width: 400px)
-{
-    .navButton{
-        padding-left: 10px;
-        padding-right: 10px;
-        letter-spacing: 0.5px;
-        font-size: 12px;
-    }
-    .menu,.close{
-        font-size: 30px;
-    }
-}
-
-@media only screen and (max-width: 350px)
-{
-    .navButtons{
-        gap: 10px;
-    }
-    .navLower .nav{
-        padding-right: 5px;
-        padding-left: 5px;
-    }
-    .navUpper .nav{
-        padding-left: 20px;
-        padding-right: 20px;
-    }
-}
-

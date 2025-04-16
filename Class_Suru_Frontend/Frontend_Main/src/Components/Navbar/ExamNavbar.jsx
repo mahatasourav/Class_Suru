@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Style from "../../css/nav.module.css";
+import Style from "../../css/examnav.module.css";
 import logo from "../../assets/class_suru_logo.png";
 import Button from "../Button/Button";
 import TimeLeft from "./TimeLeft";
@@ -32,10 +32,11 @@ const ExamNavbar = () => {
               </div>
             </div>
 
+            
             {isMainExamPage && <TimeLeft />}
-
             <div className={Style.navButtons}>
               <Button
+                // className={Style.navButton}
                 text={fullScreen ? "Exit Full Screen" : "Enter Full Screen"}
                 onDualMode={true}
                 isHollow={true}
@@ -43,6 +44,7 @@ const ExamNavbar = () => {
                 // className={Style.navButton}
               />
             </div>
+            
           </div>
         </div>
       </nav>

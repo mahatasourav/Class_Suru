@@ -9,13 +9,17 @@ import { TfiTimer } from "react-icons/tfi";
 import { TbTargetArrow } from "react-icons/tb";
 import axios from "axios";
 import { getExamsApi } from "../../apis";
+import { ExamCard } from "../../Components";
 
 const Tests = () => {
   const { examName, subjectName } = useParams(); // Get exam & subject from URL
   // const Tests = subjectTests[subjectName] || []; // Get modules or empty array
 
+  const [loading, setLoading] = useState(false);
+
   const [examData, setexamData] = useState([]);
   const getData = async () => {
+    setLoading(true);
     try {
       const response = await axios.get(
         `${getExamsApi}/${subjectName}/${examName}`
@@ -26,6 +30,9 @@ const Tests = () => {
       }
     } catch (error) {
       console.log("error", error);
+    }
+    finally {
+      setLoading(false);
     }
   };
   useEffect(() => {
@@ -72,9 +79,19 @@ const Tests = () => {
                 onClick={() => handelSaveCurrentExam(index)}
               />
             </p>
+            
           ))
         ) : (
-          <p>No modules found for this subject.</p>
+          loading ? (
+            <div className={Style.loading}>
+              <div className={Style.loader}></div>
+            </div>
+          ) : (
+            <p className={Style.Test}>
+              No modules found for this subject.
+            </p>
+          )
+          
         )}
       </div>
       {/* <Link to={`/exam/${examName}`} className={Style.BackToPrev}>

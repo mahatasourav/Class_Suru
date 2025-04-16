@@ -72,7 +72,8 @@ const Layout = () => {
         {/* {isInstructionPage && <ExamNavbar />} */}
       </div>
 
-      {!isInstructionPage && <Footer />}
+      {!isInstructionPage || !isMainExamPage && <Footer />}
+      {/* {!isMainExamPage && <Footer />} */}
     </div>
   );
 };

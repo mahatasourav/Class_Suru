@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Style from "../../css/nav.module.css";
+import Style from "../../css/examnav.module.css";
 import { useLocation } from "react-router-dom";
 
 const TimeLeft = () => {

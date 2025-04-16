@@ -337,6 +337,9 @@ max-width: 500px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     
 }
+.examPageRightSideBar.active{
+    max-width: 0px;
+}
 
 .profileSection{
     width: 100%;
@@ -500,5 +503,63 @@ max-width: 500px;
 
 .submitButton{
     width: 100%;
+}
+
+.sidebarButton{
+    height: 100px;
+    width: 25px;
+    background-color: rgb(65, 0, 0);
+    position: absolute;
+    top: 50%;
+    transform: translateY(-80%);
+    left: -25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    color: var(--background_color);
+    cursor: pointer;
+    font-size: 25px;
+    font-weight: 500;
+    user-select: none;
+}
+
+@media only screen and (max-width: 1140px)
+{
+    .button_exam{
+        font-size: 10px;
+    }
+    .controlButton{
+        gap: 10px;
+    }
+}
+
+@media only screen and (max-width: 1000px)
+{
+    .examPageControllSection{
+        height: fit-content;
+    }
+    .controlButton{
+        width: 100%
+    }
+    .examPageRightSideBar{
+        /* border: 1px solid red; */
+        max-width: 300px !important;
+    }
+    .button_exam{
+        font-size: 15px;
+    }
+}
+@media only screen and (max-width: 800px)
+{
+    .examPageRightSideBar{
+        /* border: 1px solid red; */
+        max-width: 250px !important;
+    }
+    .examPageContentQuestion p{
+        font-size: 18px;
+    }
 }
 

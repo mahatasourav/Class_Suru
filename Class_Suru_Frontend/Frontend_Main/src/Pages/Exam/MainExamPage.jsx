@@ -20,6 +20,7 @@ import { getQuestionForExamApi, submitReslutApi } from "../../apis";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import toast, { Toaster } from "react-hot-toast";
+import { FaLessThan } from "react-icons/fa";
 
 const MainExamPage = () => {
   const navigate = useNavigate();
@@ -28,9 +29,10 @@ const MainExamPage = () => {
   
   const [questionData, setquestionData] = useState(null);
   const [currentQuestionIndex, setcurrentQuestionIndex] = useState(0);
+  const [sidebar, setSidebar] = useState(false);
   const { examId } = useParams();
 
-  const [answers, setanswers] = useState(null);
+  const [answers, setanswers] = useState([]);
   // console.log(answers);
   useEffect(() => {
     const handleBeforeUnload = (event) => {
@@ -59,23 +61,25 @@ const MainExamPage = () => {
   // Add at the top of your component (after useState etc.)
   const { examName, subjectName } = useParams();
 
-  const handleSubmitExam = async() => {
+  const handleSubmitExam = async(id,answers) => {
     // Add submission logic here if needed, for now we log and navigate
     // alert("Exam submitted");
     // console.log("Exam submitted", answers);
     const loadingToastId = toast.loading("Loading...");
-    console.log(userData);
+    // console.log(userData);
     
     
     const data = {
       exam_id: examId,
-      user_id: userData?.id,
+      user_id: id,
       answers: answers?.map((answer) => ({
       id: answer.id,
       status: answer.status,
       selected_option: answer.selected_option === null ? -1 : answer.selected_option,
       })),
     };
+
+    console.log("data sent",data);
 
     // console.log(data);
     
@@ -110,19 +114,26 @@ const MainExamPage = () => {
   const getQuestionData = async () => {
     try {
       const response = await axios.post(`${getQuestionForExamApi}/${examId}`);
-      console.log(response);
+      console.log("Question Data",response);
       if (response.status == 200) {
         setquestionData(response.data.data);
-        setanswers(
-          response.data.data.map((_, index) => ({
-            question_id: index,
-            selected_option: null,
-            status: 0,
-            id: response.data.data[index].question_id,
-          }))
-        );
+        console.log("Response Data:",response.data.data);
+        const data = response.data.data.map((_, index) => ({
+          question_id: index,
+          selected_option: null,
+          status: 0,
+          id: response.data.data[index].question_id,
+        }))
+        console.log(data);
+        
+        setanswers(data);
+        
+        
       }
-    } catch (error) {}
+    } catch (error) {
+      console.log(error);
+      toast.error("Something went wrong");
+    }
   };
   useEffect(() => {
     getQuestionData();
@@ -150,12 +161,12 @@ const MainExamPage = () => {
         // clearInterval(timer);
         // alert("Time is up!");
         localStorage.removeItem("timeLeft");
-        handleSubmitExam();
+        handleSubmitExam(userData.id, answers);
       }
     }, 1000);
 
     return () => clearInterval(timer);
-  }, []);
+  }, [userData, answers]);
 
   return (
     <>
@@ -200,154 +211,162 @@ const MainExamPage = () => {
               </Button> */}
             </div>
           </div>
-          <div className={Style.examPageContent}>
-            <div className={Style.examPageContentQuestion}>
-              {questionData &&
-                parse(questionData[currentQuestionIndex].question_text)}
-            </div>
-            <div className={Style.examPageContentImg}>
-              <img
-                className={Style.examImg}
-                src={
-                  questionData &&
-                  questionData[currentQuestionIndex].question_img_url
-                }
-                alt=""
-              />
-            </div>
-            <div className={Style.optionsSection}>
-              {/* options 1 */}
-              <div
-                className={`${Style.option} ${
-                  answers &&
-                  answers[currentQuestionIndex].selected_option === 1 &&
-                  Style.selected
-                }`}
-                onClick={() => {
-                  setanswers((prevData) => {
-                    const newData = [...prevData];
-                    const currentSelection =
-                      newData[currentQuestionIndex].selected_option;
-                    newData[currentQuestionIndex] = {
-                      ...newData[currentQuestionIndex],
-                      selected_option: currentSelection === 1 ? null : 1,
-                    };
-                    // console.log(newData);
-                    return newData;
-                  });
-                }}
-              >
-                <div className={Style.optionCheckBox}>
-                  <div className={Style.optionCheckBoxInner}></div>
+          {
+            questionData && questionData.length > 0 ? (
+            <div className={Style.examPageContent}>
+              <div className={Style.examPageContentQuestion}>
+                {questionData &&
+                  questionData[currentQuestionIndex]?.question_text && parse(questionData[currentQuestionIndex].question_text)}
+              </div>
+              <div className={Style.examPageContentImg}>
+                <img
+                  className={Style.examImg}
+                  src={
+                    questionData &&
+                    questionData[currentQuestionIndex]?.question_img_url
+                  }
+                  alt=""
+                />
+              </div>
+              <div className={Style.optionsSection}>
+                {/* options 1 */}
+                <div
+                  className={`${Style.option} ${
+                    answers.length>0 &&
+                    answers[currentQuestionIndex].selected_option === 1 &&
+                    Style.selected
+                  }`}
+                  onClick={() => {
+                    setanswers((prevData) => {
+                      const newData = [...prevData];
+                      const currentSelection =
+                        newData[currentQuestionIndex].selected_option;
+                      newData[currentQuestionIndex] = {
+                        ...newData[currentQuestionIndex],
+                        selected_option: currentSelection === 1 ? null : 1,
+                      };
+                      // console.log(newData);
+                      return newData;
+                    });
+                  }}
+                >
+                  <div className={Style.optionCheckBox}>
+                    <div className={Style.optionCheckBoxInner}></div>
+                  </div>
+                  <div className={Style.optionText}>
+                    {questionData &&
+                      parse(questionData[currentQuestionIndex]?.option_1)}
+                  </div>
                 </div>
-                <div className={Style.optionText}>
-                  {questionData &&
-                    parse(questionData[currentQuestionIndex].option_1)}
+                {/* options 2 */}
+                <div
+                  className={`${Style.option} ${
+                    answers.length >0 &&
+                    answers[currentQuestionIndex].selected_option === 2 &&
+                    Style.selected
+                  }`}
+                  onClick={() => {
+                    setanswers((prevData) => {
+                      const newData = [...prevData];
+                      const currentSelection =
+                        newData[currentQuestionIndex].selected_option;
+                      newData[currentQuestionIndex] = {
+                        ...newData[currentQuestionIndex],
+                        selected_option: currentSelection === 2 ? null : 2,
+                      };
+                      // console.log(newData);
+                      return newData;
+                    });
+                  }}
+                >
+                  <div className={Style.optionCheckBox}>
+                    <div className={Style.optionCheckBoxInner}></div>
+                  </div>
+                  <div className={Style.optionText}>
+                    {questionData &&
+                      parse(questionData[currentQuestionIndex]?.option_2)}
+                  </div>
+                </div>
+                {/* options 3 */}
+                <div
+                  className={`${Style.option} ${
+                    answers.length >0 &&
+                    answers[currentQuestionIndex].selected_option === 3 &&
+                    Style.selected
+                  }`}
+                  onClick={() => {
+                    setanswers((prevData) => {
+                      const newData = [...prevData];
+                      const currentSelection =
+                        newData[currentQuestionIndex].selected_option;
+                      newData[currentQuestionIndex] = {
+                        ...newData[currentQuestionIndex],
+                        selected_option: currentSelection === 3 ? null : 3,
+                      };
+                      // console.log(newData);
+                      return newData;
+                    });
+                  }}
+                >
+                  <div className={Style.optionCheckBox}>
+                    <div className={Style.optionCheckBoxInner}></div>
+                  </div>
+                  <div className={Style.optionText}>
+                    {questionData &&
+                      parse(questionData[currentQuestionIndex]?.option_3)}
+                  </div>
+                </div>
+                {/* options 4 */}
+                <div
+                  className={`${Style.option} ${
+                    answers.length > 0 &&
+                    answers[currentQuestionIndex].selected_option === 4 &&
+                    Style.selected
+                  }`}
+                  onClick={() => {
+                    setanswers((prevData) => {
+                      const newData = [...prevData];
+                      const currentSelection =
+                        newData[currentQuestionIndex].selected_option;
+                      newData[currentQuestionIndex] = {
+                        ...newData[currentQuestionIndex],
+                        selected_option: currentSelection === 4 ? null : 4,
+                      };
+                      // console.log(newData);
+                      return newData;
+                    });
+                  }}
+                >
+                  <div className={Style.optionCheckBox}>
+                    <div className={Style.optionCheckBoxInner}></div>
+                  </div>
+                  <div className={Style.optionText}>
+                    {questionData &&
+                      parse(questionData[currentQuestionIndex]?.option_4)}
+                  </div>
                 </div>
               </div>
-              {/* options 2 */}
-              <div
-                className={`${Style.option} ${
-                  answers &&
-                  answers[currentQuestionIndex].selected_option === 2 &&
-                  Style.selected
-                }`}
-                onClick={() => {
-                  setanswers((prevData) => {
-                    const newData = [...prevData];
-                    const currentSelection =
-                      newData[currentQuestionIndex].selected_option;
-                    newData[currentQuestionIndex] = {
-                      ...newData[currentQuestionIndex],
-                      selected_option: currentSelection === 2 ? null : 2,
-                    };
-                    // console.log(newData);
-                    return newData;
-                  });
-                }}
-              >
-                <div className={Style.optionCheckBox}>
-                  <div className={Style.optionCheckBoxInner}></div>
-                </div>
-                <div className={Style.optionText}>
-                  {questionData &&
-                    parse(questionData[currentQuestionIndex].option_2)}
-                </div>
-              </div>
-              {/* options 3 */}
-              <div
-                className={`${Style.option} ${
-                  answers &&
-                  answers[currentQuestionIndex].selected_option === 3 &&
-                  Style.selected
-                }`}
-                onClick={() => {
-                  setanswers((prevData) => {
-                    const newData = [...prevData];
-                    const currentSelection =
-                      newData[currentQuestionIndex].selected_option;
-                    newData[currentQuestionIndex] = {
-                      ...newData[currentQuestionIndex],
-                      selected_option: currentSelection === 3 ? null : 3,
-                    };
-                    // console.log(newData);
-                    return newData;
-                  });
-                }}
-              >
-                <div className={Style.optionCheckBox}>
-                  <div className={Style.optionCheckBoxInner}></div>
-                </div>
-                <div className={Style.optionText}>
-                  {questionData &&
-                    parse(questionData[currentQuestionIndex].option_3)}
-                </div>
-              </div>
-              {/* options 4 */}
-              <div
-                className={`${Style.option} ${
-                  answers &&
-                  answers[currentQuestionIndex].selected_option === 4 &&
-                  Style.selected
-                }`}
-                onClick={() => {
-                  setanswers((prevData) => {
-                    const newData = [...prevData];
-                    const currentSelection =
-                      newData[currentQuestionIndex].selected_option;
-                    newData[currentQuestionIndex] = {
-                      ...newData[currentQuestionIndex],
-                      selected_option: currentSelection === 4 ? null : 4,
-                    };
-                    // console.log(newData);
-                    return newData;
-                  });
-                }}
-              >
-                <div className={Style.optionCheckBox}>
-                  <div className={Style.optionCheckBoxInner}></div>
-                </div>
-                <div className={Style.optionText}>
-                  {questionData &&
-                    parse(questionData[currentQuestionIndex].option_4)}
-                </div>
-              </div>
-            </div>
-          </div>
+            </div>): (
+              <p>No Question in the Test</p>
+            )
+          }
+          
           <div className={Style.examPageControllSection}>
             <div className={Style.controlButton}>
               <Button
                 text="previous"
-                className={
+                className={`${
                   currentQuestionIndex === 0
                     ? Style.previousDisable
-                    : Style.previous
-                }
+                    : Style.previous} ${Style.button_exam}
+                `}
                 onClick={() => {
                   currentQuestionIndex === 0
                     ? setcurrentQuestionIndex(currentQuestionIndex)
                     : setcurrentQuestionIndex(currentQuestionIndex - 1);
                 }}
+
+                
               >
                 <HiChevronDoubleLeft />
               </Button>
@@ -355,7 +374,7 @@ const MainExamPage = () => {
             <div className={Style.controlButton}>
               <Button
                 text="Save & Next"
-                className={Style.save}
+                className={`${Style.save} ${Style.button_exam}`}
                 onClick={() => {
                   if (answers[currentQuestionIndex].selected_option === null) {
                     alert("Please select an options before save");
@@ -388,7 +407,7 @@ const MainExamPage = () => {
               />
               <Button
                 text="Clear"
-                className={Style.clear}
+                className={`${Style.clear} ${Style.button_exam}`}
                 onClick={() => {
                   setanswers((prevData) => {
                     const newData = [...prevData];
@@ -404,7 +423,7 @@ const MainExamPage = () => {
               />
               <Button
                 text="Mark For Review"
-                className={Style.markForReview}
+                className={`${Style.markForReview} ${Style.button_exam}`}
                 onClick={() => {
                   setanswers((prevData) => {
                     const newData = [...prevData];
@@ -424,10 +443,10 @@ const MainExamPage = () => {
             <div className={Style.controlButton}>
               <Button
                 text="Next"
-                className={
+                className={`${
                   currentQuestionIndex === questionData?.length - 1
                     ? Style.nextDisable
-                    : Style.next
+                    : Style.next} ${Style.button_exam}`
                 }
                 onClick={() => {
                   if (currentQuestionIndex === questionData.length - 1) {
@@ -452,7 +471,7 @@ const MainExamPage = () => {
             </div>
           </div>
         </div>
-        <div className={Style.examPageRightSideBar}>
+        <div className={`${Style.examPageRightSideBar} ${sidebar ? Style.active : ""}`}>
           <div className={Style.profileSection}>
             <div className={Style.profileSectionImage}>
               <img className={Style.profile} src={userData && userData.avatar} alt="profile" />
@@ -563,11 +582,14 @@ const MainExamPage = () => {
                 );
                 // pop.alert("Do you really want to Submit?");
                 if (confirmLogout) {
-                  await handleSubmitExam();
+                  await handleSubmitExam(userData.id, answers);
                   // navigate("/exam/result");
                 }
               }}
             />
+          </div>
+          <div className={Style.sidebarButton} onClick={() => setSidebar(!sidebar)}>
+            {sidebar ? '<' : '>'}
           </div>
         </div>
       </div>

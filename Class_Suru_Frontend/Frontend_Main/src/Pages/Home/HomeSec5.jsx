@@ -6,20 +6,17 @@ import HomeSec5IMG from "../../assets/HomeSec5IMG.png";
 const HomeSec5 = () => {
   return (
     <div className={Style.HomeSec5}>
-      <div>
-        <center>
-          <h2>
-            আমাদের <span className={Style.spancolor}>সেবা</span> আপনার জন্য
-          </h2>
-        </center>
-      </div>
+          <div className={Style.headingSection4}>
+            আমাদের <span>সেবা</span> আপনার জন্য
+          </div>
+
       <div className={Style.HomeSec52}>
         <div className={Style.HomeSec521}>
           {ServiceData.map((Service, index) => (
             <div className={Style.ServiceSection} key={index}>
               <div className={Style.ServiceInfo}>
-                <h1>{Service.no}</h1>
-                <div>
+                <h1 className={Style.serviceNo}>{Service.no}</h1>
+                <div className={Style.service}>
                   <h2 className={Style.spancolor}>{Service.heading}</h2>
                   <p className={Style.spanbold}>{Service.description}</p>
                 </div>

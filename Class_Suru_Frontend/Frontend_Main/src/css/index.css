@@ -6,6 +6,7 @@
     
 }
 
+
 *{
     margin: 0;
     padding: 0;
@@ -46,4 +47,26 @@
 
 .jodit-status-bar-link{
     display: none;
+}
+
+.swiper-pagination-bullet{
+    background-color: rgb(131, 131, 131) !important;
+    width: 20px !important;
+    border-radius: 20px !important;
+    transition: all 0.3s ease !important;
+}
+
+.swiper-pagination-bullet-active{
+    background-color: var(--primary_color) !important;
+    width: 40px !important;
+    border-radius: 20px !important;
+    transition: all 0.3s ease !important;
+}
+
+
+.swiper-button-prev::after, .swiper-button-next::after{
+    font-size: 30px !important;
+    color: var(--primary_color) !important;
+    font-weight: 800 !important;
+    transition: all 0.3s ease !important;
 }

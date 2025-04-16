@@ -1,0 +1,395 @@
+/* Section gap , Top */
+.HomeMain{
+    padding-top: 70px;
+}
+.HomeMain{
+    max-width: 1500px;
+    height: fit-content;
+    /* padding-bottom: 70px; */
+    /* border: 1px solid red; */
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    gap: 20px;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+/* ========= Left Section ========= */
+
+.HomeMainLeft{
+    width: 55%;
+    height: 100%;
+    /* border: 1px solid blue; */
+    gap: 25px;
+    display: flex;
+    justify-content: start;
+    align-items: start;
+    flex-direction: column;
+    
+}
+.HomeMainLeftHeading{
+    font-size: 38px;
+    font-family: tatsama;
+    word-spacing: 2px;
+    line-height: 150%;
+}
+.HomeMainLeftHeading b{
+    color: var(--primary_color);
+    font-family: 'Poppins', sans-serif;
+    font-size: 35px;
+}
+.HomeMainLeftHeading g{
+    font-family: tatsama;
+}
+
+.HomeMainLeftSubHeading{
+    font-size: 20px;
+    max-width: 650px;
+    font-family: 'Noto Sans Bengali', serif;
+    font-weight: 400;
+    line-height: 160%;
+    word-spacing: 2px;
+}
+.HomeMainLeftSubHeading b{
+    /* color: var(--primary_color); */
+    font-family: 'Noto Sans Bengali', sans-serif;
+    font-size: 20px;
+}
+.buttonSection{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+
+}
+.button{
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+/* ========= Right Section ========= */
+
+.HomeMainRight{
+    /* width: 45%; */
+    height: 100%;
+    /* border: 1px solid green; */
+}
+
+.AutoplaySwiperContainer{
+    width: 550px;
+    height: 355px;
+    /* border: 1px solid yellow; */
+}
+.AutoplaySwiperSlide{
+    height: 320px !important;
+    width: 100%;
+    border: 1px solid;
+    border-radius: 10px;
+    overflow: hidden;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* border: 1px solid red; */
+}
+.AutoplaySwiperSlide img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+/* section Gap , Top */
+.UpdatesSection{
+    margin-top: 20px;
+}
+
+.UpdatesSection{
+    width: 100%;
+    height: 50px;
+    background-color: rgb(236, 236, 236);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* gap: 20px; */
+}
+.UpdatesSectionText{
+    font-size:15px;
+    margin-left: 20px;
+    margin-right: 20px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    color: var(--primary_color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    /* text-decoration: underline; */
+}
+.UpdatesSectionText b{
+    /* font-size: 20px; */
+    color: var(--primary_color);
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    text-decoration: underline;
+}
+
+.iconNew{
+    height: 20px;
+    width: 50px;
+    /* background-color: red; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50px;
+    font-size: 10px;
+    color: var(--background_color);
+}
+
+.PromoVideoSection{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(56, 56, 56, 0.322);
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.PromoVideoContainer{
+    width: 80%;
+    height: 80%;
+    background-color: var(--background_color);
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    /* overflow: hidden; */
+    padding: 20px;
+    /* padding-top: 30px; */
+}
+.PromoVideoClose{
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    font-size: 20px;
+    cursor: pointer;
+    background-color: var(--primary_color);
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid var(--primary_color);
+    color: var(--background_color);
+
+}
+.promoVideo{
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+}
+
+/* ========= home Section Responsive ( RESPONSIVE ) ========= */
+@media only screen and (max-width: 1280px)
+{
+    .HomeMainLeftHeading{
+        font-size: 30px;
+    }
+    .HomeMainLeftHeading b{
+        font-size: 30px;
+    }
+}
+@media only screen and (max-width: 1200px)
+{
+    .AutoplaySwiperContainer{
+        width: 450px !important;
+        height: 330px;
+    }
+    .AutoplaySwiperSlide{
+        height: 290px !important;
+    }
+    .HomeMainLeftSubHeading{
+        font-size: 18px;
+        max-width: 600px;
+    }
+}
+
+@media only screen and (max-width: 1000px)
+{
+    .AutoplaySwiperContainer{
+        width: 350px !important;
+        height: 260px;
+    }
+    .AutoplaySwiperSlide{
+        height: 220px !important;
+    }
+    .HomeMainLeftHeading{
+        font-size: 25px;
+    }
+    .HomeMainLeftHeading b{
+        font-size: 25px;
+    }
+    .HomeMainLeftSubHeading{
+        font-size: 15px;
+        max-width: 500px;
+    }
+    .HomeMainLeftSubHeading b{
+        font-size: 15px;
+    }
+    .HomeMainLeft{
+        gap: 15px;
+    }
+    .HomeMain{
+        padding-top: 40px;
+    }
+}
+@media only screen and (max-width: 800px)
+{
+    .AutoplaySwiperContainer{
+        width: 250px !important;
+        height: 190px;
+    }
+    .AutoplaySwiperSlide{
+        height: 150px !important;
+    }
+    .HomeMainLeftHeading{
+        font-size: 20px;
+    }
+    .HomeMainLeftHeading b{
+        font-size: 20px;
+    }
+    .HomeMainLeftSubHeading{
+        font-size: 12px;
+        /* max-width: 500px; */
+    }
+    .HomeMainLeftSubHeading b{
+        font-size: 12px;
+    }
+    .HomeMain{
+        padding-top: 30px;
+    }
+}
+/* ========= For Mobile Devices ========= */
+
+@media only screen and (max-width: 700px)
+{
+    .HomeMain{
+        flex-direction: column-reverse;
+        width: 100%;
+        /* padding-left: 20px; */
+        /* padding-right: 20px; */
+        justify-content: center;
+        align-self: center;
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-top: 30px;
+    }
+    .HomeMainRight{
+        width: 100%;
+        /* border: 1px solid red; */
+    }
+    .AutoplaySwiperContainer{
+        width: 100% !important;
+        height: 370px;
+    }
+    .AutoplaySwiperSlide{
+        height: 330px !important;
+    }
+    .HomeMainLeft{
+        width: 100%;
+        /* border: 1px solid red; */
+        gap: 20px;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+    .HomeMainLeftHeading{
+        font-size: 32px;
+        text-align: center;
+        
+    }
+    .HomeMainLeftHeading b{
+        font-size: 32px;
+    }
+    .HomeMainLeftSubHeading{
+        font-size: 20px;
+        max-width: 100%;
+    }
+    .HomeMainLeftSubHeading b{
+        font-size: 20px;
+    }
+    .button{
+        font-size: 18px;
+    }
+}
+@media only screen and (max-width: 500px)
+{
+    .AutoplaySwiperContainer{
+        width: 100% !important;
+        height: 310px;
+    }
+    .AutoplaySwiperSlide{
+        height: 270px !important;
+    }
+    .HomeMainLeftHeading{
+        font-size: 25px;
+        text-align: center;
+        
+    }
+    .HomeMainLeftHeading b{
+        font-size: 25px;
+    }
+    .HomeMainLeftSubHeading{
+        font-size: 15px;
+        max-width: 100%;
+    }
+    .HomeMainLeftSubHeading b{
+        font-size: 15px;
+    }
+}
+@media only screen and (max-width: 400px)
+{
+    .AutoplaySwiperContainer{
+        width: 100% !important;
+        height: 240px;
+    }
+    .AutoplaySwiperSlide{
+        height: 200px !important;
+    }
+    .HomeMainLeftHeading{
+        font-size: 22px;
+        text-align: center;
+        
+    }
+    .HomeMainLeftHeading b{
+        font-size: 22px;
+    }
+    .button{
+        font-size: 16px;
+    }
+}
+@media only screen and (max-width: 350px)
+{
+    .buttonSection{
+        flex-direction: column;
+        gap: 10px;
+        width: 80%;
+    }
+    .button{
+        width: 100%;
+        font-size: 18px;
+        /* padding: 10px; */
+    }
+}

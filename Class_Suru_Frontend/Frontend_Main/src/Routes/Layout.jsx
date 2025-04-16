@@ -73,6 +73,7 @@ const Layout = () => {
       </div>
 
       {!isInstructionPage && <Footer />}
+      {/* {!isMainExamPage && <Footer />} */}
     </div>
   );
 };

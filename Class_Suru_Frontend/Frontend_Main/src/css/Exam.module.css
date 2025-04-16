@@ -1,7 +1,12 @@
 /* All Exam Portal CSS are here : Go With scroll You can find comment and will find all CSS */
 
 /* Existing styles */
+.ExamSelectionHeadingText{
+  font-family: tatsama;
+  font-size: 35px;
+}
 .spancolor {
+  font-family: tatsama;
   color: rgb(88, 88, 214);
 }
 .spanbold {
@@ -12,7 +17,7 @@
 .ExamSelection {
   
   padding: 20px;
-  width: 100vw;
+  width: 100%;
   margin: auto;
   height: auto;
   display: flex;
@@ -33,10 +38,16 @@
 .ExamSelectionHeading p {
   text-align: center;
 }
+.ExamSelectionText{
+  font-family: 'Noto sans bengali', sans-serif;
+  font-size: 20px;
+  line-height: 1.6;
+}
 .ExamLists{
   display: flex;
   flex-direction: row;
   justify-content: center;
+  flex-wrap: wrap;
   gap: 45px;
 }
 .ExamList {
@@ -102,10 +113,10 @@
   .ExamSelectionHeading {
     width: 90vw;
   }
-  .ExamLists,.SubjectsName {
+  /* .ExamLists,.SubjectsName {
     flex-direction: column;
     align-items: center;
-  }
+  } */
   .ExamList {
     width: 80%;
     margin-bottom: 20px;
@@ -237,6 +248,26 @@
   display: flex;
   gap: 5px;
   align-items: center;
+}
+/* Loading Sign Animation */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.loader {
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-top: 4px solid rgb(88, 88, 214);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  scale: 2;
+  animation: spin 1s linear infinite;
+  margin: auto;
 }
 /* Media Queries for Test Section */
 @media (max-width: 1024px) {

@@ -27,9 +27,9 @@ const HomeSec2 = () => {
           }}
           loop={true}
           modules={[Pagination, Navigation, Autoplay]}
-          pagination={{
-            clickable: true,
-          }}
+          // pagination={{
+          //   clickable: true,
+          // }}
           navigation={true}
           className={Style.customSwiper}
           slidesPerView={"auto"}

@@ -14,7 +14,10 @@ const Footer = () => {
       <div className={Style.FooterUpper}>
         <div className={Style.FooterUpperSec1}>
           <div className={Style.FooterUpperSec11}>
-            <img src={logo} alt="Class_Suru_Logo" />
+            <div className={Style.logoContiner}>
+              <img src={logo} alt="Class_Suru_Logo" className={Style.logo} />
+            </div>
+            
             <h2>Class Suru</h2>
           </div>
           <div className={Style.FooterUpperSec12}>
@@ -89,10 +92,7 @@ const Footer = () => {
           </div>
         </div>
         <div className={Style.FooterUpperSec3}>
-          <h4>
-            <TbWorld />
-            Bengali
-          </h4>
+          
         </div>
       </div>
       <div className={Style.FooterLower}>

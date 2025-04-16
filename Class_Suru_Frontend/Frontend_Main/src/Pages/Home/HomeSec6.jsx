@@ -69,7 +69,12 @@ const HomeSec6 = () => {
             <div
               className={`${Style.HomeSec6faqAns} ${
                 activeIndex === index ? Style.active : ""
-              }`}
+              }` } 
+                style={{
+                  height: activeIndex === index ? "auto" : "0",
+                  overflow: "hidden",
+                  transition: "height 0.3s ease",
+                }}
             >
               <h5>উত্তর :</h5>
               {faq.answer}

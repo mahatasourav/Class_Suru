@@ -35,7 +35,7 @@ const HomeSec1 = () => {
       <div className={Style.HomeMain}>
         <div className={Style.HomeMainLeft}>
           <div className={Style.HomeMainLeftHeading}>
-            <b>IIT-JEE , NEET, WBJEE</b> থেকে <b>Board</b> সবার জন্য <br />
+            <b>IIT-JEE , NEET, WBJEE</b> থেকে <b>Board</b> সবার জন্য
             সঠিক প্রস্তুতি, সেরা সাফল্য!
           </div>
           <div className={Style.HomeMainLeftSubHeading}>
@@ -142,7 +142,6 @@ const HomeSec1 = () => {
       >
         <div>{`>`}</div>
         <a className={Style.UpdatesSectionText} href="#">
-          {/* <div className={Style.iconNew}>New</div> */}
           Admission is open , <b>Enroll Now</b>
         </a>
         <div>{`>`}</div>

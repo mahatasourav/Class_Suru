@@ -3,9 +3,8 @@
     padding-top: 70px;
 }
 .HomeMain{
-    width: 1500px;
+    max-width: 1500px;
     height: fit-content;
-    
     /* padding-bottom: 70px; */
     /* border: 1px solid red; */
     margin: 0 auto;
@@ -141,7 +140,7 @@
 .iconNew{
     height: 20px;
     width: 50px;
-    background-color: red;
+    /* background-color: red; */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -200,4 +199,197 @@
     width: 100%;
     height: 100%;
     border-radius: 10px;
+}
+
+/* ========= home Section Responsive ( RESPONSIVE ) ========= */
+@media only screen and (max-width: 1280px)
+{
+    .HomeMainLeftHeading{
+        font-size: 30px;
+    }
+    .HomeMainLeftHeading b{
+        font-size: 30px;
+    }
+}
+@media only screen and (max-width: 1200px)
+{
+    .AutoplaySwiperContainer{
+        width: 450px !important;
+        height: 330px;
+    }
+    .AutoplaySwiperSlide{
+        height: 290px !important;
+    }
+    .HomeMainLeftSubHeading{
+        font-size: 18px;
+        max-width: 600px;
+    }
+}
+
+@media only screen and (max-width: 1000px)
+{
+    .AutoplaySwiperContainer{
+        width: 350px !important;
+        height: 260px;
+    }
+    .AutoplaySwiperSlide{
+        height: 220px !important;
+    }
+    .HomeMainLeftHeading{
+        font-size: 25px;
+    }
+    .HomeMainLeftHeading b{
+        font-size: 25px;
+    }
+    .HomeMainLeftSubHeading{
+        font-size: 15px;
+        max-width: 500px;
+    }
+    .HomeMainLeftSubHeading b{
+        font-size: 15px;
+    }
+    .HomeMainLeft{
+        gap: 15px;
+    }
+    .HomeMain{
+        padding-top: 40px;
+    }
+}
+@media only screen and (max-width: 800px)
+{
+    .AutoplaySwiperContainer{
+        width: 250px !important;
+        height: 190px;
+    }
+    .AutoplaySwiperSlide{
+        height: 150px !important;
+    }
+    .HomeMainLeftHeading{
+        font-size: 20px;
+    }
+    .HomeMainLeftHeading b{
+        font-size: 20px;
+    }
+    .HomeMainLeftSubHeading{
+        font-size: 12px;
+        /* max-width: 500px; */
+    }
+    .HomeMainLeftSubHeading b{
+        font-size: 12px;
+    }
+    .HomeMain{
+        padding-top: 30px;
+    }
+}
+/* ========= For Mobile Devices ========= */
+
+@media only screen and (max-width: 700px)
+{
+    .HomeMain{
+        flex-direction: column-reverse;
+        width: 100%;
+        /* padding-left: 20px; */
+        /* padding-right: 20px; */
+        justify-content: center;
+        align-self: center;
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-top: 30px;
+    }
+    .HomeMainRight{
+        width: 100%;
+        /* border: 1px solid red; */
+    }
+    .AutoplaySwiperContainer{
+        width: 100% !important;
+        height: 370px;
+    }
+    .AutoplaySwiperSlide{
+        height: 330px !important;
+    }
+    .HomeMainLeft{
+        width: 100%;
+        /* border: 1px solid red; */
+        gap: 20px;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+    .HomeMainLeftHeading{
+        font-size: 32px;
+        text-align: center;
+        
+    }
+    .HomeMainLeftHeading b{
+        font-size: 32px;
+    }
+    .HomeMainLeftSubHeading{
+        font-size: 20px;
+        max-width: 100%;
+    }
+    .HomeMainLeftSubHeading b{
+        font-size: 20px;
+    }
+    .button{
+        font-size: 18px;
+    }
+}
+@media only screen and (max-width: 500px)
+{
+    .AutoplaySwiperContainer{
+        width: 100% !important;
+        height: 310px;
+    }
+    .AutoplaySwiperSlide{
+        height: 270px !important;
+    }
+    .HomeMainLeftHeading{
+        font-size: 25px;
+        text-align: center;
+        
+    }
+    .HomeMainLeftHeading b{
+        font-size: 25px;
+    }
+    .HomeMainLeftSubHeading{
+        font-size: 15px;
+        max-width: 100%;
+    }
+    .HomeMainLeftSubHeading b{
+        font-size: 15px;
+    }
+}
+@media only screen and (max-width: 400px)
+{
+    .AutoplaySwiperContainer{
+        width: 100% !important;
+        height: 240px;
+    }
+    .AutoplaySwiperSlide{
+        height: 200px !important;
+    }
+    .HomeMainLeftHeading{
+        font-size: 22px;
+        text-align: center;
+        
+    }
+    .HomeMainLeftHeading b{
+        font-size: 22px;
+    }
+    .button{
+        font-size: 16px;
+    }
+}
+@media only screen and (max-width: 350px)
+{
+    .buttonSection{
+        flex-direction: column;
+        gap: 10px;
+        width: 80%;
+    }
+    .button{
+        width: 100%;
+        font-size: 18px;
+        /* padding: 10px; */
+    }
 }

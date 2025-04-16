@@ -42,6 +42,9 @@ margin: 0 auto;
   gap: 15px;
   padding: 3px 15px;
 }
+.FooterUpperSec12{
+  padding-left: 0px;
+}
 .FooterUpperSec12 p , .FooterUpperSec22 p a{
   display: flex;
   align-items: center;
@@ -75,6 +78,17 @@ margin: 0 auto;
  display: flex;
  justify-content: space-around;
  align-items: center;
+}
+.logoContiner{
+  border-radius: 50%;
+  height: 60px;
+  width: 60px;
+  overflow: hidden;
+  background-color: var(--background_color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
 }
 /* Media Queries for Responsiveness */
 @media (max-width: 1024px) {

@@ -15,8 +15,8 @@ const HomeSec5 = () => {
           {ServiceData.map((Service, index) => (
             <div className={Style.ServiceSection} key={index}>
               <div className={Style.ServiceInfo}>
-                <h1>{Service.no}</h1>
-                <div>
+                <h1 className={Style.serviceNo}>{Service.no}</h1>
+                <div className={Style.service}>
                   <h2 className={Style.spancolor}>{Service.heading}</h2>
                   <p className={Style.spanbold}>{Service.description}</p>
                 </div>

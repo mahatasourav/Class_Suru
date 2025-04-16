@@ -1,21 +1,79 @@
-.About{
+.About {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 30px;
+  gap: 40px;
   margin-top: 30px;
 }
-
-.AboutSection1{
-  border: 2px solid red;
-  height: 300px;
-  width: 80%;
-display: flex;
-justify-content: space-between;
+.spancolor {
+  color: rgb(88, 88, 214);
+}
+.spancolorlarge {
+  color: rgb(88, 88, 214);
+  font-size: larger;
+}
+.spanbold {
+  font-weight: bold;
 }
 
+.AboutSection1 {
+  /* border: 2px solid rgb(26, 215, 5); */
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 60px;
+  max-width: 80vw;
+}
+.AboutSection1Info {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 5px;
+}
+.AboutSection1Info3 {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.AboutSection1Info3 ul {
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.AboutSection1Img {
+  background-color: rgb(88, 86, 214);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px 25px;
+  border-radius: 4px;
+}
+.AboutSection1Img img {
+  max-width: 450px;
+  height: max-content;
+}
+
+/* Media Queries for Responsiveness About section 1*/
+@media (max-width: 1024px) {
+  .AboutSection1 {
+    flex-direction: column-reverse;
+    gap: 20px;
+  }
+  .AboutSection1Info {
+    width: 90vw;
+  }
+}
+@media (max-width: 780px) {
+}
+@media (max-width: 480px) {
+  .AboutSection1Img {
+    display: none;
+  }
+}
 /* About section 2 started  */
-.AboutSection2{
+.AboutSection2 {
   display: flex;
   flex-direction: column;
   justify-content: end;
@@ -24,9 +82,8 @@ justify-content: space-between;
   background-color: rgb(88, 86, 214);
   text-align: center;
   border-radius: 7px;
-  
 }
-.AboutSection2Heading{
+.AboutSection2Heading {
   color: rgb(215, 255, 0);
   text-align: center;
 }
@@ -39,8 +96,6 @@ justify-content: space-between;
   /* padding: 50px 50px 50px 50px; */
   display: flex !important;
   justify-content: center !important;
- 
-
 }
 
 .customSlide {
@@ -54,7 +109,7 @@ justify-content: space-between;
   margin: 30px;
   transition: transform 0.3s ease-in-out; /* Smooth hover effect */
 
-/* 
+  /* 
   border: 2px solid green; */
 }
 
@@ -95,15 +150,21 @@ justify-content: space-between;
   padding: 10px;
 }
 
-/* Media queries for responsiveness */
+/* Media queries for responsiveness About section 2 */
 @media (max-width: 1024px) {
   .swiper-slide img {
     width: 80%;
   }
-
+  .AboutSection2 {
+    width: 90%;
+  }
 }
 
 @media (max-width: 768px) {
+  .AboutSection2 {
+    width: 95%;
+    border: 6px solid rgb(88, 86, 214);
+  }
   .swiper-slide img {
     width: 100%;
   }
@@ -130,41 +191,82 @@ justify-content: space-between;
 }
 
 /* AboutSection3 started */
-.AboutSection3{
-  
+.AboutSection3 {
   width: 80%;
   display: flex;
   flex-direction: column;
-  gap: 60px;
-
+  gap: 50px;
+  margin-top: 20px;
 }
-.AboutSection3Heading{
+.AboutSection3Heading {
   text-align: center;
   color: rgb(88, 86, 214);
 }
-.AboutSection3Maps{
+.AboutSection3Maps {
   display: flex;
   justify-content: space-between;
-background-color: rgb(88, 86, 214);
-align-items: center;
-color: white;
 
+  align-items: center;
+  color: white;
+  /* border: 2px solid red; */
+  gap: 50px;
 }
-.AboutSection3Map1 iframe{
-border-radius: 5px;
-
-border: 2px solid rgb(7, 7, 7);
-
+.AboutSection3Map1 {
+  display: flex;
+  justify-content: center;
+  border-radius: 5px;
+  align-items: center;
+  background-color: rgb(108, 106, 233);
+  padding: 6px;
+}
+.AboutSection3Map1 iframe {
+  border-radius: 5px;
+  border: 2px solid rgb(7, 7, 7);
+  height: 400px;
+  min-width: 550px;
 }
 .AboutSection3Map2 {
-width:45% ;
-
-  }
-
-  @media (max-width: 720px) {
-    .AboutSection3Maps{
+  border-radius: 5px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  background-color: rgb(88, 86, 214);
+}
+.AboutSection3Map2 ul {
+  padding: 5px 20px;
+}
+.AboutSection3Map21 {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+@media (max-width: 1300px) {
+  .AboutSection3Maps {
     flex-direction: column-reverse;
-    
-    
-    }
   }
+  .AboutSection3 {
+    width: 70vw;
+    /* border: 2px solid red; */
+  }
+  .AboutSection3Map1 iframe {
+    height: 400px;
+    min-width: 520px;
+  }
+}
+@media (max-width: 1024px) {
+  .AboutSection3 {
+    width: 80vw;
+  }
+  .AboutSection3Map1 iframe {
+    min-width: 500px;
+  }
+}
+@media (max-width: 720px) {
+  .AboutSection3Maps {
+    flex-direction: column-reverse;
+  }
+  .AboutSection3Map1 iframe {
+    min-width: 300px;
+  }
+}

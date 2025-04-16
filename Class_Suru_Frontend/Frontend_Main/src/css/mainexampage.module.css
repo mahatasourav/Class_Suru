@@ -8,6 +8,10 @@
     display: flex;
     justify-content: center;
     align-items: start;
+    max-width: 100%;
+    overflow: hidden;
+    overflow-x: hidden;
+    
     
 }
 
@@ -341,6 +345,11 @@ max-width: 500px;
     max-width: 0px;
 }
 
+.examPageRightSideBar.active > .profileSection, .examPageRightSideBar.active > .examIndicationSection, .examPageRightSideBar.active > .examQuestionListSection , .examPageRightSideBar.active > .submitButtonContainer{
+    display: none;
+    border: 1px solid red;
+}
+
 .profileSection{
     width: 100%;
     /* border: 1px solid red; */
@@ -545,21 +554,63 @@ max-width: 500px;
         width: 100%
     }
     .examPageRightSideBar{
-        /* border: 1px solid red; */
-        max-width: 300px !important;
-    }
+        position: absolute;
+        top: 100px;
+        right: 0;
+        background-color: #fff;
+        max-width: 500px;
+        height: 100%;
+     }
     .button_exam{
         font-size: 15px;
     }
 }
 @media only screen and (max-width: 800px)
 {
-    .examPageRightSideBar{
-        /* border: 1px solid red; */
-        max-width: 250px !important;
-    }
     .examPageContentQuestion p{
         font-size: 18px;
+    }
+}
+@media only screen and (max-width: 700px)
+{
+    .examPageRightSideBar
+    {
+        max-width: 400px;
+    }
+
+}
+@media only screen and (max-width: 500px)
+{
+    .examPageRightSideBar
+    {
+        max-width: 300px;
+    }
+}
+@media only screen and (max-width: 400px)
+{
+    .examPageRightSideBar
+    {
+        max-width: 250px;
+    }
+    .examPageLeftHeaderTitle{
+        font-size: 12px;
+    }
+    .examPageLeftMarksDristibutionTitle{
+        font-size: 12px;
+    }
+    .examPageLeftMarksDristibutionValueCorrect{
+        font-size: 12px;
+        padding: 0px 10px;
+    }
+    .examPageContentQuestion p{
+        font-size: 14px;
+    }
+    .optionsSection{
+        gap: 10px;
+        margin-top: 10px;
+    }
+    .option div p{
+        font-size: 12px;
     }
 }
 

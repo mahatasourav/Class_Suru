@@ -204,7 +204,7 @@
 .TestSection{
   
   padding: 20px;
-  width: 100vw;
+  max-width: 1500px;
   margin: auto;
   height: auto;
   display: flex;
@@ -323,8 +323,11 @@
 
 /* InstructionPage CSS Start */
 .InstructionPage{
-  max-width: 90vw;
-  margin: auto;
+  max-width: 1500px;
+  margin-top: 80px;
+  margin-left: auto;
+  margin-right: auto;
+  /* margin: auto; */
 }
 .InstructionPage h2{
  
@@ -385,6 +388,12 @@ font-weight: 500;
  }
  .StartExamButton:hover{
  cursor: pointer;
+ }
+
+ .textStyle{
+  font-style: italic;
+  font-size: 14px;
+  /* text-decoration: underline; */
  }
  /* Media Queries for Responsiveness */
 @media (max-width: 1024px) {

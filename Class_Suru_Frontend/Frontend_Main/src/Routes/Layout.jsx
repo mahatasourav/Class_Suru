@@ -24,7 +24,11 @@ const Layout = () => {
   const location = useLocation();
   const userState = useSelector((state) => state.user.status);
   const isInstructionPage = location.pathname.includes("/instruction");
+  
+  
   const isMainExamPage = location.pathname.includes("/MainExamPage");
+  console.log("location", location.pathname);
+  console.log("isMainExamPage", isMainExamPage);
   const isAdminPage = location.pathname.includes("/admin");
 
   const { addLoading, removeLoading } = useContext(LoadingContext);
@@ -72,8 +76,7 @@ const Layout = () => {
         {/* {isInstructionPage && <ExamNavbar />} */}
       </div>
 
-      {!isInstructionPage && <Footer />}
-      {/* {!isMainExamPage && <Footer />} */}
+      {!isInstructionPage && !isMainExamPage && <Footer />}
     </div>
   );
 };

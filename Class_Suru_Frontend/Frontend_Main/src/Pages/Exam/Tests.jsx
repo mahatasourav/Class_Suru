@@ -41,6 +41,7 @@ const Tests = () => {
 
   const handelSaveCurrentExam = (index) => {
     localStorage.setItem("exam", JSON.stringify(examData[index]));
+    localStorage.setItem( JSON.stringify(examData[index].id), JSON.stringify(examData[index].exam_duration));
   };
   return (
     <div className={Style.TestSection}>

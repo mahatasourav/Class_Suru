@@ -161,6 +161,8 @@ const MainExamPage = () => {
         // clearInterval(timer);
         // alert("Time is up!");
         localStorage.removeItem("timeLeft");
+        localStorage.removeItem(JSON.stringify(examId));
+        localStorage.removeItem("exam");
         handleSubmitExam(userData.id, answers);
       }
     }, 1000);

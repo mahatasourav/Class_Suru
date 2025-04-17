@@ -9,7 +9,18 @@ import { ExamCard } from "../../Components";
 
 const Subjects = () => {
   const { examName } = useParams(); // Get exam name from URL
-  const subjects = examlists[examName] || [];
+  const exam = Object.keys(examlists).map((exam) => {
+    return examlists[exam].link === examName ? examlists[exam] : null;
+  })
+  const filteredExam = exam.filter((item) => item !== null);
+
+  console.log(filteredExam);
+  
+  
+  // const exam = examlists.find((exam) => exam.link === examName);
+  const subjects = filteredExam[0] ? filteredExam[0].subjects : []; // Get subjects for the selected exam
+  
+  // const subjects = exam ? exam.subjects : [];
   /* Here i Use the same class anme of component  <ExamSelection/> to get the same structures that's why class name may looks like unrealted to the content : */
   return (
     <div className={Style.ExamSelection}>

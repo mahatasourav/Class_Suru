@@ -35,14 +35,18 @@ const ExamSelection = () => {
         </p>
       </div>
       <div className={Style.ExamLists}>
-        {Object.keys(examlists).map((exam) => (
+        {Object.keys(examlists).map((exam) => 
+          
+          
+          (
           // <div key={exam} className={Style.ExamList}>
           //   <h2>{exam}</h2>
           //   <Link to={`/exam/${exam}`} className={Style.ExamButton}>
           //     Select
           //   </Link>
           // </div>
-          <ExamCard text={exam} link={`/exam/${exam}`} key={exam} />
+          
+          <ExamCard text={exam} link={`/exam/${examlists[exam].link}`} key={exam} />
         ))}
       </div>
     </div>

@@ -27,8 +27,8 @@ const Layout = () => {
   
   
   const isMainExamPage = location.pathname.includes("/MainExamPage");
-  console.log("location", location.pathname);
-  console.log("isMainExamPage", isMainExamPage);
+  // console.log("location", location.pathname);
+  // console.log("isMainExamPage", isMainExamPage);
   const isAdminPage = location.pathname.includes("/admin");
 
   const { addLoading, removeLoading } = useContext(LoadingContext);
@@ -38,7 +38,7 @@ const Layout = () => {
   const handleUserData = async () => {
     addLoading();
     const data = await getUserData();
-    console.log("get user data called");
+    // console.log("get user data called");
 
     if (data) {
       dispatch(setUserId(data.userId));

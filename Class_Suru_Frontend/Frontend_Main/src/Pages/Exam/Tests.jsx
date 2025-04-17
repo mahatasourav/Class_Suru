@@ -58,13 +58,20 @@ const Tests = () => {
               <div>
                 <h2> {Test.title}</h2>
                 <p className={Style.TestLower}>
-                  <span>
+                  {/* <span>
                     <FaFileCircleQuestion />
                     75 Question{" "}
-                  </span>
+                  </span> */}
                   <span>
                     <TfiTimer />
-                    {Test.exam_duration} hours
+                    {(() => {
+                                const [hours, minutes, seconds] = Test.exam_duration.split(":").map(Number);
+                                const parts = [];
+                                if (hours > 0) parts.push(`${hours} hours`);
+                                if (minutes > 0) parts.push(`${minutes} minutes`);
+                                if (seconds > 0) parts.push(`${seconds} seconds`);
+                                return parts.join(", ");
+                            })()}
                   </span>
                   <span>
                     <TbTargetArrow />

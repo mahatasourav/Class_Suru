@@ -8,7 +8,7 @@ import { useLocation } from "react-router-dom";
 const ExamNavbar = () => {
   const location = useLocation();
   const isMainExamPage = location.pathname.includes("/MainExamPage");
-  console.log(location);
+  // console.log(location);
   const [fullScreen, setFullScreen] = useState(false);
   const handleFullScreen = () => {
     if (fullScreen) {

@@ -4,7 +4,7 @@ import { useLocation } from "react-router-dom";
 
 const TimeLeft = () => {
   const examId = JSON.parse(localStorage.getItem("exam")).id;
-  console.log(examId);
+  // console.log(examId);
   
   const hrs = JSON.parse(localStorage.getItem(examId)).split(":")[0];
   const min = JSON.parse(localStorage.getItem(examId)).split(":")[1];

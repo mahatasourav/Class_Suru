@@ -178,9 +178,9 @@
 /* .HomeSec2div span {
   color: rgb(88, 88, 214);
 } */
-.SwipperDiv {
+/* .SwipperDiv{ */
   /* box-shadow: inset 0px 2px 0px rgba(0, 0, 0, 0.2), inset 0px 1px 0px rgba(0, 0, 0, 0.15); */
-}
+/* } */
 /* swiperStyles.css */
 .customSwiper {
   width: 100%;
@@ -539,7 +539,7 @@
 }
 
 .examSection p {
-  font-size: 16px;
+  font-size: 14px;
   margin-bottom: 15px;
   color: #666;
 }
@@ -593,6 +593,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
+  gap: 15px;
 
 }
 
@@ -612,11 +613,17 @@
   align-items: center;
   background-color: rgb(88, 86, 214);
   color: rgb(255, 255, 255);
-  height: 120px;
+  
   border-radius: 10px 0px 0px 10px;
+  
 }
 .ServiceInfo p{
-  padding: 0px 5px;
+  padding: 12px 10px;
+  font-size: 14px;
+}
+.service h2{
+ 
+  padding: 12px 10px 2px 5px;
 }
 .ServiceInfo div {
   display: flex;
@@ -839,11 +846,7 @@
 }
 
 /* ========= Section 4 ( RESPONSIVE ) ========= */
-@media (min-width: 768px) {
-  .examSection {
-    height: 300px;
-  }
-}
+
 
 @media (max-width: 720px) {
   .examSection {

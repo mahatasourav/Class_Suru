@@ -3,6 +3,7 @@ import { useParams, Link, useNavigate, useLocation } from "react-router-dom";
 import Style from "../../css/Exam.module.css";
 import Breadcrumb from "./Breadcrumb";
 import instructionPageImg from "../../assets/instructionPageImg.png";
+import { Button } from "../../Components";
 
 const InstructionPage = () => {
   const { examName, subjectName, testName, examId } = useParams();
@@ -121,13 +122,18 @@ const InstructionPage = () => {
 
         {/* Start Exam Button */}
         <Link to={`/exam/${examName}/${subjectName}/${examId}/MainExamPage`}>
-          <button
+          {/* <button
             className={Style.StartExamButton}
             onClick={handleStartExam}
             disabled={!isChecked}
           >
             I am ready for Exam
-          </button>
+          </button> */}
+          <Button
+          text="I am ready for Exam"
+            onClick={handleStartExam}
+            disabled={!isChecked}
+          />
         </Link>
       </div>
     </div>

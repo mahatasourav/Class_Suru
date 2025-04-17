@@ -161,34 +161,14 @@ const MainExamPage = () => {
         // clearInterval(timer);
         // alert("Time is up!");
         localStorage.removeItem("timeLeft");
+        localStorage.removeItem(JSON.stringify(examId));
+        localStorage.removeItem("exam");
         handleSubmitExam(userData.id, answers);
       }
     }, 1000);
 
     return () => clearInterval(timer);
   }, [userData, answers]);
-
-  useEffect(() => {
-    const handleBeforeUnload = (event) => {
-      event.preventDefault();
-      const confirmationMessage = "If you reload the page, the exam will be cancelled. Are you sure you want to proceed?";
-      event.returnValue = confirmationMessage;
-      return confirmationMessage;
-    };
-
-    const handleUnload = () => {
-      alert("The exam has been cancelled due to page reload.");
-      navigate("/exam/cancelled"); // Redirect to the desired page
-    };
-
-    window.addEventListener("beforeunload", handleBeforeUnload);
-    window.addEventListener("unload", handleUnload);
-
-    return () => {
-      window.removeEventListener("beforeunload", handleBeforeUnload);
-      window.removeEventListener("unload", handleUnload);
-    };
-  }, []);
 
   return (
     <>

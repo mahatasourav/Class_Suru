@@ -1,7 +1,22 @@
 export const examlists = {
-  "👷🏻‍♂️ JEE": ["Math", "Physics", "Chemistry"],
-  " 🧠 JEE Advanced": ["Math", "Physics", "Chemistry"],
-  " 🩺 NEET": ["Biology", "Physics", "Chemistry"],
-  "📖 WBJEE": ["Math", "Physics", "Chemistry"],
-  "📚 Boards": ["Biology", "Physics", "Chemistry", "Computer Science"],
+  "👷🏻‍♂️ JEE": {
+    "link": "JEE",
+    "subjects": ["Math", "Physics", "Chemistry"]
+  },
+  "🧠 JEE Advanced": {
+    "link": "JEEAdvanced",
+    "subjects": ["Math", "Physics", "Chemistry"]
+  },
+  "🩺 NEET": {
+    "link": "NEET",
+    "subjects": ["Biology", "Physics", "Chemistry"]
+  },
+  "📖 WBJEE": {
+    "link": "WBJEE",
+    "subjects": ["Math", "Physics", "Chemistry"]
+  },
+  "📚 Boards": {
+    "link": "Boards",
+    "subjects": ["Biology", "Physics", "Chemistry", "Computer Science"]
+  }
 };

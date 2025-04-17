@@ -1,9 +1,10 @@
 /* All Exam Portal CSS are here : Go With scroll You can find comment and will find all CSS */
 
 /* Existing styles */
-.ExamSelectionHeadingText{
+.ExamSelectionHeadingText {
   font-family: tatsama;
   font-size: 35px;
+  text-align: center;
 }
 .spancolor {
   font-family: tatsama;
@@ -15,7 +16,6 @@
 
 /* Exam-selection Section */
 .ExamSelection {
-  
   padding: 20px;
   width: 100%;
   margin: auto;
@@ -23,8 +23,7 @@
   display: flex;
   flex-direction: column;
   gap: 45px;
- padding-top: 30px;
- 
+  padding-top: 30px;
 }
 .ExamSelectionHeading {
   display: flex;
@@ -32,18 +31,18 @@
   align-items: center;
   flex-direction: column;
   gap: 20px;
- margin: auto;
+  margin: auto;
   max-width: 70vw;
 }
 .ExamSelectionHeading p {
   text-align: center;
 }
-.ExamSelectionText{
-  font-family: 'Noto sans bengali', sans-serif;
+.ExamSelectionText {
+  font-family: "Noto sans bengali", sans-serif;
   font-size: 20px;
   line-height: 1.6;
 }
-.ExamLists{
+.ExamLists {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -58,13 +57,14 @@
   justify-content: space-between;
   align-items: center;
   border-radius: 10px;
-  box-shadow: -10px 10px 10px rgba(0, 0, 0, 0.1), 10px 10px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: -10px 10px 10px rgba(0, 0, 0, 0.1),
+    10px 10px 10px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-
 }
 .ExamList:hover {
   transform: translateY(-10px);
-  box-shadow: -10px 20px 20px rgba(0, 0, 0, 0.2), 10px 20px 20px rgba(0, 0, 0, 0.2);
+  box-shadow: -10px 20px 20px rgba(0, 0, 0, 0.2),
+    10px 20px 20px rgba(0, 0, 0, 0.2);
 }
 .ExamList h2 {
   text-align: center;
@@ -89,7 +89,6 @@
   margin-bottom: 20px;
   text-align: center;
   transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
-
 }
 .ExamButton:hover {
   background-color: rgb(88, 88, 214);
@@ -103,7 +102,6 @@
     opacity: 1;
   }
 }
-
 
 /* Media Queries for Responsiveness */
 @media (max-width: 1024px) {
@@ -130,7 +128,8 @@
   .ExamSelectionHeading {
     gap: 10px;
   }
-  .ExamLists,.SubjectsName {
+  .ExamLists,
+  .SubjectsName {
     gap: 20px;
   }
   .ExamList {
@@ -151,7 +150,8 @@
   .ExamSelectionHeading {
     gap: 5px;
   }
-  .ExamLists,.SubjectsName {
+  .ExamLists,
+  .SubjectsName {
     gap: 10px;
   }
   .ExamList {
@@ -167,7 +167,7 @@
 
 /* SubjectsPage CSS Started */
 
-.SubjectsContainer{
+.SubjectsContainer {
   border: 2px solid red;
   max-width: 100vw;
   height: 60vh;
@@ -175,14 +175,13 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  
 }
-.SubjectsName{
-  border:  2px solid green;
+.SubjectsName {
+  border: 2px solid green;
   display: flex;
 }
-.SubjectName{
-  border:  2px solid rgb(237, 0, 0);
+.SubjectName {
+  border: 2px solid rgb(237, 0, 0);
 }
 .BackToPrev {
   max-width: 40px;
@@ -201,8 +200,7 @@
 
 /* Test Section CSS Started  */
 
-.TestSection{
-  
+.TestSection {
   padding: 20px;
   max-width: 1500px;
   margin: auto;
@@ -213,16 +211,13 @@
 
   gap: 10px;
 }
-.Tests{
-  
+.Tests {
   display: flex;
   flex-direction: column;
   gap: 40px;
   padding: 20px;
-
 }
 .Test {
-  
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -233,18 +228,15 @@
 }
 
 .Test:hover {
-
   transform: translateY(-2px);
 }
-.TestLower{
-  
+.TestLower {
   padding: 10px;
   display: flex;
   gap: 25px;
 }
-.TestLower span{
- 
- justify-content: center;
+.TestLower span {
+  justify-content: center;
   display: flex;
   gap: 5px;
   align-items: center;
@@ -293,8 +285,6 @@
   }
   .Test {
     padding: 10px;
-   
-   
   }
 }
 
@@ -308,11 +298,11 @@
   }
   .Test {
     padding: 15px;
-    
+
     flex-direction: column;
     align-items: center;
   }
-  .Test div h2{
+  .Test div h2 {
     text-align: center;
   }
   .TestLower {
@@ -322,37 +312,32 @@
 }
 
 /* InstructionPage CSS Start */
-.InstructionPage{
+.InstructionPage {
   max-width: 1500px;
   margin-top: 80px;
   margin-left: auto;
   margin-right: auto;
   /* margin: auto; */
 }
-.InstructionPage h2{
- 
+.InstructionPage h2 {
   text-align: center;
   margin-top: 20px;
 }
-.InstructionPageSec1{
- 
+.InstructionPageSec1 {
   display: flex;
 }
 
-.InstructionPageInstructions{
-  
+.InstructionPageInstructions {
   padding: 50px 100px;
   display: flex;
   flex-direction: column;
   gap: 15px;
-  
 }
-.InstructionPageImg{
+.InstructionPageImg {
   width: 400px;
   height: auto;
 }
-.ReadyCheckbox{
- 
+.ReadyCheckbox {
   display: flex;
   gap: 5px;
   justify-content: center;
@@ -360,42 +345,40 @@
   max-width: 90vw;
   padding: 20px 80px;
 }
-.ReadyCheckbox input{
- 
- margin-top: 5px;
+.ReadyCheckbox input {
+  margin-top: 5px;
 }
-.InstructionPageSec2{
- 
+.InstructionPageSec2 {
   display: flex;
   max-width: 350px;
   margin: auto;
-  padding: 10px ;
+  padding: 10px;
   justify-content: space-evenly;
   align-items: center;
 }
-.InstructionPageSec2Back{
-border: 1.5px solid rgb(88, 86, 214);
-border-radius: 5px;
-color:rgb(88, 86, 214) ;
-padding: 4px 15px;
-font-weight: 500;
- }
- .StartExamButton{
-  background-color:rgb(88, 86, 214)  ;
+.InstructionPageSec2Back {
+  border: 1.5px solid rgb(88, 86, 214);
+  border-radius: 5px;
+  color: rgb(88, 86, 214);
+  padding: 4px 15px;
+  font-weight: 500;
+}
+.StartExamButton {
+  background-color: rgb(88, 86, 214);
   color: white;
   padding: 4px 15px;
   border-radius: 5px;
- }
- .StartExamButton:hover{
- cursor: pointer;
- }
+}
+.StartExamButton:hover {
+  cursor: pointer;
+}
 
- .textStyle{
+.textStyle {
   font-style: italic;
   font-size: 14px;
   /* text-decoration: underline; */
- }
- /* Media Queries for Responsiveness */
+}
+/* Media Queries for Responsiveness */
 @media (max-width: 1024px) {
   .InstructionPageInstructions {
     padding: 40px 80px;
@@ -450,5 +433,4 @@ font-weight: 500;
   }
 }
 
-    /* MainExamPage CSS started */
-    
+/* MainExamPage CSS started */

@@ -71,19 +71,20 @@
     flex-direction: column;
     background-color: white;
     border-radius: 10px;
-    width: 50vw;
+    width: 100%;
+    height: fit-content;
   }
   
   .DashboardRightProfileImgSection {
     display: flex;
-    height: 170px;
+    /* height: 170px; */
     justify-content: flex-start;
     padding: 30px;
   }
   
   .DashboardRightProfileImgUpload {
     display: flex;
-    height: 110px;
+    min-height: 110px;
     padding: 20px;
     gap: 40px;
     justify-content: center;

@@ -2,9 +2,10 @@
 
 /* Existing styles */
 .ExamSelectionHeadingText {
-  font-family: tatsama;
-  font-size: 35px;
+  font-family: 'poppins', sans-serif;
+  font-size: 30px;
   text-align: center;
+  font-weight: 600;
 }
 .spancolor {
   font-family: tatsama;

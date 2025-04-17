@@ -15,6 +15,12 @@ import { IoMdCloseCircle } from "react-icons/io";
 const Result = () => {
   const [resultData, setResultData] = useState(null);
   const {result_id} = useParams();
+  const examErrorMsg = localStorage.getItem("examErrorMsg");
+
+  if(examErrorMsg){
+    alert(examErrorMsg);
+    localStorage.removeItem("examErrorMsg");
+  }
   // console.log(result_id);
   
   React.useEffect(() => {

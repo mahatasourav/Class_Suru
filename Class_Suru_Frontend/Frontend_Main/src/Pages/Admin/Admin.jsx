@@ -35,14 +35,14 @@ const Admin = () => {
               >
                 Manage Exams
               </Link>
-              <Link
+              {/* <Link
                 to="/admin/users"
                 className={`${Style.LeftNavBarLink} ${
                   location.pathname.includes("/admin/users") && Style.active
                 }`}
               >
                 Users
-              </Link>
+              </Link> */}
               {/* <Link to="/admin/examlist" className={Style.LeftNavBarLink}>Exam List</Link> */}
             </div>
           </div>)

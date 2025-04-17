@@ -4,12 +4,21 @@ import Style from "../../css/Exam.module.css";
 import Breadcrumb from "./Breadcrumb";
 import instructionPageImg from "../../assets/instructionPageImg.png";
 import { Button } from "../../Components";
+import { useSelector } from "react-redux";
 
 const InstructionPage = () => {
   const { examName, subjectName, testName, examId } = useParams();
   const [isChecked, setIsChecked] = useState(false);
   const navigate = useNavigate();
   const location = useLocation(); // Get the current URL
+
+  const userStatus =useSelector((state) => state.user.status);
+   useEffect(() => {
+      if (!userStatus) {
+        localStorage.setItem("path", "/exam");
+        navigate("/login");
+      }
+    }, [userStatus]);
 
   // Function to enter fullscreen mode
   function goFullScreen() {

@@ -1,12 +1,24 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import Style from "../../css/Exam.module.css";
 import Breadcrumb from "./Breadcrumb";
 import { ExamCard } from "../../Components";
 
 import { examlists } from "../../assets/ExamData/examList"; // Adjust the path as necessary
+import { useSelector } from "react-redux";
 
 const ExamSelection = () => {
+  const navigate = useNavigate();
+  
+
+  const userStatus =useSelector((state) => state.user.status);
+   useEffect(() => {
+      if (!userStatus) {
+        localStorage.setItem("path", "/exam");
+        navigate("/login");
+      }
+    }, [userStatus]);
+
   return (
     <div className={Style.ExamSelection}>
       <Breadcrumb />

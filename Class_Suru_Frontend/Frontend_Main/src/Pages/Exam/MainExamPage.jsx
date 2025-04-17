@@ -33,6 +33,14 @@ const MainExamPage = () => {
   const { examId } = useParams();
 
   const [answers, setanswers] = useState([]);
+  
+  const userStatus =useSelector((state) => state.user.status);
+     useEffect(() => {
+        if (!userStatus) {
+          localStorage.setItem("path", "/exam");
+          navigate("/login");
+        }
+      }, [userStatus]);
   // console.log(answers);
   useEffect(() => {
     const handleBeforeUnload = (event) => {

@@ -5,10 +5,9 @@ import Breadcrumb from "./Breadcrumb";
 import { ExamCard } from "../../Components";
 
 const examlists = {
-  JEE: ["Math", "Physics", "Chemistry"],
-  NEET: ["Biology", "Physics", "Chemistry"],
-  UPSC: ["Computer Science", "Mechanical", "Electrical"],
-  GATE: ["History", "Polity", "Geography"],
+  "👷🏻‍♂️ JEE": ["Math", "Physics", "Chemistry"],
+  " 🧠 JEE Advanced": ["Math", "Physics", "Chemistry"],
+  " 🩺 NEET": ["Biology", "Physics", "Chemistry"],
 };
 
 const ExamSelection = () => {
@@ -17,13 +16,14 @@ const ExamSelection = () => {
       <Breadcrumb />
       <div className={Style.ExamSelectionHeading}>
         <div className={Style.ExamSelectionHeadingText}>
-          পরীক্ষা <span className={Style.spancolor}>পোর্টাল</span>
+          🧑‍🏫 <span className={Style.spancolor}>Exam Portal:</span> Your Ultimate
+          Study Companion!
         </div>
         <p className={Style.ExamSelectionText}>
-          আমাদের পরীক্ষা পোর্টালে পাবেন প্রতিটি কম্পেটেটিভ এবং বোর্ড এক্সাম এর
-          জন্য পরীক্ষা দেওয়ার ব্যাবস্থা , আপনার দক্ষতা যাচাই এবং উন্নতির জন্য
-          এটি একটি আদর্শ প্ল্যাটফর্ম , এখানে কিছু পরীক্ষার পোর্টাল রয়েছে, যেমন
-          :
+          আমাদের Exam Portal-এ আপনি পেয়ে যাবেন Board এবং Competitive Exams-এর
+          জন্য আলাদা আলাদা test modules, যা আপনার প্রস্তুতিকে আরও স্মার্ট এবং
+          কার্যকরী করে তুলবে। 📊 নিজের performance track করুন, ✍️ mock test
+          দিয়ে প্রস্তুতি যাচাই করুন — all-in-one smart platform!
         </p>
       </div>
       <div className={Style.ExamLists}>
@@ -34,7 +34,7 @@ const ExamSelection = () => {
           //     Select
           //   </Link>
           // </div>
-          <ExamCard text={exam} link={`/exam/${exam}`} key={exam}  />
+          <ExamCard text={exam} link={`/exam/${exam}`} key={exam} />
         ))}
       </div>
     </div>

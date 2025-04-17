@@ -7,14 +7,13 @@ import { FaFacebookF } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { FaYoutube } from "react-icons/fa";
-
 import logo from "../../assets/class_suru_logo.png";
 import Button from "../Button/Button";
 import { Link, useNavigate } from "react-router-dom";
 import Menu from "./Menu";
-
 import { MdMenu, MdClose } from "react-icons/md";
 import { useSelector } from "react-redux";
+import { HashLink } from "react-router-hash-link";
 
 const Navbar = () => {
   const userStatus = useSelector((state) => state.user.status);
@@ -34,6 +33,7 @@ const Navbar = () => {
       document.removeEventListener("mousedown", toggleSidebar);
     };
   }, []);
+
   return (
     <nav className={Style.navContainer}>
       <div className={Style.navUpper}>
@@ -103,13 +103,13 @@ const Navbar = () => {
             >
               About Us
             </Link>
-            <Link
+            <HashLink
               className={Style.navLink}
-              to="/services"
+              to="/#services"
               onClick={() => setMenuOpen(false)}
             >
               Services
-            </Link>
+            </HashLink>
             <Link
               className={Style.navLink}
               to="/courses"
@@ -117,13 +117,26 @@ const Navbar = () => {
             >
               Courses
             </Link>
-            <Link
+            <div
               className={Style.navLink}
-              to="/exam"
-              onClick={() => setMenuOpen(false)}
+              // to={userStatus ? "/exam" : "/login"}
+              onClick={() => {
+                setMenuOpen(false);
+                if (!userStatus) {
+                  const confirmLogin = window.confirm(
+                    "First you need to login for exam section"
+                  );
+                  if (confirmLogin) {
+                    localStorage.setItem("path", "/exam");
+                    navigate("/login");
+                  }
+                } else {
+                  navigate("/exam");
+                }
+              }}
             >
               Online Exam
-            </Link>
+            </div>
           </div>
           <div className={Style.navButtons}>
             <Button
@@ -152,7 +165,7 @@ const Navbar = () => {
             >
               <img
                 className={Style.profileImg}
-                src={!user?.avatar? '/public/profile.png': user?.avatar}
+                src={!user?.avatar ? "/public/profile.png" : user?.avatar}
                 alt="profile"
               />
             </div>

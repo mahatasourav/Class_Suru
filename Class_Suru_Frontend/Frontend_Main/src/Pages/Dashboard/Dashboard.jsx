@@ -99,24 +99,26 @@ const Dashboard = () => {
         <div className={Style.userDashboardLeft}>
           <div className={Style.userDashboardButton}>
             <div
-              className={`${selectedOption === "profile" ? Style.activeButton : ""} ${Style.dashboardButton}`}
+              className={`${
+                selectedOption === "profile" ? Style.activeButton : ""
+              } ${Style.dashboardButton}`}
               onClick={() => setSelectedOption("profile")}
             >
               <IoPersonSharp />
               <span>User Dashboard</span>
             </div>
           </div>
-          <div className={Style.recentExamButton}>
+          {/* <div className={Style.recentExamButton}>
             <div
-              className={
-                `${selectedOption === "recentExams" ? Style.activeButton : ""} ${Style.dashboardButton}`
-              }
+              className={`${
+                selectedOption === "recentExams" ? Style.activeButton : ""
+              } ${Style.dashboardButton}`}
               onClick={() => setSelectedOption("recentExams")}
             >
               <FaFileInvoice />
               <span>Recent Exams</span>
             </div>
-          </div>
+          </div> */}
           <div className={Style.logoutButton}>
             {" "}
             <div
@@ -126,6 +128,7 @@ const Dashboard = () => {
                 );
                 // pop.alert("Do you really want to logout?");
                 if (confirmLogout) {
+                  localStorage.removeItem("path");
                   localStorage.removeItem("token");
                   dispatch(logout());
                   navigate("/");

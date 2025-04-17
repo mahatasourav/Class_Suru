@@ -1,0 +1,114 @@
+.Course {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+.spancolor {
+  color: rgb(88, 88, 214);
+}
+.spancolorlarge {
+  color: rgb(88, 88, 214);
+  font-size: larger;
+}
+.spanbold {
+  font-weight: bold;
+}
+.CourseSection1 {
+  margin-top: 15px;
+  text-align: center;
+}
+.CourseSection2 {
+  display: flex;
+  padding: 5px 30px;
+  gap: 80px;
+  justify-content: center;
+}
+.CourseSection21 {
+  width: 40%;
+}
+.CourseSection21 a {
+  border: 3px solid rgb(20, 54, 155);
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  gap: 10px;
+  padding-bottom: 4px;
+  border-radius: 5px;
+}
+.CourseSection21 a h3:hover {
+  color: rgb(167, 82, 29);
+}
+.CourseSection22 {
+  width: 40%;
+
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  justify-content: center;
+}
+.CourseSection22 h4 {
+  margin-top: 20px;
+}
+.CourseSection22 ul {
+  padding: 0px 25px;
+  display: flex;
+  gap: 8px;
+  flex-direction: column;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 1024px) {
+  .CourseSection2 {
+    flex-direction: column;
+    gap: 40px;
+    padding: 10px 20px;
+  }
+
+  .CourseSection21,
+  .CourseSection22 {
+    width: 100%;
+  }
+
+  .CourseSection21 a {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .Course {
+    gap: 30px;
+  }
+
+  .CourseSection1 {
+    margin-top: 10px;
+  }
+
+  .CourseSection2 {
+    gap: 20px;
+    padding: 5px 20px;
+  }
+
+  .CourseSection21 a {
+    padding: 10px;
+  }
+
+  .CourseSection22 ul {
+    padding: 0px 25px;
+  }
+}
+
+@media (max-width: 480px) {
+  .CourseSection1 {
+    font-size: 1rem;
+  }
+
+  .CourseSection21 a {
+    padding: 8px;
+    gap: 5px;
+  }
+
+  .CourseSection22 ul {
+    padding: 0px 10px;
+  }
+}

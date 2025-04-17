@@ -1,4 +1,10 @@
-import React, { useContext, useEffect, useId, useState, useTransition } from "react";
+import React, {
+  useContext,
+  useEffect,
+  useId,
+  useState,
+  useTransition,
+} from "react";
 import Style from "../../css/login.module.css";
 import GoogleIcon from "../../assets/google.svg";
 import FacebookIcon from "../../assets/facebook.svg";
@@ -27,7 +33,6 @@ const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [eye, setEye] = useState(false);
@@ -36,143 +41,123 @@ const Login = () => {
   const [isPending, startTransition] = useTransition();
 
   const selectorStatus = useSelector((state) => state.user.status);
-  
 
-  useEffect(()=>{
-
-      if(selectorStatus){
-        navigate("/");
-      }
-    },[selectorStatus]);
+  useEffect(() => {
+    if (selectorStatus) {
+      navigate("/");
+    }
+  }, [selectorStatus]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Form Submitted");
     console.log("email: ", email);
     console.log("password: ", password);
-    
-    startTransition(async ()=>{
+
+    startTransition(async () => {
       // setTimeout(() => {
       //   console.log("Simulating async operation");
 
       // }, 3000);
       const loadingToastId = toast.loading("Loading...");
-      try{
+      try {
         const reqBody = {
           email: email,
-          password: password  
-        }
+          password: password,
+        };
         console.log(reqBody);
-        
-        const login_response = await apiCall.post(loginApi,reqBody);
+
+        const login_response = await apiCall.post(loginApi, reqBody);
 
         console.log(login_response.data);
-        
-  
-        if(login_response.status === 200){
-          
+
+        if (login_response.status === 200) {
           dispatch(setUserId(login_response.data.userId));
           dispatch(setUserStatus(true));
 
           const token = login_response.data.token;
 
-          localStorage.setItem("token",token);
+          localStorage.setItem("token", token);
 
           toast.dismiss(loadingToastId);
           toast.success("login Successful");
 
           setTimeout(() => {
-            navigate("/dashboard");
-          }, 2000);
-          
-        }else{
+            const path = localStorage.getItem("path") || "/dashboard";
+            navigate(path);
+          }, 1000);
+        } else {
           toast.dismiss(loadingToastId);
           toast.error("Email not Found, Please Register");
-
         }
-
-      }catch(error){
+      } catch (error) {
         toast.dismiss(loadingToastId);
         console.log(error);
         toast.error(`Email not Found, Please Register`);
       }
-    })
-
-    
+    });
   };
-  const handleSubmitOAuth = async(email,password) => {
-
+  const handleSubmitOAuth = async (email, password) => {
     console.log("Form Submitted");
     console.log("email: ", email);
     console.log("password: ", password);
-    
-    startTransition(async ()=>{
+
+    startTransition(async () => {
       // setTimeout(() => {
       //   console.log("Simulating async operation");
 
       // }, 3000);
       const loadingToastId = toast.loading("Loading...");
-      try{
+      try {
         const reqBody = {
           email: email,
-          password: password  
-        }
+          password: password,
+        };
         console.log(reqBody);
-        
-        const login_response = await apiCall.post(loginApi,reqBody);
+
+        const login_response = await apiCall.post(loginApi, reqBody);
 
         console.log(login_response.data);
-        
-  
-        if(login_response.status === 200){
-          
+
+        if (login_response.status === 200) {
           dispatch(setUserId(login_response.data.userId));
           dispatch(setUserStatus(true));
 
           const token = login_response.data.token;
 
-          localStorage.setItem("token",token);
+          localStorage.setItem("token", token);
 
           toast.dismiss(loadingToastId);
           toast.success("login Successful");
 
           setTimeout(() => {
-            navigate("/dashboard");
-          }, 2000);
-          
-        }else{
+            const path = localStorage.getItem("path") || "/dashboard";
+            navigate(path);
+          }, 1000);
+        } else {
           toast.dismiss(loadingToastId);
           toast.error("Email not Found, Please Register");
-
         }
-
-      }catch(error){
+      } catch (error) {
         toast.dismiss(loadingToastId);
         console.log(error);
         toast.error(`Email not Found, Please Register`);
       }
-    })
-
-    
+    });
   };
 
   const handleGoogleSignIn = async () => {
-      try {
-        const result = await signInWithPopup(auth, provider);
-        const user = result.user;
-        console.log(user);
-        if(user)
-        {
-          await handleSubmitOAuth(user.email,user.uid);
-          
-        }
-        
-        
-      } catch (error) {
-        console.log(error);
-        
+    try {
+      const result = await signInWithPopup(auth, provider);
+      const user = result.user;
+      console.log(user);
+      if (user) {
+        await handleSubmitOAuth(user.email, user.uid);
       }
+    } catch (error) {
+      console.log(error);
     }
+  };
 
   return (
     <>
@@ -203,7 +188,10 @@ const Login = () => {
           </div>
           <form className={Style.loginFormSection} onSubmit={handleSubmit}>
             <div className={Style.loginInputSection}>
-              <label className={Style.loginInputLabel} htmlFor={id + "email"+"testing"}>
+              <label
+                className={Style.loginInputLabel}
+                htmlFor={id + "email" + "testing"}
+              >
                 Email
               </label>
               <input

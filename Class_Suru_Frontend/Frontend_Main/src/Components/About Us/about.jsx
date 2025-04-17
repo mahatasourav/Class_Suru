@@ -64,11 +64,11 @@ const About = () => {
           <img src={imgAboutSection1} alt="aboutsection1img" srcset="" />
         </div>
       </div>
-      <div className={Style.AboutSection2}>
+      {/* <div className={Style.AboutSection2}>
         <div className={Style.AboutSection2Heading}>
           <h2> 🌟 Meet Our Expert Faculty</h2>
         </div>
-        <div className={`${Style.SwipperDiv} max-w-full mx-auto py-10`}>
+        <div className={`${Style.SwipperDiv} max-w-500 mx-auto py-10`}>
           <Swiper
             grabCursor={true}
             centeredSlides={true}
@@ -100,7 +100,7 @@ const About = () => {
             ))}
           </Swiper>
         </div>
-      </div>
+      </div> */}
 
       <div className={Style.AboutSection3}>
         <div className={Style.AboutSection3Heading}>
@@ -127,12 +127,12 @@ const About = () => {
               </p>
             </div>
             <div>
-              <h3>🧑‍🏫 অফলাইন ক্লাসের সুবিধা:</h3>
+              <h3>⭐ Top 3 Offline Class Advantages:</h3>
               <ul>
-                <li>🎓 অভিজ্ঞ এবং প্রফেশনাল শিক্ষকদল</li>
+                <li>🎓 Pro Teachers – অভিজ্ঞ স্যারদের কাছ থেকে direct শেখা।</li>
 
-                <li>🧠 ব্যক্তিগত দিকনির্দেশনা এবং ডাউট ক্লিয়ারিং সেশন</li>
-                <li>🔁 প্রতিদিনের রিভিশন ও নিয়মিত মক টেস্ট</li>
+                <li>🧠 Doubt? Solved! – Instant help, personal guidance।</li>
+                <li>🔁 Daily Revision ও নিয়মিত মক টেস্ট</li>
               </ul>
             </div>
             <div>
@@ -140,8 +140,9 @@ const About = () => {
               <ul>
                 <li>
                   <p>
-                    IIT KGP, IIEST Shibpur, Jadavpur University, এবং অন্যান্য
-                    প্রিমিয়ার ইনস্টিটিউট থেকে পড়াশোনা করা ছাত্রছাত্রী
+                    IIT KGP, IIEST Shibpur, Jadavpur University, RG Kar Medical
+                    College এবং অন্যান্য প্রিমিয়ার ইনস্টিটিউট থেকে পড়াশোনা করা
+                    ছাত্রছাত্রী।
                   </p>
                 </li>
               </ul>{" "}

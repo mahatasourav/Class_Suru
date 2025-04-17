@@ -194,6 +194,38 @@ const MainExamPage = () => {
     return () => clearInterval(timer);
   }, [userData, answers]);
 
+  useEffect(() => {
+
+    const handleVisibilityChange = () => {
+      if (document.visibilityState === "hidden") {
+        // if (tabChangeCount > 3) {
+          // alert("Browser tabs changed. You are not allowed to give the exam.");
+          localStorage.setItem("examErrorMsg", "Browser tabs changed. You are disqualified.");
+          handleSubmitExam(userData.id, answers);
+        // }
+      }
+    };
+
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+
+    return () => {
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+    };
+  }, [userData, answers]);
+
+  useEffect(() => {
+    const handleCopy = (event) => {
+      event.preventDefault();
+      alert("Question can't be copied.");
+    };
+
+    document.addEventListener("copy", handleCopy);
+
+    return () => {
+      document.removeEventListener("copy", handleCopy);
+    };
+  }, []);
+
   return (
     <>
       <div className={Style.examPageContainer}>

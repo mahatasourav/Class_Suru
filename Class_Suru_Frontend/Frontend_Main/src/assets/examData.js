@@ -14,7 +14,7 @@ const examData = [
     image: NEETIMG, // Now using the imported image
   },
   {
-    title: "JEE পরীক্ষা",
+    title: "👷🏻‍♂️ JEE পরীক্ষা",
     heading:
       "JEE মেইন কিংবা অ্যাডভান্সড – দুটোর জন্যই প্রয়োজন strong concepts আর smart practice। আমাদের expert guidance আর well-structured test series তোমার প্রস্তুতিকে নিয়ে যাবে next level-এ।",
     description:
@@ -23,7 +23,7 @@ const examData = [
     image: JEEIMG, // Now using the imported image
   },
   {
-    title: "JEE Advanced পরীক্ষা",
+    title: "🧠 JEE Advanced পরীক্ষা",
     heading:
       "এটা শুধুমাত্র আরেকটা exam না — it's the gateway to India's best tech institutes!",
     description:
@@ -32,7 +32,7 @@ const examData = [
     image: JEEAdvancedIMG, // Now using the imported image
   },
   {
-    title: "বোর্ড পরীক্ষা",
+    title: "📋 বোর্ড পরীক্ষা",
     heading:
       "Board exam মানেই একটা বড় responsibility — কিন্তু right guidance থাকলে কিছুই tough না!",
     description:

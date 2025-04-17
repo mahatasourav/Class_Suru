@@ -9,7 +9,11 @@ import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import Pichart from "./Pichart";
 import axios from "axios";
-import { deleteImageApi, updateUserDetailsApi, uploadImageApi } from "../../apis";
+import {
+  deleteImageApi,
+  updateUserDetailsApi,
+  uploadImageApi,
+} from "../../apis";
 import { Button } from "../../Components";
 import { FaSave } from "react-icons/fa";
 import { setUserData } from "../../Redux/features/userSlice";
@@ -18,7 +22,7 @@ const DashboardRightProfile = () => {
   const dispatch = useDispatch();
   const userData = useSelector((state) => state.user.userData);
   console.log("userData in profile", userData);
-  
+
   const [selectedImage, setSelectedImage] = useState(null);
   const [isEditing, setIsEditing] = useState(false);
   const imageref = useRef(null);
@@ -46,84 +50,79 @@ const DashboardRightProfile = () => {
     document.getElementById("fileInput").click();
   };
 
-  const handleImageChange = async(event) => {
+  const handleImageChange = async (event) => {
     const file = event.target.files[0];
     setLoading(true);
     try {
       if (file) {
         const formData = new FormData();
         formData.append("image", file);
-        if(userData.avatar)
-        {
+        if (userData.avatar) {
           const imagePath = userData.avatar.split("/").slice(-3).join("/");
           const truncatedImagePath = imagePath.replace(/\.jpg$/, "");
           const response_delete = await axios.delete(deleteImageApi, {
             data: {
-              "public_id": truncatedImagePath,
+              public_id: truncatedImagePath,
             },
           });
-          if(response_delete.status === 200)
-          {
+          if (response_delete.status === 200) {
             console.log("Previous Image deleted successfully");
           }
         }
-        const response = await axios.post(`${uploadImageApi}/Profile`, formData);
-        if(response.status === 200)
-        {
-          const response_updateProfile = await axios.put(`${updateUserDetailsApi}/${userData.id}`,{
-            avatar: response.data.imageUrl,
-          })
-          if(response_updateProfile.status === 200)
-          {
+        const response = await axios.post(
+          `${uploadImageApi}/Profile`,
+          formData
+        );
+        if (response.status === 200) {
+          const response_updateProfile = await axios.put(
+            `${updateUserDetailsApi}/${userData.id}`,
+            {
+              avatar: response.data.imageUrl,
+            }
+          );
+          if (response_updateProfile.status === 200) {
             setSelectedImage(response.data.imageUrl);
             // console.log(response_updateProfile.data.user);
             dispatch(setUserData(response_updateProfile.data.user));
-            
           }
         }
-  
-        
       }
     } catch (error) {
       console.log(error);
-    }
-    finally {
+    } finally {
       setLoading(false);
     }
-    
   };
 
   // Remove Image
-  const handleRemoveImage = async() => {
+  const handleRemoveImage = async () => {
     setSelectedImage(null);
-    if(userData.avatar)
-      {
-        const imagePath = userData.avatar.split("/").slice(-3).join("/");
-        const truncatedImagePath = imagePath.replace(/\.jpg$/, "");
-        const response_delete = await axios.delete("http://localhost:5000/api/auth/delete-image", {
-          data: {
-            "public_id": truncatedImagePath,
-          },
-        });
-        if(response_delete.status === 200)
+    if (userData.avatar) {
+      const imagePath = userData.avatar.split("/").slice(-3).join("/");
+      const truncatedImagePath = imagePath.replace(/\.jpg$/, "");
+      const response_delete = await axios.delete(
+        "http://localhost:5000/api/auth/delete-image",
         {
-          console.log("Previous Image deleted successfully");
+          data: {
+            public_id: truncatedImagePath,
+          },
         }
+      );
+      if (response_delete.status === 200) {
+        console.log("Previous Image deleted successfully");
       }
-    const response_updateProfile = await axios.put(`${updateUserDetailsApi}/${userData.id}`,{
-      avatar: null,
-    })
-    if(response_updateProfile.status === 200)
-    {
+    }
+    const response_updateProfile = await axios.put(
+      `${updateUserDetailsApi}/${userData.id}`,
+      {
+        avatar: null,
+      }
+    );
+    if (response_updateProfile.status === 200) {
       console.log("Image removed successfully");
       imageref.current.src = "public/profile.png";
     }
   };
-
-  
-
-  
-  
 
   // Toggle Edit Mode
   const handleEditClick = () => {
@@ -134,7 +133,7 @@ const DashboardRightProfile = () => {
   };
 
   // Save Changes
-  const handleSaveClick = async() => {
+  const handleSaveClick = async () => {
     try {
       setUpdateProfileLoading(true);
       const updatedUserData = {
@@ -144,25 +143,22 @@ const DashboardRightProfile = () => {
         class: userClass,
       };
       // Make API call to save changes
-      const response = await axios.put(`${updateUserDetailsApi}/${userData.id}`, updatedUserData);
+      const response = await axios.put(
+        `${updateUserDetailsApi}/${userData.id}`,
+        updatedUserData
+      );
       // console.log("Response:", response.data);
       if (response.status === 200) {
         console.log("Profile updated successfully!");
         dispatch(setUserData(response.data.user));
-        
       }
-      
-      
     } catch (error) {
       console.error("Error saving changes:", error);
-      
-    }
-    finally {
+    } finally {
       setIsEditing(false);
       setUpdateProfileLoading(false);
     }
     // console.log("hello world");
-    
   };
 
   return (
@@ -173,11 +169,7 @@ const DashboardRightProfile = () => {
             <div className={Style.DashboardRightProfileImgUpload}>
               {/* Display uploaded image OR default avatar */}
               <img
-                src={
-                  selectedImage ||
-                  userData?.avatar ||
-                  "public/profile.png"
-                }
+                src={selectedImage || userData?.avatar || "public/profile.png"}
                 alt={userData?.name || "User Profile"}
                 className={Style.profileImage}
                 ref={imageref}
@@ -201,7 +193,15 @@ const DashboardRightProfile = () => {
                   <FiUpload />
                   <span>Upload a new photo</span>
                 </button> */}
-                <Button text="Upload a new photo" onClick={handleImageUpload} onDualMode={true} isHollow={true} className={Style.UploadImage} isDisabled={loading} isLoading={loading}>
+                <Button
+                  text="Upload a new photo"
+                  onClick={handleImageUpload}
+                  onDualMode={true}
+                  isHollow={true}
+                  className={Style.UploadImage}
+                  isDisabled={loading}
+                  isLoading={loading}
+                >
                   <FiUpload />
                 </Button>
                 <p>(JPG or PNG, 800×800 px recommended)</p>
@@ -223,13 +223,27 @@ const DashboardRightProfile = () => {
             <div className={Style.DashboardRightProfileInformationUpper}>
               <span>Personal info</span>
               {!isEditing ? (
-                <Button text="Edit Details" onClick={handleEditClick} onDualMode={true} isHollow={true} className={Style.UploadImage}>
-                <MdOutlineEdit />
-              </Button>
+                <Button
+                  text="Edit Details"
+                  onClick={handleEditClick}
+                  onDualMode={true}
+                  isHollow={true}
+                  className={Style.UploadImage}
+                >
+                  <MdOutlineEdit />
+                </Button>
               ) : (
-                <Button text="Save Changes" onClick={handleSaveClick} className={Style.UploadImage} onDualMode={true} disabled={updateProfileLoading} isLoading={updateProfileLoading} isHollow={true}>
-                <FaSave />
-              </Button>
+                <Button
+                  text="Save Changes"
+                  onClick={handleSaveClick}
+                  className={Style.UploadImage}
+                  onDualMode={true}
+                  disabled={updateProfileLoading}
+                  isLoading={updateProfileLoading}
+                  isHollow={true}
+                >
+                  <FaSave />
+                </Button>
               )}
             </div>
 
@@ -243,7 +257,7 @@ const DashboardRightProfile = () => {
                   <input
                     type="text"
                     disabled={!isEditing}
-                    value={isEditing?userName:userData.name}
+                    value={isEditing ? userName : userData.name}
                     onChange={(e) => setUserName(e.target.value)}
                     className={Style.userName}
                   />
@@ -254,7 +268,7 @@ const DashboardRightProfile = () => {
                   <input
                     type="email"
                     disabled={!isEditing}
-                    value={isEditing?userEmail:userData.email}
+                    value={isEditing ? userEmail : userData.email}
                     onChange={(e) => setUserEmail(e.target.value)}
                     className={Style.userEmail}
                   />
@@ -266,7 +280,7 @@ const DashboardRightProfile = () => {
                     country={"in"}
                     type="number"
                     disabled={!isEditing}
-                    value={isEditing?userPhone:userData.phone_number}
+                    value={isEditing ? userPhone : userData.phone_number}
                     onChange={(e) => {
                       const value = e.target.value;
                       if (value.length <= 10) {
@@ -303,7 +317,7 @@ const DashboardRightProfile = () => {
                   <p>Class:</p>
                   <select
                     disabled={!isEditing}
-                    value={isEditing?userClass:userData?.class || ""}
+                    value={isEditing ? userClass : userData?.class || ""}
                     onChange={(e) => setUserClass(e.target.value)}
                     className={Style.userDropdown}
                   >

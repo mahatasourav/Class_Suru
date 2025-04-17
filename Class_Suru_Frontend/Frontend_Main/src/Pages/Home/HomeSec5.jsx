@@ -5,7 +5,7 @@ import HomeSec5IMG from "../../assets/HomeSec5IMG.png";
 
 const HomeSec5 = () => {
   return (
-    <div className={Style.HomeSec5}>
+    <div className={Style.HomeSec5} id="services">
       <div className={Style.headingSection4}>
         🎓 আমাদের <span>সেবা</span> – Just for <span>You</span>!
       </div>

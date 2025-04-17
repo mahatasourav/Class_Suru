@@ -331,7 +331,7 @@ const DashboardRightProfile = () => {
           </div>
         </div>
 
-        <div className={Style.DashboardRightProfileRight}>
+        {/* <div className={Style.DashboardRightProfileRight}>
           <div className={Style.pichart}>
             <div>
               <Pichart />
@@ -346,16 +346,16 @@ const DashboardRightProfile = () => {
               <p className={Style.NotificationsList}>
                 *Notification will come soon
               </p>
-              {/* <p className={Style.NotificationsList}>
+              <p className={Style.NotificationsList}>
                 <RiPagesLine />
                 <span>units and measurements</span>
                 <span>
                   3:00pm <p>23/12/2024</p>{" "}
                 </span>
-              </p> */}
+              </p>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </>
   );

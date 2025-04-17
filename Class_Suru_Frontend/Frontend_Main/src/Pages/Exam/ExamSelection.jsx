@@ -4,11 +4,7 @@ import Style from "../../css/Exam.module.css";
 import Breadcrumb from "./Breadcrumb";
 import { ExamCard } from "../../Components";
 
-const examlists = {
-  "👷🏻‍♂️ JEE": ["Math", "Physics", "Chemistry"],
-  " 🧠 JEE Advanced": ["Math", "Physics", "Chemistry"],
-  " 🩺 NEET": ["Biology", "Physics", "Chemistry"],
-};
+import { examlists } from "../../assets/ExamData/examList"; // Adjust the path as necessary
 
 const ExamSelection = () => {
   return (

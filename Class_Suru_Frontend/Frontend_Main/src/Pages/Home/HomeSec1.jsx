@@ -21,6 +21,7 @@ import { Pagination, Navigation } from "swiper/modules";
 import Marquee from "react-fast-marquee";
 import { useRef, useState } from "react";
 import { IoClose } from "react-icons/io5";
+import { BiLogoPlayStore } from "react-icons/bi";
 
 const HomeSec1 = () => {
   const [openPromo, setOpenPromo] = useState(false);
@@ -54,13 +55,16 @@ const HomeSec1 = () => {
             </p>
           </div> */}
           <div className={Style.buttonSection}>
-            <Button text="Get Started" className={Style.button} />
+            <Button text="Get Started" className={Style.button} isLink={true} link="/exam" />
             <Button
-              text="Promo"
+              text="Download App"
+              isLink={true}
+              link="https://play.google.com/store/apps/details?id=co.learnol.ypfnn&pcampaignid=web_share"
+              target="_blank"
               className={Style.button}
-              onClick={() => setOpenPromo(true)}
+              // onClick={() => setOpenPromo(true)}
             >
-              <FaCirclePlay />
+              <BiLogoPlayStore />
             </Button>
           </div>
         </div>
@@ -105,7 +109,7 @@ const HomeSec1 = () => {
             </SwiperSlide>
           </Swiper>
         </div>
-        {openPromo && (
+        {/* {openPromo && (
           <div
             className={Style.PromoVideoSection}
             onClick={(e) => handleClickOutside(e)}
@@ -131,7 +135,7 @@ const HomeSec1 = () => {
             </div>
             </div>
           </div>
-        )}
+        )} */}
       </div>
 
       {/* <div className={Style.UpdatesSection}> */}

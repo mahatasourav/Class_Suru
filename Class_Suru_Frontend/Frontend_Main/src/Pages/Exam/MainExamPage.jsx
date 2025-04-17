@@ -26,7 +26,7 @@ const MainExamPage = () => {
   const navigate = useNavigate();
   const userData = useSelector((state) => state.user.userData);
   // console.log(userData);
-  
+
   const [questionData, setquestionData] = useState(null);
   const [currentQuestionIndex, setcurrentQuestionIndex] = useState(0);
   const [sidebar, setSidebar] = useState(false);
@@ -44,7 +44,9 @@ const MainExamPage = () => {
       alert(
         "Cannot go back to the previous page because the exam is running. Press 'Submit Exam' to exit the exam window."
       );
+      document.documentElement.requestFullscreen();
       window.history.pushState(null, null, window.location.href);
+      
     };
 
     window.addEventListener("beforeunload", handleBeforeUnload);
@@ -61,43 +63,41 @@ const MainExamPage = () => {
   // Add at the top of your component (after useState etc.)
   const { examName, subjectName } = useParams();
 
-  const handleSubmitExam = async(id,answers) => {
+  const handleSubmitExam = async (id, answers) => {
     // Add submission logic here if needed, for now we log and navigate
     // alert("Exam submitted");
     // console.log("Exam submitted", answers);
     const loadingToastId = toast.loading("Loading...");
     // console.log(userData);
-    
-    
+
     const data = {
       exam_id: examId,
       user_id: id,
       answers: answers?.map((answer) => ({
-      id: answer.id,
-      status: answer.status,
-      selected_option: answer.selected_option === null ? -1 : answer.selected_option,
+        id: answer.id,
+        status: answer.status,
+        selected_option:
+          answer.selected_option === null ? -1 : answer.selected_option,
       })),
     };
 
-    console.log("data sent",data);
+    // console.log("data sent",data);
 
     // console.log(data);
-    
-    try {
 
+    try {
       const response = await axios.post(submitReslutApi, data);
-      console.log(response);
-      if(response.status === 201)
-      {
+      // console.log(response);
+      if (response.status === 201) {
         toast.dismiss(loadingToastId);
         toast.success("Exam submitted successfully");
 
         setTimeout(() => {
+          localStorage.removeItem("answers");
           navigate(`/exam/result/${response.data.result.result_id}`);
         }, 1000);
         // navigate(`/exam/result/${response.data.result_id}`);
       }
-      
     } catch (error) {
       console.log(error);
       toast.dismiss(loadingToastId);
@@ -106,38 +106,63 @@ const MainExamPage = () => {
     }
 
     // console.log(data);
-    
-
-
   };
 
   const getQuestionData = async () => {
     try {
       const response = await axios.post(`${getQuestionForExamApi}/${examId}`);
-      console.log("Question Data",response);
+      // console.log("Question Data",response);
       if (response.status == 200) {
         setquestionData(response.data.data);
-        console.log("Response Data:",response.data.data);
-        const data = response.data.data.map((_, index) => ({
-          question_id: index,
-          selected_option: null,
-          status: 0,
-          id: response.data.data[index].question_id,
-        }))
-        console.log(data);
-        
-        setanswers(data);
-        
-        
+        // console.log("Response Data:",response.data.data);
+        const answersLocalStorage = JSON.parse(localStorage.getItem("answers"));
+        console.log("Parsed Answers", answersLocalStorage);
+
+        if ( answersLocalStorage && answersLocalStorage.length > 0) {
+          setanswers(answersLocalStorage);
+        } else {
+          const data = response.data.data.map((_, index) => ({
+            question_id: index,
+            selected_option: null,
+            status: 0,
+            id: response.data.data[index].question_id,
+          }));
+          setanswers(data);
+          localStorage.setItem("answers", JSON.stringify(data));
+        }
       }
     } catch (error) {
       console.log(error);
-      toast.error("Something went wrong");
+      // toast.error("Something went wrong");
     }
   };
   useEffect(() => {
     getQuestionData();
   }, []);
+
+  useEffect(() => {
+    const ensureFullScreen = () => {
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen().catch((err) => {
+          console.error(`Error attempting to enable full-screen mode: ${err.message}`);
+        });
+      }
+    };
+
+    ensureFullScreen();
+
+    const fullScreenCheckInterval = setInterval(() => {
+      ensureFullScreen();
+    }, 50);
+
+    return () => clearInterval(fullScreenCheckInterval);
+  }, []);
+
+  // useEffect(() => {
+  //   console.log("Ansers changed", answers);
+
+  //   localStorage.setItem("answers", JSON.stringify(answers));
+  // }, [answers]);
 
   // useEffect(()=>{
   //   localStorage.getItem("timeLeft") &&
@@ -157,12 +182,11 @@ const MainExamPage = () => {
       const timeLeft = localStorage.getItem("timeLeft");
       // console.log(timeLeft);
       if (JSON.parse(timeLeft) === 1) {
-        
         // clearInterval(timer);
         // alert("Time is up!");
         localStorage.removeItem("timeLeft");
         localStorage.removeItem(JSON.stringify(examId));
-        localStorage.removeItem("exam");
+        // localStorage.removeItem("exam");
         handleSubmitExam(userData.id, answers);
       }
     }, 1000);
@@ -190,12 +214,16 @@ const MainExamPage = () => {
                   <div
                     className={`${Style.examPageLeftMarksDristibutionValueCorrect} ${Style.correct}`}
                   >
-                    +{questionData && questionData[currentQuestionIndex]?.correct_marks}
+                    +
+                    {questionData &&
+                      questionData[currentQuestionIndex]?.correct_marks}
                   </div>
                   <div
                     className={`${Style.examPageLeftMarksDristibutionValueCorrect} ${Style.wrong}`}
                   >
-                    -{questionData && questionData[currentQuestionIndex]?.wrong_marks}
+                    -
+                    {questionData &&
+                      questionData[currentQuestionIndex]?.wrong_marks}
                   </div>
                 </div>
               </div>
@@ -213,12 +241,12 @@ const MainExamPage = () => {
               </Button> */}
             </div>
           </div>
-          {
-            questionData && questionData.length > 0 ? (
+          {questionData && questionData.length > 0 ? (
             <div className={Style.examPageContent}>
               <div className={Style.examPageContentQuestion}>
                 {questionData &&
-                  questionData[currentQuestionIndex]?.question_text && parse(questionData[currentQuestionIndex].question_text)}
+                  questionData[currentQuestionIndex]?.question_text &&
+                  parse(questionData[currentQuestionIndex].question_text)}
               </div>
               <div className={Style.examPageContentImg}>
                 <img
@@ -234,22 +262,29 @@ const MainExamPage = () => {
                 {/* options 1 */}
                 <div
                   className={`${Style.option} ${
-                    answers.length>0 &&
-                    answers[currentQuestionIndex].selected_option === 1 &&
+                    answers.length > 0 &&
+                    answers[currentQuestionIndex]?.selected_option === 1 &&
                     Style.selected
                   }`}
                   onClick={() => {
                     setanswers((prevData) => {
-                      const newData = [...prevData];
+                      const newData = [...answers];
                       const currentSelection =
                         newData[currentQuestionIndex].selected_option;
                       newData[currentQuestionIndex] = {
                         ...newData[currentQuestionIndex],
                         selected_option: currentSelection === 1 ? null : 1,
+                        status: 1
                       };
                       // console.log(newData);
+                      localStorage.setItem("answers", JSON.stringify(newData));
                       return newData;
                     });
+
+                    // console.log(answers);
+                    
+                    
+                    
                   }}
                 >
                   <div className={Style.optionCheckBox}>
@@ -263,8 +298,8 @@ const MainExamPage = () => {
                 {/* options 2 */}
                 <div
                   className={`${Style.option} ${
-                    answers.length >0 &&
-                    answers[currentQuestionIndex].selected_option === 2 &&
+                    answers.length > 0 &&
+                    answers[currentQuestionIndex]?.selected_option === 2 &&
                     Style.selected
                   }`}
                   onClick={() => {
@@ -275,10 +310,13 @@ const MainExamPage = () => {
                       newData[currentQuestionIndex] = {
                         ...newData[currentQuestionIndex],
                         selected_option: currentSelection === 2 ? null : 2,
+                        status: 1
                       };
                       // console.log(newData);
+                      localStorage.setItem("answers", JSON.stringify(newData));
                       return newData;
                     });
+                    // localStorage.setItem("answers", JSON.stringify(answers));
                   }}
                 >
                   <div className={Style.optionCheckBox}>
@@ -292,8 +330,8 @@ const MainExamPage = () => {
                 {/* options 3 */}
                 <div
                   className={`${Style.option} ${
-                    answers.length >0 &&
-                    answers[currentQuestionIndex].selected_option === 3 &&
+                    answers.length > 0 &&
+                    answers[currentQuestionIndex]?.selected_option === 3 &&
                     Style.selected
                   }`}
                   onClick={() => {
@@ -304,10 +342,13 @@ const MainExamPage = () => {
                       newData[currentQuestionIndex] = {
                         ...newData[currentQuestionIndex],
                         selected_option: currentSelection === 3 ? null : 3,
+                        status: 1
                       };
                       // console.log(newData);
+                      localStorage.setItem("answers", JSON.stringify(newData));
                       return newData;
                     });
+                    // localStorage.setItem("answers", JSON.stringify(answers));
                   }}
                 >
                   <div className={Style.optionCheckBox}>
@@ -322,7 +363,7 @@ const MainExamPage = () => {
                 <div
                   className={`${Style.option} ${
                     answers.length > 0 &&
-                    answers[currentQuestionIndex].selected_option === 4 &&
+                    answers[currentQuestionIndex]?.selected_option === 4 &&
                     Style.selected
                   }`}
                   onClick={() => {
@@ -333,10 +374,13 @@ const MainExamPage = () => {
                       newData[currentQuestionIndex] = {
                         ...newData[currentQuestionIndex],
                         selected_option: currentSelection === 4 ? null : 4,
+                        status: 1
                       };
                       // console.log(newData);
+                      localStorage.setItem("answers", JSON.stringify(newData));
                       return newData;
                     });
+                    // localStorage.setItem("answers", JSON.stringify(answers));
                   }}
                 >
                   <div className={Style.optionCheckBox}>
@@ -348,11 +392,11 @@ const MainExamPage = () => {
                   </div>
                 </div>
               </div>
-            </div>): (
-              <p>No Question in the Test</p>
-            )
-          }
-          
+            </div>
+          ) : (
+            <p>No Question in the Test</p>
+          )}
+
           <div className={Style.examPageControllSection}>
             <div className={Style.controlButton}>
               <Button
@@ -360,15 +404,14 @@ const MainExamPage = () => {
                 className={`${
                   currentQuestionIndex === 0
                     ? Style.previousDisable
-                    : Style.previous} ${Style.button_exam}
+                    : Style.previous
+                } ${Style.button_exam}
                 `}
                 onClick={() => {
                   currentQuestionIndex === 0
                     ? setcurrentQuestionIndex(currentQuestionIndex)
                     : setcurrentQuestionIndex(currentQuestionIndex - 1);
                 }}
-
-                
               >
                 <HiChevronDoubleLeft />
               </Button>
@@ -378,8 +421,9 @@ const MainExamPage = () => {
                 text="Save & Next"
                 className={`${Style.save} ${Style.button_exam}`}
                 onClick={() => {
-                  if (answers[currentQuestionIndex].selected_option === null) {
+                  if (answers[currentQuestionIndex]?.selected_option === null) {
                     alert("Please select an options before save");
+                    document.documentElement.requestFullscreen();
                     return;
                   }
 
@@ -389,9 +433,10 @@ const MainExamPage = () => {
                       ...newData[currentQuestionIndex],
                       status: 2,
                     };
-
-                    if (
-                      currentQuestionIndex < questionData?.length - 1 &&
+                    
+                    localStorage.setItem("answers", JSON.stringify(newData));
+                    
+                    if (currentQuestionIndex < questionData?.length-1 &&
                       answers[currentQuestionIndex + 1].status === 0
                     ) {
                       newData[currentQuestionIndex + 1] = {
@@ -401,6 +446,10 @@ const MainExamPage = () => {
                     }
                     return newData;
                   });
+
+
+                
+                  
 
                   currentQuestionIndex === questionData?.length - 1
                     ? setcurrentQuestionIndex(currentQuestionIndex)
@@ -418,7 +467,8 @@ const MainExamPage = () => {
                       selected_option: null,
                       status: 1,
                     };
-
+                    
+                    localStorage.setItem("answers", JSON.stringify(newData));
                     return newData;
                   });
                 }}
@@ -436,6 +486,7 @@ const MainExamPage = () => {
                           ? 3
                           : 4,
                     };
+                    localStorage.setItem("answers", JSON.stringify(newData));
 
                     return newData;
                   });
@@ -448,8 +499,8 @@ const MainExamPage = () => {
                 className={`${
                   currentQuestionIndex === questionData?.length - 1
                     ? Style.nextDisable
-                    : Style.next} ${Style.button_exam}`
-                }
+                    : Style.next
+                } ${Style.button_exam}`}
                 onClick={() => {
                   if (currentQuestionIndex === questionData.length - 1) {
                     setcurrentQuestionIndex(currentQuestionIndex);
@@ -463,6 +514,7 @@ const MainExamPage = () => {
                         ...newData[currentQuestionIndex + 1],
                         status: 1,
                       };
+                      localStorage.setItem("answers", JSON.stringify(newData));
                       return newData;
                     });
                   }
@@ -473,10 +525,18 @@ const MainExamPage = () => {
             </div>
           </div>
         </div>
-        <div className={`${Style.examPageRightSideBar} ${sidebar ? Style.active : ""}`}>
+        <div
+          className={`${Style.examPageRightSideBar} ${
+            sidebar ? Style.active : ""
+          }`}
+        >
           <div className={Style.profileSection}>
             <div className={Style.profileSectionImage}>
-              <img className={Style.profile} src={userData && userData.avatar} alt="profile" />
+              <img
+                className={Style.profile}
+                src={userData && userData.avatar}
+                alt="profile"
+              />
             </div>
             <div className={Style.profileSectionName}>{userData?.name}</div>
           </div>
@@ -540,12 +600,12 @@ const MainExamPage = () => {
                 return (
                   <div
                     className={`${Style.examQuestion} ${
-                      answers[index].status === 0 && Style.notVisited
-                    } ${answers[index].status === 1 && Style.notAnswered}
-                  ${answers[index].status === 2 && Style.answered}
-                  ${answers[index].status === 3 && Style.markedForReview}
+                      answers[index]?.status === 0 && Style.notVisited
+                    } ${answers[index]?.status === 1 && Style.notAnswered}
+                  ${answers[index]?.status === 2 && Style.answered}
+                  ${answers[index]?.status === 3 && Style.markedForReview}
                   ${
-                    answers[index].status === 4 &&
+                    answers[index]?.status === 4 &&
                     Style.answeredAndMarkedForReview
                   }
               `}
@@ -559,6 +619,7 @@ const MainExamPage = () => {
                             ...newData[index],
                             status: 1,
                           };
+                          localStorage.setItem("answers", JSON.stringify(newData));
                           return newData;
                         });
                       }
@@ -578,7 +639,7 @@ const MainExamPage = () => {
             <Button
               text="Submit Exam"
               className={Style.submitButton}
-              onClick={async() => {
+              onClick={async () => {
                 const confirmLogout = window.confirm(
                   "Do you really want to Submit ?"
                 );
@@ -590,8 +651,11 @@ const MainExamPage = () => {
               }}
             />
           </div>
-          <div className={Style.sidebarButton} onClick={() => setSidebar(!sidebar)}>
-            {sidebar ? '<' : '>'}
+          <div
+            className={Style.sidebarButton}
+            onClick={() => setSidebar(!sidebar)}
+          >
+            {sidebar ? "<" : ">"}
           </div>
         </div>
       </div>

@@ -43,7 +43,17 @@ const Result = () => {
     }
   }
 
+  // Function to enter fullscreen mode
+  function exitFullScreen() {
+    if (document.fullscreenElement) {
+      document.exitFullscreen().catch((err) => {
+      console.error(`Error attempting to exit fullscreen: ${err.message}`);
+      });
+    }
+  }
+
   useEffect(() => {
+    exitFullScreen();
     getResult()
   }, []);
   return (

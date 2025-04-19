@@ -20,7 +20,7 @@ const AdminHome = () => {
 
         <Button isLink={true} link="/admin/list" text="Manage Exams" className="AdminHomeButton" />
         &nbsp;&nbsp;&nbsp;&nbsp;
-        <Button isLink={true} link="/admin/users" text="Manage Users" className="AdminHomeButton" />
+        {/* <Button isLink={true} link="/admin/users" text="Manage Users" className="AdminHomeButton" /> */}
 
       </div>
       </center>

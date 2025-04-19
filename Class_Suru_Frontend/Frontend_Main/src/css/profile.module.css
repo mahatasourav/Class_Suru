@@ -54,8 +54,8 @@
   }
   
   .userDashboardRight {
-    width: 80vw;
-    background-color: rgb(216, 216, 216);
+    width: 100%;
+    background-color: rgba(216, 216, 216, 0.37);
   }
   
   /* userDashboardRightProfile Section */
@@ -94,7 +94,7 @@
   .DashboardRightProfileImgUpload2 {
     display: flex;
     flex-direction: column;
-    width: 200px;
+    width: fit-content;
     justify-content: center;
     gap: 10px;
   }
@@ -118,11 +118,22 @@
   .DashboardRightProfileImgUpload2 p {
     font-size: 12px;
   }
+
+  .profileImageContainer{
+    height: 150px;
+    width: 150px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* border: 2px solid var(--primary_color); */
+    border-radius: 50%;
+  }
   
   .profileImage {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
+    width: 100%;
+    /* transform: scale(1.02); */
+    /* border-radius: 50%; */
   }
   
   .DashboardRightProfileInformation {
@@ -245,18 +256,27 @@ padding: 3px 10px;
  /* page -2  */
   /* userDashboardRightRecentExam Section */
   .RecentExam {
-    max-width: 65vw;
+    width: 90%;
     margin: auto;
     display: flex;
     flex-direction: column;
     margin-top: 30px;
     border-radius: 10px;
+    overflow: hidden;
+    border-radius: 10px;
+    margin: 30px;
     
   }
   
   .RecentExamUpper {
     padding: 5px 5px;
     padding-bottom: 0px;
+  }
+  .RecentExamLower{
+    border-bottom: #1a1a1a31 1px solid;
+  }
+  .RecentExamLower:last-child{
+    border-bottom: none;
   }
   
   .RecentExamUpperSpan {
@@ -273,10 +293,22 @@ padding: 3px 10px;
     justify-content: space-between;
     padding: 15px 30px;
     background-color: white;
- 
-  
+    cursor: pointer;
+    color: black;
+    /* transition: all 0.2s ease-in-out; */
   }
-  
+  .RecentExamLower:hover{
+    background-color: #E1DFFF;
+  }
+  .examDetails{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    width: 100%;
+    margin-top: 10px;
+  }
   .userName,
   .userPhone,
   .userEmail,
@@ -296,6 +328,32 @@ padding: 3px 10px;
   }
   .dashboardButton:hover{
     background-color: #E1DFFF;
+  }
+
+  .loadingSpinner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60vh;
+  }
+
+  .spinner {
+    border: 4px solid rgba(0, 0, 0, 0.1);
+    border-top: 4px solid var(--primary_color);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    scale: 1.5;
+    animation: spin 1s linear infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
   }
   
   /* Media Queries for Responsiveness */
@@ -384,4 +442,8 @@ padding: 3px 10px;
     .userLocation {
       width: 100%;
     }
+    .RecentExam{
+      width: 85%;
+    }
+    
   }

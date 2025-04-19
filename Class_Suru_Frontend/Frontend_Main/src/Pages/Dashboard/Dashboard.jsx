@@ -7,13 +7,13 @@ import {
   setUserId,
   setUserStatus,
 } from "../../Redux/features/userSlice";
-import { useNavigate } from "react-router-dom";
+import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
 import axios from "axios";
 import { userDetailsApi } from "../../apis";
 import { LoadingContext } from "../../Components/Loading/Loading";
 import { useState } from "react";
-import { usePopup } from "popine";
+// import { usePopup } from "popine";
 import Style from "../../css/profile.module.css";
 import { getUserData } from "../../utils/getUserData";
 import DashboardRightProfile from "./DashboardRightProfile";
@@ -27,8 +27,9 @@ const Dashboard = () => {
   const userData = useSelector((state) => state.user.userData);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const location = useLocation();
   const [selectedOption, setSelectedOption] = useState("profile"); // State to track selection
-  const { PopUp, pop } = usePopup();
+  // const { PopUp, pop } = usePopup();
   // const getUserData = async () => {
   //   const token = localStorage.getItem("token");
   //   if (token) {
@@ -80,6 +81,14 @@ const Dashboard = () => {
     }
   }, []);
 
+  useEffect(()=>{
+    if(location.pathname === "/user/dashboard/recent-exams"){
+      setSelectedOption("recentExams")
+    }else if(location.pathname === "/user/dashboard/profile"){
+      setSelectedOption("profile")
+    }
+  },[location.pathname])
+
   return (
     // <div>
     //   {userData && userData.name}
@@ -94,31 +103,31 @@ const Dashboard = () => {
     //   />
     // </div>
     <>
-      <PopUp />
+      {/* <PopUp /> */}
       <div className={Style.userDashboardSection}>
         <div className={Style.userDashboardLeft}>
           <div className={Style.userDashboardButton}>
-            <div
+            <d
               className={`${
                 selectedOption === "profile" ? Style.activeButton : ""
               } ${Style.dashboardButton}`}
-              onClick={() => setSelectedOption("profile")}
+              onClick={() => {setSelectedOption("profile");navigate("/user/dashboard/profile")}}
             >
               <IoPersonSharp />
               <span>User Dashboard</span>
-            </div>
+            </d>
           </div>
-          {/* <div className={Style.recentExamButton}>
+          <div className={Style.recentExamButton}>
             <div
               className={`${
                 selectedOption === "recentExams" ? Style.activeButton : ""
               } ${Style.dashboardButton}`}
-              onClick={() => setSelectedOption("recentExams")}
+              onClick={() => {setSelectedOption("recentExams");navigate("/user/dashboard/recent-exams")}}
             >
               <FaFileInvoice />
               <span>Recent Exams</span>
             </div>
-          </div> */}
+          </div>
           <div className={Style.logoutButton}>
             {" "}
             <div
@@ -141,11 +150,13 @@ const Dashboard = () => {
           </div>
         </div>
         <div className={Style.userDashboardRight}>
-          {selectedOption === "profile" ? (
+          {/* {selectedOption === "profile" ? (
             <DashboardRightProfile />
           ) : (
             <DashboardRightRecentExam />
-          )}
+          )} */}
+
+          <Outlet />
         </div>
       </div>
     </>

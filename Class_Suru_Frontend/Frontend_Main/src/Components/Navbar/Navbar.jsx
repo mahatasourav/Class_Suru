@@ -107,6 +107,9 @@ const Navbar = () => {
               className={Style.navLink}
               to="/#services"
               onClick={() => setMenuOpen(false)}
+              scroll={(el) =>
+                el.scrollIntoView({ behavior: "smooth" })
+              }
             >
               Services
             </HashLink>
@@ -161,7 +164,7 @@ const Navbar = () => {
             </div>
             <div
               className={`${Style.profile} ${userStatus ? Style.active : ""}`}
-              onClick={() => navigate("/dashboard")}
+              onClick={() => navigate("/user/dashboard/profile")}
             >
               <img
                 className={Style.profileImg}

@@ -34,7 +34,7 @@ const ExamNavbar = () => {
 
             
             {isMainExamPage && <TimeLeft />}
-            <div className={Style.navButtons}>
+            {/* <div className={Style.navButtons}>
               <Button
                 // className={Style.navButton}
                 text={fullScreen ? "Exit Full Screen" : "Enter Full Screen"}
@@ -43,7 +43,7 @@ const ExamNavbar = () => {
                 onClick={handleFullScreen}
                 // className={Style.navButton}
               />
-            </div>
+            </div> */}
             
           </div>
         </div>

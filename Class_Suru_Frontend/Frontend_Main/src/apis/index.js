@@ -43,6 +43,7 @@ const deleteImageApi = `${basApi}/api/auth/delete-image`;
 // result apis
 const submitReslutApi = `${basApi}/api/auth/exam/submit`;
 const getResultByResultIdApi = `${basApi}/api/auth/exam/user/result`;
+const getUsersResultsApi = `${basApi}/api/auth/result/user`;
 
 export {
   signupApi,
@@ -66,4 +67,5 @@ export {
   getQuestionForExamApi,
   submitReslutApi,
   getResultByResultIdApi,
+  getUsersResultsApi
 };

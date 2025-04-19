@@ -9,7 +9,13 @@
   gap: 30px;
   margin-top: 60px;
 }
-
+.resultContainer{
+  width: 100%;
+  height: max-content;
+  padding: 50px;
+  border-radius: 20px;
+  background-color: #fff;
+}
 .UpperResult{
   /* border: 2px solid rgb(35, 128, 62); */
   display: flex;
@@ -103,4 +109,15 @@ gap: 10px;
 
 .score.good{
   color: #2380F9;
+}
+
+@media only screen and (max-width: 600px)
+{
+  .resultContainer{
+    width: 90%;
+    margin-bottom: 50px;
+  }
+  .resultContainer .rangeContainer{
+    max-width: 200px;
+  }
 }

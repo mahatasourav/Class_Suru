@@ -163,17 +163,21 @@ const DashboardRightProfile = () => {
 
   return (
     <>
+    
       <div className={Style.DashboardRightProfile}>
         <div className={Style.DashboardRightProfileLeft}>
           <div className={Style.DashboardRightProfileImgSection}>
             <div className={Style.DashboardRightProfileImgUpload}>
               {/* Display uploaded image OR default avatar */}
+              <div className={Style.profileImageContainer}>
               <img
                 src={selectedImage || userData?.avatar || "public/profile.png"}
                 alt={userData?.name || "User Profile"}
                 className={Style.profileImage}
                 ref={imageref}
               />
+              </div>
+              
 
               <div className={Style.DashboardRightProfileImgUpload2}>
                 {/* Hidden File Input */}

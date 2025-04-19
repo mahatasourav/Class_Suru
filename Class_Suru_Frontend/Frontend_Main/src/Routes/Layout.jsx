@@ -16,6 +16,7 @@ import { LoadingContext } from "../Components/Loading/Loading";
 import { getUserData } from "../utils/getUserData";
 import AdminNavbar from "../Components/Navbar/AdminNavbar";
 import Admin from "../Pages/Admin/Admin";
+import { Dashboard } from "../Pages";
 
 // import { useLoadingContext } from "../Components/Loading/Loading";
 
@@ -56,6 +57,15 @@ const Layout = () => {
     }
   }, []);
 
+  useEffect(() => {
+    if(location.hash ==="")
+    {
+      window.scrollTo(0,0)
+    }
+    
+    
+  }, [location]);
+
   return (
     <div className="container">
       {isAdminPage && <AdminNavbar />}
@@ -72,7 +82,10 @@ const Layout = () => {
             : "admin-container"
         }
       >
-        {location.pathname.startsWith("/admin") ? <Admin /> : <Outlet />}
+        {location.pathname.startsWith("/admin") ? <Admin /> :
+        
+        location.pathname.startsWith("/user") ? <Dashboard />:
+        <Outlet />}
         {/* {isInstructionPage && <ExamNavbar />} */}
       </div>
 

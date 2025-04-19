@@ -13,6 +13,7 @@
     box-sizing: border-box;
     text-decoration: none;
     font-family: "Poppins", serif;
+    scroll-behavior: smooth;
 }
 
 :root{

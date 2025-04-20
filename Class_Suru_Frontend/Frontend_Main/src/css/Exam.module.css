@@ -2,7 +2,7 @@
 
 /* Existing styles */
 .ExamSelectionHeadingText {
-  font-family: 'poppins', sans-serif;
+  font-family: "poppins", sans-serif;
   font-size: 30px;
   text-align: center;
   font-weight: 600;
@@ -315,7 +315,7 @@
 /* InstructionPage CSS Start */
 .InstructionPage {
   max-width: 1500px;
-  margin-top: 80px;
+  margin-top: 50px;
   margin-left: auto;
   margin-right: auto;
   /* margin: auto; */
@@ -326,6 +326,7 @@
 }
 .InstructionPageSec1 {
   display: flex;
+  overflow: auto;
 }
 
 .InstructionPageInstructions {

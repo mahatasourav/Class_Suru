@@ -14,6 +14,7 @@ import { IoMdCloseCircle } from "react-icons/io";
 
 const Result = () => {
   const [resultData, setResultData] = useState(null);
+  const [loading, setLoading] = useState(false);
   const {result_id} = useParams();
   const examErrorMsg = localStorage.getItem("examErrorMsg");
 
@@ -36,6 +37,7 @@ const Result = () => {
   }, []);
 
   const getResult = async () => {
+    setLoading(true);
     try {
       const result = await axios.get(`${getResultByResultIdApi}/${result_id}`);
       if(result.status === 200){
@@ -45,7 +47,11 @@ const Result = () => {
       }
       
     } catch (error) {
+      console.log(error);
       
+    }
+    finally{
+      setLoading(false);
     }
   }
 
@@ -63,6 +69,7 @@ const Result = () => {
     getResult()
   }, []);
   return (
+    
     <div className={Style.Result}>
       {/* UpperResult */}
         <div className={Style.UpperResult}>

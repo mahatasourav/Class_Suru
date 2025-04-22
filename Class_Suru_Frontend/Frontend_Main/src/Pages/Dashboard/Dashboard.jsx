@@ -140,7 +140,10 @@ const Dashboard = () => {
                   localStorage.removeItem("path");
                   localStorage.removeItem("token");
                   dispatch(logout());
-                  navigate("/");
+                  setTimeout(() => {
+                    navigate("/");
+                  }, 50);
+                  // navigate("/");
                 }
               }}
             >

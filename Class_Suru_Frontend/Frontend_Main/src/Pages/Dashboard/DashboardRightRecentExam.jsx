@@ -49,7 +49,8 @@ const DashboardRightRecentExam = () => {
       if(userData && userData.id){
       const response = await axios.get(`${getUsersResultsApi}/${userData.id}`);
       // console.log("Recent exam data:", response.data);
-
+        console.log("Recent exam data:", response.data.result);
+        
       if(response.status === 200)
       {
         setRecentExam(response.data.result);
@@ -77,7 +78,7 @@ const DashboardRightRecentExam = () => {
         <div className={Style.loadingSpinner}>
           <div className={Style.spinner}></div>
         </div>
-      ) : recentExam.length === 0 ? (
+      ) : recentExam===null ||  recentExam.length === 0 ? (
         <div className={Style.noExams}>No recent exams yet</div>
       ) : recentExam.map((exam, index) => (
         <Link key={index} className={Style.RecentExamLower} to={`/user/dashboard/result/${exam.result_id}`}>

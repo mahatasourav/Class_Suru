@@ -83,7 +83,7 @@ const Login = () => {
           toast.success("login Successful");
 
           setTimeout(() => {
-            const path = localStorage.getItem("path") || "/dashboard";
+            const path = localStorage.getItem("path") || "/";
             navigate(path);
           }, 1000);
         } else {
@@ -131,7 +131,7 @@ const Login = () => {
           toast.success("login Successful");
 
           setTimeout(() => {
-            const path = localStorage.getItem("path") || "/dashboard";
+            const path = localStorage.getItem("path") || "/";
             navigate(path);
           }, 1000);
         } else {

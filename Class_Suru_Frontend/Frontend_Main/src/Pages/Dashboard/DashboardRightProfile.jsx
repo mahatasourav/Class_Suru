@@ -120,7 +120,7 @@ const DashboardRightProfile = () => {
     );
     if (response_updateProfile.status === 200) {
       console.log("Image removed successfully");
-      imageref.current.src = "public/profile.png";
+      imageref.current.src = "/profile.png";
     }
   };
 
@@ -171,7 +171,7 @@ const DashboardRightProfile = () => {
               {/* Display uploaded image OR default avatar */}
               <div className={Style.profileImageContainer}>
               <img
-                src={selectedImage || userData?.avatar || "public/profile.png"}
+                src={selectedImage || userData && userData.avatar ===null? "/profile.png" : userData?.avatar}
                 alt={userData?.name || "User Profile"}
                 className={Style.profileImage}
                 ref={imageref}

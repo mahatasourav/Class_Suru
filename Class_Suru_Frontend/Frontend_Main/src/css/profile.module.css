@@ -31,6 +31,7 @@
     gap: 20px;
     flex-direction: row;
     padding: 10px 20px;
+    cursor: pointer;
   }
   .logoutButton{
     width: 100%;
@@ -40,6 +41,7 @@
     justify-content: start;
     align-items: center;
     gap: 20px;
+    cursor: pointer;
   }
   .logoutButton:hover{
     background-color: #E1DFFF;

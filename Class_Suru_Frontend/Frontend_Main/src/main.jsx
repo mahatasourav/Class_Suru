@@ -7,9 +7,11 @@ import { Provider } from "react-redux";
 import store from "./Redux/store/store.js";
 import { LoadingProvider } from "./Components/Loading/Loading.jsx";
 import { CookiesProvider } from "react-cookie";
+import {HelmetProvider} from "react-helmet-async"
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
+    <HelmetProvider>
     <CookiesProvider>
     <Provider store={store}>
       <LoadingProvider>
@@ -17,5 +19,6 @@ createRoot(document.getElementById("root")).render(
       </LoadingProvider>
     </Provider>
     </CookiesProvider>
+    </HelmetProvider>
   </StrictMode>
 );

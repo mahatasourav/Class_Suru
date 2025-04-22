@@ -72,7 +72,7 @@ const Register = () => {
 
         // const signup_response = reqBody;
         
-        const signup_response = await apiCall.post(signupApi,reqBody);
+        const signup_response = await axios.post(signupApi,reqBody);
   
         if(signup_response.status === 201){
           
@@ -91,19 +91,25 @@ const Register = () => {
           toast.success("Signup Successful");
 
           setTimeout(() => {
-            navigate("/dashboard");
+            navigate("/");
           }, 2000);
           
-        }else{
+        }
+        else if(signup_response.status === 400)
+        {
           toast.dismiss(loadingToastId);
-          toast.error("Email Already Exists");
+          toast.error(signup_response.data.message);
+        }
+        else{
+          toast.dismiss(loadingToastId);
+          toast.error("Cannot Signup, Please try again later");
 
         }
 
       }catch(error){
         toast.dismiss(loadingToastId);
         console.log(error);
-        toast.error("Cannot Signup, Please try again later");
+        toast.error(error.response.data.message);
       }
 
     });
@@ -124,7 +130,7 @@ const Register = () => {
 
         // const signup_response = reqBody;
         
-        const signup_response = await apiCall.post(signupApi,reqBody);
+        const signup_response = await axios.post(signupApi,reqBody);
         console.log(signup_response);
         
         if(signup_response.status === 201){
@@ -147,16 +153,22 @@ const Register = () => {
 
           return signup_response.data.userId;
           
-        }else{
+        }
+        else if(signup_response.status === 400)
+        {
           toast.dismiss(loadingToastId);
-          toast.error("Email Already Exists");
-
+          toast.error(signup_response.data.message);
+        }
+        else
+        {
+          toast.dismiss(loadingToastId);
+          toast.error("Cannot Signup, Please try again later");
         }
 
       }catch(error){
         toast.dismiss(loadingToastId);
         console.log(error);
-        toast.error(`Signup Failed, Tray again later`);
+        toast.error(error.response.data.message);
       }
 
     });

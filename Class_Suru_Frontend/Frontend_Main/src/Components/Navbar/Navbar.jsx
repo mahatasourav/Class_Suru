@@ -169,6 +169,7 @@ const Navbar = () => {
               <img
                 className={Style.profileImg}
                 src={!user?.avatar ? "/public/profile.png" : user?.avatar}
+                // src={userStatus ? user && user?.avatar === null ? "/profile.png" : user?.avatar: "/profile.png"}
                 alt="profile"
               />
             </div>

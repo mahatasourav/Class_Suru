@@ -89,10 +89,10 @@ const DashboardRightRecentExam = () => {
               <p>{exam.type}</p>
             </div>
           </div>
-          <div className={Style.RecentExamLowerMarks}>
+          {/* <div className={Style.RecentExamLowerMarks}>
             <h3>{exam.score} Marks</h3>
             <p>out of {exam.total_marks}</p>
-          </div>
+          </div> */}
         </Link>
       ))}
       

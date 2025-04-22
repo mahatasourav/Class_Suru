@@ -145,11 +145,11 @@ const HomeSec1 = () => {
         autoFill={true}
       >
         <div>{`>`}</div>
-        <a className={Style.UpdatesSectionText} href="#">
+        <a className={Style.UpdatesSectionText} href="https://wa.me/+918597005604" target="_blank">
           Admission is open , <b>Enroll Now</b>
         </a>
         <div>{`>`}</div>
-        <a className={Style.UpdatesSectionText} href="#">
+        <a className={Style.UpdatesSectionText} href="https://youtu.be/92pP4lV4ox0?si=N1gK3o-UIqbyfRzW" target="_blank">
           Watch out our latest video on Youtube
         </a>
       </Marquee>

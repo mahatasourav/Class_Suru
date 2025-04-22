@@ -100,7 +100,7 @@ const Footer = () => {
         <div className={Style.FooterUpperSec3}>
           <div className={Style.WhatsappQr}>
             <a
-              href="https://wa.me/8597005604"
+              href="https://wa.me/+918597005604"
               target="_blank"
               rel="noopener noreferrer"
               style={{

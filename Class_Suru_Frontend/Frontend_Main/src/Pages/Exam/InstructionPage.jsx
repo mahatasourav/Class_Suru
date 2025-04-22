@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useParams, Link, useNavigate, useLocation } from "react-router-dom";
 import Style from "../../css/Exam.module.css";
-import Breadcrumb from "./Breadcrumb";
+
 import instructionPageImg from "../../assets/instructionPageImg.png";
 import { Button } from "../../Components";
 import { useSelector } from "react-redux";
@@ -12,13 +12,13 @@ const InstructionPage = () => {
   const navigate = useNavigate();
   const location = useLocation(); // Get the current URL
 
-  const userStatus =useSelector((state) => state.user.status);
-   useEffect(() => {
-      if (!userStatus) {
-        localStorage.setItem("path", "/exam");
-        navigate("/login");
-      }
-    }, [userStatus]);
+  const userStatus = useSelector((state) => state.user.status);
+  useEffect(() => {
+    if (!userStatus) {
+      localStorage.setItem("path", "/exam");
+      navigate("/login");
+    }
+  }, [userStatus]);
 
   // Function to enter fullscreen mode
   function goFullScreen() {
@@ -72,27 +72,38 @@ const InstructionPage = () => {
             available for you to{" "}
             <span className={Style.spanbold}>complete the examination.</span>
           </li>
-          <li>Navigating & Answering a Question</li>
+
           <li>
-            The Test comprises of multiple choice questions (MCQ) with one or
-            more <span className={Style.spanbold}>correct answers</span>.
+            To deselect your chosen answer,{" "}
+            <span className={Style.spanbold}>
+              click on the clear response button.
+            </span>{" "}
           </li>
           <li>
             <span className={Style.spanbold}>
-              The answer will be saved automatically
+              The marking scheme will be displayed
             </span>{" "}
-            upon clicking on an option amongst the given choices of answer.
+            for each question on the top right corner of the test window.
           </li>
           <li>
-            Test will <span className={Style.spanbold}>auto </span>submit when
-            the Time is up.
+            <span className={Style.spanbold}> Do not refresh or close</span> the
+            browser tab/window during the exam.
           </li>
           <li>
-            To deselect your chosen answer, click on the clear response button.
-            The marking scheme will be displayed for each question on the top
-            right corner of the test window.
+            <span className={Style.spanbold}>Avoid switching tabs</span> , which
+            might lead to auto-submission or warnings.
           </li>
-          <li>Test will auto submit when the Time is up.</li>
+          <li>
+            You can{" "}
+            <span className={Style.spanbold}>manually submit the test</span>{" "}
+            anytime using the Submit Test button.
+          </li>
+          <li>
+            The test will{" "}
+            <span className={Style.spanbold}>
+              auto submit once the timer hits 00:00:00
+            </span>{" "}
+          </li>
         </ul>
         <div>
           <img
@@ -139,7 +150,7 @@ const InstructionPage = () => {
             I am ready for Exam
           </button> */}
           <Button
-          text="I am ready for Exam"
+            text="I am ready for Exam"
             onClick={handleStartExam}
             disabled={!isChecked}
           />

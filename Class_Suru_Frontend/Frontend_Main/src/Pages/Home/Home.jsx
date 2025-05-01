@@ -22,7 +22,7 @@ const Home = () => {
           name="title"
           content="Class Suru | Jhargram's Best Institution for IIT-JEE, NEET, WBJEE & Board Exams"
         />
-        <link rel="shortcut icon" href="/class_suru_favicon.webp" type="image/webp" />
+        
         <meta
           name="description"
           content="Class Suru is Jhargram's trusted educational platform offering expert-led coaching for IIT-JEE, NEET, WBJEE & Board Exams. Learn in Bengali & English with top mentors. Join Class Suru today!"

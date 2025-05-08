@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Button from "../../Components/Button/Button";
-import Style from "../../css/mainexampage.module.css";
-import { MdOutlineBookmarkAdd } from "react-icons/md";
+import Style from "../../css/mainAnsweredPage.module.css";
+
 import questionImage from "../../assets/questionImage.png";
 import profile from "../../assets/JEEMainIMG.png";
 import instruction1 from "../../assets/instruction1.png";
@@ -207,6 +207,7 @@ const MainAnsweredPage = () => {
             <div className={Style.examPageLeftHeaderTitle}>
               Question {currentQuestionIndex + 1}
             </div>
+            <div>🔍 Exam Review – [Exam Name or Subject Name]</div>
 
             <div className={Style.examPageLeftOptions}>
               <div className={Style.examPageLeftMarksDristibution}>
@@ -271,23 +272,6 @@ const MainAnsweredPage = () => {
                     answers[currentQuestionIndex]?.selected_option === 1 &&
                     Style.selected
                   }`}
-                  onClick={() => {
-                    setanswers((prevData) => {
-                      const newData = [...answers];
-                      const currentSelection =
-                        newData[currentQuestionIndex].selected_option;
-                      newData[currentQuestionIndex] = {
-                        ...newData[currentQuestionIndex],
-                        selected_option: currentSelection === 1 ? null : 1,
-                        status: 1,
-                      };
-                      // console.log(newData);
-                      localStorage.setItem("answers", JSON.stringify(newData));
-                      return newData;
-                    });
-
-                    // console.log(answers);
-                  }}
                 >
                   <div className={Style.optionCheckBox}>
                     <div className={Style.optionCheckBoxInner}></div>
@@ -304,22 +288,6 @@ const MainAnsweredPage = () => {
                     answers[currentQuestionIndex]?.selected_option === 2 &&
                     Style.selected
                   }`}
-                  onClick={() => {
-                    setanswers((prevData) => {
-                      const newData = [...prevData];
-                      const currentSelection =
-                        newData[currentQuestionIndex].selected_option;
-                      newData[currentQuestionIndex] = {
-                        ...newData[currentQuestionIndex],
-                        selected_option: currentSelection === 2 ? null : 2,
-                        status: 1,
-                      };
-                      // console.log(newData);
-                      localStorage.setItem("answers", JSON.stringify(newData));
-                      return newData;
-                    });
-                    // localStorage.setItem("answers", JSON.stringify(answers));
-                  }}
                 >
                   <div className={Style.optionCheckBox}>
                     <div className={Style.optionCheckBoxInner}></div>
@@ -336,22 +304,6 @@ const MainAnsweredPage = () => {
                     answers[currentQuestionIndex]?.selected_option === 3 &&
                     Style.selected
                   }`}
-                  onClick={() => {
-                    setanswers((prevData) => {
-                      const newData = [...prevData];
-                      const currentSelection =
-                        newData[currentQuestionIndex].selected_option;
-                      newData[currentQuestionIndex] = {
-                        ...newData[currentQuestionIndex],
-                        selected_option: currentSelection === 3 ? null : 3,
-                        status: 1,
-                      };
-                      // console.log(newData);
-                      localStorage.setItem("answers", JSON.stringify(newData));
-                      return newData;
-                    });
-                    // localStorage.setItem("answers", JSON.stringify(answers));
-                  }}
                 >
                   <div className={Style.optionCheckBox}>
                     <div className={Style.optionCheckBoxInner}></div>
@@ -368,22 +320,6 @@ const MainAnsweredPage = () => {
                     answers[currentQuestionIndex]?.selected_option === 4 &&
                     Style.selected
                   }`}
-                  onClick={() => {
-                    setanswers((prevData) => {
-                      const newData = [...prevData];
-                      const currentSelection =
-                        newData[currentQuestionIndex].selected_option;
-                      newData[currentQuestionIndex] = {
-                        ...newData[currentQuestionIndex],
-                        selected_option: currentSelection === 4 ? null : 4,
-                        status: 1,
-                      };
-                      // console.log(newData);
-                      localStorage.setItem("answers", JSON.stringify(newData));
-                      return newData;
-                    });
-                    // localStorage.setItem("answers", JSON.stringify(answers));
-                  }}
                 >
                   <div className={Style.optionCheckBox}>
                     <div className={Style.optionCheckBoxInner}></div>
@@ -640,7 +576,7 @@ const MainAnsweredPage = () => {
             </Link> */}
             <Button
               text="Go Back"
-              className={Style.submitButton}
+              className={Style.goBackButton}
               isLink={true}
               link="/user/dashboard/recent-exams"
             >

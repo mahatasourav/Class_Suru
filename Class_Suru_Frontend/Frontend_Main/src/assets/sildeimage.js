@@ -7,6 +7,7 @@ import DhirajMahataImg from "./HomeSec2Images/DhirajMahataImg.jpg";
 import DipanjanMahataImg from "./HomeSec2Images/DipanjanMahataImg.jpg";
 import JoydeepMahataImg from "./HomeSec2Images/JoydeepMahataImg.jpg";
 import SougataSinghaImg from "./HomeSec2Images/SougataSinghaImg.jpg";
+import SamirDebsinghaImg from "./HomeSec2Images/SamirDebsinghaImg.png";
 
 const imageData = [
   {
@@ -60,6 +61,13 @@ const imageData = [
     alt: "SougataSinghaImg",
     name: "Sougata Singh",
     college: "Kalyani Government Engineering College (KGEC)", // Add college
+  },
+  {
+    src: SamirDebsinghaImg,
+    alt: "SamirDebsinghaImg",
+    name: "Samir Debsingha",
+    college:
+      "Indian Institute of Engineering Science and Technology, Shibpur (IIEST)", // Add college
   },
 ];
 

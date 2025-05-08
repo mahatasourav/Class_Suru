@@ -5,38 +5,6 @@ import axios from "axios";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
-const RecentExamData = [
-  {
-    topic: "Units and Measurement",
-    subjects: "Physics",
-    Marks: 90,
-    date: "24/10/2025, 3:00pm",
-  },
-  {
-    topic: "Chemical Reactions",
-    subjects: "Chemistry",
-    Marks: 85,
-    date: "25/10/2025, 4:00pm",
-  },
-  {
-    topic: "Chemical Reactions",
-    subjects: "Chemistry",
-    Marks: 85,
-    date: "25/10/2025, 4:00pm",
-  },
-  {
-    topic: "Chemical Reactions",
-    subjects: "Chemistry",
-    Marks: 85,
-    date: "25/10/2025, 4:00pm",
-  },
-  {
-    topic: "Chemical Reactions",
-    subjects: "Chemistry",
-    Marks: 85,
-    date: "25/10/2025, 4:00pm",
-  },
-];
 
 const DashboardRightRecentExam = () => {
   

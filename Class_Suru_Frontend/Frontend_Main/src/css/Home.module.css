@@ -37,8 +37,8 @@
 .HomeMainLeftDown p span {
   color: rgb(88, 88, 214);
 }
-.HomeMainLeftDreamExam{
-  color: #D4AF37;
+.HomeMainLeftDreamExam {
+  color: #d4af37;
 }
 
 .HomeMainLeft p span {
@@ -130,10 +130,9 @@
   }
 } */
 
-
 /* Home Section-2 Started Here ---> */
 /* Section Gap Top */
-.HomeSec2div{
+.HomeSec2div {
   margin-top: 70px;
 }
 .HomeSec2div {
@@ -163,13 +162,13 @@
   position: relative;
 }
 
-.section2Heading{
+.section2Heading {
   font-size: 38px;
   font-family: tatsama;
   width: 100%;
   text-align: center;
 }
-.section2Heading span{
+.section2Heading span {
   font-size: 35px !important;
   font-family: tatsama;
   color: var(--primary_color);
@@ -179,7 +178,7 @@
   color: rgb(88, 88, 214);
 } */
 /* .SwipperDiv{ */
-  /* box-shadow: inset 0px 2px 0px rgba(0, 0, 0, 0.2), inset 0px 1px 0px rgba(0, 0, 0, 0.15); */
+/* box-shadow: inset 0px 2px 0px rgba(0, 0, 0, 0.2), inset 0px 1px 0px rgba(0, 0, 0, 0.15); */
 /* } */
 /* swiperStyles.css */
 .customSwiper {
@@ -214,11 +213,10 @@
   padding-bottom: 20px;
   transition: all 0.3s ease-in-out; /* Smooth hover effect */
 }
-.customSlide:hover{
+.customSlide:hover {
   transform: scale(1.05); /* Scale up on hover */
   /* box-shadow: 0px 6px 14px rgba(0, 0, 0, 0.15), 0px 4px 4px rgba(0, 0, 0, 0.15); */
 }
-
 
 .Swiperdiv img {
   width: 110px;
@@ -236,9 +234,9 @@
 }
 
 .profileImgContainer img {
-  width: 110px;
-  height: 152px;
-  height: auto;
+  width: 120px;
+  height: 120px;
+
   border-radius: 50%;
   /* border: 3.5px solid rgb(88, 86, 214); */
 }
@@ -306,7 +304,7 @@
 
 /* ====================== Home Page Section 3 ====================== */
 /* ========= section gap ========= */
-.HomeSec3{
+.HomeSec3 {
   /* border: 1px solid red; */
   width: 100%;
   margin-top: 0px;
@@ -326,20 +324,20 @@
   padding-bottom: 30px;
 }
 
-.headingSection3{
+.headingSection3 {
   /* font-weight: bold; */
   font-size: 38px;
   font-family: tatsama;
   color: #ffffff;
 }
-.headingSection3 span{
+.headingSection3 span {
   color: #ffffff;
   font-size: 38px;
   font-family: tatsama;
   font-weight: 500;
 }
 
-.HomeSec3div21{
+.HomeSec3div21 {
   /* border: 1px solid red; */
   display: flex;
   justify-content: space-evenly;
@@ -349,24 +347,23 @@
   gap: 20px;
 }
 
-.HomeSec3div211{
+.HomeSec3div211 {
   display: flex;
   justify-content: center;
   align-items: start;
   flex-direction: column;
   gap: 20px;
-  
 }
-.homeSection3Description{
+.homeSection3Description {
   color: var(--light_primary_color);
-  font-family: 'Noto Sans Bengali', serif;
+  font-family: "Noto Sans Bengali", serif;
   max-width: 600px;
   font-size: 20px;
   line-height: 150%;
   font-weight: 300;
 }
 
-.HomeSec3div21iframe{
+.HomeSec3div21iframe {
   width: 600px;
   height: 300px;
   border-radius: 10px;
@@ -406,7 +403,7 @@
   flex-direction: column;
   gap: 15px;
 } */
-.ExploreNowButton{
+.ExploreNowButton {
   background-color: white;
   color: var(--primary_color);
   font-weight: 600;
@@ -414,11 +411,11 @@
   /* width: 150px; */
   transition: all 0.2s ease-in-out;
 }
-.ExploreNowButton:hover{
+.ExploreNowButton:hover {
   /* background-color: white; */
   /* color: rgb(131, 130, 212);; */
   background-color: #fff;
-   transform: scale(1.05);
+  transform: scale(1.05);
 }
 
 /* .HomeSec3div21iframe {
@@ -472,16 +469,16 @@
 } */
 
 /* Home Section-4 Started Here ---> */
-.HomeSec4{
+.HomeSec4 {
   margin-top: 70px;
 }
-.headingSection4{
+.headingSection4 {
   /* border: 1px solid red; */
   text-align: center;
   font-family: tatsama;
   font-size: 38px;
 }
-.headingSection4 span{
+.headingSection4 span {
   color: var(--primary_color);
   font-size: 38px;
   font-family: tatsama;
@@ -564,13 +561,9 @@
   background-color: #0056b3;
 }
 
-
-
-
-
 /* Home Section-5 Started Here ---> */
 /* ====================== Section gap Section 5 ====================== */
-.HomeSec5{
+.HomeSec5 {
   margin-top: 70px;
 }
 .HomeSec5 {
@@ -594,7 +587,6 @@
   flex-direction: column;
   justify-content: space-evenly;
   gap: 15px;
-
 }
 
 .HomeSec5IMG {
@@ -613,16 +605,14 @@
   align-items: center;
   background-color: rgb(88, 86, 214);
   color: rgb(255, 255, 255);
-  
+
   border-radius: 10px 0px 0px 10px;
-  
 }
-.ServiceInfo p{
+.ServiceInfo p {
   padding: 12px 10px;
   font-size: 14px;
 }
-.service h2{
- 
+.service h2 {
   padding: 12px 10px 2px 5px;
 }
 .ServiceInfo div {
@@ -631,18 +621,18 @@
   justify-content: space-evenly;
   width: 80%;
   padding-left: 20px;
-  box-shadow: 5px 0px 20px 9px rgba(111, 108, 108, 0.1), /* Right shadow with more blur */
-    0px -5px 15px 2px rgba(111, 108, 108, 0.1), /* Top shadow (4px spread, more blur) */
-    0px 5px 15px 7px rgba(111, 108, 108, 0.1); /* Bottom shadow with more blur */
+  box-shadow: 5px 0px 20px 9px rgba(111, 108, 108, 0.1),
+    /* Right shadow with more blur */ 0px -5px 15px 2px rgba(111, 108, 108, 0.1),
+    /* Top shadow (4px spread, more blur) */ 0px 5px 15px 7px
+      rgba(111, 108, 108, 0.1); /* Bottom shadow with more blur */
   /* border-radius: 0px 10px 10px 0px; */
   /* border-right-top-radius: 10px; */
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
 }
 
-
 /* Home Section-6 Started Here ---> */
-.HomeSec6{
+.HomeSec6 {
   margin-top: 70px;
 }
 .HomeSec6 {
@@ -698,155 +688,155 @@
   overflow: hidden;
   transition: all 0.2s ease;
   margin-top: 10px;
-  font-family: 'Noto sans Bengali', sans-serif;
+  font-family: "Noto sans Bengali", sans-serif;
   font-size: 18px;
   font-weight: 500;
   /* display: none; */
 }
-.HomeSec6faqAns.active{
+.HomeSec6faqAns.active {
   padding: 15px;
   height: 100px;
   /* display: block; */
 }
 
 /* ========= Section 2 ( RESPONSIVE ) ========= */
-@media only screen and (max-width: 1500px)
-{
-  .HomeSec2div{
+@media only screen and (max-width: 1500px) {
+  .HomeSec2div {
     width: 100%;
     /* border: 1px solid red; */
   }
 }
 
-@media only screen and (max-width: 1200px)
-{
-  .section2Heading{
+@media only screen and (max-width: 1200px) {
+  .section2Heading {
     font-size: 28px;
   }
-  .section2Heading span{
+  .section2Heading span {
     font-size: 28px !important;
   }
 }
 
-@media only screen and (max-width: 1000px)
-{
-  .section2Heading{
+@media only screen and (max-width: 1000px) {
+  .section2Heading {
     font-size: 25px;
   }
-  .section2Heading span{
+  .section2Heading span {
     font-size: 25px !important;
   }
 }
 
-@media only screen and (max-width: 700px)
-{
-  .section2Heading{
+@media only screen and (max-width: 700px) {
+  .section2Heading {
     font-size: 35px;
   }
-  .section2Heading span{
+  .section2Heading span {
     font-size: 35px !important;
   }
 }
 
-@media only screen and (max-width: 500px)
-{
-  .section2Heading{
+@media only screen and (max-width: 500px) {
+  .section2Heading {
     font-size: 28px;
   }
-  .section2Heading span{
+  .section2Heading span {
     font-size: 28px !important;
   }
 }
 
-@media only screen and (max-width: 400px)
-{
-  .section2Heading{
+@media only screen and (max-width: 400px) {
+  .section2Heading {
     font-size: 25px;
   }
-  .section2Heading span{
+  .section2Heading span {
     font-size: 25px !important;
   }
-  .customSwiper{
+  .customSwiper {
     height: 420px !important;
   }
-  .customSlide{
+  .customSlide {
     height: 300px !important;
   }
 }
 /* ========= Section 3 ( RESPONSIVE ) ========= */
-@media only screen and (max-width: 1200px)
-{
-    .HomeSec3div21iframe{
-      width: 500px;
-      height: 300px;
-    }
-    .headingSection3 , .headingSection3 span, .headingSection4 , .headingSection4 span{
-      font-size: 30px;
-    }
-    .homeSection3Description{
-      font-size: 18px;
-    }
+@media only screen and (max-width: 1200px) {
+  .HomeSec3div21iframe {
+    width: 500px;
+    height: 300px;
+  }
+  .headingSection3,
+  .headingSection3 span,
+  .headingSection4,
+  .headingSection4 span {
+    font-size: 30px;
+  }
+  .homeSection3Description {
+    font-size: 18px;
+  }
 }
 
-@media only screen and (max-width: 1000px)
-{
-  .HomeSec3div21iframe{
+@media only screen and (max-width: 1000px) {
+  .HomeSec3div21iframe {
     width: 400px;
     height: 200px;
   }
 }
 
-@media only screen and (max-width: 700px)
-{
-  .HomeSec3div21{
+@media only screen and (max-width: 700px) {
+  .HomeSec3div21 {
     flex-direction: column-reverse;
     /* border: 1px solid red; */
     gap: 30px;
   }
-  .HomeSec3div21iframe{
+  .HomeSec3div21iframe {
     width: 100%;
     height: 300px;
   }
-  .HomeSec3div211{
+  .HomeSec3div211 {
     justify-content: center;
     align-items: center;
     text-align: center;
   }
-  .headingSection3 , .headingSection3 span , .headingSection4 , .headingSection4 span{
+  .headingSection3,
+  .headingSection3 span,
+  .headingSection4,
+  .headingSection4 span {
     font-size: 35px;
   }
-  .homeSection3Description{
+  .homeSection3Description {
     font-size: 22px;
   }
 }
-@media only screen and (max-width: 500px)
-{
-  .HomeSec3div21iframe{
+@media only screen and (max-width: 500px) {
+  .HomeSec3div21iframe {
     height: 250px;
   }
-  .headingSection3 , .headingSection3 span , .headingSection4 , .headingSection4 span{
+  .headingSection3,
+  .headingSection3 span,
+  .headingSection4,
+  .headingSection4 span {
     font-size: 28px;
   }
-  .homeSection3Description{
+  .homeSection3Description {
     font-size: 18px;
   }
 }
 
-@media only screen and (max-width: 400px)
-{
-  .headingSection3 , .headingSection3 span , .headingSection4 , .headingSection4 span{
+@media only screen and (max-width: 400px) {
+  .headingSection3,
+  .headingSection3 span,
+  .headingSection4,
+  .headingSection4 span {
     font-size: 25px;
   }
-  .homeSection3Description{
+  .homeSection3Description {
     font-size: 14px;
   }
-  .HomeSec3div21iframe{
+  .HomeSec3div21iframe {
     height: 190px;
   }
 }
 
 /* ========= Section 4 ( RESPONSIVE ) ========= */
-
 
 @media (max-width: 720px) {
   .examSection {
@@ -866,7 +856,7 @@
 }
 
 /* ========= Section 5 ( RESPONSIVE ) ========= */
-@media (max-width: 1224px) { 
+@media (max-width: 1224px) {
   .ServiceInfo div {
     width: 100%;
   }
@@ -875,7 +865,7 @@
   .HomeSec5IMG {
     display: none;
   }
-  .service{
+  .service {
     padding: 10px;
   }
   .HomeSec521 {
@@ -886,21 +876,20 @@
     display: flex;
     justify-content: center;
   }
- 
+
   .ServiceInfo h1 {
     height: auto;
   }
-  .ServiceInfo p{
+  .ServiceInfo p {
     padding: 5px 5px;
   }
 }
 
-@media only screen and (max-width: 700px)
-{
-  .ServiceInfo h1{
+@media only screen and (max-width: 700px) {
+  .ServiceInfo h1 {
     display: none;
   }
-  .service{
+  .service {
     border-radius: 10px;
   }
 }

@@ -41,14 +41,25 @@ import OTP from "../Pages/Admin/Login/OTP";
 import AdminHome from "../Pages/Admin/AdminHome/AdminHome";
 import Result from "../Pages/Exam/Result";
 import UserResult from "../Pages/Dashboard/UserResult";
+import MainAnsweredPage from "../Pages/Exam/MainAnsweredPage";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Layout />}>
       <Route path="/" element={<Home />} />
-      <Route path="/user/dashboard/profile" element={<DashboardRightProfile />} />
-      <Route path="/user/dashboard/recent-exams" element={<DashboardRightRecentExam />} />
-      <Route path="/user/dashboard/result/:result_id" element={<UserResult/>} />
+      <Route
+        path="/user/dashboard/profile"
+        element={<DashboardRightProfile />}
+      />
+      <Route
+        path="/user/dashboard/recent-exams"
+        element={<DashboardRightRecentExam />}
+      />
+      <Route
+        path="/user/dashboard/result/:result_id"
+        element={<UserResult />}
+      />
+      <Route path="/review/result/:result_id" element={<MainAnsweredPage />} />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
       <Route path="/questions" element={<Questions />} />
@@ -68,6 +79,7 @@ const router = createBrowserRouter(
         element={<MainExamPage />}
       />
       <Route path="/exam/result/:result_id" element={<Result />} />
+
       {/* Admin Routes */}
       {/* <Route path="/admin" element={<Admin />} /> */}
       <Route path="/admin/login" element={<AdminLogin />} />

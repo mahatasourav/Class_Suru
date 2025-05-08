@@ -67,5 +67,5 @@ export {
   getQuestionForExamApi,
   submitReslutApi,
   getResultByResultIdApi,
-  getUsersResultsApi
+  getUsersResultsApi,
 };

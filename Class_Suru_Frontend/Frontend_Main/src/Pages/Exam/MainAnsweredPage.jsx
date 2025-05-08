@@ -20,9 +20,63 @@ import { getQuestionForExamApi, submitReslutApi } from "../../apis";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import toast, { Toaster } from "react-hot-toast";
-import { FaLessThan } from "react-icons/fa";
+import { FaArrowAltCircleLeft, FaLessThan } from "react-icons/fa";
 
-const MainExamPage = () => {
+const AnsweredPageData = [
+  {
+    question_id: 82,
+    exam_id: 61,
+    question_text:
+      "<p>The number of non-empty equivalence relations on\nthe set {1,2,3} is :</p>",
+    correct_option: "3",
+    option_1: "<p>6</p>",
+    option_2: "<p>7</p>",
+    option_3: "<p>5</p>",
+    option_4: "<p>4</p>",
+    correct_marks: "4",
+    wrong_marks: "1",
+    question_img_url: "None",
+    question_ans: "None",
+    question_ans_img: "None",
+    user_answer: "1",
+  },
+  {
+    question_id: 83,
+    exam_id: 61,
+    question_text:
+      "<p>Let ƒ : R→R be a twice differentiable function\nsuch that ƒ(x + y) = ƒ(x) ƒ(y) for all x, y&nbsp;∈ R. If\nƒ'(0) = 4a and ƒ staisfies ƒ''(x) – 3a ƒ'(x) – ƒ(x) = 0,\na &gt; 0, then the area of the region\nR = {(x,y) | 0&nbsp;≤ y ≤ ƒ(ax), 0 ≤ x ≤ 2} is :</p>",
+    correct_option: "1",
+    option_1: "<p>e<sup>2</sup>\n– 1</p>",
+    option_2: "<p>e<sup>4</sup>\n + 1\n</p>",
+    option_3: "<p>e<sup>4</sup>\n– 1</p>",
+    option_4: "<p>e<sup>2</sup>\n + 1</p>",
+    correct_marks: "4",
+    wrong_marks: "-1",
+    question_img_url: "None",
+    question_ans: "None",
+    question_ans_img: "None",
+    user_answer: "1",
+  },
+  {
+    question_id: 84,
+    exam_id: 61,
+    question_text:
+      "<p>Let the triangle PQR be the image of the\ntriangle with vertices (1,3), (3,1) and (2, 4) in\nthe line x + 2y = 2. If the centroid of △PQR is\nthe point (α, β), then 15(α – β) is equal to :</p>",
+    correct_option: "4",
+    option_1: "<p>24</p>",
+    option_2: "<p>19</p>",
+    option_3: "<p>21</p>",
+    option_4: "<p>22</p>",
+    correct_marks: "4",
+    wrong_marks: "1",
+    question_img_url: "None",
+    question_ans: "None",
+    question_ans_img: "None",
+    user_answer: "1",
+  },
+];
+
+const MainAnsweredPage = () => {
   const navigate = useNavigate();
   const userData = useSelector((state) => state.user.userData);
   // console.log(userData);
@@ -45,31 +99,6 @@ const MainExamPage = () => {
   });
   // console.log(answers);
 
-  useEffect(() => {
-    const handleBeforeUnload = (event) => {
-      event.preventDefault();
-      event.returnValue = "Exam is running. Are you sure you want to leave?";
-    };
-
-    const handlePopState = () => {
-      alert(
-        "Cannot go back to the previous page because the exam is running. Press 'Submit Exam' to exit the exam window."
-      );
-      document.documentElement.requestFullscreen();
-      window.history.pushState(null, null, window.location.href);
-    };
-
-    window.addEventListener("beforeunload", handleBeforeUnload);
-    window.addEventListener("popstate", handlePopState);
-
-    // Push initial state to prevent back navigation
-    window.history.pushState(null, null, window.location.href);
-
-    return () => {
-      window.removeEventListener("beforeunload", handleBeforeUnload);
-      window.removeEventListener("popstate", handlePopState);
-    };
-  }, []);
   // Add at the top of your component (after useState etc.)
   const { examName, subjectName } = useParams();
 
@@ -120,26 +149,26 @@ const MainExamPage = () => {
 
   const getQuestionData = async () => {
     try {
-      const response = await axios.post(`${getQuestionForExamApi}/${examId}`);
+      // const response = await axios.post(`${getQuestionForExamApi}/${examId}`);
       // console.log("Question Data",response);
-      if (response.status == 200) {
-        setquestionData(response.data.data);
+      if (true) {
+        setquestionData(AnsweredPageData);
         // console.log("Response Data:",response.data.data);
-        const answersLocalStorage = JSON.parse(localStorage.getItem("answers"));
-        console.log("Parsed Answers", response.data.data);
+        // const answersLocalStorage = JSON.parse(localStorage.getItem("answers"));
+        // console.log("Parsed Answers", answersLocalStorage);
 
-        if (answersLocalStorage && answersLocalStorage.length > 0) {
-          setanswers(answersLocalStorage);
-        } else {
-          const data = response.data.data.map((_, index) => ({
-            question_id: index,
-            selected_option: null,
-            status: 0,
-            id: response.data.data[index].question_id,
-          }));
-          setanswers(data);
-          localStorage.setItem("answers", JSON.stringify(data));
-        }
+        // if (answersLocalStorage && answersLocalStorage.length > 0) {
+        //   setanswers(answersLocalStorage);
+        // } else {
+        //   const data = response.data.data.map((_, index) => ({
+        //     question_id: index,
+        //     selected_option: null,
+        //     status: 0,
+        //     id: response.data.data[index].question_id,
+        //   }));
+        //   setanswers(data);
+        //   localStorage.setItem("answers", JSON.stringify(data));
+        // }
       }
     } catch (error) {
       console.log(error);
@@ -150,95 +179,25 @@ const MainExamPage = () => {
     getQuestionData();
   }, []);
 
-  useEffect(() => {
-    const ensureFullScreen = () => {
-      if (!document.fullscreenElement) {
-        document.documentElement.requestFullscreen().catch((err) => {
-          console.error(
-            `Error attempting to enable full-screen mode: ${err.message}`
-          );
-        });
-      }
-    };
-
-    ensureFullScreen();
-
-    const fullScreenCheckInterval = setInterval(() => {
-      ensureFullScreen();
-    }, 50);
-
-    return () => clearInterval(fullScreenCheckInterval);
-  }, []);
-
   // useEffect(() => {
-  //   console.log("Ansers changed", answers);
-
-  //   localStorage.setItem("answers", JSON.stringify(answers));
-  // }, [answers]);
-
-  // useEffect(()=>{
-  //   localStorage.getItem("timeLeft") &&
-  //   setTimeout(() => {
-  //     const timeLeft = JSON.parse(localStorage.getItem("timeLeft"));
-  //     if (timeLeft == 0) {
-  //       console.log("Time is up!");
-  //       handleSubmitExam();
+  //   const ensureFullScreen = () => {
+  //     if (!document.fullscreenElement) {
+  //       document.documentElement.requestFullscreen().catch((err) => {
+  //         console.error(
+  //           `Error attempting to enable full-screen mode: ${err.message}`
+  //         );
+  //       });
   //     }
-  //   }
-  //   , 1000);
-  // },[])
+  //   };
 
-  useEffect(() => {
-    const timer = setInterval(() => {
-      // console.log("Timer running...");
-      const timeLeft = localStorage.getItem("timeLeft");
-      // console.log(timeLeft);
-      if (JSON.parse(timeLeft) === 1) {
-        // clearInterval(timer);
-        // alert("Time is up!");
-        localStorage.removeItem("timeLeft");
-        localStorage.removeItem(JSON.stringify(examId));
-        // localStorage.removeItem("exam");
-        handleSubmitExam(userData.id, answers);
-      }
-    }, 1000);
+  //   ensureFullScreen();
 
-    return () => clearInterval(timer);
-  }, [userData, answers]);
+  //   const fullScreenCheckInterval = setInterval(() => {
+  //     ensureFullScreen();
+  //   }, 50);
 
-  useEffect(() => {
-    const handleVisibilityChange = () => {
-      if (document.visibilityState === "hidden") {
-        // if (tabChangeCount > 3) {
-        // alert("Browser tabs changed. You are not allowed to give the exam.");
-        localStorage.setItem(
-          "examErrorMsg",
-          "Browser tabs changed. You are disqualified."
-        );
-        handleSubmitExam(userData.id, answers);
-        // }
-      }
-    };
-
-    document.addEventListener("visibilitychange", handleVisibilityChange);
-
-    return () => {
-      document.removeEventListener("visibilitychange", handleVisibilityChange);
-    };
-  }, [userData, answers]);
-
-  useEffect(() => {
-    const handleCopy = (event) => {
-      event.preventDefault();
-      alert("Question can't be copied.");
-    };
-
-    document.addEventListener("copy", handleCopy);
-
-    return () => {
-      document.removeEventListener("copy", handleCopy);
-    };
-  }, []);
+  //   return () => clearInterval(fullScreenCheckInterval);
+  // }, []);
 
   return (
     <>
@@ -459,7 +418,7 @@ const MainExamPage = () => {
                 <HiChevronDoubleLeft />
               </Button>
             </div>
-            <div className={Style.controlButton}>
+            {/* <div className={Style.controlButton}>
               <Button
                 text="Save & Next"
                 className={`${Style.save} ${Style.button_exam}`}
@@ -532,7 +491,7 @@ const MainExamPage = () => {
                   });
                 }}
               />
-            </div>
+            </div> */}
             <div className={Style.controlButton}>
               <Button
                 text="Next"
@@ -680,19 +639,14 @@ const MainExamPage = () => {
               <Button text="Submit Exam" className={Style.submitButton} />
             </Link> */}
             <Button
-              text="Submit Exam"
+              text="Go Back"
               className={Style.submitButton}
-              onClick={async () => {
-                const confirmLogout = window.confirm(
-                  "Do you really want to Submit ?"
-                );
-                // pop.alert("Do you really want to Submit?");
-                if (confirmLogout) {
-                  await handleSubmitExam(userData.id, answers);
-                  // navigate("/exam/result");
-                }
-              }}
-            />
+              isLink={true}
+              link="/user/dashboard/recent-exams"
+            >
+              {" "}
+              <FaArrowAltCircleLeft />
+            </Button>
           </div>
           <div
             className={Style.sidebarButton}
@@ -707,4 +661,4 @@ const MainExamPage = () => {
   );
 };
 
-export default MainExamPage;
+export default MainAnsweredPage;

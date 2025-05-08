@@ -1,28 +1,26 @@
-import React,{useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import Style from "../../css/result.module.css";
-import { GiSandsOfTime } from "react-icons/gi";
 import { HiQuestionMarkCircle } from "react-icons/hi2";
-import { FaCheckCircle } from "react-icons/fa";
-import { RxCrossCircled } from "react-icons/rx";
-import { PiExclamationMarkFill } from "react-icons/pi";
+import { FaArrowAltCircleLeft, FaCheckCircle } from "react-icons/fa";
 import Button from "../../Components/Button/Button";
 import { useParams } from "react-router-dom";
 import { TbAlertSquareFilled } from "react-icons/tb";
 import axios from "axios";
 import { getResultByResultIdApi } from "../../apis";
 import { IoMdCloseCircle } from "react-icons/io";
+import { RiFileList3Fill } from "react-icons/ri";
 
 const UserResult = () => {
   const [resultData, setResultData] = useState(null);
-  const {result_id} = useParams();
+  const { result_id } = useParams();
   const examErrorMsg = localStorage.getItem("examErrorMsg");
 
-  if(examErrorMsg){
+  if (examErrorMsg) {
     alert(examErrorMsg);
     localStorage.removeItem("examErrorMsg");
   }
   // console.log(result_id);
-  
+
   // React.useEffect(() => {
   //   window.history.pushState(null, null, window.location.href);
   //   const handlePopState = (event) => {
@@ -38,16 +36,12 @@ const UserResult = () => {
   const getResult = async () => {
     try {
       const result = await axios.get(`${getResultByResultIdApi}/${result_id}`);
-      if(result.status === 200){
+      if (result.status === 200) {
         setResultData(result.data.result);
         console.log(result.data.result);
-        
       }
-      
-    } catch (error) {
-      
-    }
-  }
+    } catch (error) {}
+  };
 
   // Function to enter fullscreen mode
   // function exitFullScreen() {
@@ -60,19 +54,29 @@ const UserResult = () => {
 
   useEffect(() => {
     // exitFullScreen();
-    getResult()
+    getResult();
   }, []);
   return (
     <div className={`${Style.Result} ${Style.resultContainer}`}>
       {/* UpperResult */}
-        <div className={Style.UpperResult}>
-          <div className={Style.UpperResultDiv1}>
-            <h3>SCORE</h3>
-            <h1 style={{  fontSize: "60px", textAlign: "center" }}
-            className={`${Style.score} ${resultData?.accuracy < 40 ?Style.low: "" }${resultData?.accuracy > 41 && resultData?.accuracy < 60 ? Style.medium: "" }${resultData?.accuracy > 61 ? Style.good: "" }`}
-            
-            >{resultData?.score}</h1>
-          <p>OUT OF <b> {resultData?.total_marks}</b></p>
+      <div className={Style.UpperResult}>
+        <div className={Style.UpperResultDiv1}>
+          <h3>SCORE</h3>
+          <h1
+            style={{ fontSize: "60px", textAlign: "center" }}
+            className={`${Style.score} ${
+              resultData?.accuracy < 40 ? Style.low : ""
+            }${
+              resultData?.accuracy > 41 && resultData?.accuracy < 60
+                ? Style.medium
+                : ""
+            }${resultData?.accuracy > 61 ? Style.good : ""}`}
+          >
+            {resultData?.score}
+          </h1>
+          <p>
+            OUT OF <b> {resultData?.total_marks}</b>
+          </p>
         </div>
 
         <div className={Style.UpperResultDiv2}>
@@ -86,11 +90,21 @@ const UserResult = () => {
           {/* <span>10 minutes , 8 seconds</span> */}
         </div>
         <div className={Style.rangeContainer}>
-          <div className={`${Style.range} ${resultData?.accuracy < 40 ?Style.low: "" }${resultData?.accuracy > 41 && resultData?.accuracy < 60 ? Style.medium: "" }${resultData?.accuracy > 61 ? Style.good: "" }`} style={{width: `${resultData?.accuracy}%` }}>
-            
-          </div>
+          <div
+            className={`${Style.range} ${
+              resultData?.accuracy < 40 ? Style.low : ""
+            }${
+              resultData?.accuracy > 41 && resultData?.accuracy < 60
+                ? Style.medium
+                : ""
+            }${resultData?.accuracy > 61 ? Style.good : ""}`}
+            style={{ width: `${resultData?.accuracy}%` }}
+          ></div>
         </div>
-        <div>{resultData?.accuracy ? resultData.accuracy.toFixed(2) : "0.00"} % Accuracy</div>
+        <div>
+          {resultData?.accuracy ? resultData.accuracy.toFixed(2) : "0.00"} %
+          Accuracy
+        </div>
       </div>
       {/* MidResult */}
       <div className={Style.MidResult}>
@@ -101,7 +115,7 @@ const UserResult = () => {
                 color: "black",
                 backgroundColor: "white",
                 fontSize: "25px",
-                marginTop: "2px"
+                marginTop: "2px",
               }}
             />
             Total Questions
@@ -149,8 +163,23 @@ const UserResult = () => {
         </div>
       </div>
       {/* LowerResult */}
-      <div>
-        <Button text="Go Back" isLink={true} link="/user/dashboard/recent-exams" />
+      <div className={Style.ButtonContainer}>
+        <Button
+          text="Go Back"
+          isLink={true}
+          link="/user/dashboard/recent-exams"
+          className={Style.Button}
+        >
+          <FaArrowAltCircleLeft />
+        </Button>
+        <Button
+          text="Review"
+          isLink={true}
+          link={`/review/result/${result_id}`}
+          className={Style.Button}
+        >
+          <RiFileList3Fill />
+        </Button>
       </div>
     </div>
   );

@@ -11,11 +11,7 @@ const HomeSec6 = () => {
       answer:
         "We offer specially designed courses for Board Exams, JEE Main, JEE Advanced & NEET UG. প্রত্যেকটা কোর্সেই রয়েছে live classroom sessions, doubt-solving support আর regular mock tests!",
     },
-    {
-      question: "⏰ ক্লাস মিস হলে কী হবে?",
-      answer:
-        "No worries! রেকর্ডেড ক্লাস available থাকে, সাথে doubt-clearing assistance ও পাওয়া যায়।",
-    },
+
     {
       question: "📖 ক্লাসের সিলেবাস কেমন?",
       answer:

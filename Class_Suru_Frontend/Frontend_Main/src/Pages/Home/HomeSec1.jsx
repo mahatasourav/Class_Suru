@@ -36,13 +36,14 @@ const HomeSec1 = () => {
       <div className={Style.HomeMain}>
         <div className={Style.HomeMainLeft}>
           <div className={Style.HomeMainLeftHeading}>
-            <b>IIT-JEE , NEET, WBJEE</b> থেকে <b>Board</b> সবার জন্য
-            সঠিক প্রস্তুতি, সেরা সাফল্য!
+            <b>IIT-JEE , NEET, WBJEE</b> থেকে <b>Board</b> সবার জন্য সঠিক
+            প্রস্তুতি, সেরা সাফল্য!
           </div>
           <div className={Style.HomeMainLeftSubHeading}>
-            শুধু <b>স্বপ্ন দেখানো</b> নয়, <b>স্বপ্ন পূরণও</b> করাই আমরা। সঠিক
-            দিকনির্দেশনা আর সাহায্যের মাধ্যমে আমরা পাশে থাকি সব সময়। চলো,
-            একসাথে এগিয়ে চলি তোমার ভবিষ্যতের দিকে, যেখানে আছে সাফল্যের নতুন পথ!
+            Class suru <b> শুধু স্বপ্ন দেখায় না</b> নয়, <b>স্বপ্ন পূরণও</b>{" "}
+            করে। সঠিক দিকনির্দেশনা আর সাহায্যের মাধ্যমে আমরা পাশে থাকি সব সময়।
+            চলো, একসাথে এগিয়ে চলি তোমার ভবিষ্যতের দিকে, যেখানে আছে সাফল্যের
+            নতুন পথ!
           </div>
           {/* <div className={Style2.HomeMainLeftDown}>
             <img
@@ -55,7 +56,12 @@ const HomeSec1 = () => {
             </p>
           </div> */}
           <div className={Style.buttonSection}>
-            <Button text="Get Started" className={Style.button} isLink={true} link="/exam" />
+            <Button
+              text="Get Started"
+              className={Style.button}
+              isLink={true}
+              link="/exam"
+            />
             <Button
               text="Download App"
               isLink={true}
@@ -145,11 +151,19 @@ const HomeSec1 = () => {
         autoFill={true}
       >
         <div>{`>`}</div>
-        <a className={Style.UpdatesSectionText} href="https://wa.me/+918597005604" target="_blank">
+        <a
+          className={Style.UpdatesSectionText}
+          href="https://wa.me/+918597005604"
+          target="_blank"
+        >
           Admission is open , <b>Enroll Now</b>
         </a>
         <div>{`>`}</div>
-        <a className={Style.UpdatesSectionText} href="https://youtu.be/92pP4lV4ox0?si=N1gK3o-UIqbyfRzW" target="_blank">
+        <a
+          className={Style.UpdatesSectionText}
+          href="https://youtu.be/92pP4lV4ox0?si=N1gK3o-UIqbyfRzW"
+          target="_blank"
+        >
           Watch out our latest video on Youtube
         </a>
       </Marquee>

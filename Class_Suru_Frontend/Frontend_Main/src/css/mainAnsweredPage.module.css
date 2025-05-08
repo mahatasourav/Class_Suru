@@ -43,7 +43,7 @@
   font-size: 16px;
   margin-left: 10px;
   font-weight: 600;
-  width: 100%;
+
   overflow: hidden;
   text-overflow: ellipsis;
   /* white-space: nowrap; */
@@ -182,7 +182,8 @@
 .option:hover {
   /* transform: translateY(-2px) scale(1.01); */
   /* background-color: #d4d4d4; */
-  border: 2px solid var(--primary_color);
+  /* border: 2px solid var(--primary_color); */
+  cursor: default;
 }
 
 .optionCheckBox {
@@ -196,7 +197,7 @@
 }
 
 .option:hover .optionCheckBox {
-  border: 2px solid var(--primary_color);
+  /* border: 2px solid var(--primary_color); */
 }
 
 .option.selected {
@@ -493,8 +494,12 @@
   /* border: 1px solid red; */
 }
 
-.submitButton {
+.goBackButton {
   width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
 }
 
 .sidebarButton {

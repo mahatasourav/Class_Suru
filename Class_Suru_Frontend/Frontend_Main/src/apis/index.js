@@ -1,6 +1,6 @@
-const basApi = "https://class-suru-beta.vercel.app";
+// const basApi = "https://class-suru-beta.vercel.app";
 
-// const basApi = "http://localhost:5000";
+const basApi = "http://localhost:5000";
 
 /**
  * @description API for signup
@@ -44,6 +44,7 @@ const deleteImageApi = `${basApi}/api/auth/delete-image`;
 const submitReslutApi = `${basApi}/api/auth/exam/submit`;
 const getResultByResultIdApi = `${basApi}/api/auth/exam/user/result`;
 const getUsersResultsApi = `${basApi}/api/auth/result/user`;
+const getUsersResultsReviewApi = `${basApi}/api/auth/result/review`;
 
 export {
   signupApi,
@@ -68,4 +69,5 @@ export {
   submitReslutApi,
   getResultByResultIdApi,
   getUsersResultsApi,
+  getUsersResultsReviewApi,
 };

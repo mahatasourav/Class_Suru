@@ -56,10 +56,13 @@ const router = createBrowserRouter(
         element={<DashboardRightRecentExam />}
       />
       <Route
-        path="/user/dashboard/result/:result_id"
+        path="/user/dashboard/result/:resultId/:examId"
         element={<UserResult />}
       />
-      <Route path="/review/result/:result_id" element={<MainAnsweredPage />} />
+      <Route
+        path="/review/result/:resultId/:examId"
+        element={<MainAnsweredPage />}
+      />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
       <Route path="/questions" element={<Questions />} />

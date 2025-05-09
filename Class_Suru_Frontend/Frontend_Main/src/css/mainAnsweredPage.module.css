@@ -218,6 +218,24 @@
   border-radius: 50%;
   transform: scale(0.7);
 }
+.option.wrong {
+  /* background-color: var(--primary_color); */
+  /* color: white; */
+  border: 2px solid #e93909;
+}
+
+.option.wrong .optionCheckBox {
+  /* background-color: #fff; */
+  border: 2px solid #e93909;
+}
+
+.option.wrong .optionCheckBoxInner {
+  background-color: #e93909;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  transform: scale(0.7);
+}
 
 .examPageControllSection {
   width: 100%;

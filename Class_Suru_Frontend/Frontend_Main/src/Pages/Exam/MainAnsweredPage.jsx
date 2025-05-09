@@ -16,65 +16,15 @@ import { useNavigate, useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import parse from "html-react-parser";
-import { getQuestionForExamApi, submitReslutApi } from "../../apis";
+import {
+  getQuestionForExamApi,
+  getUsersResultsReviewApi,
+  submitReslutApi,
+} from "../../apis";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import toast, { Toaster } from "react-hot-toast";
 import { FaArrowAltCircleLeft, FaLessThan } from "react-icons/fa";
-
-const AnsweredPageData = [
-  {
-    question_id: 82,
-    exam_id: 61,
-    question_text:
-      "<p>The number of non-empty equivalence relations on\nthe set {1,2,3} is :</p>",
-    correct_option: "3",
-    option_1: "<p>6</p>",
-    option_2: "<p>7</p>",
-    option_3: "<p>5</p>",
-    option_4: "<p>4</p>",
-    correct_marks: "4",
-    wrong_marks: "1",
-    question_img_url: "None",
-    question_ans: "None",
-    question_ans_img: "None",
-    user_answer: "1",
-  },
-  {
-    question_id: 83,
-    exam_id: 61,
-    question_text:
-      "<p>Let ƒ : R→R be a twice differentiable function\nsuch that ƒ(x + y) = ƒ(x) ƒ(y) for all x, y&nbsp;∈ R. If\nƒ'(0) = 4a and ƒ staisfies ƒ''(x) – 3a ƒ'(x) – ƒ(x) = 0,\na &gt; 0, then the area of the region\nR = {(x,y) | 0&nbsp;≤ y ≤ ƒ(ax), 0 ≤ x ≤ 2} is :</p>",
-    correct_option: "1",
-    option_1: "<p>e<sup>2</sup>\n– 1</p>",
-    option_2: "<p>e<sup>4</sup>\n + 1\n</p>",
-    option_3: "<p>e<sup>4</sup>\n– 1</p>",
-    option_4: "<p>e<sup>2</sup>\n + 1</p>",
-    correct_marks: "4",
-    wrong_marks: "-1",
-    question_img_url: "None",
-    question_ans: "None",
-    question_ans_img: "None",
-    user_answer: "1",
-  },
-  {
-    question_id: 84,
-    exam_id: 61,
-    question_text:
-      "<p>Let the triangle PQR be the image of the\ntriangle with vertices (1,3), (3,1) and (2, 4) in\nthe line x + 2y = 2. If the centroid of △PQR is\nthe point (α, β), then 15(α – β) is equal to :</p>",
-    correct_option: "4",
-    option_1: "<p>24</p>",
-    option_2: "<p>19</p>",
-    option_3: "<p>21</p>",
-    option_4: "<p>22</p>",
-    correct_marks: "4",
-    wrong_marks: "1",
-    question_img_url: "None",
-    question_ans: "None",
-    question_ans_img: "None",
-    user_answer: "1",
-  },
-];
 
 const MainAnsweredPage = () => {
   const navigate = useNavigate();
@@ -84,8 +34,8 @@ const MainAnsweredPage = () => {
   const [questionData, setquestionData] = useState(null);
   const [currentQuestionIndex, setcurrentQuestionIndex] = useState(0);
   const [sidebar, setSidebar] = useState(false);
-  const { examId } = useParams();
-
+  const { resultId, examId } = useParams();
+  const [result, setresult] = useState([]);
   const [answers, setanswers] = useState([]);
 
   const token = localStorage.getItem("token");
@@ -149,32 +99,27 @@ const MainAnsweredPage = () => {
 
   const getQuestionData = async () => {
     try {
-      // const response = await axios.post(`${getQuestionForExamApi}/${examId}`);
-      // console.log("Question Data",response);
-      if (true) {
-        setquestionData(AnsweredPageData);
-        // console.log("Response Data:",response.data.data);
-        // const answersLocalStorage = JSON.parse(localStorage.getItem("answers"));
-        // console.log("Parsed Answers", answersLocalStorage);
-
-        // if (answersLocalStorage && answersLocalStorage.length > 0) {
-        //   setanswers(answersLocalStorage);
-        // } else {
-        //   const data = response.data.data.map((_, index) => ({
-        //     question_id: index,
-        //     selected_option: null,
-        //     status: 0,
-        //     id: response.data.data[index].question_id,
-        //   }));
-        //   setanswers(data);
-        //   localStorage.setItem("answers", JSON.stringify(data));
-        // }
+      const response = await axios.post(`${getQuestionForExamApi}/${examId}`);
+      console.log("Question Data", response);
+      if (response.status == 200) {
+        setquestionData(response.data.data);
+        const reviewResult = await axios.get(
+          `${getUsersResultsReviewApi}/${resultId}`
+        );
+        if (reviewResult.status === 200) {
+          // setresult(reviewResult.response.data.data);
+          console.log("result", reviewResult);
+          if (reviewResult.data.success) {
+            setresult(reviewResult.data.data);
+          }
+        }
       }
     } catch (error) {
       console.log(error);
       // toast.error("Something went wrong");
     }
   };
+
   useEffect(() => {
     getQuestionData();
   }, []);
@@ -268,8 +213,7 @@ const MainAnsweredPage = () => {
                 {/* options 1 */}
                 <div
                   className={`${Style.option} ${
-                    answers.length > 0 &&
-                    answers[currentQuestionIndex]?.selected_option === 1 &&
+                    questionData[currentQuestionIndex].correct_option === "1" &&
                     Style.selected
                   }`}
                 >
@@ -284,8 +228,10 @@ const MainAnsweredPage = () => {
                 {/* options 2 */}
                 <div
                   className={`${Style.option} ${
-                    answers.length > 0 &&
-                    answers[currentQuestionIndex]?.selected_option === 2 &&
+                    result[currentQuestionIndex]?.user_answer === 2 &&
+                    Style.wrong
+                  } ${
+                    questionData[currentQuestionIndex].correct_option === "2" &&
                     Style.selected
                   }`}
                 >
@@ -300,8 +246,10 @@ const MainAnsweredPage = () => {
                 {/* options 3 */}
                 <div
                   className={`${Style.option} ${
-                    answers.length > 0 &&
-                    answers[currentQuestionIndex]?.selected_option === 3 &&
+                    result[currentQuestionIndex]?.user_answer === 3 &&
+                    Style.wrong
+                  } ${
+                    questionData[currentQuestionIndex].correct_option === "3" &&
                     Style.selected
                   }`}
                 >
@@ -316,8 +264,10 @@ const MainAnsweredPage = () => {
                 {/* options 4 */}
                 <div
                   className={`${Style.option} ${
-                    answers.length > 0 &&
-                    answers[currentQuestionIndex]?.selected_option === 4 &&
+                    result[currentQuestionIndex]?.user_answer === 4 &&
+                    Style.wrong
+                  }  ${
+                    questionData[currentQuestionIndex].correct_option === "4" &&
                     Style.selected
                   }`}
                 >

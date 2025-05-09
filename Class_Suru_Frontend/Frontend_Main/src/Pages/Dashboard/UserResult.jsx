@@ -12,7 +12,7 @@ import { RiFileList3Fill } from "react-icons/ri";
 
 const UserResult = () => {
   const [resultData, setResultData] = useState(null);
-  const { result_id } = useParams();
+  const { resultId, examId } = useParams();
   const examErrorMsg = localStorage.getItem("examErrorMsg");
 
   if (examErrorMsg) {
@@ -35,7 +35,7 @@ const UserResult = () => {
 
   const getResult = async () => {
     try {
-      const result = await axios.get(`${getResultByResultIdApi}/${result_id}`);
+      const result = await axios.get(`${getResultByResultIdApi}/${resultId}`);
       if (result.status === 200) {
         setResultData(result.data.result);
         console.log(result.data.result);
@@ -175,7 +175,7 @@ const UserResult = () => {
         <Button
           text="Review"
           isLink={true}
-          link={`/review/result/${result_id}`}
+          link={`/review/result/${resultId}/${examId}`}
           className={Style.Button}
         >
           <RiFileList3Fill />

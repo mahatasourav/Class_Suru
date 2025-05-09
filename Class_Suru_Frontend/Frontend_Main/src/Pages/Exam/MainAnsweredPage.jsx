@@ -36,7 +36,6 @@ const MainAnsweredPage = () => {
   const [sidebar, setSidebar] = useState(false);
   const { resultId, examId } = useParams();
   const [result, setresult] = useState([]);
-  const [answers, setanswers] = useState([]);
 
   const token = localStorage.getItem("token");
 
@@ -213,8 +212,22 @@ const MainAnsweredPage = () => {
                 {/* options 1 */}
                 <div
                   className={`${Style.option} ${
-                    questionData[currentQuestionIndex].correct_option === "1" &&
-                    Style.selected
+                    questionData[currentQuestionIndex].correct_option === "1"
+                      ? Style.selected
+                      : result &&
+                        result.find(
+                          (e) =>
+                            e.question_id ===
+                            questionData[currentQuestionIndex].question_id
+                        )
+                      ? result.find(
+                          (e) =>
+                            e.question_id ===
+                            questionData[currentQuestionIndex].question_id
+                        ).user_answer === 1
+                        ? Style.wrong
+                        : ""
+                      : ""
                   }`}
                 >
                   <div className={Style.optionCheckBox}>
@@ -228,11 +241,22 @@ const MainAnsweredPage = () => {
                 {/* options 2 */}
                 <div
                   className={`${Style.option} ${
-                    result[currentQuestionIndex]?.user_answer === 2 &&
-                    Style.wrong
-                  } ${
-                    questionData[currentQuestionIndex].correct_option === "2" &&
-                    Style.selected
+                    questionData[currentQuestionIndex].correct_option === "2"
+                      ? Style.selected
+                      : result &&
+                        result.find(
+                          (e) =>
+                            e.question_id ===
+                            questionData[currentQuestionIndex].question_id
+                        )
+                      ? result.find(
+                          (e) =>
+                            e.question_id ===
+                            questionData[currentQuestionIndex].question_id
+                        ).user_answer === 2
+                        ? Style.wrong
+                        : ""
+                      : ""
                   }`}
                 >
                   <div className={Style.optionCheckBox}>
@@ -246,11 +270,22 @@ const MainAnsweredPage = () => {
                 {/* options 3 */}
                 <div
                   className={`${Style.option} ${
-                    result[currentQuestionIndex]?.user_answer === 3 &&
-                    Style.wrong
-                  } ${
-                    questionData[currentQuestionIndex].correct_option === "3" &&
-                    Style.selected
+                    questionData[currentQuestionIndex].correct_option === "3"
+                      ? Style.selected
+                      : result &&
+                        result.find(
+                          (e) =>
+                            e.question_id ===
+                            questionData[currentQuestionIndex].question_id
+                        )
+                      ? result.find(
+                          (e) =>
+                            e.question_id ===
+                            questionData[currentQuestionIndex].question_id
+                        ).user_answer === 3
+                        ? Style.wrong
+                        : ""
+                      : ""
                   }`}
                 >
                   <div className={Style.optionCheckBox}>
@@ -264,11 +299,22 @@ const MainAnsweredPage = () => {
                 {/* options 4 */}
                 <div
                   className={`${Style.option} ${
-                    result[currentQuestionIndex]?.user_answer === 4 &&
-                    Style.wrong
-                  }  ${
-                    questionData[currentQuestionIndex].correct_option === "4" &&
-                    Style.selected
+                    questionData[currentQuestionIndex].correct_option === "4"
+                      ? Style.selected
+                      : result &&
+                        result.find(
+                          (e) =>
+                            e.question_id ===
+                            questionData[currentQuestionIndex].question_id
+                        )
+                      ? result.find(
+                          (e) =>
+                            e.question_id ===
+                            questionData[currentQuestionIndex].question_id
+                        ).user_answer === 4
+                        ? Style.wrong
+                        : ""
+                      : ""
                   }`}
                 >
                   <div className={Style.optionCheckBox}>
@@ -278,6 +324,24 @@ const MainAnsweredPage = () => {
                     {questionData &&
                       parse(questionData[currentQuestionIndex]?.option_4)}
                   </div>
+                </div>
+              </div>
+              <div className={Style.examPageAnswer}>
+                <h3>Answer:</h3>
+                <div className={Style.examPageContentQuestion}>
+                  {questionData &&
+                    questionData[currentQuestionIndex]?.question_ans &&
+                    parse(questionData[currentQuestionIndex].question_ans)}
+                </div>
+                <div className={Style.examPageContentImg}>
+                  <img
+                    className={Style.examImg}
+                    src={
+                      questionData &&
+                      questionData[currentQuestionIndex]?.question_ans_img
+                    }
+                    alt=""
+                  />
                 </div>
               </div>
             </div>
@@ -392,17 +456,6 @@ const MainAnsweredPage = () => {
                   } else {
                     setcurrentQuestionIndex(currentQuestionIndex + 1);
                   }
-                  if (answers[currentQuestionIndex + 1].status === 0) {
-                    setanswers((prevData) => {
-                      const newData = [...answers];
-                      newData[currentQuestionIndex + 1] = {
-                        ...newData[currentQuestionIndex + 1],
-                        status: 1,
-                      };
-                      localStorage.setItem("answers", JSON.stringify(newData));
-                      return newData;
-                    });
-                  }
                 }}
               >
                 <HiChevronDoubleRight />
@@ -434,7 +487,7 @@ const MainAnsweredPage = () => {
                   alt="instruction1 icon"
                 />
               </div>
-              <div className={Style.indicationText}>Not Visited</div>
+              <div className={Style.indicationText}>Not Answered</div>
             </div>
             <div className={Style.examIndication}>
               <div className={Style.indicationIcon}>
@@ -444,7 +497,7 @@ const MainAnsweredPage = () => {
                   alt="instruction1 icon"
                 />
               </div>
-              <div className={Style.indicationText}>Not Answered</div>
+              <div className={Style.indicationText}>Wrong Answered</div>
             </div>
             <div className={Style.examIndication}>
               <div className={Style.indicationIcon}>
@@ -454,29 +507,7 @@ const MainAnsweredPage = () => {
                   alt="instruction1 icon"
                 />
               </div>
-              <div className={Style.indicationText}>Answered</div>
-            </div>
-            <div className={Style.examIndication}>
-              <div className={Style.indicationIcon}>
-                <img
-                  className={Style.indication}
-                  src={instruction4}
-                  alt="instruction1 icon"
-                />
-              </div>
-              <div className={Style.indicationText}>Marked for Review</div>
-            </div>
-            <div className={Style.examIndication}>
-              <div className={Style.indicationIcon}>
-                <img
-                  className={Style.indication}
-                  src={instruction5}
-                  alt="instruction1 icon"
-                />
-              </div>
-              <div className={Style.indicationText}>
-                Answered & Marked for Review (will be considered for evaluation)
-              </div>
+              <div className={Style.indicationText}>Right Answered</div>
             </div>
           </div>
           <div className={Style.examQuestionListSection}>
@@ -485,32 +516,23 @@ const MainAnsweredPage = () => {
                 return (
                   <div
                     className={`${Style.examQuestion} ${
-                      answers[index]?.status === 0 && Style.notVisited
-                    } ${answers[index]?.status === 1 && Style.notAnswered}
-                  ${answers[index]?.status === 2 && Style.answered}
-                  ${answers[index]?.status === 3 && Style.markedForReview}
-                  ${
-                    answers[index]?.status === 4 &&
-                    Style.answeredAndMarkedForReview
-                  }
+                      result.find(
+                        (e) => e.question_id === questionData[index].question_id
+                      )
+                        ? Number(question.correct_option) ===
+                          result.find(
+                            (e) =>
+                              e.question_id === questionData[index].question_id
+                          ).user_answer
+                          ? Style.answered
+                          : Style.notAnswered
+                        : Style.notVisited
+                    }
+                    
               `}
                     key={index}
                     onClick={() => {
                       setcurrentQuestionIndex(index);
-                      if (answers[index].status === 0) {
-                        setanswers((prevData) => {
-                          const newData = [...answers];
-                          newData[index] = {
-                            ...newData[index],
-                            status: 1,
-                          };
-                          localStorage.setItem(
-                            "answers",
-                            JSON.stringify(newData)
-                          );
-                          return newData;
-                        });
-                      }
                     }}
                   >
                     <div className={`${Style.examQuestionText} `}>

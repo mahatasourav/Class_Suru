@@ -12,7 +12,8 @@ import { RiFileList3Fill } from "react-icons/ri";
 
 const UserResult = () => {
   const [resultData, setResultData] = useState(null);
-  const { resultId, examId } = useParams();
+  const { resultId, examId,examName } = useParams();
+  const [loading, setLoading] = useState(false);
   const examErrorMsg = localStorage.getItem("examErrorMsg");
 
   if (examErrorMsg) {
@@ -34,13 +35,19 @@ const UserResult = () => {
   // }, []);
 
   const getResult = async () => {
+    setLoading(true);
     try {
       const result = await axios.get(`${getResultByResultIdApi}/${resultId}`);
       if (result.status === 200) {
         setResultData(result.data.result);
         console.log(result.data.result);
       }
-    } catch (error) {}
+    } catch (error) {
+      console.log("Error fetching result data:", error);
+    }
+    finally {
+      setLoading(false);
+    }
   };
 
   // Function to enter fullscreen mode
@@ -59,6 +66,12 @@ const UserResult = () => {
   return (
     <div className={`${Style.Result} ${Style.resultContainer}`}>
       {/* UpperResult */}
+      {
+        loading? (<div className={Style.loadingSpinner}>
+                    <div className={Style.spinner}></div>
+                  </div>):
+      (
+      <div className={Style.ResultContainer_}>
       <div className={Style.UpperResult}>
         <div className={Style.UpperResultDiv1}>
           <h3>SCORE</h3>
@@ -175,12 +188,12 @@ const UserResult = () => {
         <Button
           text="Review"
           isLink={true}
-          link={`/review/result/${resultId}/${examId}`}
+          link={`/review/result/${resultId}/${examId}/${examName}`}
           className={Style.Button}
         >
           <RiFileList3Fill />
         </Button>
-      </div>
+      </div></div>)}
     </div>
   );
 };

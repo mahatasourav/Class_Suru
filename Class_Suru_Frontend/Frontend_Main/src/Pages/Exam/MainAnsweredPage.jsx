@@ -34,7 +34,7 @@ const MainAnsweredPage = () => {
   const [questionData, setquestionData] = useState(null);
   const [currentQuestionIndex, setcurrentQuestionIndex] = useState(0);
   const [sidebar, setSidebar] = useState(false);
-  const { resultId, examId } = useParams();
+  const { resultId, examId, examName } = useParams();
   const [result, setresult] = useState([]);
 
   const token = localStorage.getItem("token");
@@ -49,7 +49,7 @@ const MainAnsweredPage = () => {
   // console.log(answers);
 
   // Add at the top of your component (after useState etc.)
-  const { examName, subjectName } = useParams();
+  // const { examName, subjectName } = useParams();
 
   const handleSubmitExam = async (id, answers) => {
     // Add submission logic here if needed, for now we log and navigate
@@ -151,7 +151,7 @@ const MainAnsweredPage = () => {
             <div className={Style.examPageLeftHeaderTitle}>
               Question {currentQuestionIndex + 1}
             </div>
-            <div>🔍 Exam Review – [Exam Name or Subject Name]</div>
+            <div>🔍 Exam Review – {examName}</div>
 
             <div className={Style.examPageLeftOptions}>
               <div className={Style.examPageLeftMarksDristibution}>

@@ -23,6 +23,7 @@
   /* padding: 10px; */
   /* padding-bottom: 0px; */
   position: relative;
+  /* margin-right: 400px; */
 }
 
 .examPageLeftHeader {
@@ -342,7 +343,7 @@
 /* ====================== Right Section ====================== */
 .examPageRightSideBar {
   position: sticky;
-  top: 70px;
+  /* top: 70px; */
   right: 0px;
   max-width: 400px;
   height: 800px;

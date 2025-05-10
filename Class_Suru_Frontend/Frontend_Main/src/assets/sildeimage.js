@@ -8,6 +8,10 @@ import DipanjanMahataImg from "./HomeSec2Images/DipanjanMahataImg.jpg";
 import JoydeepMahataImg from "./HomeSec2Images/JoydeepMahataImg.jpg";
 import SougataSinghaImg from "./HomeSec2Images/SougataSinghaImg.jpg";
 import SamirDebsinghaImg from "./HomeSec2Images/SamirDebsinghaImg.png";
+import AbhiswarSarkarImg from "./HomeSec2Images/AbhiswarSarkarImg.jpg";
+import JyotiMahataImg from "./HomeSec2Images/JyotiMahataImg.jpg";
+import KalyanMahataImg from "./HomeSec2Images/KalyanMahataImg.jpg";
+import SamarikMahataImg from "./HomeSec2Images/SamarikMahataImg.jpg";
 
 const imageData = [
   {
@@ -33,15 +37,13 @@ const imageData = [
     src: DeepsankarBarikImg,
     alt: "DeepsankarBarikImg",
     name: "Deepsankar Barik",
-    college:
-      "Indian Institute of Engineering Science and Technology, Shibpur (IIEST)", // Add college
+    college: "Indian Institute of Engineering Science and Technology, Shibpur ", // Add college
   },
   {
     src: DhirajMahataImg,
     alt: "DhirajMahataImg",
     name: "Dhiraj Mahata",
-    college:
-      "Indian Institute of Engineering Science and Technology, Shibpur (IIEST)", // Add college
+    college: "Indian Institute of Engineering Science and Technology, Shibpur ", // Add college
   },
   {
     src: DipanjanMahataImg,
@@ -53,8 +55,7 @@ const imageData = [
     src: JoydeepMahataImg,
     alt: "JoydeepMahataImg",
     name: "Joydeep Mahata",
-    college:
-      "Indian Institute of Engineering Science and Technology, Shibpur (IIEST)", // Add college
+    college: "Indian Institute of Engineering Science and Technology, Shibpur ", // Add college
   },
   {
     src: SougataSinghaImg,
@@ -66,8 +67,31 @@ const imageData = [
     src: SamirDebsinghaImg,
     alt: "SamirDebsinghaImg",
     name: "Samir Debsingha",
-    college:
-      "Indian Institute of Engineering Science and Technology, Shibpur (IIEST)", // Add college
+    college: "Indian Institute of Engineering Science and Technology, Shibpur ", // Add college
+  },
+  {
+    src: AbhiswarSarkarImg,
+    alt: "AbhiswarSarkarImg",
+    name: "Abhiswar Sarkar",
+    college: "Indian Institute of Engineering Science and Technology, Shibpur ", // Add college
+  },
+  {
+    src: JyotiMahataImg,
+    alt: "JyotiMahataImg",
+    name: "Jyoti Mahata",
+    college: "Govt. College of Engineering & Textile Technology Berhampore ", // Add college
+  },
+  {
+    src: KalyanMahataImg,
+    alt: "KalyanMahataImg",
+    name: "Kalyan Mahata",
+    college: "Govt. College of Engineering & Textile Technology Berhampore ", // Add college
+  },
+  {
+    src: SamarikMahataImg,
+    alt: "SamarikMahataImg",
+    name: "Samarik Mahata",
+    college: "R G Kar Medical College and Hospital, Kolkata", // Add college
   },
 ];
 

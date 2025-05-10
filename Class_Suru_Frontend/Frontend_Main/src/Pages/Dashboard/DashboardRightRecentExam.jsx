@@ -69,20 +69,20 @@ const DashboardRightRecentExam = () => {
 
             return (
               <Link
-                key={index}
-                className={Style.RecentExamLower}
-                to={`/user/dashboard/result/${exam.result_id}/${exam.exam_id}`}
+              key={index}
+              className={Style.RecentExamLower}
+              to={`/user/dashboard/result/${exam.result_id}/${exam.exam_id}/${exam.title.replace(/[\s/]/g, "-")}`}
               >
-                <div className={Style.RecentExamLowerTopics}>
-                  <h3>{exam.title}</h3>
-                  <div className={Style.examDetails}>
-                    <p>{exam.exam_subject}</p>
-                    <p>{exam.type}</p>
-                  </div>
+              <div className={Style.RecentExamLowerTopics}>
+                <h3>{exam.title}</h3>
+                <div className={Style.examDetails}>
+                <p>{exam.exam_subject}</p>
+                <p>{exam.type}</p>
                 </div>
-                <div className={Style.RecentExamLowerMarks}>
-                  <h3>{timeAgo}</h3>
-                </div>
+              </div>
+              <div className={Style.RecentExamLowerMarks}>
+                <h3>{timeAgo}</h3>
+              </div>
               </Link>
             );
           })

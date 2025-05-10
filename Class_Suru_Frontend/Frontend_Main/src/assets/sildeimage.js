@@ -7,7 +7,7 @@ import DhirajMahataImg from "./HomeSec2Images/DhirajMahataImg.jpg";
 import DipanjanMahataImg from "./HomeSec2Images/DipanjanMahataImg.jpg";
 import JoydeepMahataImg from "./HomeSec2Images/JoydeepMahataImg.jpg";
 import SougataSinghaImg from "./HomeSec2Images/SougataSinghaImg.jpg";
-import SamirDebsinghaImg from "./HomeSec2Images/SamirDebsinghaImg.png";
+import SamirDebsinghaImg from "./HomeSec2Images/SamirDebsinghaImg.jpg";
 import AbhiswarSarkarImg from "./HomeSec2Images/AbhiswarSarkarImg.jpg";
 import JyotiMahataImg from "./HomeSec2Images/JyotiMahataImg.jpg";
 import KalyanMahataImg from "./HomeSec2Images/KalyanMahataImg.jpg";

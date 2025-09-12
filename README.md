@@ -1,6 +1,8 @@
-# Class_Suru Coaching Center 🏫💻
+# Class_Suru Coaching Center 🏫
 
 **Class_Suru** is an educational platform that provides both **offline coaching** and **online learning** for students preparing for exams like **IIT-JEE, NEET, WBJEE, JENPAS**, and board exams. It also has its own **YouTube channel**, offering lessons in **Bengali**, making learning accessible anytime, anywhere.  
+
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-Class_Suru-blue)](https://www.classsuru.in/)
 
 ---
 ## 🛠 Project Overview

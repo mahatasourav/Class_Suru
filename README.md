@@ -71,20 +71,6 @@ Designed for both desktop and mobile learning experience
 - Improved skills in Git & GitHub for version control and collaborative development.
 
 
----
-
-📸 Screenshots / Demo
-
-## Student Dashboard:
-![Student Dashboard](path_to_student_dashboard_screenshot.png)
-
-## Online Exam Interface:
-![Online Exam Interface](path_to_exam_interface_screenshot.png)
-
-## Admin Panel:
-![Admin Panel](path_to_admin_panel_screenshot.png)
-
-
 
 ---
 
